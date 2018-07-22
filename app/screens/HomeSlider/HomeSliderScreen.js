@@ -64,7 +64,7 @@ class HomeSliderScreen extends Component {
   render() {
     const {navigation, homeSliders} = this.props;
     return (
-      <AppIntroSlide
+      <AppIntroSlider
         showDoneButton={true}
         showSkipButton={true}
         doneLabel={I18n.t('done')}
