@@ -1,0 +1,17 @@
+{
+  "presets": [
+    "react-native",
+    "module:react-native-dotenv"
+  ],
+  "env": {
+    "production": {
+      "plugins": [
+        "transform-remove-console"
+      ]
+    },
+    "test": {
+      "plugins": [
+      ]
+    }
+  }
+}

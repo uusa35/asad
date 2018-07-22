@@ -1,0 +1,62 @@
+{
+  "name": "asad",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "start": "node node_modules/react-native/local-cli/cli.js start",
+    "test": "jest",
+    "prettier": "prettier --write --no-bracket-spacing --single-quote --jsx-bracket-same-line all --print-width 80 'app/**/**/*.js'"
+  },
+  "dependencies": {
+    "add": "^2.0.6",
+    "axios": "^0.18.0",
+    "babel-plugin-transform-remove-console": "^6.9.4",
+    "geolib": "^2.0.24",
+    "lodash": "^4.17.10",
+    "prettier": "^1.13.7",
+    "prop-types": "^15.6.2",
+    "react": "16.4.1",
+    "react-native": "0.56.0",
+    "react-native-app-intro-slider": "^0.2.4",
+    "react-native-code-push": "^5.4.0",
+    "react-native-communications": "^2.2.1",
+    "react-native-device-info": "^0.21.5",
+    "react-native-dotenv": "^0.2.0",
+    "react-native-elements": "^0.19.1",
+    "react-native-fast-image": "^4.0.14",
+    "react-native-i18n": "^2.0.15",
+    "react-native-image-crop-picker": "^0.20.3",
+    "react-native-keyboard-aware-scroll-view": "^0.6.0",
+    "react-native-maps": "^0.21.0",
+    "react-native-offline": "^3.11.0",
+    "react-native-parallax-view": "^2.0.6",
+    "react-native-picker": "^4.3.7",
+    "react-native-restart": "^0.0.6",
+    "react-native-star-rating": "^1.0.9",
+    "react-native-swiper": "^1.5.13",
+    "react-native-vector-icons": "^4.6.0",
+    "react-navigation": "^2.7.0",
+    "react-navigation-redux-helpers": "^2.0.2",
+    "react-redux": "^5.0.7",
+    "redux": "^4.0.0",
+    "redux-logger": "^3.0.6",
+    "redux-saga": "^0.16.0",
+    "redux-thunk": "^2.3.0",
+    "validate.js": "^0.12.0",
+    "yarn": "^1.7.0"
+  },
+  "devDependencies": {
+    "babel-jest": "23.4.0",
+    "babel-preset-react-native": "^5",
+    "jest": "23.4.1",
+    "react-test-renderer": "16.4.1"
+  },
+  "jest": {
+    "preset": "react-native"
+  },
+  "rnpm": {
+    "assets": [
+      "assets/fonts/"
+    ]
+  }
+}
