@@ -1,6 +1,6 @@
 import {ENV, PORT} from 'react-native-dotenv';
 
-console.log('the env -> ', ENV);
+console.log('the env --> ', ENV);
 if (ENV === 'local') {
   module.exports = {
     graphUrlAndroid: `http://10.0.3.2:${PORT}/graphql`,

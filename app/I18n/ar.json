@@ -306,6 +306,8 @@
   "snapchat" : "سناب شات",
   "google_play" : "جوجل ستور",
   "app_store" : "ابل ستور",
-  "password_confirmation" : "تأكيد كلمة المرور"
+  "password_confirmation" : "تأكيد كلمة المرور",
+  "skip" : "الغاء",
+  "done" : "انهاء"
 
 }

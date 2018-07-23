@@ -283,6 +283,7 @@
   "snapchat" : "snapchat",
   "google_play" : "google play",
   "app_store" : "apple store",
-  "password_confirmation" : "password confirmation"
-
+  "password_confirmation" : "password confirmation",
+  "skip" : "skip",
+  "done" : "done"
 }

@@ -1,14 +1,14 @@
 import React, {Component} from 'react';
 import {View, Text, TouchableOpacity, StyleSheet} from 'react-native';
 import PropTypes from 'prop-types';
-import {Icon} from 'react-native-elements';
+import {Button, Icon, Card} from 'react-native-elements';
 import {connect} from 'react-redux';
 import {enableLoading} from '../../redux/actions/sagas/appSagas';
 import {bindActionCreators} from 'redux';
 import AppIntroSlider from 'react-native-app-intro-slider';
 import FastImage from 'react-native-fast-image';
 import {height, width} from './../../constants';
-import I18n from './../../I18n';
+import I18n, {isRTL} from './../../I18n';
 
 class HomeSliderScreen extends Component {
   constructor(props) {
@@ -33,29 +33,47 @@ class HomeSliderScreen extends Component {
     return (
       <View style={styles.slide} key={s.id} level={s.id}>
         <FastImage
-          style={styles.imgSlide}
+          style={styles.imgBg}
           source={{
-            uri: `${s.image}`,
+            uri: `${s.bg}`,
             priority: FastImage.priority.normal
           }}
-          resizeMode={FastImage.resizeMode.cover}
-        />
+          resizeMode={FastImage.resizeMode.cover}>
+          <Card
+            containerStyle={{opacity: 0.7, marginTop: 100}}
+            title={s.title}
+            image={{uri: s.image}}>
+            <Text style={{marginBottom: 10}}>{s.content}</Text>
+          </Card>
+        </FastImage>
       </View>
     );
   };
   _renderNextButton = () => {
-    return <Icon name="arrow-right" type="font-awesome" color="grey" />;
+    return (
+      <Icon
+        name={isRTL ? 'ios-arrow-back' : 'ios-arrow-forward'}
+        type="ionicon"
+        color="white"
+      />
+    );
   };
   _renderDoneButton = () => {
-    return <Icon name="arrow-right" type="font-awesome" color="green" />;
+    return (
+      <Icon
+        name="ios-exit"
+        type="ionicon"
+        color="white"
+        onPress={() => this.props.navigation.navigate('Home')}
+      />
+    );
   };
 
   _renderSkipButton = () => {
     return (
-      <Icon
-        name="heart"
-        type="font-awesome"
-        color="blue"
+      <Button
+        buttonStyle={{backgroundColor: 'transparent'}}
+        title={I18n.t('skip')}
         onPress={() => this.props.navigation.navigate('Home')}
       />
     );
@@ -108,9 +126,13 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: 'white'
+    backgroundColor: 'transparent'
   },
   imgSlide: {
+    height: 200,
+    width: 200
+  },
+  imgBg: {
     height: height,
     width: width
   },
