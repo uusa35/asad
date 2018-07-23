@@ -1,12 +1,7 @@
-export const userRegisterConstraints = {
-  name_ar: {
-    presence: true,
-    length: {
-      minimum: 5,
-      message: 'must be at least 3 characters'
-    }
-  },
-  name_en: {
+import I18n from './I18n';
+
+export const userRegisterRequestConstraints = {
+  name: {
     presence: true,
     length: {
       minimum: 5,
@@ -28,11 +23,11 @@ export const userRegisterConstraints = {
       message: 'must be at least 8 numbers'
     }
   },
-  password: {
+  address: {
     presence: true,
     length: {
       minimum: 6,
-      message: 'must be at least 6 numbers'
+      message: I18n.t('address_validation_message')
     }
   }
 };

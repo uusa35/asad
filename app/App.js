@@ -6,6 +6,8 @@ import {AppNavigator} from './Navigator';
 import codePush from 'react-native-code-push';
 import LoadingView from './components/LoadingView';
 import LoadingOfflineView from './components/LoadingOfflineView';
+import AlertMessage from './components/AlertMessage';
+
 import validate from 'validate.js';
 
 class App extends Component {
@@ -32,6 +34,7 @@ class App extends Component {
           loadingText="loading"
         />
       );
+    if (!validate.isEmpty(message) && message.visible) return <AlertMessage />;
     return (
       <View style={{backgroundColor: 'transparent', flex: 1}}>
         <AppNavigator />

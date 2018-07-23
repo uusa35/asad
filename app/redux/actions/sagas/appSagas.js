@@ -6,6 +6,7 @@ import * as api from '../api';
 import * as helpers from '../../../helpers';
 import validate from 'validate.js';
 import {NavigationActions} from 'react-navigation';
+import DeviceInfo from 'react-native-device-info';
 
 export function* enableLoading() {
   yield put({type: actions.TOGGLE_LOADING, payload: true});
@@ -51,7 +52,11 @@ export function* toggleGuest(guest) {
 
 export function* startAppBootStrap() {
   try {
-    yield all([call(enableLoading), call(defaultLang)]);
+    yield all([
+      call(enableLoading),
+      call(defaultLang),
+      put({type: actions.GET_DEVICE_ID, paylaod: DeviceInfo.getUniqueID()})
+    ]);
     const api_token = yield call(helpers.getAuthToken);
     console.log('the api_token', api_token);
     if (!validate.isEmpty(api_token)) {
@@ -73,7 +78,6 @@ export function* startAppBootStrap() {
     const sliders = yield call(api.getHomeSliders, 'is_splash');
     const settings = yield call(api.getSettings);
     const roles = yield call(api.getRoles);
-    console.log('roles', roles);
     yield all([
       put({type: actions.GET_ROLES, payload: roles}),
       put({type: actions.GET_SETTINGS, payload: settings})

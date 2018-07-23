@@ -6,6 +6,7 @@ import PropTypes from 'prop-types';
 import {toggleLoading} from '../../redux/actions';
 import FastImage from 'react-native-fast-image';
 import {Button, Icon} from 'react-native-elements';
+import I18n from './../../I18n';
 import {images} from './../../constants';
 import {height, width} from '../../constants';
 
@@ -15,7 +16,7 @@ class RegisterAsScreen extends Component {
   }
 
   render() {
-    const {roles} = this.props;
+    const {roles, navigation} = this.props;
     return (
       <View style={styles.wrapper}>
         <FastImage
@@ -29,8 +30,14 @@ class RegisterAsScreen extends Component {
               <Button
                 key={r.id}
                 containerStyle={{margin: 15}}
-                buttonStyle={{margin: 15, width: 220}}
-                titleStyle={{textAlign: 'right', color: 'green'}}
+                buttonStyle={{
+                  margin: 15,
+                  width: 220,
+                  opacity: 0.7,
+                  backgroundColor: 'transparent',
+                  borderWidth: 1,
+                  borderColor: 'grey'
+                }}
                 icon={{
                   key: r.id,
                   name: 'ios-arrow-forward',
@@ -42,7 +49,25 @@ class RegisterAsScreen extends Component {
               />
             );
           })}
-          <Text>testing</Text>
+          <Button
+            containerStyle={{margin: 15}}
+            buttonStyle={{
+              margin: 15,
+              width: 220,
+              opacity: 0.7,
+              backgroundColor: 'transparent',
+              borderWidth: 1,
+              borderColor: 'grey'
+            }}
+            icon={{
+              name: 'ios-arrow-forward',
+              type: 'ionicon',
+              size: 15,
+              color: 'white'
+            }}
+            title={I18n.t('go_to_home')}
+            onPress={() => navigation.navigate('Home')}
+          />
         </View>
       </View>
     );

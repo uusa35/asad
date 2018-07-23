@@ -86,6 +86,13 @@ export function getSettings(settings) {
   };
 }
 
+export function submitRegistrationRequest(payload) {
+  return {
+    type: actions.SUBMIT_REGISTRATION_REQUEST,
+    payload
+  };
+}
+
 export const APP_ACTIONS = {
   appBootstrap,
   toggleBootstrapped,

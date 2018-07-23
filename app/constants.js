@@ -27,7 +27,9 @@ export const initialState = {
   category: {},
   roles: [],
   role: {},
-  homeSliders: []
+  homeSliders: [],
+  requesterRequest: {},
+  deviceId: ''
 };
 
 export const links = {
@@ -57,4 +59,8 @@ export const links = {
 export const images = {
   logo: require('./../assets/images/logo.png'),
   bg: require('./../assets/images/bg.png')
+};
+
+export const colors = {
+  main: '#fac811'
 };

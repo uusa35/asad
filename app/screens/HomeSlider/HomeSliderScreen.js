@@ -7,7 +7,7 @@ import {bindActionCreators} from 'redux';
 import {toggleLoading} from '../../redux/actions';
 import AppIntroSlider from 'react-native-app-intro-slider';
 import FastImage from 'react-native-fast-image';
-import {height, width} from './../../constants';
+import {height, width, colors} from './../../constants';
 import I18n, {isRTL} from './../../I18n';
 import {isAuthenticated} from '../../helpers';
 
@@ -52,8 +52,8 @@ class HomeSliderScreen extends Component {
     return (
       <Button
         containerStyle={{margin: 15}}
-        buttonStyle={{margin: 15, width: 300}}
-        titleStyle={{textAlign: 'right', color: 'white'}}
+        buttonStyle={{margin: 15, width: 300, backgroundColor: colors.main}}
+        titleStyle={{textAlign: 'right', color: 'black', fontFamily: 'cairo'}}
         icon={{
           name: 'ios-arrow-forward',
           type: 'ionicon',
@@ -64,7 +64,7 @@ class HomeSliderScreen extends Component {
         onPress={() =>
           isAuthenticated(auth)
             ? navigation.navigate('Home')
-            : navigation.navigate('RegisterAs')
+            : navigation.navigate('Register')
         }
       />
     );
@@ -75,7 +75,7 @@ class HomeSliderScreen extends Component {
       <Button
         buttonStyle={{backgroundColor: 'transparent'}}
         title={I18n.t('skip')}
-        onPress={() => this.props.navigation.navigate('RegisterAs')}
+        onPress={() => this.props.navigation.navigate('Register')}
       />
     );
   };
