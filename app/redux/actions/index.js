@@ -7,21 +7,21 @@ export function appBootstrap() {
   };
 }
 
-function toggleBootstrapped(bootstrapped) {
+export function toggleBootstrapped(bootstrapped) {
   return {
     type: actions.TOGGLE_BOOTSTRAPPED,
     payload: bootstrapped
   };
 }
 
-function toggleLoading(isLoading) {
+export function toggleLoading(isLoading) {
   return {
     type: actions.TOGGLE_LOADING,
     payload: isLoading
   };
 }
 
-function logout() {
+export function logout() {
   return {
     type: actions.LOGOUT
   };
@@ -34,7 +34,7 @@ export function login(user) {
   };
 }
 
-function enableMessage(type, message, title = I18n.t('asad')) {
+export function enableMessage(type, message, title = I18n.t('asad')) {
   return {
     type: actions.ENABLE_MESSAGE,
     payload: {
@@ -46,29 +46,43 @@ function enableMessage(type, message, title = I18n.t('asad')) {
   };
 }
 
-function disableMessage() {
+export function disableMessage() {
   return {
     type: actions.DISABLE_MESSAGE
   };
 }
-function changeLang(lang) {
+export function changeLang(lang) {
   return {
     type: actions.CHANGE_LANG,
     payload: lang
   };
 }
 
-function toggleGuest(guest) {
+export function toggleGuest(guest) {
   return {
     type: actions.TOGGLE_GUEST,
     payload: guest
   };
 }
 
-function setHomeSliders(sliders) {
+export function setHomeSliders(sliders) {
   return {
     type: actions.SET_HOME_SLIDERS,
     payload: sliders
+  };
+}
+
+export function getRoles(roles) {
+  return {
+    type: actions.GET_ROLES,
+    payload: roles
+  };
+}
+
+export function getSettings(settings) {
+  return {
+    type: actions.GET_SETTINGS,
+    payload: settings
   };
 }
 
@@ -80,6 +94,8 @@ export const APP_ACTIONS = {
   changeLang,
   enableMessage,
   disableMessage,
+  getRoles,
+  getSettings,
   logout,
   login,
   setHomeSliders

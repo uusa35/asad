@@ -5,6 +5,7 @@ import {defaultLang, setDirection} from './LangSagas';
 import * as api from '../api';
 import * as helpers from '../../../helpers';
 import validate from 'validate.js';
+import {NavigationActions} from 'react-navigation';
 
 export function* enableLoading() {
   yield put({type: actions.TOGGLE_LOADING, payload: true});
@@ -58,13 +59,25 @@ export function* startAppBootStrap() {
       if (!validate.isEmpty(user)) {
         yield all([
           put({type: actions.LOGIN, payload: user}),
-          call(toggleGuest, false)
+          call(toggleGuest, false),
+          put(
+            NavigationActions.navigate({
+              routeName: 'Home'
+            })
+          )
         ]);
       } else {
         yield call(toggleGuest, true);
       }
     }
     const sliders = yield call(api.getHomeSliders, 'is_splash');
+    const settings = yield call(api.getSettings);
+    const roles = yield call(api.getRoles);
+    console.log('roles', roles);
+    yield all([
+      put({type: actions.GET_ROLES, payload: roles}),
+      put({type: actions.GET_SETTINGS, payload: settings})
+    ]);
     if (!validate.isEmpty(sliders)) {
       yield all([
         put({type: actions.SET_HOME_SLIDERS, payload: sliders}),

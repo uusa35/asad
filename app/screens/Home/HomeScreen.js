@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import {View, Text, TouchableOpacity} from 'react-native';
 import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
-import {enableLoading} from '../../redux/actions/sagas/appSagas';
+import {toggleLoading} from '../../redux/actions';
 import {bindActionCreators} from 'redux';
 
 class HomeScreen extends Component {
@@ -35,7 +35,7 @@ function mapStateToProps(state) {
 function mapDispatchToProps(dispatch) {
   return {
     actions: {
-      enableLoading: bindActionCreators(enableLoading, dispatch)
+      toggleLoading: bindActionCreators(toggleLoading, dispatch)
     }
   };
 }

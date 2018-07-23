@@ -7,7 +7,7 @@ import {Text, Button} from 'react-native-elements';
 import I18n from './../I18n';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
-import {logout, changeLang} from './../redux/actions';
+import {toggleLoading} from '../redux/actions';
 
 class Menu extends Component {
   constructor(props) {
@@ -85,9 +85,7 @@ function mapStateToProps(state) {
 function mapDispatchToProps(dispatch) {
   return {
     actions: {
-      logout: bindActionCreators(logout, dispatch),
-      changeLang: bindActionCreators(changeLang, dispatch),
-      setRoleFromSideMenu: bindActionCreators(setRoleFromSideMenu, dispatch)
+      toggleLoading: bindActionCreators(toggleLoading, dispatch)
     }
   };
 }

@@ -20,6 +20,7 @@ import HomeSliderScreen from './screens/HomeSlider/HomeSliderScreen';
 import HomeScreen from './screens/Home/HomeScreen';
 import LoginScreen from './screens/Login/LoginScreen';
 import RegisterScreen from './screens/Register/RegisterScreen';
+import RegisterAsScreen from './screens/Register/RegisterAsScreen';
 import ForgetPasswordScreen from './screens/ForgetPassword/ForgetPasswordScreen';
 import ResetPasswordScreen from './screens/ResetPassword/ResetPasswordScreen';
 
@@ -45,18 +46,6 @@ const HomeStack = createStackNavigator(
         headerTitle: getHeader(I18n.t('home'))
       })
     },
-    Login: {
-      screen: LoginScreen,
-      navigationOptions: ({navigation}) => ({
-        headerTitle: getHeader(I18n.t('login'))
-      })
-    },
-    Register: {
-      screen: RegisterScreen,
-      navigationOptions: ({navigation}) => ({
-        headerTitle: getHeader(I18n.t('register'))
-      })
-    },
     ResetPassword: {
       screen: ResetPasswordScreen,
       navigationOptions: ({navigation}) => ({
@@ -73,6 +62,34 @@ const HomeStack = createStackNavigator(
   {
     mode: 'card',
     headerMode: 'screen',
+    navigationOptions: headerStyle
+  }
+);
+
+const LoginRegisterStack = createStackNavigator(
+  {
+    Login: {
+      screen: LoginScreen,
+      navigationOptions: ({navigation}) => ({
+        headerTitle: getHeader(I18n.t('login'))
+      })
+    },
+    RegisterAs: {
+      screen: RegisterAsScreen,
+      navigationOptions: ({navigation}) => ({
+        headerTitle: getHeader(I18n.t('register_as'))
+      })
+    },
+    Register: {
+      screen: RegisterScreen,
+      navigationOptions: ({navigation}) => ({
+        headerTitle: getHeader(I18n.t('register'))
+      })
+    }
+  },
+  {
+    mode: 'modal',
+    headerMode: 'none',
     navigationOptions: headerStyle
   }
 );
@@ -103,6 +120,9 @@ const TabsStack = createBottomTabNavigator(
   {
     RootStack: {
       screen: RootStack
+    },
+    LoginAndRegister: {
+      screen: LoginRegisterStack
     }
   },
   {
@@ -127,7 +147,7 @@ const TabsStack = createBottomTabNavigator(
       tabBarVisible: false
     },
     initialRouteName: 'RootStack',
-    order: ['RootStack']
+    order: ['RootStack', 'LoginAndRegister']
   }
 );
 
@@ -149,7 +169,7 @@ const RootNavigator = createDrawerNavigator(
     }
   },
   {
-    // contentComponent: <SideMenu />
+    contentComponent: () => <SideMenu />
   }
 );
 

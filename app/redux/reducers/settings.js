@@ -1,8 +1,8 @@
-import {SET_SETTINGS} from '../actions/types';
+import {GET_SETTINGS} from '../actions/types';
 
 export default function(settings = {}, action) {
   switch (action.type) {
-    case SET_SETTINGS:
+    case GET_SETTINGS:
       return action.payload;
     default:
       return settings;

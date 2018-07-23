@@ -3,31 +3,18 @@ import {View, Text, TouchableOpacity, StyleSheet} from 'react-native';
 import PropTypes from 'prop-types';
 import {Button, Icon, Card} from 'react-native-elements';
 import {connect} from 'react-redux';
-import {enableLoading} from '../../redux/actions/sagas/appSagas';
 import {bindActionCreators} from 'redux';
+import {toggleLoading} from '../../redux/actions';
 import AppIntroSlider from 'react-native-app-intro-slider';
 import FastImage from 'react-native-fast-image';
 import {height, width} from './../../constants';
 import I18n, {isRTL} from './../../I18n';
+import {isAuthenticated} from '../../helpers';
 
 class HomeSliderScreen extends Component {
   constructor(props) {
     super(props);
   }
-  onSkipBtnHandle = index => {
-    Alert.alert('Skip');
-    console.log(index);
-  };
-  doneBtnHandle = () => {
-    Alert.alert('Done');
-  };
-  nextBtnHandle = index => {
-    Alert.alert('Next');
-    console.log(index);
-  };
-  onSlideChangeHandle = (index, total) => {
-    console.log(index, total);
-  };
 
   _renderItem = s => {
     return (
@@ -43,7 +30,9 @@ class HomeSliderScreen extends Component {
             containerStyle={{opacity: 0.7, marginTop: 100}}
             title={s.title}
             image={{uri: s.image}}>
-            <Text style={{marginBottom: 10}}>{s.content}</Text>
+            <Text style={{marginBottom: 10, fontSize: 14, fontFamily: 'cairo'}}>
+              {s.content}
+            </Text>
           </Card>
         </FastImage>
       </View>
@@ -59,12 +48,24 @@ class HomeSliderScreen extends Component {
     );
   };
   _renderDoneButton = () => {
+    const {navigation, auth} = this.props;
     return (
-      <Icon
-        name="ios-exit"
-        type="ionicon"
-        color="white"
-        onPress={() => this.props.navigation.navigate('Home')}
+      <Button
+        containerStyle={{margin: 15}}
+        buttonStyle={{margin: 15, width: 300}}
+        titleStyle={{textAlign: 'right', color: 'white'}}
+        icon={{
+          name: 'ios-arrow-forward',
+          type: 'ionicon',
+          size: 15,
+          color: 'white'
+        }}
+        title={I18n.t('done')}
+        onPress={() =>
+          isAuthenticated(auth)
+            ? navigation.navigate('Home')
+            : navigation.navigate('RegisterAs')
+        }
       />
     );
   };
@@ -74,7 +75,7 @@ class HomeSliderScreen extends Component {
       <Button
         buttonStyle={{backgroundColor: 'transparent'}}
         title={I18n.t('skip')}
-        onPress={() => this.props.navigation.navigate('Home')}
+        onPress={() => this.props.navigation.navigate('RegisterAs')}
       />
     );
   };
@@ -110,7 +111,7 @@ function mapStateToProps(state) {
 function mapDispatchToProps(dispatch) {
   return {
     actions: {
-      enableLoading: bindActionCreators(enableLoading, dispatch)
+      toggleLoading: bindActionCreators(toggleLoading, dispatch)
     }
   };
 }

@@ -138,3 +138,7 @@ export function getTabTitle(title) {
     </Text>
   );
 }
+
+export function isAuthenticated(auth) {
+  return !validate.isEmpty(auth.api_token) ? true : false;
+}

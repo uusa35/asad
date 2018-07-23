@@ -29,6 +29,20 @@ export async function getHomeSliders(type) {
     .catch(e => e);
 }
 
+export async function getRoles() {
+  return await axiosInstance
+    .get('role')
+    .then(r => r.data)
+    .catch(e => e);
+}
+
+export async function getSettings() {
+  return await axiosInstance
+    .get('setting')
+    .then(r => r.data)
+    .catch(e => e);
+}
+
 export async function userShow(id) {
   return await axiosInstance
     .get(`user`, {params: id})

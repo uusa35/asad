@@ -55,7 +55,6 @@ export const links = {
 };
 
 export const images = {
-  login: require('./../assets/images/login.png'),
   logo: require('./../assets/images/logo.png'),
-  tagIcon: require('./../assets/icons/tag.png')
+  bg: require('./../assets/images/bg.png')
 };

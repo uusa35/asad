@@ -1,8 +1,8 @@
-import {SET_ROLES} from '../actions/types';
+import {GET_ROLES} from '../actions/types';
 
-export default function(roles = {}, action) {
+export default function(roles = [], action) {
   switch (action.type) {
-    case SET_ROLES:
+    case GET_ROLES:
       return action.payload;
     default:
       return roles;
