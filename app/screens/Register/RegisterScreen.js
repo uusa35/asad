@@ -1,11 +1,12 @@
 import React, {Component} from 'react';
-import {View, Text, StyleSheet, TouchableHighlight} from 'react-native';
+import {View, Text, StyleSheet} from 'react-native';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import PropTypes from 'prop-types';
-import {enableMessage, submitRegistrationRequest} from '../../redux/actions';
+import {submitRegisterRequest} from '../../redux/actions';
 import FastImage from 'react-native-fast-image';
-import {FormInput, Icon} from 'react-native-elements';
+import {Input, Button, Icon} from 'react-native-elements';
+import validate from 'validate.js';
 import I18n from './../../I18n';
 import {userRegisterRequestConstraints} from '../../constrains';
 import {height, width, colors, images} from '../../constants';
@@ -17,7 +18,7 @@ class RegisterScreen extends Component {
     this.state = {name: '', email: '', mobile: '', address: '', logo: ''};
   }
 
-  _doRegisterationRequest = () => {
+  _doRegisterRequest = () => {
     const {name, email, mobile, logo, address} = this.state;
     const result = validate(
       {name, email, mobile, logo, address},
@@ -29,11 +30,7 @@ class RegisterScreen extends Component {
         JSON.stringify(result[Object.keys(result)[0]])
       );
     } else {
-      return this.props.actions.submitRegistrationRequest(
-        mutate,
-        auth,
-        this.state
-      );
+      return this.props.actions.submitRegisterRequest(this.state);
     }
   };
 
@@ -44,28 +41,112 @@ class RegisterScreen extends Component {
   }
 
   render() {
-    const {roles, navigation} = this.props;
+    const {roles, navigation, registerRequest} = this.props;
     return (
       <KeyboardAwareScrollView
-        style={{backgroundColor: 'white'}}
+        style={{backgroundColor: colors.main}}
         automaticallyAdjustContentInsets={true}
         showsHorizontalScrollIndicator={false}
         showsVerticalScrollIndicator={false}>
-        <View style={styles.wrapper}>
+        <View style={styles.container}>
           <FastImage
             style={styles.imgBg}
             source={images.bg}
             resizeMode={FastImage.resizeMode.cover}
           />
-          <View
-            style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
-            <TouchableHighlight
-              onPress={() => this._doRegister}
-              style={styles.registerSubmitBtn}>
-              <Text style={styles.registerSubmitBtnText}>
-                {I18n.t('register')}
-              </Text>
-            </TouchableHighlight>
+          <Text style={styles.mainTitle}>
+            {I18n.t('register_request').toUpperCase()}
+          </Text>
+          <View style={styles.wrapper}>
+            {!validate.isEmpty(registerRequest) ? (
+              <View style={styles.formWrapper}>
+                <Input
+                  onChangeText={e => this.setState({name: e})}
+                  placeholder={I18n.t('company_name').toUpperCase()}
+                  inputContainerStyle={styles.inputContainerStyle}
+                  leftIconContainerStyle={styles.leftIconStyle}
+                  leftIcon={
+                    <Icon
+                      name="industry"
+                      type="font-awesome"
+                      size={24}
+                      color="black"
+                    />
+                  }
+                />
+                <Input
+                  onChangeText={e => this.setState({email: e})}
+                  placeholder={I18n.t('email').toUpperCase()}
+                  inputContainerStyle={styles.inputContainerStyle}
+                  leftIconContainerStyle={styles.leftIconStyle}
+                  leftIcon={
+                    <Icon
+                      name="inbox"
+                      type="font-awesome"
+                      size={24}
+                      color="black"
+                    />
+                  }
+                />
+                <Input
+                  onChangeText={e => this.setState({phone: e})}
+                  placeholder={I18n.t('phone').toUpperCase()}
+                  inputContainerStyle={styles.inputContainerStyle}
+                  leftIconContainerStyle={styles.leftIconStyle}
+                  leftIcon={
+                    <Icon
+                      name="phone"
+                      type="font-awesome"
+                      size={24}
+                      color="black"
+                    />
+                  }
+                />
+                <Input
+                  onChangeText={e => this.setState({address: e})}
+                  placeholder={I18n.t('address').toUpperCase()}
+                  inputContainerStyle={styles.inputContainerStyle}
+                  leftIconContainerStyle={styles.leftIconStyle}
+                  leftIcon={
+                    <Icon
+                      name="map-marker"
+                      type="font-awesome"
+                      size={24}
+                      color="black"
+                    />
+                  }
+                />
+                <Input
+                  onChangeText={e => this.setState({logo: e})}
+                  placeholder={I18n.t('logo').toUpperCase()}
+                  inputContainerStyle={styles.inputContainerStyle}
+                  leftIconContainerStyle={styles.leftIconStyle}
+                  leftIcon={
+                    <Icon
+                      name="paperclip"
+                      type="font-awesome"
+                      size={24}
+                      color="black"
+                    />
+                  }
+                  rightIcon={
+                    <Icon name="add" type="iconic" size={34} color="black" />
+                  }
+                />
+                <Button
+                  buttonStyle={styles.registerSubmitBtn}
+                  fontFamily="Cairo"
+                  color="black"
+                  titleStyle={styles.registerSubmitBtnText}
+                  onPress={() => this._doRegisterRequest()}
+                  title={I18n.t('register_request').toUpperCase()}
+                />
+              </View>
+            ) : (
+              <View>
+                <Text>{I18n.t('you_already_sent_register_request')}</Text>
+              </View>
+            )}
           </View>
         </View>
       </KeyboardAwareScrollView>
@@ -75,7 +156,8 @@ class RegisterScreen extends Component {
 
 RegisterScreen.propTypes = {
   navigation: PropTypes.object.isRequired,
-  roles: PropTypes.array.isRequired
+  roles: PropTypes.array.isRequired,
+  registerRequest: PropTypes.object.isRequired
 };
 
 function mapStateToProps(state) {
@@ -85,7 +167,7 @@ function mapStateToProps(state) {
 function mapDispatchToProps(dispatch) {
   return {
     actions: {
-      enableMessage: bindActionCreators(enableMessage, dispatch)
+      submitRegisterRequest: bindActionCreators(submitRegisterRequest, dispatch)
     }
   };
 }
@@ -96,23 +178,41 @@ export default connect(
 )(RegisterScreen);
 
 const styles = StyleSheet.create({
-  wrapper: {
-    flex: 1,
+  container: {
     justifyContent: 'center',
+    alignItems: 'center'
+  },
+  wrapper: {
+    justifyContent: 'space-around',
+    alignItems: 'center'
+  },
+  formWrapper: {
+    width: width,
+    justifyContent: 'space-between',
     alignItems: 'center',
-    backgroundColor: 'white'
+    padding: 0
   },
   imgBg: {
     position: 'absolute',
     top: 0,
     left: 0,
     flex: 1,
-    height: height,
-    width: width
+    width: width,
+    height: height + 200
+  },
+  mainTitle: {
+    textAlign: 'center',
+    fontFamily: 'cairo',
+    fontSize: 32,
+    color: colors.main,
+    fontWeight: 'bold',
+    padding: 15
   },
   registerSubmitBtn: {
-    width: width - 50,
-    height: 65,
+    width: width - 30,
+    borderRadius: 0,
+    height: 50,
+    marginTop: 25,
     backgroundColor: colors.main,
     justifyContent: 'center',
     alignItems: 'center'
@@ -121,5 +221,18 @@ const styles = StyleSheet.create({
     fontFamily: 'cairo',
     fontSize: 20,
     color: 'black'
+  },
+  leftIconStyle: {
+    backgroundColor: colors.main,
+    width: 60,
+    position: 'relative',
+    left: -20,
+    height: 50
+  },
+  inputContainerStyle: {
+    backgroundColor: 'white',
+    minHeight: 50,
+    marginTop: 8,
+    marginBottom: 8
   }
 });

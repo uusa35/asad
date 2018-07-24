@@ -52,12 +52,18 @@ export function* toggleGuest(guest) {
 
 export function* startAppBootStrap() {
   try {
+    let device_id = DeviceInfo.getUniqueID();
     yield all([
       call(enableLoading),
       call(defaultLang),
-      put({type: actions.GET_DEVICE_ID, paylaod: DeviceInfo.getUniqueID()})
+      put({type: actions.GET_DEVICE_ID, payload: device_id})
     ]);
     const api_token = yield call(helpers.getAuthToken);
+    const registerRequest = yield call(api.getRegisterRequest, device_id);
+    if (!validate.isEmpty(registerRequest)) {
+      // add the registerRequest to the state according to the device id;
+      yield put({type: actions.GET_REGISTER_REQUEST, payload: registerRequest});
+    }
     console.log('the api_token', api_token);
     if (!validate.isEmpty(api_token)) {
       const user = yield call(api.getUser, api_token);

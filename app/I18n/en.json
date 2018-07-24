@@ -283,7 +283,10 @@
   "snapchat" : "snapchat",
   "google_play" : "google play",
   "app_store" : "apple store",
-  "password_confirmation" : "password confirmation",
-  "skip" : "skip",
-  "done" : "done"
+  "password_confirmation" : "Password Confirmation",
+  "skip" : "Skip",
+  "done" : "Done",
+  "home" : "Home",
+  "register_request" : "Register Request",
+  "forget_your_password" : "Forget Your Password ?"
 }

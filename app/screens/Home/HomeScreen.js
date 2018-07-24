@@ -12,7 +12,6 @@ class HomeScreen extends Component {
 
   render() {
     const {navigation} = this.props;
-    console.log('this.props', this.props);
     return (
       <View>
         <Text>Home</Text>

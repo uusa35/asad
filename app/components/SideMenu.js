@@ -2,12 +2,14 @@
  * Created by usamaahmed on 9/27/17.
  */
 import React, {Component} from 'react';
-import {View, StyleSheet, ScrollView} from 'react-native';
+import {View, StyleSheet, ScrollView, StatusBar} from 'react-native';
 import {Text, Button} from 'react-native-elements';
 import I18n from './../I18n';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
-import {toggleLoading} from '../redux/actions';
+import {changeLang} from '../redux/actions';
+import {colors, width, height, images} from './../constants';
+import FastImage from 'react-native-fast-image';
 
 class Menu extends Component {
   constructor(props) {
@@ -20,9 +22,16 @@ class Menu extends Component {
   }
 
   render() {
-    const {token, guest, navigation} = this.props;
+    const {token, guest, navigation, project} = this.props;
     return (
-      <ScrollView style={styles.container}>
+      <ScrollView
+        style={styles.container}
+        contentContainerStyle={{alignItems: 'center'}}>
+        <StatusBar barStyle="dark-content" backgroundColor={colors.main} />
+        <FastImage
+          source={images.logo}
+          style={{width: 100, height: 120, margin: 12}}
+        />
         <Text
           style={{
             color: 'black',
@@ -32,7 +41,8 @@ class Menu extends Component {
           }}>
           {I18n.t('menu')}
         </Text>
-        <View containerStyle={{marginBottom: 20}}>
+        {}
+        <View style={{marginBottom: 20, width: '100%'}}>
           <Button
             buttonStyle={styles.menuBtn}
             fontFamily="cairo"
@@ -42,14 +52,34 @@ class Menu extends Component {
             title={I18n.t('homepage')}
           />
 
-          <Button
-            buttonStyle={styles.menuBtn}
-            fontFamily="cairo"
-            color="black"
-            titleStyle={styles.titleStyle}
-            onPress={() => navigation.navigate('Contactus')}
-            title={I18n.t('contactus')}
-          />
+          {guest ? (
+            <View>
+              <Button
+                buttonStyle={styles.menuBtn}
+                fontFamily="cairo"
+                color="black"
+                titleStyle={styles.titleStyle}
+                onPress={() => navigation.navigate('Login')}
+                title={I18n.t('login')}
+              />
+              <Button
+                buttonStyle={styles.menuBtn}
+                fontFamily="cairo"
+                color="black"
+                titleStyle={styles.titleStyle}
+                onPress={() => navigation.navigate('Register')}
+                title={I18n.t('register')}
+              />
+              <Button
+                buttonStyle={styles.menuBtn}
+                fontFamily="cairo"
+                color="black"
+                titleStyle={styles.titleStyle}
+                onPress={() => navigation.navigate('Contactus')}
+                title={I18n.t('contactus')}
+              />
+            </View>
+          ) : null}
           {token ? (
             <View>
               <Button
@@ -85,7 +115,7 @@ function mapStateToProps(state) {
 function mapDispatchToProps(dispatch) {
   return {
     actions: {
-      toggleLoading: bindActionCreators(toggleLoading, dispatch)
+      changeLang: bindActionCreators(changeLang, dispatch)
     }
   };
 }
@@ -98,7 +128,8 @@ export default connect(
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    paddingTop: 40
+    paddingTop: 40,
+    backgroundColor: 'white'
   },
   titleStyle: {
     color: 'black',

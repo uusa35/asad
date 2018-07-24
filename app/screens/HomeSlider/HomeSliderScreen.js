@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {View, Text, TouchableOpacity, StyleSheet} from 'react-native';
+import {View, Text, StyleSheet} from 'react-native';
 import PropTypes from 'prop-types';
 import {Button, Icon, Card} from 'react-native-elements';
 import {connect} from 'react-redux';

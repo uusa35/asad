@@ -57,9 +57,8 @@ export async function projectShow(id) {
     .catch(e => e.response.message);
 }
 
-export async function uploadImages(action) {
-  const {auth, state} = action.payload;
-  const {logo, images, categoryName} = state;
+export async function submitRegisterRequest(payload) {
+  const {name, mobile, email, address, logo, device_id} = payload;
   const formData = new FormData();
   if (checkImage(logo)) {
     formData.append('logo', {
@@ -69,24 +68,26 @@ export async function uploadImages(action) {
     });
     // console.log('formData from logo', formData);
   }
-  map(images, (img, i) => {
-    if (!validate.isEmpty(img) && checkImage(img)) {
-      formData.append(`gallery[${i}]`, {
-        uri: getImagePath(img),
-        name: getImageName(img),
-        type: getImageExtension(img)
-      });
-    }
+  formData.append(`logo`, {
+    uri: getImageName(logo),
+    name: getImageName(logo),
+    type: getImageExtension(img)
   });
-  formData.append('email', state.email);
-  formData.append('name_ar', state.name_ar);
-  formData.append('name_en', state.name_en);
-  formData.append('api_token', auth.api_token);
-  formData.append('id', auth.id);
-  formData.append('categoryName', categoryName);
-  formData.append('_method', 'PATCH');
+  formData.append('email', email);
+  formData.append('name', name);
+  formData.append('mobile', mobile);
+  formData.append(address, address);
+  formData.append('device_id', device_id);
   return await axiosInstance
-    .post(`user/${auth.id}`, formData)
+    .post(`request`, formData)
     .then(r => r.data)
-    .catch(e => e.response.data.message);
+    .catch(e => e);
+}
+
+export async function getRegisterRequest(device_id) {
+  console.log('the device Id', device_id);
+  return await axiosInstance
+    .get(`request/${device_id}`)
+    .then(r => r.data)
+    .catch(e => e);
 }

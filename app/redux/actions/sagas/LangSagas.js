@@ -1,8 +1,9 @@
+import {I18nManager} from 'react-native';
+import RNRestart from 'react-native-restart';
 import * as actions from '../types';
 import {takeLatest, fork, call, put, all, select} from 'redux-saga/effects';
 import I18n from 'react-native-i18n';
 import validate from 'validate.js/validate';
-import {I18nManager} from 'react-native';
 import {enableErrorMessage, disableLoading} from './appSagas';
 import * as helpers from './../../../helpers';
 
@@ -17,6 +18,20 @@ export function* setDirection(defaultLang) {
     }
   } catch (e) {
     yield all([call(disableLoading), call(enableErrorMessage, e.message)]);
+  }
+}
+
+export function* changeLang(lang) {
+  try {
+    yield all([
+      call(helpers.setLang, lang),
+      put({type: actions.CHANGE_LANG, payload: lang}),
+      call(setDirection, lang)
+    ]);
+    I18n.locale = lang;
+    yield call(RNRestart.Restart);
+  } catch (e) {
+    yield call(enableErrorMessage, e.message);
   }
 }
 

@@ -86,10 +86,20 @@ export function getSettings(settings) {
   };
 }
 
-export function submitRegistrationRequest(payload) {
+export function submitRegisterRequest(payload) {
   return {
-    type: actions.SUBMIT_REGISTRATION_REQUEST,
+    type: actions.SUBMIT_REGISTER_REQUEST,
     payload
+  };
+}
+
+export function submitLogin(username, password) {
+  return {
+    type: actions.SUBMIT_LOGIN,
+    paylaod: {
+      username,
+      password
+    }
   };
 }
 
@@ -105,5 +115,6 @@ export const APP_ACTIONS = {
   getSettings,
   logout,
   login,
-  setHomeSliders
+  setHomeSliders,
+  submitRegisterRequest
 };

@@ -308,6 +308,9 @@
   "app_store" : "ابل ستور",
   "password_confirmation" : "تأكيد كلمة المرور",
   "skip" : "الغاء",
-  "done" : "انهاء"
+  "done" : "انهاء",
+  "home" : "الرئيسية",
+  "register_request" : "طلب تسجيل",
+  "forget_your_password" : "نسيت كلمة المرور ؟"
 
 }

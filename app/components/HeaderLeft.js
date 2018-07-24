@@ -2,9 +2,9 @@
  * Created by usamaahmed on 9/28/17.
  */
 import React, {Component} from 'react';
-import {View, Image, TouchableHighlight, StyleSheet} from 'react-native';
+import {View, Image, ScrollView, StyleSheet} from 'react-native';
 import {Icon} from 'react-native-elements';
-import {NavigationActions} from 'react-navigation';
+import {DrawerItems, SafeAreaView} from 'react-navigation';
 import {width, colors} from './../constants';
 
 export default class HeaderLeft extends Component {
@@ -14,25 +14,35 @@ export default class HeaderLeft extends Component {
 
   render() {
     return (
-      <View style={styles.headerTopBarSectionA}>
-        <Icon
-          name="menu"
-          size={35}
-          onPress={() => this.props.navigation.navigate('DrawerOpen')}
-          underlayColor="transparent"
-          hitSlop={{top: 20, bottom: 20, left: 20, right: 20}}
-          color={colors.themeBg}
-        />
-      </View>
+      <ScrollView>
+        <SafeAreaView
+          style={styles.container}
+          forceInset={{top: 'always', horizontal: 'never'}}>
+          <View
+            style={{
+              position: 'relative',
+              top: -12,
+              paddingRight: 10,
+              paddingLeft: 10
+            }}>
+            <Icon
+              name="ios-menu"
+              type="ionicon"
+              size={35}
+              onPress={() => this.props.navigation.openDrawer()}
+              underlayColor="transparent"
+              hitSlop={{top: 20, bottom: 20, left: 20, right: 20}}
+              color="white"
+            />
+          </View>
+        </SafeAreaView>
+      </ScrollView>
     );
   }
 }
 
 const styles = StyleSheet.create({
-  headerTopBarSectionA: {
-    width: width / 4,
-    flexDirection: 'row',
-    margin: 5,
-    justifyContent: 'flex-start'
+  container: {
+    flex: 1
   }
 });

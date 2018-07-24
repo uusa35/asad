@@ -18,7 +18,7 @@ export const initialState = {
   },
   auth: {},
   token: false,
-  guest: false,
+  guest: true,
   currentPage: 1,
   lang: I18n.locale,
   settings: {},
@@ -63,4 +63,12 @@ export const images = {
 
 export const colors = {
   main: '#fac811'
+};
+
+export const text = {
+  small: 12,
+  medium: 16,
+  large: 20,
+  xlarge: 25,
+  font: 'cairo'
 };

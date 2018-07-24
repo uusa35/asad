@@ -1,11 +1,10 @@
 import React, {Component} from 'react';
 import {View, Text, StyleSheet, Modal, StatusBar} from 'react-native';
 import {Icon, Divider} from 'react-native-elements';
-import {colors, text} from './../constants';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import {disableMessage} from './../redux/actions';
-import {width, height} from './../constants';
+import {width, height, text} from './../constants';
 
 class AlertMessage extends Component {
   constructor(props) {
@@ -53,7 +52,7 @@ class AlertMessage extends Component {
                 name="exclamation-triangle"
                 type="font-awesome"
                 size={60}
-                color={colors.text.light}
+                color="white"
               />
               <Text style={styles.title}>{message.title}</Text>
             </View>
@@ -84,14 +83,14 @@ export default connect(
 
 styles = StyleSheet.create({
   title: {
-    color: colors.text.light,
+    color: 'white',
     fontSize: text.small,
     fontFamily: text.font,
     textAlign: 'left',
     flex: 0.8
   },
   content: {
-    color: colors.text.light,
+    color: 'white',
     fontSize: text.small,
     fontFamily: text.font,
     textAlign: 'left',
