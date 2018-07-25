@@ -120,11 +120,12 @@ typedef NS_ENUM(NSInteger, JWTAlgorithmAsymmetricBase__AlgorithmNumber) {
 #import <Security/Security.h>
 
 #if Check_That_Security_API_IS_AVAILABLE
+API_AVAILABLE(ios(10.0))
 @interface JWTAlgorithmAsymmetricBase__After10 : JWTAlgorithmAsymmetricBase
 @property (assign, nonatomic, readonly) SecKeyAlgorithm algorithm;
 @end
 @implementation JWTAlgorithmAsymmetricBase__After10
-- (SecKeyAlgorithm)chooseAlgorithmByType:(NSNumber *)type number:(NSNumber *)number {
+- (SecKeyAlgorithm)chooseAlgorithmByType:(NSNumber *)type number:(NSNumber *)number  API_AVAILABLE(ios(10.0)){
     SecKeyAlgorithm result = NULL;
     switch ((JWTAlgorithmAsymmetricBase__AlgorithmType)type.integerValue) {
         case JWTAlgorithmAsymmetricBase__AlgorithmType__RS: {

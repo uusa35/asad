@@ -22,7 +22,7 @@ class Menu extends Component {
   }
 
   render() {
-    const {token, guest, navigation, project} = this.props;
+    const {token, guest, navigation} = this.props;
     return (
       <ScrollView
         style={styles.container}
@@ -41,7 +41,6 @@ class Menu extends Component {
           }}>
           {I18n.t('menu')}
         </Text>
-        {}
         <View style={{marginBottom: 20, width: '100%'}}>
           <Button
             buttonStyle={styles.menuBtn}

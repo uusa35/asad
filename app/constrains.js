@@ -8,12 +8,11 @@ export const userRegisterRequestConstraints = {
       message: 'must be at least 3 characters'
     }
   },
-  email: {
+  description: {
     presence: true,
-    email: true,
     length: {
-      minimum: 4,
-      message: 'must be at least 4 characters.'
+      minimum: 10,
+      message: 'must be at least 10 characters.'
     }
   },
   mobile: {

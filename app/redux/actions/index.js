@@ -1,5 +1,6 @@
 import * as actions from './types';
 import I18n from './../../I18n';
+import {colors} from './../../constants';
 
 export function appBootstrap() {
   return {
@@ -34,14 +35,54 @@ export function login(user) {
   };
 }
 
-export function enableMessage(type, message, title = I18n.t('asad')) {
+export function enableMessage(status, content, title = I18n.t('asad')) {
   return {
     type: actions.ENABLE_MESSAGE,
     payload: {
-      type,
-      message,
+      status,
+      content,
       title,
-      visible: true
+      visible: true,
+      color: colors.main
+    }
+  };
+}
+
+export function enableSuccessMessage(content) {
+  return {
+    type: actions.ENABLE_MESSAGE,
+    payload: {
+      type: 'success',
+      content,
+      title: I18n.t('asad'),
+      visible: true,
+      color: 'green'
+    }
+  };
+}
+
+export function enableErrorMessage(content) {
+  return {
+    type: actions.ENABLE_MESSAGE,
+    payload: {
+      type: 'error',
+      content,
+      title: I18n.t('asad'),
+      visible: true,
+      color: 'red'
+    }
+  };
+}
+
+export function enableWarningMessage(content) {
+  return {
+    type: actions.ENABLE_MESSAGE,
+    payload: {
+      type: 'warning',
+      content,
+      title: I18n.t('asad'),
+      visible: true,
+      color: 'orange'
     }
   };
 }
@@ -58,6 +99,12 @@ export function changeLang(lang) {
   };
 }
 
+export function setLang(lang) {
+  return {
+    type: actions.SET_LANG,
+    payload: lang
+  };
+}
 export function toggleGuest(guest) {
   return {
     type: actions.TOGGLE_GUEST,
@@ -109,12 +156,17 @@ export const APP_ACTIONS = {
   toggleLoading,
   toggleGuest,
   changeLang,
+  setLang,
   enableMessage,
   disableMessage,
+  enableSuccessMessage,
+  enableErrorMessage,
+  enableWarningMessage,
   getRoles,
   getSettings,
   logout,
   login,
   setHomeSliders,
-  submitRegisterRequest
+  submitRegisterRequest,
+  submitLogin
 };

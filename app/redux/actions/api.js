@@ -57,8 +57,8 @@ export async function projectShow(id) {
     .catch(e => e.response.message);
 }
 
-export async function submitRegisterRequest(payload) {
-  const {name, mobile, email, address, logo, device_id} = payload;
+export async function postRegisterRequest(payload) {
+  const {name, mobile, description, address, logo, type, device_id} = payload;
   const formData = new FormData();
   if (checkImage(logo)) {
     formData.append('logo', {
@@ -66,18 +66,14 @@ export async function submitRegisterRequest(payload) {
       name: getImageName(logo),
       type: getImageExtension(logo)
     });
-    // console.log('formData from logo', formData);
   }
-  formData.append(`logo`, {
-    uri: getImageName(logo),
-    name: getImageName(logo),
-    type: getImageExtension(img)
-  });
-  formData.append('email', email);
   formData.append('name', name);
   formData.append('mobile', mobile);
-  formData.append(address, address);
+  formData.append('type', type);
+  formData.append('description', description);
+  formData.append('address', address);
   formData.append('device_id', device_id);
+  console.log('formData', formData);
   return await axiosInstance
     .post(`request`, formData)
     .then(r => r.data)
@@ -85,7 +81,6 @@ export async function submitRegisterRequest(payload) {
 }
 
 export async function getRegisterRequest(device_id) {
-  console.log('the device Id', device_id);
   return await axiosInstance
     .get(`request/${device_id}`)
     .then(r => r.data)

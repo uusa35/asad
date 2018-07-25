@@ -84,14 +84,14 @@ export default connect(
 styles = StyleSheet.create({
   title: {
     color: 'white',
-    fontSize: text.small,
+    fontSize: text.large,
     fontFamily: text.font,
     textAlign: 'left',
     flex: 0.8
   },
   content: {
     color: 'white',
-    fontSize: text.small,
+    fontSize: text.medium,
     fontFamily: text.font,
     textAlign: 'left',
     paddingLeft: 3
@@ -109,12 +109,12 @@ styles = StyleSheet.create({
     width: width
   },
   modalContainer: {
-    height: width / 3,
+    height: 100,
     width: width,
     justifyContent: 'space-around',
     alignItems: 'center',
     backgroundColor: 'aqua',
-    marginTop: height / 25
+    marginTop: 0
   },
   innerContainer: {
     alignItems: 'center',

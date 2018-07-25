@@ -3,6 +3,7 @@ export const TOGGLE_LOADING = 'TOGGLE_LOADING';
 export const TOGGLE_BOOTSTRAPPED = 'TOGGLE_BOOTSTRAPPED';
 export const TOGGLE_CONNECTED = 'TOGGLE_CONNECTED';
 export const CHANGE_LANG = 'CHANGE_LANG';
+export const SET_LANG = 'SET_LANG';
 export const GET_TOKEN = 'GET_TOKEN';
 export const SET_TOKEN = 'SET_TOKEN';
 export const REMOVE_TOKEN = 'REMOVE_TOKEN';

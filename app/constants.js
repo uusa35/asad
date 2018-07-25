@@ -1,6 +1,5 @@
 import React from 'react';
 import {Platform, Dimensions} from 'react-native';
-import I18n from './I18n';
 import {appUrlIos, appUrlAndroid} from './env';
 
 export const {height, width} = Dimensions.get('window');
@@ -14,13 +13,14 @@ export const initialState = {
     visible: false,
     title: '',
     content: '',
-    status: 'info'
+    status: 'info',
+    color: '#fac811'
   },
   auth: {},
   token: false,
   guest: true,
   currentPage: 1,
-  lang: I18n.locale,
+  lang: 'en',
   settings: {},
   projects: [],
   categories: [],
@@ -59,6 +59,18 @@ export const links = {
 export const images = {
   logo: require('./../assets/images/logo.png'),
   bg: require('./../assets/images/bg.png')
+};
+
+export const icons = {
+  btnBt: require('./../assets/icons/btnBg.png'),
+  client: require('./../assets/icons/client.png'),
+  consultant: require('./../assets/icons/consultant.png'),
+  guest: require('./../assets/icons/guest.png'),
+  vendor: require('./../assets/icons/vendor.png'),
+  subcontractor: require('./../assets/icons/subcontractor.png'),
+  company: require('./../assets/icons/company.png'),
+  attachment: require('./../assets/icons/attachment.png'),
+  address: require('./../assets/icons/address.png')
 };
 
 export const colors = {

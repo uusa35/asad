@@ -35,6 +35,12 @@
 		<key>localhost</key>
 		<true/>
 	</dict>
+	<key>NSPhotoLibraryUsageDescription</key>
+    	<string>$(PRODUCT_NAME) would like access to your photo gallery</string>
+    	<key>NSCameraUsageDescription</key>
+        	<string>$(PRODUCT_NAME) would like to use your camera</string>
+        	<key>NSMicrophoneUsageDescription</key>
+            	<string>$(PRODUCT_NAME) would like to use your microphone.</string>
 	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
 	<string>Location Always And When In Use Usage Description</string>
 	<key>NSLocationAlwaysUsageDescription</key>

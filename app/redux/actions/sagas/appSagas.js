@@ -1,7 +1,6 @@
 import * as actions from '../types';
 import {takeLatest, call, put, all, select} from 'redux-saga/effects';
-import I18n from 'react-native-i18n';
-import {defaultLang, setDirection} from './LangSagas';
+import {defaultLang, setDirection} from './langSagas';
 import * as api from '../api';
 import * as helpers from '../../../helpers';
 import validate from 'validate.js';
@@ -16,26 +15,37 @@ export function* disableLoading() {
   yield put({type: actions.TOGGLE_LOADING, payload: false});
 }
 
-export function* enableMessage(status, message) {
-  yield put({type: actions.ENABLE_MESSAGE, payload: {status, message}});
+export function* enableSuccessMessage() {
+  yield takeLatest(actions.ENABLE_MESSAGE, startEnableSuccessMessage);
 }
 
-export function* enableSuccessMessage(message) {
-  yield put({
+export function* enableErrorMessage() {
+  yield* takeLatest(actions.ENABLE_MESSAGE, startEnableErrorMessage);
+}
+
+export function* enableWarningMessage() {
+  yield takeLatest(actions.ENABLE_MESSAGE, startEnableWarningMessage);
+}
+
+export function* startEnableSuccessMessage(message) {
+  yield* put({
     type: actions.ENABLE_MESSAGE,
-    payload: {status: 'success', message}
+    payload: {status: 'success', message, visible: true}
   });
 }
 
-export function* enableErrorMessage(message) {
-  yield put({
+export function* startEnableErrorMessage(message) {
+  yield* put({
     type: actions.ENABLE_MESSAGE,
-    payload: {status: 'error', message}
+    payload: {status: 'error', message, visible: true}
   });
 }
 
-export function* enableInfoMessage(message) {
-  yield put({type: actions.ENABLE_MESSAGE, payload: {status: 'info', message}});
+export function* startEnableWarningMessage(message) {
+  yield* put({
+    type: actions.ENABLE_MESSAGE,
+    payload: {status: 'warning', message, visible: true}
+  });
 }
 
 export function* appBootstrap() {
@@ -98,6 +108,6 @@ export function* startAppBootStrap() {
       throw new Error(sliders.message);
     }
   } catch (e) {
-    yield all([disableLoading, enableMessage('error', e.message)]);
+    yield all([call(disableLoading), call(enableErrorMessage, e.message)]);
   }
 }

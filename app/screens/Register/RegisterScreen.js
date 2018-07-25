@@ -3,30 +3,52 @@ import {View, Text, StyleSheet} from 'react-native';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import PropTypes from 'prop-types';
-import {submitRegisterRequest} from '../../redux/actions';
+import {submitRegisterRequest, enableErrorMessage} from '../../redux/actions';
 import FastImage from 'react-native-fast-image';
 import {Input, Button, Icon} from 'react-native-elements';
 import validate from 'validate.js';
 import I18n from './../../I18n';
 import {userRegisterRequestConstraints} from '../../constrains';
-import {height, width, colors, images} from '../../constants';
+import {height, width, colors, images, icons} from '../../constants';
 import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scroll-view';
+import ImagePicker from 'react-native-image-crop-picker';
 
 class RegisterScreen extends Component {
   constructor(props) {
     super(props);
-    this.state = {name: '', email: '', mobile: '', address: '', logo: ''};
+    this.state = {
+      name: '',
+      description: '',
+      mobile: '',
+      address: '',
+      logo: '',
+      device_id: '',
+      type: 'from testing'
+    };
+  }
+
+  fetchImage(element) {
+    if (element == 'logo') {
+      ImagePicker.openPicker({
+        width: 500,
+        height: 500,
+        cropping: true
+      }).then(image => {
+        const input = {};
+        console.log('the image from logo', image);
+        this.setState({logo: image});
+      });
+    }
   }
 
   _doRegisterRequest = () => {
-    const {name, email, mobile, logo, address} = this.state;
+    const {name, description, mobile, logo, address} = this.state;
     const result = validate(
-      {name, email, mobile, logo, address},
+      {name, description, mobile, logo, address},
       userRegisterRequestConstraints
     );
     if (!validate.isEmpty(result)) {
-      this.props.actions.enable(
-        'error',
+      this.props.actions.enableErrorMessage(
         JSON.stringify(result[Object.keys(result)[0]])
       );
     } else {
@@ -34,10 +56,9 @@ class RegisterScreen extends Component {
     }
   };
 
-  _handleData(element, value) {
-    const input = {};
-    input[element] = value;
-    this.setState(input);
+  componentDidMount() {
+    const {deviceId} = this.props;
+    this.setState({device_id: deviceId});
   }
 
   render() {
@@ -66,31 +87,30 @@ class RegisterScreen extends Component {
                   inputContainerStyle={styles.inputContainerStyle}
                   leftIconContainerStyle={styles.leftIconStyle}
                   leftIcon={
-                    <Icon
-                      name="industry"
-                      type="font-awesome"
-                      size={24}
-                      color="black"
+                    <FastImage
+                      source={icons.company}
+                      style={[styles.iconTabBar]}
                     />
                   }
                 />
                 <Input
-                  onChangeText={e => this.setState({email: e})}
-                  placeholder={I18n.t('email').toUpperCase()}
+                  onChangeText={e => this.setState({description: e})}
+                  placeholder={I18n.t('description').toUpperCase()}
                   inputContainerStyle={styles.inputContainerStyle}
                   leftIconContainerStyle={styles.leftIconStyle}
                   leftIcon={
                     <Icon
-                      name="inbox"
-                      type="font-awesome"
+                      name="ios-paper"
+                      type="ionicon"
                       size={24}
                       color="black"
                     />
                   }
                 />
                 <Input
-                  onChangeText={e => this.setState({phone: e})}
-                  placeholder={I18n.t('phone').toUpperCase()}
+                  keyboardType="phone-pad"
+                  onChangeText={e => this.setState({mobile: e})}
+                  placeholder={I18n.t('mobile').toUpperCase()}
                   inputContainerStyle={styles.inputContainerStyle}
                   leftIconContainerStyle={styles.leftIconStyle}
                   leftIcon={
@@ -117,7 +137,8 @@ class RegisterScreen extends Component {
                   }
                 />
                 <Input
-                  onChangeText={e => this.setState({logo: e})}
+                  onFocus={() => this.fetchImage('logo')}
+                  // onChangeText={e => this.setState({logo: e})}
                   placeholder={I18n.t('logo').toUpperCase()}
                   inputContainerStyle={styles.inputContainerStyle}
                   leftIconContainerStyle={styles.leftIconStyle}
@@ -127,6 +148,7 @@ class RegisterScreen extends Component {
                       type="font-awesome"
                       size={24}
                       color="black"
+                      onPress={() => this.fetchImage('logo')}
                     />
                   }
                   rightIcon={
@@ -157,7 +179,8 @@ class RegisterScreen extends Component {
 RegisterScreen.propTypes = {
   navigation: PropTypes.object.isRequired,
   roles: PropTypes.array.isRequired,
-  registerRequest: PropTypes.object.isRequired
+  registerRequest: PropTypes.object.isRequired,
+  deviceId: PropTypes.string.isRequired
 };
 
 function mapStateToProps(state) {
@@ -167,7 +190,11 @@ function mapStateToProps(state) {
 function mapDispatchToProps(dispatch) {
   return {
     actions: {
-      submitRegisterRequest: bindActionCreators(submitRegisterRequest, dispatch)
+      submitRegisterRequest: bindActionCreators(
+        submitRegisterRequest,
+        dispatch
+      ),
+      enableErrorMessage: bindActionCreators(enableErrorMessage, dispatch)
     }
   };
 }
@@ -234,5 +261,9 @@ const styles = StyleSheet.create({
     minHeight: 50,
     marginTop: 8,
     marginBottom: 8
+  },
+  iconTabBar: {
+    width: 25,
+    height: 25
   }
 });

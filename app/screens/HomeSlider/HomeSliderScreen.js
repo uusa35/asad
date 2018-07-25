@@ -44,6 +44,7 @@ class HomeSliderScreen extends Component {
         name={isRTL ? 'ios-arrow-back' : 'ios-arrow-forward'}
         type="ionicon"
         color="white"
+        hitSlop={{top: 20, bottom: 20, left: 20, right: 20}}
       />
     );
   };
@@ -61,6 +62,7 @@ class HomeSliderScreen extends Component {
           color: 'white'
         }}
         title={I18n.t('done')}
+        titleStyle={styles.titleStyleBtn}
         onPress={() =>
           isAuthenticated(auth)
             ? navigation.navigate('Home')
@@ -73,22 +75,20 @@ class HomeSliderScreen extends Component {
   _renderSkipButton = () => {
     return (
       <Button
-        buttonStyle={{backgroundColor: 'transparent'}}
+        buttonStyle={styles.skipBtn}
         title={I18n.t('skip')}
-        onPress={() => this.props.navigation.navigate('Register')}
+        titleStyle={styles.titleStyleBtn}
+        onPress={() => this.props.navigation.navigate('Home')}
       />
     );
   };
 
   render() {
-    const {navigation, homeSliders} = this.props;
+    const {homeSliders} = this.props;
     return (
       <AppIntroSlider
         showDoneButton={true}
         showSkipButton={true}
-        doneLabel={I18n.t('done')}
-        skipLabel={I18n.t('skip')}
-        nextLabel={I18n.t('next')}
         slides={homeSliders}
         renderDoneButton={this._renderDoneButton}
         renderNextButton={this._renderNextButton}
@@ -148,5 +148,13 @@ const styles = StyleSheet.create({
   image: {
     width: 320,
     height: 320
+  },
+  skipBtn: {
+    backgroundColor: 'transparent'
+  },
+  titleStyleBtn: {
+    textAlign: 'left',
+    color: colors.main,
+    fontFamily: 'cairo'
   }
 });
