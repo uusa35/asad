@@ -81,11 +81,15 @@ class LoginScreen extends Component {
               />
               <Button
                 buttonStyle={styles.registerSubmitBtn}
-                fontFamily="Cairo"
-                color="black"
                 titleStyle={styles.registerSubmitBtnText}
                 onPress={() => this._doRegisterRequest()}
                 title={I18n.t('submit').toUpperCase()}
+              />
+                <Button
+                buttonStyle={styles.registerSubmitBtn}
+                titleStyle={styles.registerSubmitBtnText}
+                onPress={() => navigation.navigate('RegisterAs')}
+                title={I18n.t('register_as').toUpperCase()}
               />
             </View>
           </View>
@@ -128,7 +132,7 @@ const styles = StyleSheet.create({
   },
   formWrapper: {
     width: width,
-    height: 250,
+    height: 350,
     margin: 30,
     justifyContent: 'space-around',
     alignItems: 'center',
@@ -137,8 +141,6 @@ const styles = StyleSheet.create({
   logo: {
     width: 100,
     height: 120,
-    borderWidth: 1,
-    borderColor: 'blue'
   },
   imgBg: {
     position: 'absolute',
@@ -161,6 +163,8 @@ const styles = StyleSheet.create({
     borderRadius: 0,
     height: 50,
     margin: 5,
+      marginBottom : 10,
+      marginTop: 10,
     backgroundColor: colors.main,
     justifyContent: 'center',
     alignItems: 'center'
@@ -178,7 +182,9 @@ const styles = StyleSheet.create({
     height: 50
   },
   inputContainerStyle: {
-    backgroundColor: 'white',
-    minHeight: 50
+      backgroundColor: 'white',
+      minHeight: 50,
+      marginTop: 8,
+      marginBottom: 8
   }
 });

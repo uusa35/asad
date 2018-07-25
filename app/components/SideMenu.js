@@ -66,8 +66,8 @@ class Menu extends Component {
                 fontFamily="cairo"
                 color="black"
                 titleStyle={styles.titleStyle}
-                onPress={() => navigation.navigate('Register')}
-                title={I18n.t('register')}
+                onPress={() => navigation.navigate('RegisterAs')}
+                title={I18n.t('register_as')}
               />
               <Button
                 buttonStyle={styles.menuBtn}

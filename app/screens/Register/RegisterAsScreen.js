@@ -8,7 +8,7 @@ import FastImage from 'react-native-fast-image';
 import {Button, Icon} from 'react-native-elements';
 import I18n from './../../I18n';
 import {images} from './../../constants';
-import {height, width} from '../../constants';
+import {height, icons, width} from '../../constants';
 
 class RegisterAsScreen extends Component {
   constructor(props) {
@@ -24,29 +24,12 @@ class RegisterAsScreen extends Component {
           source={images.bg}
           resizeMode={FastImage.resizeMode.cover}
         />
-        <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
+        <View style={{justifyContent: 'center',  flexWrap : 'wrap', width : width , borderWidth : 1, borderColor : 'green'}}>
           {roles.map(r => {
             return (
-              <Button
-                key={r.id}
-                containerStyle={{margin: 15}}
-                buttonStyle={{
-                  margin: 15,
-                  width: 220,
-                  opacity: 0.7,
-                  backgroundColor: 'transparent',
-                  borderWidth: 1,
-                  borderColor: 'grey'
-                }}
-                icon={{
-                  key: r.id,
-                  name: 'ios-arrow-forward',
-                  type: 'ionicon',
-                  size: 15,
-                  color: 'white'
-                }}
-                title={r.slug}
-              />
+                <View style={{ flexDirection: 'column' , jusitfyContent : 'flex-start', padding: 0,  alignItems : 'flex-start', borderWidth : 1, borderColor : 'blue' , width : 100 }}>
+                    <Text style={{ color : 'white'}}>{r.name}</Text>
+                </View>
             );
           })}
           <Button
@@ -110,5 +93,10 @@ const styles = StyleSheet.create({
     flex: 1,
     height: height,
     width: width
-  }
+  },
+    iconTabBar: {
+        width: 30,
+        height: 30,
+        tintColor : 'white'
+    }
 });
