@@ -60,7 +60,7 @@ const HomeStack = createStackNavigator(
         headerTitle: getHeader(I18n.t('register').toLocaleUpperCase())
       })
     },
-      RegisterAs: {
+    RegisterAs: {
       screen: RegisterAsScreen,
       navigationOptions: ({navigation}) => ({
         isModal: true,

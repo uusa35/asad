@@ -4,6 +4,8 @@ import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
 import {toggleLoading} from '../../redux/actions';
 import {bindActionCreators} from 'redux';
+import validate from 'validate.js';
+import CompanyProfile from './../../components/CompanyProfile/CompanyProfile';
 
 class HomeScreen extends Component {
   constructor(props) {
@@ -11,13 +13,14 @@ class HomeScreen extends Component {
   }
 
   render() {
-    const {navigation} = this.props;
+    const {navigation, auth, settings} = this.props;
     return (
       <View>
-        <Text>Home</Text>
-        <TouchableOpacity onPress={() => navigation.navigate('Login')}>
-          <Text>Go to Login Scren</Text>
-        </TouchableOpacity>
+        {validate.isEmpty(auth) ? (
+          <CompanyProfile settings={settings} />
+        ) : (
+          <Text>User is Loggged in</Text>
+        )}
       </View>
     );
   }

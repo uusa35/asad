@@ -1,7 +1,6 @@
 import React from 'react';
 import {Platform, Dimensions} from 'react-native';
 import {appUrlIos, appUrlAndroid} from './env';
-
 export const {height, width} = Dimensions.get('window');
 export const isIOS = Platform.OS === 'ios' ? true : false;
 
@@ -13,7 +12,7 @@ export const initialState = {
     visible: false,
     title: '',
     content: '',
-    status: 'info',
+    icon: 'exclamation-triangle',
     color: '#fac811'
   },
   auth: {},
@@ -65,8 +64,10 @@ export const icons = {
   btnBt: require('./../assets/icons/btnBg.png'),
   client: require('./../assets/icons/client.png'),
   consultant: require('./../assets/icons/consultant.png'),
+  user: require('./../assets/icons/user.png'),
   guest: require('./../assets/icons/guest.png'),
   vendor: require('./../assets/icons/vendor.png'),
+  supplier: require('./../assets/icons/supplier.png'),
   subcontractor: require('./../assets/icons/subcontractor.png'),
   company: require('./../assets/icons/company.png'),
   attachment: require('./../assets/icons/attachment.png'),

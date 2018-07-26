@@ -6,6 +6,7 @@ import * as helpers from '../../../helpers';
 import validate from 'validate.js';
 import {NavigationActions} from 'react-navigation';
 import DeviceInfo from 'react-native-device-info';
+import I18n from './../../../I18n';
 
 export function* enableLoading() {
   yield put({type: actions.TOGGLE_LOADING, payload: true});
@@ -15,36 +16,42 @@ export function* disableLoading() {
   yield put({type: actions.TOGGLE_LOADING, payload: false});
 }
 
-export function* enableSuccessMessage() {
-  yield takeLatest(actions.ENABLE_MESSAGE, startEnableSuccessMessage);
-}
-
-export function* enableErrorMessage() {
-  yield* takeLatest(actions.ENABLE_MESSAGE, startEnableErrorMessage);
-}
-
-export function* enableWarningMessage() {
-  yield takeLatest(actions.ENABLE_MESSAGE, startEnableWarningMessage);
-}
-
-export function* startEnableSuccessMessage(message) {
-  yield* put({
+export function* enableSuccessMessage(content, title = I18n.t('asad')) {
+  yield put({
     type: actions.ENABLE_MESSAGE,
-    payload: {status: 'success', message, visible: true}
+    payload: {
+      content,
+      title,
+      icon: 'exclamation-triangle',
+      color: 'green',
+      visible: true
+    }
   });
 }
 
-export function* startEnableErrorMessage(message) {
-  yield* put({
+export function* enableErrorMessage(content, title = I18n.t('asad')) {
+  yield put({
     type: actions.ENABLE_MESSAGE,
-    payload: {status: 'error', message, visible: true}
+    payload: {
+      content,
+      title,
+      icon: 'exclamation-triangle',
+      visible: true,
+      color: 'red'
+    }
   });
 }
 
-export function* startEnableWarningMessage(message) {
-  yield* put({
+export function* enableWarningMessage(content, title = I18n.t('asad')) {
+  yield put({
     type: actions.ENABLE_MESSAGE,
-    payload: {status: 'warning', message, visible: true}
+    payload: {
+      content,
+      title,
+      icon: 'exclamation-triangle',
+      visible: true,
+      color: 'orange'
+    }
   });
 }
 

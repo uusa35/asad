@@ -35,7 +35,6 @@ class RegisterScreen extends Component {
         cropping: true
       }).then(image => {
         const input = {};
-        console.log('the image from logo', image);
         this.setState({logo: image});
       });
     }
@@ -58,7 +57,8 @@ class RegisterScreen extends Component {
 
   componentDidMount() {
     const {deviceId} = this.props;
-    this.setState({device_id: deviceId});
+    const {type} = this.props.navigation.state.params;
+    this.setState({device_id: deviceId, type});
   }
 
   render() {

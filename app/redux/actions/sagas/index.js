@@ -9,9 +9,6 @@ export default function* rootSaga() {
     fork(appSagas.appBootstrap),
     fork(langSagas.changeLang),
     fork(postSagas.submitRegisterRequest),
-    fork(appSagas.enableSuccessMessage),
-    fork(appSagas.enableErrorMessage),
-    fork(appSagas.enableWarningMessage),
     fork(networkEventsListenerSaga, {
       timeout: 9000,
       checkConnectionInterval: 90000

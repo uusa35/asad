@@ -35,7 +35,12 @@ export function login(user) {
   };
 }
 
-export function enableMessage(status, content, title = I18n.t('asad')) {
+export function enableMessage(
+  content,
+  status = 'info',
+  title = I18n.t('asad'),
+  color = 'orange'
+) {
   return {
     type: actions.ENABLE_MESSAGE,
     payload: {
@@ -43,46 +48,46 @@ export function enableMessage(status, content, title = I18n.t('asad')) {
       content,
       title,
       visible: true,
-      color: colors.main
+      color
     }
   };
 }
 
-export function enableSuccessMessage(content) {
+export function enableSuccessMessage(content, title = I18n.t('asad')) {
   return {
     type: actions.ENABLE_MESSAGE,
     payload: {
-      type: 'success',
-      content,
-      title: I18n.t('asad'),
+      icon: 'exclamation-triangle',
+      color: 'green',
       visible: true,
-      color: 'green'
+      content,
+      title
     }
   };
 }
 
-export function enableErrorMessage(content) {
+export function enableErrorMessage(content, title = I18n.t('asad')) {
   return {
     type: actions.ENABLE_MESSAGE,
     payload: {
-      type: 'error',
-      content,
-      title: I18n.t('asad'),
+      icon: 'exclamation-triangle',
       visible: true,
-      color: 'red'
+      color: 'red',
+      content,
+      title
     }
   };
 }
 
-export function enableWarningMessage(content) {
+export function enableWarningMessage(content, title = I18n.t('asad')) {
   return {
     type: actions.ENABLE_MESSAGE,
     payload: {
-      type: 'warning',
-      content,
-      title: I18n.t('asad'),
+      icon: 'exclamation-triangle',
       visible: true,
-      color: 'orange'
+      color: 'orange',
+      content,
+      title
     }
   };
 }

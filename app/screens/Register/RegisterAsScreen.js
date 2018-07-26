@@ -1,14 +1,12 @@
 import React, {Component} from 'react';
-import {View, Text, StyleSheet} from 'react-native';
+import {View, Text, StyleSheet, TouchableOpacity} from 'react-native';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import PropTypes from 'prop-types';
 import {toggleLoading} from '../../redux/actions';
 import FastImage from 'react-native-fast-image';
-import {Button, Icon} from 'react-native-elements';
 import I18n from './../../I18n';
-import {images} from './../../constants';
-import {height, icons, width} from '../../constants';
+import {height, icons, width, colors} from '../../constants';
 
 class RegisterAsScreen extends Component {
   constructor(props) {
@@ -19,38 +17,30 @@ class RegisterAsScreen extends Component {
     const {roles, navigation} = this.props;
     return (
       <View style={styles.wrapper}>
-        <FastImage
-          style={styles.imgBg}
-          source={images.bg}
-          resizeMode={FastImage.resizeMode.cover}
-        />
-        <View style={{justifyContent: 'center',  flexWrap : 'wrap', width : width , borderWidth : 1, borderColor : 'green'}}>
+        <Text style={styles.mainTitle}>
+          {I18n.t('please_choose_user_type')}
+        </Text>
+        <View style={styles.roleContainer}>
           {roles.map(r => {
             return (
-                <View style={{ flexDirection: 'column' , jusitfyContent : 'flex-start', padding: 0,  alignItems : 'flex-start', borderWidth : 1, borderColor : 'blue' , width : 100 }}>
-                    <Text style={{ color : 'white'}}>{r.name}</Text>
+              <View key={r.id} style={styles.roleWrapper}>
+                <View style={styles.roleSlug}>
+                  <Text style={styles.roleSlugTitle}>{r.slug}</Text>
                 </View>
+                <TouchableOpacity
+                  style={styles.roleTypeBtn}
+                  onPress={() =>
+                    navigation.navigate('Register', {type: r.name})
+                  }>
+                  <FastImage
+                    style={styles.roleIcon}
+                    source={icons[r.name]}
+                    resizeMode={FastImage.resizeMode.cover}
+                  />
+                </TouchableOpacity>
+              </View>
             );
           })}
-          <Button
-            containerStyle={{margin: 15}}
-            buttonStyle={{
-              margin: 15,
-              width: 220,
-              opacity: 0.7,
-              backgroundColor: 'transparent',
-              borderWidth: 1,
-              borderColor: 'grey'
-            }}
-            icon={{
-              name: 'ios-arrow-forward',
-              type: 'ionicon',
-              size: 15,
-              color: 'white'
-            }}
-            title={I18n.t('go_to_home')}
-            onPress={() => navigation.navigate('Home')}
-          />
         </View>
       </View>
     );
@@ -86,6 +76,14 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     backgroundColor: 'white'
   },
+  mainTitle: {
+    textAlign: 'center',
+    fontFamily: 'cairo',
+    fontSize: 22,
+    color: 'black',
+    fontWeight: 'bold',
+    padding: 15
+  },
   imgBg: {
     position: 'absolute',
     top: 0,
@@ -94,9 +92,46 @@ const styles = StyleSheet.create({
     height: height,
     width: width
   },
-    iconTabBar: {
-        width: 30,
-        height: 30,
-        tintColor : 'white'
-    }
+  roleIcon: {
+    width: 40,
+    height: 40
+  },
+  roleContainer: {
+    flexDirection: 'row',
+    justifyContent: 'center',
+    alignItems: 'center',
+    flexWrap: 'wrap'
+  },
+  roleWrapper: {
+    justifyContent: 'flex-start',
+    padding: 0,
+    alignItems: 'center',
+    width: 110,
+    flexWrap: 'wrap',
+    margin: 5,
+    marginBottom: 10,
+    marginTop: 10
+  },
+  roleSlug: {
+    backgroundColor: 'white',
+    width: 110,
+    height: 30,
+    alignItems: 'center',
+    shadowColor: 'black',
+    shadowOffset: {width: 1, height: 1},
+    shadowRadius: 2,
+    shadowOpacity: 0.2
+  },
+  roleTypeBtn: {
+    backgroundColor: colors.main,
+    width: 90,
+    height: 90,
+    alignItems: 'center',
+    justifyContent: 'center'
+  },
+  roleSlugTitle: {
+    color: 'black',
+    fontFamily: 'cairo',
+    fontSize: 12
+  }
 });

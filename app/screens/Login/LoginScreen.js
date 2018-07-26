@@ -85,7 +85,7 @@ class LoginScreen extends Component {
                 onPress={() => this._doRegisterRequest()}
                 title={I18n.t('submit').toUpperCase()}
               />
-                <Button
+              <Button
                 buttonStyle={styles.registerSubmitBtn}
                 titleStyle={styles.registerSubmitBtnText}
                 onPress={() => navigation.navigate('RegisterAs')}
@@ -140,7 +140,7 @@ const styles = StyleSheet.create({
   },
   logo: {
     width: 100,
-    height: 120,
+    height: 120
   },
   imgBg: {
     position: 'absolute',
@@ -163,8 +163,8 @@ const styles = StyleSheet.create({
     borderRadius: 0,
     height: 50,
     margin: 5,
-      marginBottom : 10,
-      marginTop: 10,
+    marginBottom: 10,
+    marginTop: 10,
     backgroundColor: colors.main,
     justifyContent: 'center',
     alignItems: 'center'
@@ -182,9 +182,9 @@ const styles = StyleSheet.create({
     height: 50
   },
   inputContainerStyle: {
-      backgroundColor: 'white',
-      minHeight: 50,
-      marginTop: 8,
-      marginBottom: 8
+    backgroundColor: 'white',
+    minHeight: 50,
+    marginTop: 8,
+    marginBottom: 8
   }
 });

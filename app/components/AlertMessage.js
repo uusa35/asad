@@ -12,10 +12,6 @@ class AlertMessage extends Component {
     this.state = {color: null, visible: false};
   }
 
-  // shouldComponentUpdate(nextProps) {
-  //   return this.props.message !== nextProps.message;
-  // }
-
   hideAlert = () => {
     if (this.state.visible) {
       StatusBar.setHidden(false);
@@ -49,7 +45,7 @@ class AlertMessage extends Component {
             ]}>
             <View style={styles.titleContainer}>
               <Icon
-                name="exclamation-triangle"
+                name={message.icon}
                 type="font-awesome"
                 size={60}
                 color="white"

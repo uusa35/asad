@@ -290,6 +290,8 @@
   "register_request" : "Register Request",
   "forget_your_password" : "Forget Your Password ?",
   "asad" : "Asad Group",
-  "register_as" : "Register As"
+  "register_as" : "Register As",
+  "please_choose_user_type" : "Please Choose your Account Type",
+  "about" : "About"
 
 }

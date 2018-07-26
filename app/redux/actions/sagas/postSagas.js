@@ -1,10 +1,16 @@
 import * as actions from '../types';
-import {takeLatest, call, put, all, select} from 'redux-saga/effects';
+import {
+  takeLatest,
+  takeEvery,
+  call,
+  put,
+  all,
+  select
+} from 'redux-saga/effects';
 import validate from 'validate.js/validate';
 import {
   enableErrorMessage,
   disableLoading,
-  enableLoading,
   enableSuccessMessage
 } from './appSagas';
 import {postRegisterRequest} from './../api';
@@ -17,16 +23,19 @@ export function* submitRegisterRequest() {
 
 export function* startSubmitRegisterRequest(action) {
   try {
-    yield call(enableLoading);
     const registerRequest = yield call(postRegisterRequest, action.payload);
     if (!validate.isEmpty(registerRequest)) {
+      console.log('from inside true if');
       yield put({type: actions.GET_REGISTER_REQUEST, payload: registerRequest});
+      yield call(enableSuccessMessage, I18n.t('register_request_stored'));
       yield put(NavigationActions.navigate({routeName: 'Home'}));
-      yield enableSuccessMessage(I18n.t('register_request_stored'));
     } else {
+      console.log('from inside else');
+      console.log('error', registerRequest);
       throw new Error(registerRequest);
     }
   } catch (e) {
-    yield all([disableLoading, enableErrorMessage(e.message)]);
+    console.log('the e', e);
+    yield all([call(disableLoading), call(enableErrorMessage, e.message)]);
   }
 }
