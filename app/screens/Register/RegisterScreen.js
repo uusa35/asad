@@ -7,7 +7,9 @@ import {submitRegisterRequest, enableErrorMessage} from '../../redux/actions';
 import FastImage from 'react-native-fast-image';
 import {Input, Button, Icon} from 'react-native-elements';
 import validate from 'validate.js';
-import I18n from './../../I18n';
+import I18n, {isRTL} from '../../I18n';
+
+('./../../I18n');
 import {userRegisterRequestConstraints} from '../../constrains';
 import {height, width, colors, images, icons} from '../../constants';
 import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scroll-view';
@@ -85,6 +87,7 @@ class RegisterScreen extends Component {
                   onChangeText={e => this.setState({name: e})}
                   placeholder={I18n.t('company_name').toUpperCase()}
                   inputContainerStyle={styles.inputContainerStyle}
+                  inputStyle={styles.inputTextStyle}
                   leftIconContainerStyle={styles.leftIconStyle}
                   leftIcon={
                     <FastImage
@@ -97,6 +100,7 @@ class RegisterScreen extends Component {
                   onChangeText={e => this.setState({description: e})}
                   placeholder={I18n.t('description').toUpperCase()}
                   inputContainerStyle={styles.inputContainerStyle}
+                  inputStyle={styles.inputTextStyle}
                   leftIconContainerStyle={styles.leftIconStyle}
                   leftIcon={
                     <Icon
@@ -112,6 +116,7 @@ class RegisterScreen extends Component {
                   onChangeText={e => this.setState({mobile: e})}
                   placeholder={I18n.t('mobile').toUpperCase()}
                   inputContainerStyle={styles.inputContainerStyle}
+                  inputStyle={styles.inputTextStyle}
                   leftIconContainerStyle={styles.leftIconStyle}
                   leftIcon={
                     <Icon
@@ -126,6 +131,7 @@ class RegisterScreen extends Component {
                   onChangeText={e => this.setState({address: e})}
                   placeholder={I18n.t('address').toUpperCase()}
                   inputContainerStyle={styles.inputContainerStyle}
+                  inputStyle={styles.inputTextStyle}
                   leftIconContainerStyle={styles.leftIconStyle}
                   leftIcon={
                     <Icon
@@ -138,9 +144,9 @@ class RegisterScreen extends Component {
                 />
                 <Input
                   onFocus={() => this.fetchImage('logo')}
-                  // onChangeText={e => this.setState({logo: e})}
                   placeholder={I18n.t('logo').toUpperCase()}
                   inputContainerStyle={styles.inputContainerStyle}
+                  inputStyle={styles.inputTextStyle}
                   leftIconContainerStyle={styles.leftIconStyle}
                   leftIcon={
                     <Icon
@@ -261,6 +267,11 @@ const styles = StyleSheet.create({
     minHeight: 50,
     marginTop: 8,
     marginBottom: 8
+  },
+  inputTextStyle: {
+    fontFamily: 'cairo',
+    fontSize: 15,
+    textAlign: isRTL ? 'right' : 'left'
   },
   iconTabBar: {
     width: 25,

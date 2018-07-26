@@ -17,7 +17,7 @@ export default class LoadingView extends Component {
           source={images.logo}
           style={{width: 100, height: 120, margin: 12}}
         />
-        <Text>{I18n.t(this.props.loadingText)}</Text>
+        <Text style={styles.loadingText}>{I18n.t(this.props.loadingText)}</Text>
       </View>
     );
   }
@@ -30,5 +30,10 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     width: width,
     backgroundColor: 'white'
+  },
+  loadingText: {
+    fontFamily: 'cairo',
+    fontSize: 15,
+    color: 'black'
   }
 });

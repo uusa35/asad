@@ -171,7 +171,7 @@
   "special_offer" : "special offer",
   "show_images" : "Images",
   "whatsapp" : "whatsapp",
-  "map" : "location",
+  "map" : "Location",
   "site_url" : "webiste",
   "kwd" :  "KD",
   "annual" : "annual",
@@ -292,6 +292,8 @@
   "asad" : "Asad Group",
   "register_as" : "Register As",
   "please_choose_user_type" : "Please Choose your Account Type",
-  "about" : "About"
+  "about" : "About",
+  "contact_details" : "Contact Details",
+  "company_name" : "Account Name"
 
 }

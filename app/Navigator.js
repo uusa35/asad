@@ -22,6 +22,8 @@ import RegisterScreen from './screens/Register/RegisterScreen';
 import RegisterAsScreen from './screens/Register/RegisterAsScreen';
 import ForgetPasswordScreen from './screens/ForgetPassword/ForgetPasswordScreen';
 import ResetPasswordScreen from './screens/ResetPassword/ResetPasswordScreen';
+import ContactusScreen from './screens/Contactus/ContactusScreen';
+
 import {colors, text} from './constants';
 
 const navMiddleware = createReactNavigationReduxMiddleware(
@@ -77,6 +79,12 @@ const HomeStack = createStackNavigator(
       screen: ForgetPasswordScreen,
       navigationOptions: ({navigation}) => ({
         headerTitle: getHeader(I18n.t('forget_password'))
+      })
+    },
+    Contactus: {
+      screen: ContactusScreen,
+      navigationOptions: ({navigation}) => ({
+        headerTitle: getHeader(I18n.t('contactus'))
       })
     }
   },
