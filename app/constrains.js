@@ -8,6 +8,14 @@ export const userRegisterRequestConstraints = {
       message: 'must be at least 3 characters'
     }
   },
+  email: {
+    presence: true,
+    email: true,
+    length: {
+      minimum: 4,
+      message: 'must be at least 4 characters.'
+    }
+  },
   description: {
     presence: true,
     length: {
@@ -27,6 +35,41 @@ export const userRegisterRequestConstraints = {
     length: {
       minimum: 6,
       message: I18n.t('address_validation_message')
+    }
+  }
+};
+
+export const forgetPasswordConstrains = {
+  password: {
+    presence: true,
+    length: {
+      minimum: 6,
+      message: 'must be at least 6 characters'
+    }
+  },
+  email: {
+    presence: true,
+    email: true,
+    length: {
+      minimum: 4,
+      message: 'must be at least 4 characters.'
+    }
+  }
+};
+
+export const loginConstrains = {
+  password: {
+    presence: true,
+    length: {
+      minimum: 6,
+      message: 'must be at least 6 characters'
+    }
+  },
+  username: {
+    presence: true,
+    length: {
+      minimum: 4,
+      message: 'must be at least 4 characters.'
     }
   }
 };

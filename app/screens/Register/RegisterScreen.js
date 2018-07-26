@@ -20,6 +20,7 @@ class RegisterScreen extends Component {
     super(props);
     this.state = {
       name: '',
+      email: '',
       description: '',
       mobile: '',
       address: '',
@@ -43,9 +44,9 @@ class RegisterScreen extends Component {
   }
 
   _doRegisterRequest = () => {
-    const {name, description, mobile, logo, address} = this.state;
+    const {name, email, description, mobile, logo, address} = this.state;
     const result = validate(
-      {name, description, mobile, logo, address},
+      {name, email, description, mobile, logo, address},
       userRegisterRequestConstraints
     );
     if (!validate.isEmpty(result)) {
@@ -93,6 +94,21 @@ class RegisterScreen extends Component {
                     <FastImage
                       source={icons.company}
                       style={[styles.iconTabBar]}
+                    />
+                  }
+                />
+                <Input
+                  onChangeText={e => this.setState({email: e})}
+                  placeholder={I18n.t('email').toUpperCase()}
+                  inputContainerStyle={styles.inputContainerStyle}
+                  inputStyle={styles.inputTextStyle}
+                  leftIconContainerStyle={styles.leftIconStyle}
+                  leftIcon={
+                    <Icon
+                      name="ios-mail"
+                      type="ionicon"
+                      size={24}
+                      color="black"
                     />
                   }
                 />
@@ -274,7 +290,7 @@ const styles = StyleSheet.create({
     textAlign: isRTL ? 'right' : 'left'
   },
   iconTabBar: {
-    width: 25,
-    height: 25
+    width: 20,
+    height: 20
   }
 });

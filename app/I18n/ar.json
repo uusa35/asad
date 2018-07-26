@@ -317,6 +317,8 @@
   "please_choose_user_type" : "يرجى اختيار نوع التسجيل",
   "about" : "نبذة عن",
   "contact_details" : "أتصل بنا",
-  "company_name" : "اسم المستخدم"
+  "company_name" : "اسم المستخدم",
+  "website" : "الموقع الالكتروني",
+  "press_here" : "اضغط هنا"
 
 }

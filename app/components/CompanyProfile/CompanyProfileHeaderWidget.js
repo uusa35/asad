@@ -12,28 +12,14 @@ export default class CompanyProfileHeaderWidget extends Component {
   render() {
     const {settings} = this.props;
     return (
-      <View style={{margin: 10, flexDirection: 'row'}}>
+      <View style={styles.headerContainer}>
         <FastImage
           style={styles.logo}
           source={{uri: settings.logo}}
           resizeMode={FastImage.resizeMode.center}
         />
-        <View
-          style={{
-            flex: 1,
-            justifyContent: 'flex-start',
-            alignItems: 'center',
-            marginLeft: 15,
-            marginTop: 0
-          }}>
-          <View
-            style={{
-              flexDirection: 'row',
-              alignItems: 'center',
-              justifyContent: 'center',
-              backgroundColor: 'lightgrey',
-              width: '100%'
-            }}>
+        <View style={styles.headerWrapper}>
+          <View style={styles.headerTitleWrapper}>
             <Text style={styles.mainTitle}>{settings.name}</Text>
             <Icon
               type="font-awesome"
@@ -43,14 +29,7 @@ export default class CompanyProfileHeaderWidget extends Component {
               iconStyle={{paddingLeft: 10}}
             />
           </View>
-          <View
-            style={{
-              flexDirection: 'row',
-              width: '100%',
-              paddingRight: 10,
-              paddingLeft: 10,
-              paddingTop: 10
-            }}>
+          <View style={styles.socialIconsWrapper}>
             <Icon
               reverse
               name="facebook"
@@ -91,6 +70,33 @@ export default class CompanyProfileHeaderWidget extends Component {
 }
 
 const styles = StyleSheet.create({
+  headerContainer: {
+    margin: 10,
+    flexDirection: 'row'
+  },
+  headerWrapper: {
+    flex: 1,
+    justifyContent: 'flex-start',
+    alignItems: 'center',
+    marginLeft: 15,
+    marginTop: 0
+  },
+  headerTitleWrapper: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: 'lightgrey',
+    width: '100%'
+  },
+  socialIconsWrapper: {
+    flexDirection: 'row',
+    width: '100%',
+    justifyContent: 'center',
+    alignItems: 'center',
+    paddingRight: 10,
+    paddingLeft: 10,
+    paddingTop: 10
+  },
   mainTitle: {
     textAlign: 'center',
     fontFamily: 'cairo',

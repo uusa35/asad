@@ -28,10 +28,9 @@ export function* startSubmitRegisterRequest(action) {
       console.log('from inside true if');
       yield put({type: actions.GET_REGISTER_REQUEST, payload: registerRequest});
       yield call(enableSuccessMessage, I18n.t('register_request_stored'));
+      yield delay(1000);
       yield put(NavigationActions.navigate({routeName: 'Home'}));
     } else {
-      console.log('from inside else');
-      console.log('error', registerRequest);
       throw new Error(registerRequest);
     }
   } catch (e) {

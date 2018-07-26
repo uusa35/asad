@@ -1,6 +1,5 @@
 import * as actions from './types';
 import I18n from './../../I18n';
-import {colors} from './../../constants';
 
 export function appBootstrap() {
   return {
@@ -151,6 +150,16 @@ export function submitLogin(username, password) {
     paylaod: {
       username,
       password
+    }
+  };
+}
+
+export function submitForgetPassword(email, mobile) {
+  return {
+    type: actions.SUBMIT_FORGET_PASSWORD,
+    payload: {
+      email,
+      mobile
     }
   };
 }

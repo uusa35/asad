@@ -58,7 +58,16 @@ export async function projectShow(id) {
 }
 
 export async function postRegisterRequest(payload) {
-  const {name, mobile, description, address, logo, type, device_id} = payload;
+  const {
+    name,
+    email,
+    mobile,
+    description,
+    address,
+    logo,
+    type,
+    device_id
+  } = payload;
   const formData = new FormData();
   if (checkImage(logo)) {
     formData.append('logo', {
@@ -68,6 +77,7 @@ export async function postRegisterRequest(payload) {
     });
   }
   formData.append('name', name);
+  formData.append('email', email);
   formData.append('mobile', mobile);
   formData.append('type', type);
   formData.append('description', description);

@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {View, Text, TouchableOpacity} from 'react-native';
+import {Text, ScrollView} from 'react-native';
 import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
 import {toggleLoading} from '../../redux/actions';
@@ -13,15 +13,20 @@ class HomeScreen extends Component {
   }
 
   render() {
-    const {navigation, auth, settings} = this.props;
+    const {auth, settings} = this.props;
     return (
-      <View>
+      <ScrollView
+        style={{backgroundColor: 'white'}}
+        showsHorizontalScrollIndicator={false}
+        contentContainerStyle={{paddingBottom: 30, backgroundColor: 'white'}}
+        endFillColor="white"
+        showsVerticalScrollIndicator={false}>
         {validate.isEmpty(auth) ? (
           <CompanyProfile settings={settings} />
         ) : (
           <Text>User is Loggged in</Text>
         )}
-      </View>
+      </ScrollView>
     );
   }
 }

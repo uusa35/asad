@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {View, ScrollView, StyleSheet} from 'react-native';
+import {View, StyleSheet} from 'react-native';
 import {height} from './../../constants';
 import PropTypes from 'prop-types';
 import I18n from './../../I18n';
@@ -16,7 +16,7 @@ export default class CompanyProfile extends Component {
   render() {
     const {settings} = this.props;
     return (
-      <ScrollView style={styles.scrollViewContainer}>
+      <View style={styles.scrollViewContainer}>
         <View>
           <CompanyProfileHeaderWidget settings={settings} />
           <PanelWidget
@@ -26,7 +26,7 @@ export default class CompanyProfile extends Component {
           <ContactDetailsWidget settings={settings} />
           <LocationWidget settings={settings} />
         </View>
-      </ScrollView>
+      </View>
     );
   }
 }

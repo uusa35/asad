@@ -1,6 +1,8 @@
 import React, {Component} from 'react';
 import {View, Text, StyleSheet} from 'react-native';
+import {Button} from 'react-native-elements';
 import I18n from './../../I18n';
+import Communications from 'react-native-communications';
 
 export default class ContactDetailsWidget extends Component {
   constructor(props) {
@@ -15,7 +17,23 @@ export default class ContactDetailsWidget extends Component {
           <Text style={styles.panelTitle}>{I18n.t('contact_details')}</Text>
         </View>
         <View style={styles.panelContentWrapper}>
-          <Text style={styles.panelContent}>testing</Text>
+          <View style={styles.panelContentRowWrapper}>
+            <Text style={styles.panelContentTitle}>{I18n.t('address')} : </Text>
+            <Text style={styles.panelContent}>{settings.address}</Text>
+          </View>
+          <View style={styles.panelContentRowWrapper}>
+            <Text style={styles.panelContentTitle}>{I18n.t('phone')} : </Text>
+            <Text style={styles.panelContent}>{settings.phone}</Text>
+          </View>
+          <View style={[styles.panelContentRowWrapper, {alignItems: 'center'}]}>
+            <Text style={styles.panelContentTitle}>{I18n.t('website')} : </Text>
+            <Button
+              title={I18n.t('press_here')}
+              buttonStyle={{backgroundColor: 'transparent'}}
+              titleStyle={{color: 'black', fontFamily: 'cairo'}}
+              onPress={() => Communications.web(settings.site_url)}
+            />
+          </View>
         </View>
       </View>
     );
@@ -51,5 +69,16 @@ const styles = StyleSheet.create({
     fontFamily: 'cairo',
     fontSize: 15,
     textAlign: 'left'
+  },
+  panelContentTitle: {
+    fontFamily: 'cairo',
+    fontSize: 15,
+    textAlign: 'left',
+    fontWeight: 'bold',
+    minWidth: 70
+  },
+  panelContentRowWrapper: {
+    flexDirection: 'row',
+    alignItems: 'flex-start'
   }
 });

@@ -294,6 +294,8 @@
   "please_choose_user_type" : "Please Choose your Account Type",
   "about" : "About",
   "contact_details" : "Contact Details",
-  "company_name" : "Account Name"
+  "company_name" : "Account Name",
+  "website" : "Website",
+  "press_here" : "Press Here"
 
 }

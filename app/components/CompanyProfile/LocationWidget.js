@@ -1,6 +1,10 @@
 import React, {Component} from 'react';
-import {View, Text, StyleSheet} from 'react-native';
+import {View, Text, StyleSheet, TouchableOpacity} from 'react-native';
 import I18n from './../../I18n';
+import MapView, {Marker} from 'react-native-maps';
+import FastImage from 'react-native-fast-image';
+import {links} from './../../constants';
+import Communications from 'react-native-communications';
 
 export default class LocationWidget extends Component {
   constructor(props) {
@@ -15,7 +19,46 @@ export default class LocationWidget extends Component {
           <Text style={styles.panelTitle}>{I18n.t('location')}</Text>
         </View>
         <View style={styles.panelContentWrapper}>
-          <Text style={styles.panelContent}>location map</Text>
+          <MapView
+            style={{
+              width: '100%',
+              height: 170,
+              borderRadius: 10
+            }}
+            title={settings.name}
+            zoomEnabled={true}
+            initialRegion={{
+              latitude: parseFloat(settings.latitude),
+              longitude: parseFloat(settings.longitude),
+              latitudeDelta: 0.0922,
+              longitudeDelta: 0.0421
+            }}>
+            <Marker
+              coordinate={{
+                latitude: settings.latitude,
+                longitude: settings.longitude
+              }}>
+              <TouchableOpacity
+                style={{justifyContent: 'center', alignItems: 'center'}}
+                onPress={() =>
+                  Communications.web(
+                    `${links.googleMapUrl}${settings.latitude},${
+                      settings.longitude
+                    }`
+                  )
+                }>
+                <FastImage
+                  style={styles.imgCircle}
+                  source={{
+                    uri: `${settings.logo}`,
+                    priority: FastImage.priority.normal
+                  }}
+                  resizeMode={FastImage.resizeMode.cover}
+                />
+                <Text style={styles.markerTitle}>{settings.name}</Text>
+              </TouchableOpacity>
+            </Marker>
+          </MapView>
         </View>
       </View>
     );
@@ -51,5 +94,16 @@ const styles = StyleSheet.create({
     fontFamily: 'cairo',
     fontSize: 15,
     textAlign: 'left'
+  },
+  imgCircle: {
+    width: 30,
+    height: 30,
+    borderRadius: 30 / 2
+  },
+  markerTitle: {
+    color: 'black',
+    fontWeight: 'bold',
+    fontSize: 10,
+    margin: 5
   }
 });

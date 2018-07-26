@@ -71,7 +71,8 @@ export const icons = {
   subcontractor: require('./../assets/icons/subcontractor.png'),
   company: require('./../assets/icons/company.png'),
   attachment: require('./../assets/icons/attachment.png'),
-  address: require('./../assets/icons/address.png')
+  address: require('./../assets/icons/address.png'),
+  password: require('./../assets/icons/password.png')
 };
 
 export const colors = {

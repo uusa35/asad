@@ -1,21 +1,33 @@
 import React, {Component} from 'react';
-import {View, Text, StyleSheet} from 'react-native';
+import {View, StyleSheet} from 'react-native';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import PropTypes from 'prop-types';
-import {submitLogin} from '../../redux/actions';
+import {submitLogin, enableErrorMessage} from '../../redux/actions';
 import FastImage from 'react-native-fast-image';
-import {Input, Button, Icon} from 'react-native-elements';
-import I18n from '../../I18n';
-import {colors, height, width, images} from '../../constants';
+import {Input, Button} from 'react-native-elements';
+import I18n, {isRTL} from '../../I18n';
+import {colors, height, width, images, icons} from '../../constants';
 import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scroll-view';
+import validate from 'validate.js/validate';
+import {loginConstrains} from '../../constrains';
 
 class LoginScreen extends Component {
   constructor(props) {
     super(props);
     this.state = {username: '', password: ''};
   }
-
+  _doSubmitLogin() {
+    const {username, password} = this.state;
+    const result = validate({username, password}, loginConstrains);
+    if (!validate.isEmpty(result)) {
+      this.props.actions.enableErrorMessage(
+        JSON.stringify(result[Object.keys(result)[0]])
+      );
+    } else {
+      return this.props.actions.submitLogin(this.state);
+    }
+  }
   render() {
     const {navigation} = this.props;
     return (
@@ -41,27 +53,22 @@ class LoginScreen extends Component {
                 onChangeText={e => this.setState({email: e})}
                 placeholder={I18n.t('email').toUpperCase()}
                 inputContainerStyle={styles.inputContainerStyle}
+                inputStyle={styles.inputTextStyle}
                 leftIconContainerStyle={styles.leftIconStyle}
                 leftIcon={
-                  <Icon
-                    name="ios-mail"
-                    type="ionicon"
-                    size={24}
-                    color="black"
-                  />
+                  <FastImage source={icons.user} style={[styles.iconTabBar]} />
                 }
               />
               <Input
                 onChangeText={e => this.setState({name: e})}
                 placeholder={I18n.t('password').toUpperCase()}
                 inputContainerStyle={styles.inputContainerStyle}
+                inputStyle={styles.inputTextStyle}
                 leftIconContainerStyle={styles.leftIconStyle}
                 leftIcon={
-                  <Icon
-                    name="key"
-                    type="font-awesome"
-                    size={24}
-                    color="black"
+                  <FastImage
+                    source={icons.password}
+                    style={[styles.iconTabBar]}
                   />
                 }
               />
@@ -82,7 +89,7 @@ class LoginScreen extends Component {
               <Button
                 buttonStyle={styles.registerSubmitBtn}
                 titleStyle={styles.registerSubmitBtnText}
-                onPress={() => this._doRegisterRequest()}
+                onPress={() => this._doSubmitLogin()}
                 title={I18n.t('submit').toUpperCase()}
               />
               <Button
@@ -110,7 +117,8 @@ function mapStateToProps(state) {
 function mapDispatchToProps(dispatch) {
   return {
     actions: {
-      submitLogin: bindActionCreators(submitLogin, dispatch)
+      submitLogin: bindActionCreators(submitLogin, dispatch),
+      enableErrorMessage: bindActionCreators(enableErrorMessage, dispatch)
     }
   };
 }
@@ -186,5 +194,14 @@ const styles = StyleSheet.create({
     minHeight: 50,
     marginTop: 8,
     marginBottom: 8
+  },
+  inputTextStyle: {
+    fontFamily: 'cairo',
+    fontSize: 15,
+    textAlign: isRTL ? 'right' : 'left'
+  },
+  iconTabBar: {
+    width: 20,
+    height: 20
   }
 });
