@@ -319,6 +319,9 @@
   "contact_details" : "أتصل بنا",
   "company_name" : "اسم المستخدم",
   "website" : "الموقع الالكتروني",
-  "press_here" : "اضغط هنا"
+  "press_here" : "اضغط هنا",
+  "project_start_date" : "بداية المشروع",
+  "project_end_date" : "نهاية المشروع",
+  "reference_id" : "رقم المرجع"
 
 }

@@ -15,7 +15,6 @@ class HomeScreen extends Component {
 
   render() {
     const {auth, settings} = this.props;
-    console.log('projects', auth.projects);
     return (
       <ScrollView
         style={{backgroundColor: 'white'}}

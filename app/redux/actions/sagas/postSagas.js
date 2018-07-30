@@ -16,7 +16,7 @@ import {
   enableLoading,
   startLoginScenario
 } from './appSagas';
-import {postRegisterRequest, authenticate} from './../api';
+import {postRegisterRequest, authenticate, getProjectById} from './../api';
 import * as helpers from '../../../helpers';
 import {NavigationActions} from 'react-navigation';
 import I18n from './../../../I18n';
@@ -48,7 +48,7 @@ export function* submitLogin() {
 
 export function* startSubmitLogin(action) {
   try {
-    const user = yield call(authenticate, action);
+    const user = yield call(authenticate, action.payload);
     if (!validate.isEmpty(user) && !validate.isEmpty(user.api_token)) {
       console.log('the authenicated user', user);
       yield all([
@@ -65,6 +65,32 @@ export function* startSubmitLogin(action) {
       ]);
     } else {
       throw new Error(user);
+    }
+  } catch (e) {
+    yield all([call(disableLoading), call(enableErrorMessage, e.message)]);
+  }
+}
+
+export function* getProject() {
+  yield takeLatest(actions.GET_PROJECT, startGetProjectScenario);
+}
+
+export function* startGetProjectScenario(action) {
+  try {
+    console.log('action', action);
+    const project = yield call(getProjectById, action.payload.id);
+    if (!validate.isEmpty(project)) {
+      console.log('the project', project);
+      yield all([
+        put({type: actions.SET_PROJECT, payload: project}),
+        put(
+          NavigationActions.navigate({
+            routeName: 'ProjectShow'
+          })
+        )
+      ]);
+    } else {
+      throw new Error(project);
     }
   } catch (e) {
     yield all([call(disableLoading), call(enableErrorMessage, e.message)]);

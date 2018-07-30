@@ -13,6 +13,7 @@ import {
 import I18n from './I18n';
 import SideMenu from './components/SideMenu';
 import {getHeader, getTabTitle} from './helpers';
+import {colors, text} from './constants';
 import HeaderLeft from './components/HeaderLeft';
 import HeaderCustom from './components/HeaderCustom';
 import HomeSliderScreen from './screens/HomeSlider/HomeSliderScreen';
@@ -23,8 +24,7 @@ import RegisterAsScreen from './screens/Register/RegisterAsScreen';
 import ForgetPasswordScreen from './screens/ForgetPassword/ForgetPasswordScreen';
 import ResetPasswordScreen from './screens/ResetPassword/ResetPasswordScreen';
 import ContactusScreen from './screens/Contactus/ContactusScreen';
-
-import {colors, text} from './constants';
+import ProjectShowScreen from './screens/Project/ProjectShowScreen';
 
 const navMiddleware = createReactNavigationReduxMiddleware(
   'root',
@@ -83,6 +83,12 @@ const HomeStack = createStackNavigator(
     },
     Contactus: {
       screen: ContactusScreen,
+      navigationOptions: ({navigation}) => ({
+        headerTitle: getHeader(I18n.t('contactus'))
+      })
+    },
+    ProjectShow: {
+      screen: ProjectShowScreen,
       navigationOptions: ({navigation}) => ({
         headerTitle: getHeader(I18n.t('contactus'))
       })

@@ -296,6 +296,9 @@
   "contact_details" : "Contact Details",
   "company_name" : "Account Name",
   "website" : "Website",
-  "press_here" : "Press Here"
+  "press_here" : "Press Here",
+  "project_start_date" : "Project Start Date",
+  "project_end_date" : "Project End Date",
+  "reference_id" : "Reference Id"
 
 }

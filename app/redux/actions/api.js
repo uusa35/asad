@@ -22,8 +22,8 @@ export async function authenticated(api_token) {
     .catch(e => e.response.data.message);
 }
 
-export async function authenticate(action) {
-  const {email, password} = action.payload;
+export async function authenticate(element) {
+  const {email, password} = element;
   return await axiosInstance
     .post('authenticate', {email, password})
     .then(r => r.data)
@@ -58,7 +58,7 @@ export async function userShow(id) {
     .catch(e => e.response.data.message);
 }
 
-export async function projectShow(id) {
+export async function getProjectById(id) {
   return await axiosInstance
     .get(`project`, {params: id})
     .then(r => r.data)

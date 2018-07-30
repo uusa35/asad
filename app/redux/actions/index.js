@@ -170,6 +170,24 @@ export function setProjects(projects) {
   };
 }
 
+export function getProject(id) {
+  return {
+    type: actions.GET_PROJECT,
+    payload: {
+      id
+    }
+  };
+}
+
+export function setProject(project) {
+  return {
+    type: actions.GET_PROJECT,
+    payload: {
+      project
+    }
+  };
+}
+
 export const APP_ACTIONS = {
   appBootstrap,
   toggleBootstrapped,
@@ -189,5 +207,7 @@ export const APP_ACTIONS = {
   setHomeSliders,
   submitRegisterRequest,
   submitLogin,
-  setProjects
+  setProjects,
+  getProject,
+  setProject
 };
