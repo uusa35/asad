@@ -15,11 +15,11 @@ import {loginConstrains} from '../../constrains';
 class LoginScreen extends Component {
   constructor(props) {
     super(props);
-    this.state = {username: '', password: ''};
+    this.state = {email: 'rahsaan.haley@collier.com', password: 'secret'};
   }
   _doSubmitLogin() {
-    const {username, password} = this.state;
-    const result = validate({username, password}, loginConstrains);
+    const {email, password} = this.state;
+    const result = validate({email, password}, loginConstrains);
     if (!validate.isEmpty(result)) {
       this.props.actions.enableErrorMessage(
         JSON.stringify(result[Object.keys(result)[0]])
@@ -55,16 +55,19 @@ class LoginScreen extends Component {
                 inputContainerStyle={styles.inputContainerStyle}
                 inputStyle={styles.inputTextStyle}
                 leftIconContainerStyle={styles.leftIconStyle}
+                keyboardType="email-address"
                 leftIcon={
                   <FastImage source={icons.user} style={[styles.iconTabBar]} />
                 }
               />
               <Input
-                onChangeText={e => this.setState({name: e})}
+                onChangeText={e => this.setState({password: e})}
                 placeholder={I18n.t('password').toUpperCase()}
                 inputContainerStyle={styles.inputContainerStyle}
                 inputStyle={styles.inputTextStyle}
                 leftIconContainerStyle={styles.leftIconStyle}
+                keyboardType="name-phone-pad"
+                secureTextEntry={true}
                 leftIcon={
                   <FastImage
                     source={icons.password}

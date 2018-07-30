@@ -15,46 +15,54 @@ const axiosInstance = axios.create({
   headers: {lang: getLangForHeader()}
 });
 
-export async function getUser(api_token) {
+export async function authenticated(api_token) {
   return await axiosInstance
     .post(`authenticated`, {api_token})
     .then(r => r.data)
-    .catch(e => e.response.message);
+    .catch(e => e.response.data.message);
+}
+
+export async function authenticate(action) {
+  const {email, password} = action.payload;
+  return await axiosInstance
+    .post('authenticate', {email, password})
+    .then(r => r.data)
+    .catch(e => e.response.data.message);
 }
 
 export async function getHomeSliders(type) {
   return await axiosInstance
     .get(`slider`, {params: {type: type}})
     .then(r => r.data)
-    .catch(e => e);
+    .catch(e => e.response.data.message);
 }
 
 export async function getRoles() {
   return await axiosInstance
     .get('role')
     .then(r => r.data)
-    .catch(e => e);
+    .catch(e => e.response.data.message);
 }
 
 export async function getSettings() {
   return await axiosInstance
     .get('setting')
     .then(r => r.data)
-    .catch(e => e);
+    .catch(e => e.response.data.message);
 }
 
 export async function userShow(id) {
   return await axiosInstance
     .get(`user`, {params: id})
     .then(r => r.data)
-    .catch(e => e.response.message);
+    .catch(e => e.response.data.message);
 }
 
 export async function projectShow(id) {
   return await axiosInstance
     .get(`project`, {params: id})
     .then(r => r.data)
-    .catch(e => e.response.message);
+    .catch(e => e.response.data.message);
 }
 
 export async function postRegisterRequest(payload) {
@@ -87,12 +95,12 @@ export async function postRegisterRequest(payload) {
   return await axiosInstance
     .post(`request`, formData)
     .then(r => r.data)
-    .catch(e => e);
+    .catch(e => e.response.data.message);
 }
 
 export async function getRegisterRequest(device_id) {
   return await axiosInstance
     .get(`request/${device_id}`)
     .then(r => r.data)
-    .catch(e => e);
+    .catch(e => e.response.data.message);
 }

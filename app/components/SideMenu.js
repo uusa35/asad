@@ -7,7 +7,7 @@ import {Text, Button} from 'react-native-elements';
 import I18n from './../I18n';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
-import {changeLang} from '../redux/actions';
+import {changeLang, logout} from '../redux/actions';
 import {colors, width, height, images} from './../constants';
 import FastImage from 'react-native-fast-image';
 
@@ -114,7 +114,8 @@ function mapStateToProps(state) {
 function mapDispatchToProps(dispatch) {
   return {
     actions: {
-      changeLang: bindActionCreators(changeLang, dispatch)
+      changeLang: bindActionCreators(changeLang, dispatch),
+      logout: bindActionCreators(logout, dispatch)
     }
   };
 }

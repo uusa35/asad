@@ -6,6 +6,7 @@ import {toggleLoading} from '../../redux/actions';
 import {bindActionCreators} from 'redux';
 import validate from 'validate.js';
 import CompanyProfile from './../../components/CompanyProfile/CompanyProfile';
+import ProjectIndexScreen from './../Project/ProjectIndexScreen';
 
 class HomeScreen extends Component {
   constructor(props) {
@@ -14,6 +15,7 @@ class HomeScreen extends Component {
 
   render() {
     const {auth, settings} = this.props;
+    console.log('projects', auth.projects);
     return (
       <ScrollView
         style={{backgroundColor: 'white'}}
@@ -24,7 +26,7 @@ class HomeScreen extends Component {
         {validate.isEmpty(auth) ? (
           <CompanyProfile settings={settings} />
         ) : (
-          <Text>User is Loggged in</Text>
+          <ProjectIndexScreen projects={auth.projects} />
         )}
       </ScrollView>
     );

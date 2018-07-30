@@ -1,4 +1,5 @@
 import * as actions from '../types';
+import {delay} from 'redux-saga';
 import {
   takeLatest,
   takeEvery,
@@ -11,9 +12,12 @@ import validate from 'validate.js/validate';
 import {
   enableErrorMessage,
   disableLoading,
-  enableSuccessMessage
+  enableSuccessMessage,
+  enableLoading,
+  startLoginScenario
 } from './appSagas';
-import {postRegisterRequest} from './../api';
+import {postRegisterRequest, authenticate} from './../api';
+import * as helpers from '../../../helpers';
 import {NavigationActions} from 'react-navigation';
 import I18n from './../../../I18n';
 
@@ -34,7 +38,35 @@ export function* startSubmitRegisterRequest(action) {
       throw new Error(registerRequest);
     }
   } catch (e) {
-    console.log('the e', e);
+    yield all([call(disableLoading), call(enableErrorMessage, e.message)]);
+  }
+}
+
+export function* submitLogin() {
+  yield takeLatest(actions.SUBMIT_LOGIN, startSubmitLogin);
+}
+
+export function* startSubmitLogin(action) {
+  try {
+    const user = yield call(authenticate, action);
+    if (!validate.isEmpty(user) && !validate.isEmpty(user.api_token)) {
+      console.log('the authenicated user', user);
+      yield all([
+        call(enableLoading),
+        call(startLoginScenario, user),
+        call(enableSuccessMessage, I18n.t('login_success')),
+        delay(1000),
+        put(
+          NavigationActions.navigate({
+            routeName: 'Home'
+          })
+        ),
+        call(disableLoading)
+      ]);
+    } else {
+      throw new Error(user);
+    }
+  } catch (e) {
     yield all([call(disableLoading), call(enableErrorMessage, e.message)]);
   }
 }

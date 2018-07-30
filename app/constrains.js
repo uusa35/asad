@@ -58,18 +58,19 @@ export const forgetPasswordConstrains = {
 };
 
 export const loginConstrains = {
+  email: {
+    presence: true,
+    email: true,
+    length: {
+      minimum: 4,
+      message: 'must be at least 4 characters.'
+    }
+  },
   password: {
     presence: true,
     length: {
       minimum: 6,
       message: 'must be at least 6 characters'
-    }
-  },
-  username: {
-    presence: true,
-    length: {
-      minimum: 4,
-      message: 'must be at least 4 characters.'
     }
   }
 };

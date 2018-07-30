@@ -144,13 +144,10 @@ export function submitRegisterRequest(payload) {
   };
 }
 
-export function submitLogin(username, password) {
+export function submitLogin(payload) {
   return {
     type: actions.SUBMIT_LOGIN,
-    paylaod: {
-      username,
-      password
-    }
+    payload
   };
 }
 
@@ -160,6 +157,15 @@ export function submitForgetPassword(email, mobile) {
     payload: {
       email,
       mobile
+    }
+  };
+}
+
+export function setProjects(projects) {
+  return {
+    type: actions.SET_PROJECTS,
+    payload: {
+      projects
     }
   };
 }
@@ -182,5 +188,6 @@ export const APP_ACTIONS = {
   login,
   setHomeSliders,
   submitRegisterRequest,
-  submitLogin
+  submitLogin,
+  setProjects
 };

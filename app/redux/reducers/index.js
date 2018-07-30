@@ -14,6 +14,8 @@ import message from './message';
 import homeSliders from './homeSliders';
 import deviceId from './deviceId';
 import registerRequest from './registerRequest';
+import projects from './projects';
+import project from './project';
 
 let reducers = combineReducers({
   nav: navReducer,
@@ -30,7 +32,9 @@ let reducers = combineReducers({
   role,
   homeSliders,
   deviceId,
-  registerRequest
+  registerRequest,
+  projects,
+  project
 });
 
 export default reducers;

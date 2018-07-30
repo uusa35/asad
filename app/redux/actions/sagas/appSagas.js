@@ -55,6 +55,19 @@ export function* enableWarningMessage(content, title = I18n.t('asad')) {
   });
 }
 
+export function* logout() {
+  yield takeLatest(actions.LOGOUT, startLogoutScenario);
+}
+
+export function* startLogoutScenario() {
+  yield all([
+    put({type: actions.LOGIN, payload: {}}),
+    put({type: actions.SET_TOKEN, payload: ''}),
+    call(helpers.setAuthToken, ''),
+    put({type: actions.TOGGLE_GUEST, payload: true}),
+    put({type: actions.SET_PROJECTS, payload: {}})
+  ]);
+}
 export function* appBootstrap() {
   yield takeLatest(actions.START_BOOTSTRAP, startAppBootStrap);
 }
@@ -67,6 +80,19 @@ export function* toggleGuest(guest) {
   yield put({type: actions.TOGGLE_GUEST, payload: guest});
 }
 
+export function* startLoginScenario(user) {
+  yield all([
+    put({type: actions.LOGIN, payload: user}),
+    put({type: actions.SET_TOKEN, payload: user.api_token}),
+    call(helpers.setAuthToken, user.api_token),
+    put({type: actions.TOGGLE_GUEST, payload: false})
+  ]);
+  if (!validate.isEmpty(user.projects)) {
+    console.log('from inside projects', user.projects);
+    yield put({type: actions.SET_PROJECTS, payload: user.projects});
+  }
+}
+
 export function* startAppBootStrap() {
   try {
     let device_id = DeviceInfo.getUniqueID();
@@ -76,17 +102,17 @@ export function* startAppBootStrap() {
       put({type: actions.GET_DEVICE_ID, payload: device_id})
     ]);
     const api_token = yield call(helpers.getAuthToken);
+    console.log('the bootstrap api_token', api_token);
     const registerRequest = yield call(api.getRegisterRequest, device_id);
     if (!validate.isEmpty(registerRequest)) {
       // add the registerRequest to the state according to the device id;
       yield put({type: actions.GET_REGISTER_REQUEST, payload: registerRequest});
     }
-    console.log('the api_token', api_token);
     if (!validate.isEmpty(api_token)) {
-      const user = yield call(api.getUser, api_token);
-      if (!validate.isEmpty(user)) {
+      const user = yield call(api.authenticated, api_token);
+      if (!validate.isEmpty(user) && !validate.isEmpty(api_token)) {
         yield all([
-          put({type: actions.LOGIN, payload: user}),
+          call(startLoginScenario, user),
           call(toggleGuest, false),
           put(
             NavigationActions.navigate({

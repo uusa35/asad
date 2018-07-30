@@ -28,6 +28,8 @@ export const initialState = {
   role: {},
   homeSliders: [],
   requesterRequest: {},
+  projects: [],
+  project: {},
   deviceId: ''
 };
 
