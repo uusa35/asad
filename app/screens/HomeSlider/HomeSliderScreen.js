@@ -66,7 +66,7 @@ class HomeSliderScreen extends Component {
         onPress={() =>
           isAuthenticated(auth)
             ? navigation.navigate('Home')
-            : navigation.navigate('Register')
+            : navigation.navigate('RegisterAs')
         }
       />
     );

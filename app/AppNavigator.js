@@ -25,6 +25,13 @@ import ForgetPasswordScreen from './screens/ForgetPassword/ForgetPasswordScreen'
 import ResetPasswordScreen from './screens/ResetPassword/ResetPasswordScreen';
 import ContactusScreen from './screens/Contactus/ContactusScreen';
 import ProjectShowScreen from './screens/Project/ProjectShowScreen';
+import DrawingIndexScreen from './screens/Drawing/DrawingIndexScreen';
+import PaymentIndexScreen from './screens/Payment/PaymentIndexScreen';
+import DocumentIndexScreen from './screens/Document/DocumentIndexScreen';
+import GalleryIndexScreen from './screens/Gallery/GalleryIndexScreen';
+import PhaseIndexScreen from './screens/Phase/PhaseIndexScreen';
+import TimeframeIndexScreen from './screens/Timeframe/TimeframeIndexScreen';
+import VideoIndexScreen from './screens/Video/VideoIndexScreen';
 
 const navMiddleware = createReactNavigationReduxMiddleware(
   'root',
@@ -89,6 +96,48 @@ const HomeStack = createStackNavigator(
     },
     ProjectShow: {
       screen: ProjectShowScreen,
+      navigationOptions: ({navigation}) => ({
+        headerTitle: getHeader(navigation.state.params.name)
+      })
+    },
+    Drawings: {
+      screen: DrawingIndexScreen,
+      navigationOptions: ({navigation}) => ({
+        headerTitle: getHeader(navigation.state.params.name)
+      })
+    },
+    Documents: {
+      screen: DocumentIndexScreen,
+      navigationOptions: ({navigation}) => ({
+        headerTitle: getHeader(navigation.state.params.name)
+      })
+    },
+    Payments: {
+      screen: PaymentIndexScreen,
+      navigationOptions: ({navigation}) => ({
+        headerTitle: getHeader(navigation.state.params.name)
+      })
+    },
+    Phases: {
+      screen: PhaseIndexScreen,
+      navigationOptions: ({navigation}) => ({
+        headerTitle: getHeader(navigation.state.params.name)
+      })
+    },
+    Galleries: {
+      screen: GalleryIndexScreen,
+      navigationOptions: ({navigation}) => ({
+        headerTitle: getHeader(navigation.state.params.name)
+      })
+    },
+    Timeframes: {
+      screen: TimeframeIndexScreen,
+      navigationOptions: ({navigation}) => ({
+        headerTitle: getHeader(navigation.state.params.name)
+      })
+    },
+    Videos: {
+      screen: VideoIndexScreen,
       navigationOptions: ({navigation}) => ({
         headerTitle: getHeader(navigation.state.params.name)
       })

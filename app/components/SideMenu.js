@@ -69,14 +69,6 @@ class Menu extends Component {
                 onPress={() => navigation.navigate('RegisterAs')}
                 title={I18n.t('register_as')}
               />
-              <Button
-                buttonStyle={styles.menuBtn}
-                fontFamily="cairo"
-                color="black"
-                titleStyle={styles.titleStyle}
-                onPress={() => navigation.navigate('Contactus')}
-                title={I18n.t('contactus')}
-              />
             </View>
           ) : null}
           {token ? (
@@ -93,6 +85,14 @@ class Menu extends Component {
               />
             </View>
           ) : null}
+          <Button
+            buttonStyle={styles.menuBtn}
+            fontFamily="cairo"
+            color="black"
+            titleStyle={styles.titleStyle}
+            onPress={() => navigation.navigate('Contactus')}
+            title={I18n.t('contactus')}
+          />
           <Button
             buttonStyle={styles.menuBtn}
             fontFamily="Cairo"

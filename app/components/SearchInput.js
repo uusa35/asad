@@ -1,9 +1,9 @@
 import React, {Component} from 'react';
-import {View, Text, StyleSheet} from 'react-native';
+import {View, StyleSheet} from 'react-native';
 import I18n, {isRTL} from '../I18n';
 import FastImage from 'react-native-fast-image';
 import {colors, icons} from '../constants';
-import {Input, Icon} from 'react-native-elements';
+import {Input} from 'react-native-elements';
 
 export default class SearchInput extends Component {
   constructor(props) {
@@ -21,7 +21,7 @@ export default class SearchInput extends Component {
           rightIconContainerStyle={styles.rightIconStyle}
           keyboardType="default"
           rightIcon={
-            <FastImage source={icons.user} style={[styles.iconTabBar]} />
+            <FastImage source={icons.search} style={[styles.iconTabBar]} />
           }
         />
       </View>
@@ -53,7 +53,7 @@ export const styles = StyleSheet.create({
     height: 50
   },
   iconTabBar: {
-    width: 40,
-    height: 40
+    width: 20,
+    height: 20
   }
 });

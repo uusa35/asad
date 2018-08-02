@@ -15,7 +15,7 @@ export default class ProjectPanelWidget extends Component {
     const {project, handleClick} = this.props;
     return (
       <View key={project.id} style={styles.projectPanelWrapper}>
-        <FastImage source={images.bg} style={styles.imgBg} />
+        <FastImage source={images.projectBg} style={styles.imgBg} />
         <TouchableHighlight
           onPress={handleClick}
           kye={project.id}
@@ -29,22 +29,11 @@ export default class ProjectPanelWidget extends Component {
             />
             <View style={styles.panelInternalWrapper}>
               <Divider style={{backgroundColor: 'black', height: 1}} />
-              <Text
-                style={{
-                  marginTop: 5,
-                  marginBottom: 5,
-                  fontWeight: 'bold',
-                  fontSize: 20
-                }}>
+              <Text style={styles.projectPanelTitle}>
                 {project.name.toUpperCase()}
               </Text>
               <Divider style={{backgroundColor: 'black', height: 1}} />
-              <Text
-                style={{
-                  flexWrap: 'wrap',
-                  padding: 10,
-                  fontSize: 13
-                }}>
+              <Text style={styles.projectPanelDescription}>
                 {project.description.substring(0, 100)}
               </Text>
             </View>
@@ -89,19 +78,20 @@ const styles = StyleSheet.create({
   projectPanelWrapper: {
     backgroundColor: 'transparent',
     justifyContent: 'flex-start',
+    alignSelf: 'center',
     borderWidth: 1,
     borderColor: 'darkgrey',
-    marginBottom: 5,
-    padding: 10,
+    margin: 5,
+    width: 350,
     height: 350
   },
   imgBg: {
     position: 'absolute',
     top: 0,
     left: 0,
-    width: width - 10,
+    width: 350,
     height: 350,
-    opacity: 0.2
+    opacity: 0.8
   },
   projectPanelImage: {
     width: 90,
@@ -123,18 +113,35 @@ const styles = StyleSheet.create({
   },
   titleInfoWrapper: {
     flexDirection: 'row',
-    paddingBottom: 10
+    paddingBottom: 2
+  },
+  projectPanelTitle: {
+    marginTop: 5,
+    marginBottom: 5,
+    fontWeight: 'bold',
+    fontSize: 16,
+    textAlign: 'left',
+    fontFamily: 'cairo'
+  },
+  projectPanelDescription: {
+    flexWrap: 'wrap',
+    padding: 2,
+    fontSize: 13,
+    fontFamily: 'cairo',
+    textAlign: 'left'
   },
   titleInfoElement: {
-    width: 150,
+    flex: 1,
     fontWeight: 'bold',
     fontSize: 13,
-    textAlign: 'left'
+    textAlign: 'left',
+    fontFamily: 'cairo'
   },
   titleInfo: {
-    width: 150,
+    width: 90,
     fontWeight: 'bold',
     fontSize: 12,
-    textAlign: 'left'
+    textAlign: 'left',
+    fontFamily: 'cairo'
   }
 });

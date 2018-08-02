@@ -29,6 +29,7 @@ class RegisterAsScreen extends Component {
                 key={r.id}
                 title={r.slug}
                 routeName="Register"
+                iconName={r.name}
               />
             );
           })}

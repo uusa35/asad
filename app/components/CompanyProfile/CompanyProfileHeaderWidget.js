@@ -101,7 +101,6 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     fontFamily: 'cairo',
     fontSize: 16,
-    color: 'black',
     fontWeight: 'bold',
     color: '#3259e5'
   },

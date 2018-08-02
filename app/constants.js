@@ -28,7 +28,6 @@ export const initialState = {
   role: {},
   homeSliders: [],
   requesterRequest: {},
-  projects: [],
   project: {},
   deviceId: ''
 };
@@ -38,9 +37,6 @@ export const links = {
   storageUrl: isIOS
     ? appUrlIos + 'storage/uploads/images/'
     : appUrlAndroid + 'storage/uploads/images/',
-  thumbnailUrl: isIOS
-    ? appUrlIos + 'storage/uploads/images/thumbnail/'
-    : appUrlAndroid + 'storage/uploads/images/thumbnail/',
   thumbnailUrl: isIOS
     ? appUrlIos + 'storage/uploads/images/thumbnail/'
     : appUrlAndroid + 'storage/uploads/images/thumbnail/',
@@ -59,11 +55,13 @@ export const links = {
 
 export const images = {
   logo: require('./../assets/images/logo.png'),
-  bg: require('./../assets/images/bg.png')
+  bg: require('./../assets/images/bg.png'),
+  projectBg: require('./../assets/images/projectBg.png')
 };
 
 export const icons = {
   btnBt: require('./../assets/icons/btnBg.png'),
+  search: require('./../assets/icons/search.png'),
   client: require('./../assets/icons/client.png'),
   consultant: require('./../assets/icons/consultant.png'),
   user: require('./../assets/icons/user.png'),
@@ -74,7 +72,15 @@ export const icons = {
   company: require('./../assets/icons/company.png'),
   attachment: require('./../assets/icons/attachment.png'),
   address: require('./../assets/icons/address.png'),
-  password: require('./../assets/icons/password.png')
+  password: require('./../assets/icons/password.png'),
+  drawings: require('./../assets/icons/drawing.png'),
+  subcontractors: require('./../assets/icons/subcontractor.png'),
+  payments: require('./../assets/icons/payment.png'),
+  documents: require('./../assets/icons/document.png'),
+  files: require('./../assets/icons/file.png'),
+  galleries: require('./../assets/icons/gallery.png'),
+  timeframes: require('./../assets/icons/timeframe.png'),
+  phases: require('./../assets/icons/phase.png')
 };
 
 export const colors = {

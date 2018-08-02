@@ -322,6 +322,13 @@
   "press_here" : "اضغط هنا",
   "project_start_date" : "بداية المشروع",
   "project_end_date" : "نهاية المشروع",
-  "reference_id" : "رقم المرجع"
+  "reference_id" : "رقم المرجع",
+  "drawings" : "المخططات",
+  "documents" : "المستندات",
+  "files" : "الملفات",
+  "payments" : "الدفعات",
+  "subcontractors" : "الموردين",
+  "timeframes" : "الجدول الزمني",
+  "phases" : "مراحل التنفيذ"
 
 }

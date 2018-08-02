@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {View, StyleSheet} from 'react-native';
+import {View, StyleSheet, ScrollView} from 'react-native';
 import {height} from './../../constants';
 import PropTypes from 'prop-types';
 import I18n from './../../I18n';
@@ -16,17 +16,24 @@ export default class CompanyProfile extends Component {
   render() {
     const {settings} = this.props;
     return (
-      <View style={styles.scrollViewContainer}>
-        <View>
-          <CompanyProfileHeaderWidget settings={settings} />
-          <PanelWidget
-            title={I18n.t('about') + ' ' + settings.name}
-            content={settings.description}
-          />
-          <ContactDetailsWidget settings={settings} />
-          <LocationWidget settings={settings} />
+      <ScrollView
+        style={{backgroundColor: 'white'}}
+        showsHorizontalScrollIndicator={false}
+        contentContainerStyle={{paddingBottom: 30, backgroundColor: 'white'}}
+        endFillColor="white"
+        showsVerticalScrollIndicator={false}>
+        <View style={styles.scrollViewContainer}>
+          <View>
+            <CompanyProfileHeaderWidget settings={settings} />
+            <PanelWidget
+              title={I18n.t('about') + ' ' + settings.name}
+              content={settings.description}
+            />
+            <ContactDetailsWidget settings={settings} />
+            <LocationWidget settings={settings} />
+          </View>
         </View>
-      </View>
+      </ScrollView>
     );
   }
 }

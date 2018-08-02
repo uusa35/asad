@@ -3,7 +3,6 @@ import {View, Text, TouchableOpacity, StyleSheet} from 'react-native';
 import FastImage from 'react-native-fast-image';
 import {colors, height, icons, width} from '../constants';
 import PropTypes from 'prop-types';
-
 export default class MainBtnElement extends Component {
   constructor(props) {
     super(props);
@@ -34,16 +33,11 @@ MainBtnElement.propTypes = {
   navigation: PropTypes.object.isRequired,
   element: PropTypes.object.isRequired,
   title: PropTypes.string.isRequired,
-  routeName: PropTypes.string.isRequired
+  routeName: PropTypes.string.isRequired,
+  iconName: PropTypes.string.isRequired
 };
 
 const styles = StyleSheet.create({
-  wrapper: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: 'white'
-  },
   mainTitle: {
     textAlign: 'center',
     fontFamily: 'cairo',
