@@ -3,7 +3,11 @@ import {View, StyleSheet} from 'react-native';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import PropTypes from 'prop-types';
-import {submitLogin, enableErrorMessage} from '../../redux/actions';
+import {
+  submitLogin,
+  enableErrorMessage,
+  toggleLoading
+} from '../../redux/actions';
 import FastImage from 'react-native-fast-image';
 import {Input, Button} from 'react-native-elements';
 import I18n, {isRTL} from '../../I18n';
@@ -110,7 +114,9 @@ class LoginScreen extends Component {
 }
 
 LoginScreen.propTypes = {
-  navigation: PropTypes.object.isRequired
+  navigation: PropTypes.object.isRequired,
+  settings: PropTypes.object.isRequired,
+  auth: PropTypes.object
 };
 
 function mapStateToProps(state) {
@@ -120,8 +126,8 @@ function mapStateToProps(state) {
 function mapDispatchToProps(dispatch) {
   return {
     actions: {
-      submitLogin: bindActionCreators(submitLogin, dispatch),
-      enableErrorMessage: bindActionCreators(enableErrorMessage, dispatch)
+      enableErrorMessage: bindActionCreators(enableErrorMessage, dispatch),
+      submitLogin: bindActionCreators(submitLogin, dispatch)
     }
   };
 }

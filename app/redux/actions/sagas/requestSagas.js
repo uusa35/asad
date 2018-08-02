@@ -17,7 +17,6 @@ import {
   startLoginScenario
 } from './appSagas';
 import {postRegisterRequest, authenticate, getProjectById} from './../api';
-import * as helpers from '../../../helpers';
 import {NavigationActions} from 'react-navigation';
 import I18n from './../../../I18n';
 
@@ -29,7 +28,6 @@ export function* startSubmitRegisterRequest(action) {
   try {
     const registerRequest = yield call(postRegisterRequest, action.payload);
     if (!validate.isEmpty(registerRequest)) {
-      console.log('from inside true if');
       yield put({type: actions.GET_REGISTER_REQUEST, payload: registerRequest});
       yield call(enableSuccessMessage, I18n.t('register_request_stored'));
       yield delay(1000);
@@ -50,7 +48,6 @@ export function* startSubmitLogin(action) {
   try {
     const user = yield call(authenticate, action.payload);
     if (!validate.isEmpty(user) && !validate.isEmpty(user.api_token)) {
-      console.log('the authenicated user', user);
       yield all([
         call(enableLoading),
         call(startLoginScenario, user),
@@ -77,15 +74,19 @@ export function* getProject() {
 
 export function* startGetProjectScenario(action) {
   try {
-    console.log('action', action);
-    const project = yield call(getProjectById, action.payload.id);
+    const state = yield select();
+    const {token} = state;
+    const project = yield call(getProjectById, {
+      id: action.payload.id,
+      api_token: token
+    });
     if (!validate.isEmpty(project)) {
-      console.log('the project', project);
       yield all([
         put({type: actions.SET_PROJECT, payload: project}),
         put(
           NavigationActions.navigate({
-            routeName: 'ProjectShow'
+            routeName: 'ProjectShow',
+            params: {name: project.name}
           })
         )
       ]);

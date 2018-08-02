@@ -1,7 +1,7 @@
 /**
  * Created by usamaahmed on 10/5/17.
  */
-import {RootNavigator} from './../../Navigator';
+import {RootNavigator} from './../../AppNavigator';
 
 const initialState = RootNavigator.router.getStateForAction(
   RootNavigator.router.getActionForPathAndParams('Tabs')

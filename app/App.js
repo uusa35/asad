@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import {View} from 'react-native';
 import {connect} from 'react-redux';
 import {appBootstrap} from './redux/actions';
-import {AppNavigator} from './Navigator';
+import {AppNavigator} from './AppNavigator';
 import codePush from 'react-native-code-push';
 import LoadingView from './components/LoadingView';
 import LoadingOfflineView from './components/LoadingOfflineView';
@@ -24,7 +24,7 @@ class App extends Component {
   }
 
   render() {
-    const {network, bootStrapped, isLoading, message} = this.props;
+    const {network, bootStrapped, isLoading, message, navigation} = this.props;
     if (!validate.isEmpty(network) && !network.isConnected)
       return <LoadingOfflineView style={{flex: 1, alignItems: 'center'}} />;
     if (!bootStrapped || isLoading)

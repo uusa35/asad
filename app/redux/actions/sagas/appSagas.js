@@ -65,7 +65,7 @@ export function* startLogoutScenario() {
     put({type: actions.SET_TOKEN, payload: ''}),
     call(helpers.setAuthToken, ''),
     put({type: actions.TOGGLE_GUEST, payload: true}),
-    put({type: actions.SET_PROJECTS, payload: {}})
+    put({type: actions.SET_PROJECTS, payload: []})
   ]);
 }
 export function* appBootstrap() {
@@ -88,7 +88,6 @@ export function* startLoginScenario(user) {
     put({type: actions.TOGGLE_GUEST, payload: false})
   ]);
   if (!validate.isEmpty(user.projects)) {
-    console.log('from inside projects', user.projects);
     yield put({type: actions.SET_PROJECTS, payload: user.projects});
   }
 }
@@ -102,7 +101,6 @@ export function* startAppBootStrap() {
       put({type: actions.GET_DEVICE_ID, payload: device_id})
     ]);
     const api_token = yield call(helpers.getAuthToken);
-    console.log('the bootstrap api_token', api_token);
     const registerRequest = yield call(api.getRegisterRequest, device_id);
     if (!validate.isEmpty(registerRequest)) {
       // add the registerRequest to the state according to the device id;

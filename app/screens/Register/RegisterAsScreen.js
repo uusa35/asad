@@ -1,12 +1,12 @@
 import React, {Component} from 'react';
-import {View, Text, StyleSheet, TouchableOpacity} from 'react-native';
+import {View, Text, StyleSheet} from 'react-native';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import PropTypes from 'prop-types';
 import {toggleLoading} from '../../redux/actions';
-import FastImage from 'react-native-fast-image';
 import I18n from './../../I18n';
-import {height, icons, width, colors} from '../../constants';
+import {height, width} from '../../constants';
+import MainBtnElement from './../../components/MainBtnElement';
 
 class RegisterAsScreen extends Component {
   constructor(props) {
@@ -16,29 +16,20 @@ class RegisterAsScreen extends Component {
   render() {
     const {roles, navigation} = this.props;
     return (
-      <View style={styles.wrapper}>
+      <View style={styles.container}>
         <Text style={styles.mainTitle}>
           {I18n.t('please_choose_user_type')}
         </Text>
-        <View style={styles.roleContainer}>
+        <View style={styles.wrapper}>
           {roles.map(r => {
             return (
-              <View key={r.id} style={styles.roleWrapper}>
-                <View style={styles.roleSlug}>
-                  <Text style={styles.roleSlugTitle}>{r.slug}</Text>
-                </View>
-                <TouchableOpacity
-                  style={styles.roleTypeBtn}
-                  onPress={() =>
-                    navigation.navigate('Register', {type: r.name})
-                  }>
-                  <FastImage
-                    style={styles.roleIcon}
-                    source={icons[r.name]}
-                    resizeMode={FastImage.resizeMode.cover}
-                  />
-                </TouchableOpacity>
-              </View>
+              <MainBtnElement
+                element={r}
+                navigation={navigation}
+                key={r.id}
+                title={r.slug}
+                routeName="Register"
+              />
             );
           })}
         </View>
@@ -70,7 +61,7 @@ export default connect(
 )(RegisterAsScreen);
 
 const styles = StyleSheet.create({
-  wrapper: {
+  container: {
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
@@ -92,46 +83,10 @@ const styles = StyleSheet.create({
     height: height,
     width: width
   },
-  roleIcon: {
-    width: 40,
-    height: 40
-  },
-  roleContainer: {
+  wrapper: {
     flexDirection: 'row',
     justifyContent: 'center',
     alignItems: 'center',
     flexWrap: 'wrap'
-  },
-  roleWrapper: {
-    justifyContent: 'flex-start',
-    padding: 0,
-    alignItems: 'center',
-    width: 110,
-    flexWrap: 'wrap',
-    margin: 5,
-    marginBottom: 10,
-    marginTop: 10
-  },
-  roleSlug: {
-    backgroundColor: 'white',
-    width: 110,
-    height: 30,
-    alignItems: 'center',
-    shadowColor: 'black',
-    shadowOffset: {width: 1, height: 1},
-    shadowRadius: 2,
-    shadowOpacity: 0.2
-  },
-  roleTypeBtn: {
-    backgroundColor: colors.main,
-    width: 90,
-    height: 90,
-    alignItems: 'center',
-    justifyContent: 'center'
-  },
-  roleSlugTitle: {
-    color: 'black',
-    fontFamily: 'cairo',
-    fontSize: 12
   }
 });

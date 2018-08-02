@@ -1,9 +1,10 @@
 import React, {Component} from 'react';
 import {View, Text, StyleSheet, TouchableHighlight} from 'react-native';
-import {height, images, width, colors} from '../../constants';
+import {images, width} from '../../constants';
 import FastImage from 'react-native-fast-image';
 import {Divider} from 'react-native-elements';
 import I18n from './../../I18n';
+import PropTypes from 'prop-types';
 
 export default class ProjectPanelWidget extends Component {
   constructor(props) {
@@ -11,12 +12,12 @@ export default class ProjectPanelWidget extends Component {
   }
 
   render() {
-    const {project} = this.props;
+    const {project, handleClick} = this.props;
     return (
       <View key={project.id} style={styles.projectPanelWrapper}>
         <FastImage source={images.bg} style={styles.imgBg} />
         <TouchableHighlight
-          onPress={() => console.log('prjoect Id', project.id)}
+          onPress={handleClick}
           kye={project.id}
           underlayColor="transparent"
           activeOpacity={0.5}
@@ -78,6 +79,11 @@ export default class ProjectPanelWidget extends Component {
     );
   }
 }
+
+ProjectPanelWidget.propTypes = {
+  project: PropTypes.object.isRequired,
+  handleClick: PropTypes.func.isRequired
+};
 
 const styles = StyleSheet.create({
   projectPanelWrapper: {

@@ -6,7 +6,7 @@ import {createLogger} from 'redux-logger';
 import rootSaga from './actions/sagas';
 import createSagaMiddleware from 'redux-saga';
 import reducers from './reducers';
-import {navMiddleware} from './../Navigator';
+import {navMiddleware} from './../AppNavigator';
 
 const sagaMiddleware = createSagaMiddleware();
 let Store;

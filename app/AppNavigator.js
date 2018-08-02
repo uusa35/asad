@@ -90,7 +90,7 @@ const HomeStack = createStackNavigator(
     ProjectShow: {
       screen: ProjectShowScreen,
       navigationOptions: ({navigation}) => ({
-        headerTitle: getHeader(I18n.t('contactus'))
+        headerTitle: getHeader(navigation.state.params.name)
       })
     }
   },
@@ -168,6 +168,7 @@ const mapStateToProps = state => ({
   state: state.nav
 });
 
+const mapDispatchToProps = ({navigation}) => {};
 const AppNavigator = connect(mapStateToProps)(AppWithNavigationState);
 
 export {RootNavigator, AppNavigator, navMiddleware};

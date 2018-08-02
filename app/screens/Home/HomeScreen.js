@@ -1,12 +1,13 @@
 import React, {Component} from 'react';
-import {Text, ScrollView} from 'react-native';
+import {View, ScrollView} from 'react-native';
 import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
-import {toggleLoading} from '../../redux/actions';
+import {toggleLoading, getProject} from '../../redux/actions';
 import {bindActionCreators} from 'redux';
 import validate from 'validate.js';
 import CompanyProfile from './../../components/CompanyProfile/CompanyProfile';
-import ProjectIndexScreen from './../Project/ProjectIndexScreen';
+import SearchInput from '../../components/SearchInput';
+import ProjectPanelWidget from '../../components/Project/ProjectPanelWidget';
 
 class HomeScreen extends Component {
   constructor(props) {
@@ -14,7 +15,8 @@ class HomeScreen extends Component {
   }
 
   render() {
-    const {auth, settings} = this.props;
+    const {auth, projects, settings, navigation, actions} = this.props;
+    console.log('navigation from HomeScreenn', navigation);
     return (
       <ScrollView
         style={{backgroundColor: 'white'}}
@@ -22,10 +24,20 @@ class HomeScreen extends Component {
         contentContainerStyle={{paddingBottom: 30, backgroundColor: 'white'}}
         endFillColor="white"
         showsVerticalScrollIndicator={false}>
-        {validate.isEmpty(auth) ? (
+        {validate.isEmpty(auth) || validate.isEmpty(auth.projects) ? (
           <CompanyProfile settings={settings} />
         ) : (
-          <ProjectIndexScreen projects={auth.projects} />
+          <View>
+            <SearchInput />
+            {projects.map(project => (
+              <ProjectPanelWidget
+                project={project}
+                key={project.id}
+                handleClick={() => actions.getProject(project.id)}
+                iconName={project.name}
+              />
+            ))}
+          </View>
         )}
       </ScrollView>
     );
@@ -33,7 +45,10 @@ class HomeScreen extends Component {
 }
 
 HomeScreen.propTypes = {
-  navigation: PropTypes.object.isRequired
+  navigation: PropTypes.object.isRequired,
+  settings: PropTypes.object.isRequired,
+  auth: PropTypes.object,
+  projects: PropTypes.array
 };
 
 function mapStateToProps(state) {
@@ -43,7 +58,8 @@ function mapStateToProps(state) {
 function mapDispatchToProps(dispatch) {
   return {
     actions: {
-      toggleLoading: bindActionCreators(toggleLoading, dispatch)
+      toggleLoading: bindActionCreators(toggleLoading, dispatch),
+      getProject: bindActionCreators(getProject, dispatch)
     }
   };
 }

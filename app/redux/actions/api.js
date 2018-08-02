@@ -5,7 +5,8 @@ import {
   checkImage,
   getImagePath,
   getImageName,
-  getImageExtension
+  getImageExtension,
+  getAuthToken
 } from './../../helpers';
 import validate from 'validate.js';
 import {getLangForHeader} from '../../I18n';
@@ -58,9 +59,10 @@ export async function userShow(id) {
     .catch(e => e.response.data.message);
 }
 
-export async function getProjectById(id) {
+export async function getProjectById(element) {
+  const {id, api_token} = element;
   return await axiosInstance
-    .get(`project`, {params: id})
+    .get(`project/${id}`, {params: {api_token}})
     .then(r => r.data)
     .catch(e => e.response.data.message);
 }
