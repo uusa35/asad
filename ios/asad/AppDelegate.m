@@ -6,6 +6,7 @@
  */
 
 #import "AppDelegate.h"
+#import <CodePush/CodePush.h>
 
 #import <React/RCTBundleURLProvider.h>
 #import <React/RCTRootView.h>
@@ -16,7 +17,12 @@
 {
   NSURL *jsCodeLocation;
 
-  jsCodeLocation = [[RCTBundleURLProvider sharedSettings] jsBundleURLForBundleRoot:@"index" fallbackResource:nil];
+  
+    #ifdef DEBUG
+        jsCodeLocation = [[RCTBundleURLProvider sharedSettings] jsBundleURLForBundleRoot:@"index" fallbackResource:nil];
+    #else
+        jsCodeLocation = [CodePush bundleURL];
+    #endif
 [GMSServices provideAPIKey:@"AIzaSyDeKw2TRjlNMeYVApb2tR7hFPjSI_gdf5s"]; // add this line
   RCTRootView *rootView = [[RCTRootView alloc] initWithBundleURL:jsCodeLocation
                                                       moduleName:@"asad"

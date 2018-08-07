@@ -15,7 +15,7 @@ import {loginConstrains} from '../../constrains';
 class LoginScreen extends Component {
   constructor(props) {
     super(props);
-    this.state = {email: 'dandre.auer@wisoky.com', password: 'secret'};
+    this.state = {email: 'armstrong.octavia@hotmail.com', password: 'secret'};
   }
   _doSubmitLogin() {
     const {email, password} = this.state;

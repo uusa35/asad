@@ -44,6 +44,8 @@ target 'asad' do
   pod 'RNVectorIcons', :path => '../node_modules/react-native-vector-icons'
   pod 'RNDeviceInfo', :path => '../node_modules/react-native-device-info'
   pod 'RNImageCropPicker', :path =>  '../node_modules/react-native-image-crop-picker'
+  pod 'react-native-pdf', :path => '../node_modules/react-native-pdf'
+  pod 'Picker', :path => '../node_modules/react-native-picker'
 
 end
 

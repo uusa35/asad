@@ -10,7 +10,6 @@ export default class MainBtnElement extends Component {
 
   render() {
     const {navigation, element, title, routeName, iconName} = this.props;
-    console.log('the element', element);
     return (
       <View key={element.id} style={styles.elementWrapper}>
         <View style={styles.elementSlug} key={element.id * Math.random()}>
@@ -22,7 +21,8 @@ export default class MainBtnElement extends Component {
           onPress={() =>
             navigation.navigate(routeName, {
               type: element.name,
-              project: element
+              project: element,
+              name: element.name
             })
           }>
           <FastImage

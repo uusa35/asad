@@ -112,7 +112,11 @@ export function* startAppBootStrap() {
     }
     if (!validate.isEmpty(api_token)) {
       const user = yield call(api.authenticated, api_token);
-      if (!validate.isEmpty(user) && !validate.isEmpty(api_token)) {
+      if (
+        !validate.isEmpty(user) &&
+        validate.isObject(user) &&
+        !validate.isEmpty(api_token)
+      ) {
         yield all([
           call(startLoginScenario, user),
           call(toggleGuest, false),
@@ -143,7 +147,7 @@ export function* startAppBootStrap() {
       throw new Error(sliders.message);
     }
   } catch (e) {
-    console.log('the e', e);
+    console.log('the e from appSaga', e);
     yield all([call(disableLoading), call(enableErrorMessage, e.message)]);
   }
 }

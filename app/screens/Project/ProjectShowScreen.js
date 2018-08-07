@@ -25,7 +25,6 @@ class ProjectShowScreen extends Component {
 
   render() {
     const {project, navigation} = this.props;
-    console.log('element', )
     return (
       <ScrollView
         style={{backgroundColor: 'white'}}
@@ -42,6 +41,7 @@ class ProjectShowScreen extends Component {
           {modules.map(moduleName => {
             return (
               <MainBtnElement
+                key={Math.random()}
                 navigation={navigation}
                 element={project}
                 title={I18n.t(moduleName)}

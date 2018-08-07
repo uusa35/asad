@@ -1783,6 +1783,10 @@ cross-spawn@^5.0.1, cross-spawn@^5.1.0:
     shebang-command "^1.2.0"
     which "^1.2.9"
 
+crypto-js@^3.1.9-1:
+  version "3.1.9-1"
+  resolved "https://registry.yarnpkg.com/crypto-js/-/crypto-js-3.1.9-1.tgz#fda19e761fc077e01ffbfdc6e9fdfc59e8806cd8"
+
 cssom@0.3.x, "cssom@>= 0.3.2 < 0.4.0":
   version "0.3.4"
   resolved "https://registry.yarnpkg.com/cssom/-/cssom-0.3.4.tgz#8cd52e8a3acfd68d3aed38ee0a640177d2f9d797"
@@ -4724,6 +4728,13 @@ react-native-parallax-view@^2.0.6:
   resolved "https://registry.yarnpkg.com/react-native-parallax-view/-/react-native-parallax-view-2.0.6.tgz#7de78edb7a2a0aba6c01b99fce828d387cec3e93"
   dependencies:
     react-native-scrollable-mixin "^1.0.1"
+
+react-native-pdf@^5.0.1:
+  version "5.0.1"
+  resolved "https://registry.yarnpkg.com/react-native-pdf/-/react-native-pdf-5.0.1.tgz#624d5b5b5075067d39f29295dfa796447bcd045c"
+  dependencies:
+    crypto-js "^3.1.9-1"
+    prop-types "^15.5.10"
 
 react-native-picker@^4.3.7:
   version "4.3.7"

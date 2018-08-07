@@ -32,6 +32,7 @@ import GalleryIndexScreen from './screens/Gallery/GalleryIndexScreen';
 import PhaseIndexScreen from './screens/Phase/PhaseIndexScreen';
 import TimeframeIndexScreen from './screens/Timeframe/TimeframeIndexScreen';
 import VideoIndexScreen from './screens/Video/VideoIndexScreen';
+import AppPDFViewerScreen from './components/AppPDFViewerScreen';
 
 const navMiddleware = createReactNavigationReduxMiddleware(
   'root',
@@ -140,6 +141,12 @@ const HomeStack = createStackNavigator(
       screen: VideoIndexScreen,
       navigationOptions: ({navigation}) => ({
         headerTitle: getHeader(navigation.state.params.name)
+      })
+    },
+    AppPDFViewer: {
+      screen: AppPDFViewerScreen,
+      navigationOptions: ({navigation}) => ({
+        headerTitle: getHeader(navigation.state.params.title)
       })
     }
   },

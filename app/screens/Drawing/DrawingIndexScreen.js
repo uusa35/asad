@@ -8,16 +8,22 @@ import {
 } from 'react-native';
 import SearchInput from '../../components/SearchInput';
 import PropTypes from 'prop-types';
-import {colors, icons} from '../../constants';
+import {icons} from '../../constants';
 import FastImage from 'react-native-fast-image';
+import connect from 'react-redux/es/connect/connect';
+import {NavigationActions} from 'react-navigation';
+import {width} from './../../constants';
+import PdfBtnElement from './../../components/Project/PdfBtnElement';
 
-export default class DrawingIndexScreen extends Component {
+class DrawingIndexScreen extends Component {
   constructor(props) {
     super(props);
   }
 
   render() {
-    const {project} = this.props.navigation.state.params;
+    const {navigation} = this.props;
+    const {project} = navigation.state.params;
+    console.log('the pojrect', project);
     return (
       <ScrollView
         style={{backgroundColor: 'white'}}
@@ -26,29 +32,9 @@ export default class DrawingIndexScreen extends Component {
         endFillColor="white"
         showsVerticalScrollIndicator={false}>
         <SearchInput />
-        <View
-          style={{
-            flexDirection: 'row',
-            flexWrap: 'wrap',
-            justifyContent: 'space-around',
-            alignItems: 'center'
-          }}>
+        <View style={styles.wrapper}>
           {project.drawings.map(d => {
-            return (
-              <TouchableOpacity
-                key={d.id}
-                style={styles.elementTypeBtn}
-                onPress={() => console.log('clicked')}>
-                <View style={{ justyfContent : 'center', alignItems: 'center'}}>
-                  <FastImage
-                    style={styles.elementIcon}
-                    source={icons.drawings}
-                    resizeMode={FastImage.resizeMode.cover}
-                  />
-                  <Text>{d.name_ar}</Text>
-                </View>
-              </TouchableOpacity>
-            );
+            return <PdfBtnElement element={d} navigation={navigation} iconName="drawings"/>;
           })}
         </View>
       </ScrollView>
@@ -60,29 +46,17 @@ DrawingIndexScreen.propTypes = {
   navigation: PropTypes.object.isRequired
 };
 
+function mapStateToProps(state) {
+  return state;
+}
+
+export default connect(mapStateToProps)(DrawingIndexScreen);
+
 const styles = StyleSheet.create({
-  mainTitle: {
-    textAlign: 'center',
-    fontFamily: 'cairo',
-    fontSize: 22,
-    color: 'black',
-    fontWeight: 'bold',
-    padding: 15
-  },
-  elementIcon: {
-    width: 40,
-    height: 40
-  },
-  elementTypeBtn: {
-    backgroundColor: 'white',
-    width: 90,
-    height: 90,
-    margin: 5,
-    alignItems: 'center',
-    justifyContent: 'center',
-      shadowColor: 'black',
-      shadowOffset: {width: 1, height: 1},
-      shadowRadius: 2,
-      shadowOpacity: 0.2
+  wrapper: {
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+    justifyContent: 'space-around',
+    alignItems: 'center'
   }
 });

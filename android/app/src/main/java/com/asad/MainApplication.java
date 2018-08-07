@@ -3,6 +3,13 @@ package com.asad;
 import android.app.Application;
 
 import com.facebook.react.ReactApplication;
+import com.oblador.vectoricons.VectorIconsPackage;
+import com.avishayil.rnrestart.ReactNativeRestartPackage;
+import com.beefe.picker.PickerViewPackage;
+import com.airbnb.android.react.maps.MapsPackage;
+import com.reactnative.ivpusic.imagepicker.PickerPackage;
+import com.AlexanderZaytsev.RNI18n.RNI18nPackage;
+import org.wonday.pdf.RCTPdfView;
 import com.facebook.react.ReactNativeHost;
 import com.facebook.react.ReactPackage;
 import com.facebook.react.shell.MainReactPackage;
@@ -31,6 +38,13 @@ public class MainApplication extends Application implements ReactApplication {
     protected List<ReactPackage> getPackages() {
       return Arrays.<ReactPackage>asList(
           new MainReactPackage(),
+            new VectorIconsPackage(),
+            new ReactNativeRestartPackage(),
+            new PickerViewPackage(),
+            new MapsPackage(),
+            new PickerPackage(),
+            new RNI18nPackage(),
+            new RCTPdfView(),
           new RNDeviceInfo(),
           new ReactNativeRestartPackage(),
         new CodePush("6HBZ1CL-2S7qfsgVYi7NaD5EEOB00b4c8795-48ce-4f42-a238-9e0ad63054bd", MainApplication.this, BuildConfig.DEBUG),
