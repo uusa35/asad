@@ -130,6 +130,13 @@ export function getRoles(roles) {
   };
 }
 
+export function setGalleries(galleries) {
+  return {
+    type: actions.SET_GALLERIES,
+    payload: galleries
+  };
+}
+
 export function getSettings(settings) {
   return {
     type: actions.GET_SETTINGS,
@@ -209,5 +216,6 @@ export const APP_ACTIONS = {
   submitLogin,
   setProjects,
   getProject,
-  setProject
+  setProject,
+  setGalleries
 };

@@ -16,6 +16,7 @@ import deviceId from './deviceId';
 import registerRequest from './registerRequest';
 import projects from './projects';
 import project from './project';
+import galleries from './galleries';
 
 let reducers = combineReducers({
   nav: navReducer,
@@ -34,7 +35,8 @@ let reducers = combineReducers({
   deviceId,
   registerRequest,
   projects,
-  project
+  project,
+  galleries
 });
 
 export default reducers;

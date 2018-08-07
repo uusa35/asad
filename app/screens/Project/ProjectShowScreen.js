@@ -25,6 +25,7 @@ class ProjectShowScreen extends Component {
 
   render() {
     const {project, navigation} = this.props;
+    console.log('element', )
     return (
       <ScrollView
         style={{backgroundColor: 'white'}}

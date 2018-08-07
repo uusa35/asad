@@ -3,11 +3,7 @@ import {View, StyleSheet} from 'react-native';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import PropTypes from 'prop-types';
-import {
-  submitLogin,
-  enableErrorMessage,
-  toggleLoading
-} from '../../redux/actions';
+import {submitLogin, enableErrorMessage} from '../../redux/actions';
 import FastImage from 'react-native-fast-image';
 import {Input, Button} from 'react-native-elements';
 import I18n, {isRTL} from '../../I18n';
@@ -19,7 +15,7 @@ import {loginConstrains} from '../../constrains';
 class LoginScreen extends Component {
   constructor(props) {
     super(props);
-    this.state = {email: 'rahsaan.haley@collier.com', password: 'secret'};
+    this.state = {email: 'dandre.auer@wisoky.com', password: 'secret'};
   }
   _doSubmitLogin() {
     const {email, password} = this.state;

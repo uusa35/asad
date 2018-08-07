@@ -11,6 +11,7 @@ import {
 import validate from 'validate.js';
 import {getLangForHeader} from '../../I18n';
 
+console.log('the api link', links.apiUrl);
 const axiosInstance = axios.create({
   baseURL: links.apiUrl,
   headers: {lang: getLangForHeader()}
@@ -103,6 +104,13 @@ export async function postRegisterRequest(payload) {
 export async function getRegisterRequest(device_id) {
   return await axiosInstance
     .get(`request/${device_id}`)
+    .then(r => r.data)
+    .catch(e => e.response.data.message);
+}
+
+export async function getGalleries(type, element_id) {
+  return await axiosInstance
+    .get(`gallery`, {params: type, element_id})
     .then(r => r.data)
     .catch(e => e.response.data.message);
 }

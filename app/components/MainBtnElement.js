@@ -10,14 +10,21 @@ export default class MainBtnElement extends Component {
 
   render() {
     const {navigation, element, title, routeName, iconName} = this.props;
+    console.log('the element', element);
     return (
       <View key={element.id} style={styles.elementWrapper}>
-        <View style={styles.elementSlug}>
+        <View style={styles.elementSlug} key={element.id * Math.random()}>
           <Text style={styles.elementSlugTitle}>{title}</Text>
         </View>
         <TouchableOpacity
+          key={element.id * Math.random()}
           style={styles.elementTypeBtn}
-          onPress={() => navigation.navigate(routeName, {type: element.name})}>
+          onPress={() =>
+            navigation.navigate(routeName, {
+              type: element.name,
+              project: element
+            })
+          }>
           <FastImage
             style={styles.elementIcon}
             source={icons[iconName]}

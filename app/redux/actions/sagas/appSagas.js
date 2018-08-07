@@ -102,6 +102,10 @@ export function* startAppBootStrap() {
     ]);
     const api_token = yield call(helpers.getAuthToken);
     const registerRequest = yield call(api.getRegisterRequest, device_id);
+    const galleries = yield call(api.getGalleries, {
+      type: 'user',
+      element_id: 1
+    });
     if (!validate.isEmpty(registerRequest)) {
       // add the registerRequest to the state according to the device id;
       yield put({type: actions.GET_REGISTER_REQUEST, payload: registerRequest});
@@ -139,6 +143,7 @@ export function* startAppBootStrap() {
       throw new Error(sliders.message);
     }
   } catch (e) {
+    console.log('the e', e);
     yield all([call(disableLoading), call(enableErrorMessage, e.message)]);
   }
 }
