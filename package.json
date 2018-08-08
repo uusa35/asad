@@ -36,6 +36,7 @@
     "react-native-restart": "^0.0.6",
     "react-native-star-rating": "^1.0.9",
     "react-native-swiper": "^1.5.13",
+    "react-native-timeline-listview": "^0.2.3",
     "react-native-vector-icons": "^4.6.0",
     "react-navigation": "^2.7.0",
     "react-navigation-redux-helpers": "^2.0.2",
@@ -44,6 +45,7 @@
     "redux-logger": "^3.0.6",
     "redux-saga": "^0.16.0",
     "redux-thunk": "^2.3.0",
+    "rn-fetch-blob": "^0.10.12",
     "validate.js": "^0.12.0",
     "yarn": "^1.7.0"
   },

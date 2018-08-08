@@ -1,29 +1,24 @@
 import React, {Component} from 'react';
-import {
-  View,
-  StyleSheet,
-  ScrollView,
-  TouchableOpacity,
-  Text
-} from 'react-native';
-import SearchInput from '../../components/SearchInput';
+import {View, StyleSheet, ScrollView} from 'react-native';
 import PropTypes from 'prop-types';
-import {icons} from '../../constants';
-import FastImage from 'react-native-fast-image';
 import connect from 'react-redux/es/connect/connect';
-import {NavigationActions} from 'react-navigation';
-import {width} from './../../constants';
 import PdfBtnElement from './../../components/Project/PdfBtnElement';
 
-class DrawingIndexScreen extends Component {
+export default class DrawingIndexScreen extends Component {
   constructor(props) {
     super(props);
+    this.state = {project: {}, navigation: {}};
   }
 
+  static getDerivedStateFromProps(nextProps, prevProps) {
+    const {navigation} = nextProps;
+    return {
+      project: navigation.state.params.project,
+      navigation
+    };
+  }
   render() {
-    const {navigation} = this.props;
-    const {project} = navigation.state.params;
-    console.log('the pojrect', project);
+    const {navigation, project} = this.state;
     return (
       <ScrollView
         style={{backgroundColor: 'white'}}
@@ -31,26 +26,22 @@ class DrawingIndexScreen extends Component {
         contentContainerStyle={{paddingBottom: 30, backgroundColor: 'white'}}
         endFillColor="white"
         showsVerticalScrollIndicator={false}>
-        <SearchInput />
         <View style={styles.wrapper}>
           {project.drawings.map(d => {
-            return <PdfBtnElement element={d} navigation={navigation} iconName="drawings"/>;
+            return (
+              <PdfBtnElement
+                key={d.id}
+                element={d}
+                navigation={navigation}
+                iconName="drawings"
+              />
+            );
           })}
         </View>
       </ScrollView>
     );
   }
 }
-
-DrawingIndexScreen.propTypes = {
-  navigation: PropTypes.object.isRequired
-};
-
-function mapStateToProps(state) {
-  return state;
-}
-
-export default connect(mapStateToProps)(DrawingIndexScreen);
 
 const styles = StyleSheet.create({
   wrapper: {

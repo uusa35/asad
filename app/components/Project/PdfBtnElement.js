@@ -9,12 +9,21 @@ import Communications from 'react-native-communications';
 export default class PdfBtnElement extends Component {
   constructor(props) {
     super(props);
+    this.state = {element: {}, navigation: {}, iconName: ''};
+  }
+  static getDerivedStateFromProps(nextProps, prevProps) {
+    const {element, navigation, iconName} = nextProps;
+    return {
+      element,
+      navigation,
+      iconName
+    };
   }
 
   render() {
-    const {element, navigation, iconName } = this.props;
+    const {element, navigation, iconName} = this.state;
     return (
-      <View style={styles.elementContainer}>
+      <View style={styles.elementContainer} key={element.id}>
         <View
           style={{
             width: '120%',
@@ -33,19 +42,6 @@ export default class PdfBtnElement extends Component {
             size={10}
             color="black"
             onPress={() => Communications.web(element.path)}
-          />
-          <Icon
-            reverse
-            name="ios-eye"
-            type="ionicon"
-            size={10}
-            color="black"
-            onPress={() =>
-              navigation.navigate('AppPDFViewer', {
-                pdfLink: element.path,
-                title: element.name
-              })
-            }
           />
         </View>
         <TouchableOpacity
@@ -76,7 +72,7 @@ export default class PdfBtnElement extends Component {
 PdfBtnElement.propTypes = {
   navigation: PropTypes.object.isRequired,
   element: PropTypes.object.isRequired,
-  iconName : PropTypes.string.isRequired,
+  iconName: PropTypes.string.isRequired
 };
 
 const styles = StyleSheet.create({

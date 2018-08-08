@@ -32,6 +32,7 @@ import GalleryIndexScreen from './screens/Gallery/GalleryIndexScreen';
 import PhaseIndexScreen from './screens/Phase/PhaseIndexScreen';
 import TimeframeIndexScreen from './screens/Timeframe/TimeframeIndexScreen';
 import VideoIndexScreen from './screens/Video/VideoIndexScreen';
+import ReportIndexScreen from './screens/Report/ReportIndexScreen';
 import AppPDFViewerScreen from './components/AppPDFViewerScreen';
 
 const navMiddleware = createReactNavigationReduxMiddleware(
@@ -103,6 +104,12 @@ const HomeStack = createStackNavigator(
     },
     Drawings: {
       screen: DrawingIndexScreen,
+      navigationOptions: ({navigation}) => ({
+        headerTitle: getHeader(navigation.state.params.name)
+      })
+    },
+    Reports: {
+      screen: ReportIndexScreen,
       navigationOptions: ({navigation}) => ({
         headerTitle: getHeader(navigation.state.params.name)
       })

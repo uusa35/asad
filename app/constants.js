@@ -80,7 +80,8 @@ export const icons = {
   files: require('./../assets/icons/file.png'),
   galleries: require('./../assets/icons/gallery.png'),
   timeframes: require('./../assets/icons/timeframe.png'),
-  phases: require('./../assets/icons/phase.png')
+  phases: require('./../assets/icons/phase.png'),
+  reports: require('./../assets/icons/report.png')
 };
 
 export const colors = {

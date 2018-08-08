@@ -86,7 +86,7 @@ export function* startGetProjectScenario(action) {
         put(
           NavigationActions.navigate({
             routeName: 'ProjectShow',
-            params: {name: project.name}
+            params: {name: project.name, project: project}
           })
         )
       ]);

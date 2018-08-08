@@ -9,10 +9,20 @@ import MainBtnElement from '../MainBtnElement';
 export default class ProjectPanelHomeWidget extends Component {
   constructor(props) {
     super(props);
+    this.state = {name: '', description: '', image: ''};
+  }
+
+  static getDerivedStateFromProps(nextProps, prevProps) {
+    const {name, description, image} = nextProps;
+    return {
+      name,
+      description,
+      image
+    };
   }
 
   render() {
-    const {name, description, image} = this.props;
+    const {name, description, image} = this.state;
     return (
       <View style={styles.headerContainer}>
         <FastImage
@@ -33,7 +43,7 @@ export default class ProjectPanelHomeWidget extends Component {
   }
 }
 
-MainBtnElement.propTypes = {
+ProjectPanelHomeWidget.propTypes = {
   name: PropTypes.string.isRequired,
   description: PropTypes.string.isRequired,
   image: PropTypes.string.isRequired

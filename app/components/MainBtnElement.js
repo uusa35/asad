@@ -6,10 +6,28 @@ import PropTypes from 'prop-types';
 export default class MainBtnElement extends Component {
   constructor(props) {
     super(props);
+    this.state = {
+      element: {},
+      navigation: {},
+      title: '',
+      routeName: '',
+      iconName: ''
+    };
+  }
+
+  static getDerivedStateFromProps(nextProps, prevProps) {
+    const {navigation, element, title, routeName, iconName} = nextProps;
+    return {
+      navigation,
+      element,
+      title,
+      routeName,
+      iconName
+    };
   }
 
   render() {
-    const {navigation, element, title, routeName, iconName} = this.props;
+    const {navigation, element, title, routeName, iconName} = this.state;
     return (
       <View key={element.id} style={styles.elementWrapper}>
         <View style={styles.elementSlug} key={element.id * Math.random()}>

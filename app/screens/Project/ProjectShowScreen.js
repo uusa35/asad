@@ -16,15 +16,25 @@ const modules = [
   'payments',
   'galleries',
   'subcontractors',
-  'timeframes'
+  'timeframes',
+  'reports'
 ];
-class ProjectShowScreen extends Component {
+export default class ProjectShowScreen extends Component {
   constructor(props) {
     super(props);
+    this.state = {project: {}, navigation: {}};
+  }
+
+  static getDerivedStateFromProps(nextProps, prevProps) {
+    const {navigation} = nextProps;
+    return {
+      project: navigation.state.params.project,
+      navigation
+    };
   }
 
   render() {
-    const {project, navigation} = this.props;
+    const {project, navigation} = this.state;
     return (
       <ScrollView
         style={{backgroundColor: 'white'}}
@@ -57,14 +67,14 @@ class ProjectShowScreen extends Component {
 }
 
 ProjectShowScreen.propTypes = {
-  navigation: PropTypes.object.isRequired,
-  project: PropTypes.object.isRequired
+  navigation: PropTypes.object.isRequired
+  // project: PropTypes.object.isRequired
 };
 
-function mapStateToProps(state) {
-  return state;
-}
+// function mapStateToProps(state) {
+//   return state;
+// }
 
-export default connect(mapStateToProps)(ProjectShowScreen);
+// export default connect(mapStateToProps)(ProjectShowScreen);
 
 export const styles = StyleSheet.create({});

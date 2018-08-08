@@ -10,7 +10,7 @@
 
 #import <React/RCTBundleURLProvider.h>
 #import <React/RCTRootView.h>
-@import GoogleMaps;
+
 @implementation AppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
@@ -23,7 +23,7 @@
     #else
         jsCodeLocation = [CodePush bundleURL];
     #endif
-[GMSServices provideAPIKey:@"AIzaSyDeKw2TRjlNMeYVApb2tR7hFPjSI_gdf5s"]; // add this line
+
   RCTRootView *rootView = [[RCTRootView alloc] initWithBundleURL:jsCodeLocation
                                                       moduleName:@"asad"
                                                initialProperties:nil
