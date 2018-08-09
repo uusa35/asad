@@ -1,8 +1,7 @@
 import React, {Component} from 'react';
 import {View, StyleSheet, ScrollView} from 'react-native';
 import PropTypes from 'prop-types';
-import connect from 'react-redux/es/connect/connect';
-import PdfBtnElement from './../../components/Project/PdfBtnElement';
+import PanelBtnElement from './../../components/Project/PanelBtnElement';
 
 export default class DocumentIndexScreen extends Component {
   constructor(props) {
@@ -10,7 +9,7 @@ export default class DocumentIndexScreen extends Component {
     this.state = {project: {}, navigation: {}};
   }
 
-  static getDerivedStateFromProps(nextProps, prevProps) {
+  static getDerivedStateFromProps(nextProps) {
     const {navigation} = nextProps;
     return {
       project: navigation.state.params.project,
@@ -30,11 +29,12 @@ export default class DocumentIndexScreen extends Component {
         <View style={styles.wrapper}>
           {project.documents.map(d => {
             return (
-              <PdfBtnElement
+              <PanelBtnElement
                 key={d.id}
                 element={d}
                 navigation={navigation}
                 iconName="documents"
+                routeName="AppPDFViewer"
               />
             );
           })}

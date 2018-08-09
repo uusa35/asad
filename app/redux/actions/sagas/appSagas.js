@@ -68,6 +68,7 @@ export function* startLogoutScenario() {
     put({type: actions.SET_PROJECTS, payload: []})
   ]);
 }
+
 export function* appBootstrap() {
   yield takeLatest(actions.START_BOOTSTRAP, startAppBootStrap);
 }
@@ -106,6 +107,9 @@ export function* startAppBootStrap() {
       type: 'user',
       element_id: 1
     });
+    if (!validate.isEmpty(galleries)) {
+      yield put({type: actions.SET_GALLERIES, payload: galleries});
+    }
     if (!validate.isEmpty(registerRequest)) {
       // add the registerRequest to the state according to the device id;
       yield put({type: actions.GET_REGISTER_REQUEST, payload: registerRequest});

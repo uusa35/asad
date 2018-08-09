@@ -28,7 +28,7 @@ export default class ProjectPanelHomeWidget extends Component {
         <FastImage
           style={styles.logo}
           source={{uri: image}}
-          resizeMode={FastImage.resizeMode.center}
+          resizeMode={FastImage.resizeMode.cover}
         />
         <View style={styles.headerWrapper}>
           <View style={styles.headerTitleWrapper}>

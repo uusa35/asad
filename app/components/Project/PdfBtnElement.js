@@ -9,19 +9,20 @@ import Communications from 'react-native-communications';
 export default class PdfBtnElement extends Component {
   constructor(props) {
     super(props);
-    this.state = {element: {}, navigation: {}, iconName: ''};
+    this.state = {element: {}, navigation: {}, iconName: '', routeName};
   }
-  static getDerivedStateFromProps(nextProps, prevProps) {
-    const {element, navigation, iconName} = nextProps;
+  static getDerivedStateFromProps(nextProps) {
+    const {element, navigation, iconName, routeName} = nextProps;
     return {
       element,
       navigation,
-      iconName
+      iconName,
+      routeName
     };
   }
 
   render() {
-    const {element, navigation, iconName} = this.state;
+    const {element, navigation, iconName, routeName} = this.state;
     return (
       <View style={styles.elementContainer} key={element.id}>
         <View
@@ -48,7 +49,7 @@ export default class PdfBtnElement extends Component {
           key={element.id}
           style={styles.elementWrapper}
           onPress={() =>
-            navigation.navigate('AppPDFViewer', {
+            navigation.navigate(routeName, {
               pdfLink: element.path,
               title: element.name
             })
@@ -57,7 +58,7 @@ export default class PdfBtnElement extends Component {
             <FastImage
               style={styles.elementIcon}
               source={icons[iconName]}
-              resizeMode={FastImage.resizeMode.cover}
+              resizeMode={FastImage.resizeMode.contain}
             />
             <View style={styles.elementTextWrapper}>
               <Text style={styles.elementText}>{element.name}</Text>
@@ -72,7 +73,8 @@ export default class PdfBtnElement extends Component {
 PdfBtnElement.propTypes = {
   navigation: PropTypes.object.isRequired,
   element: PropTypes.object.isRequired,
-  iconName: PropTypes.string.isRequired
+  iconName: PropTypes.string.isRequired,
+  routeName: PropTypes.string.isRequired
 };
 
 const styles = StyleSheet.create({

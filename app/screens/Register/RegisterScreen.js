@@ -94,6 +94,7 @@ class RegisterScreen extends Component {
                     <FastImage
                       source={icons.company}
                       style={[styles.iconTabBar]}
+                      resizeMode={FastImage.resizeMode.contain}
                     />
                   }
                 />

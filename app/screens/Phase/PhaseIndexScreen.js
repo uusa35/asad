@@ -1,9 +1,8 @@
 import React, {Component} from 'react';
 import {View, Text, ScrollView, StyleSheet} from 'react-native';
-import Timeline from 'react-native-timeline-listview';
 import PdfBtnElement from '../../components/Project/PdfBtnElement';
 import PropTypes from 'prop-types';
-import connect from 'react-redux/es/connect/connect';
+import Timeline from 'react-native-timeline-listview';
 
 export default class PhaseIndexScreen extends Component {
   constructor(props) {
@@ -11,7 +10,7 @@ export default class PhaseIndexScreen extends Component {
     this.state = {project: {}, navigation: {}};
   }
 
-  static getDerivedStateFromProps(nextProps, prevProps) {
+  static getDerivedStateFromProps(nextProps) {
     const {navigation} = nextProps;
     return {
       project: navigation.state.params.project,
@@ -20,7 +19,7 @@ export default class PhaseIndexScreen extends Component {
   }
 
   render() {
-    const {project} = this.state;
+    const {navigation, project} = this.state;
     return (
       <ScrollView
         style={{backgroundColor: 'white'}}
@@ -35,6 +34,7 @@ export default class PhaseIndexScreen extends Component {
                 key={d.id}
                 element={d}
                 navigation={navigation}
+                routeName="TaskShow"
                 iconName="phases"
               />
             );

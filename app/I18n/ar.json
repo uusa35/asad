@@ -329,6 +329,11 @@
   "payments" : "الدفعات",
   "subcontractors" : "الموردين",
   "timeframes" : "الجدول الزمني",
-  "phases" : "مراحل التنفيذ"
+  "phases" : "مراحل التنفيذ",
+  "file_type" : "نوع الملف",
+  "on_going" : "داخلي",
+  "out_going" : "خارجي",
+  "view" : "مشاهدة",
+  "download" : "تحميل"
 
 }

@@ -26,6 +26,7 @@ export default class ProjectPanelWidget extends Component {
             <FastImage
               source={{uri: project.image}}
               style={styles.projectPanelImage}
+              resizeMode={FastImage.resizeMode.cover}
             />
             <View style={styles.panelInternalWrapper}>
               <Divider style={{backgroundColor: 'black', height: 1}} />

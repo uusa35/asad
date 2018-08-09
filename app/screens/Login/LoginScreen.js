@@ -15,7 +15,7 @@ import {loginConstrains} from '../../constrains';
 class LoginScreen extends Component {
   constructor(props) {
     super(props);
-    this.state = {email: 'armstrong.octavia@hotmail.com', password: 'secret'};
+    this.state = {email: 'demond.bartell@champlin.com', password: 'secret'};
   }
   _doSubmitLogin() {
     const {email, password} = this.state;
@@ -57,7 +57,11 @@ class LoginScreen extends Component {
                 leftIconContainerStyle={styles.leftIconStyle}
                 keyboardType="email-address"
                 leftIcon={
-                  <FastImage source={icons.user} style={[styles.iconTabBar]} />
+                  <FastImage
+                    source={icons.user}
+                    style={[styles.iconTabBar]}
+                    resizeMode={FastImage.resizeMode.contain}
+                  />
                 }
               />
               <Input
@@ -72,6 +76,7 @@ class LoginScreen extends Component {
                   <FastImage
                     source={icons.password}
                     style={[styles.iconTabBar]}
+                    resizeMode={FastImage.resizeMode.contain}
                   />
                 }
               />

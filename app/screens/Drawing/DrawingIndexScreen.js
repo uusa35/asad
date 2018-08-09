@@ -34,6 +34,7 @@ export default class DrawingIndexScreen extends Component {
                 element={d}
                 navigation={navigation}
                 iconName="drawings"
+                routeName="AppPDFViewer"
               />
             );
           })}

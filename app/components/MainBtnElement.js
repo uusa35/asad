@@ -46,7 +46,7 @@ export default class MainBtnElement extends Component {
           <FastImage
             style={styles.elementIcon}
             source={icons[iconName]}
-            resizeMode={FastImage.resizeMode.cover}
+            resizeMode={FastImage.resizeMode.contain}
           />
         </TouchableOpacity>
       </View>

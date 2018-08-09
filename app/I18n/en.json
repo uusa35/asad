@@ -307,5 +307,10 @@
   "subcontractors" : "Sub Contractors",
   "timeframes" : "Time Frames",
   "phases" : "Phases",
+  "file_type" : "File Type",
+  "on_going" : "On Going",
+  "out_going" : "Out Going",
+  "view" : "view",
+  "download" : "download"
 
 }
