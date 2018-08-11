@@ -315,6 +315,7 @@
   "due_date" : "Due Date",
   "date_received" : "Date Received",
   "consultants" : "Consultants",
-  "not_available" : "Not Available"
+  "not_available" : "Not Available",
+  "close" : "Close"
 
 }

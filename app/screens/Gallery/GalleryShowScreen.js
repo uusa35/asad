@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
-import {View, Text} from 'react-native';
 import ImageBrowser from 'react-native-interactive-image-gallery';
+import I18n from './../../I18n';
+
 export default class GalleryShowScreen extends Component {
   constructor(props) {
     super(props);
@@ -28,6 +29,9 @@ export default class GalleryShowScreen extends Component {
       })
     );
     console.log('urs', imageURLs);
-    return <ImageBrowser images={imageURLs} />;
+    return <ImageBrowser
+        images={imageURLs}
+        closeText={I18n.t('close')}
+    />;
   }
 }

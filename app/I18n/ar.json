@@ -338,6 +338,7 @@
   "due_date" : "تاريخ الاستحقاق",
   "date_received" : "تاريخ الاستلام",
   "consultants" : "الاستشاريين",
-  "not_available" : "لا يوجد"
+  "not_available" : "لا يوجد",
+  "close" : "غلق"
 
 }
