@@ -114,3 +114,13 @@ export async function getGalleries(type, element_id) {
     .then(r => r.data)
     .catch(e => e.response.data.message);
 }
+
+export async function getSearchingProjects(text, api_token) {
+  return await axiosInstance
+    .get(`search`, {
+      Authorization: 'Bearer ' + api_token,
+      params: text
+    })
+    .then(r => r.data)
+    .catch(e => e.response.data.message);
+}

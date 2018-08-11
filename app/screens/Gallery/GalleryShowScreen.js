@@ -28,10 +28,6 @@ export default class GalleryShowScreen extends Component {
         description: img.caption
       })
     );
-    console.log('urs', imageURLs);
-    return <ImageBrowser
-        images={imageURLs}
-        closeText={I18n.t('close')}
-    />;
+    return <ImageBrowser images={imageURLs} closeText={I18n.t('close')} />;
   }
 }

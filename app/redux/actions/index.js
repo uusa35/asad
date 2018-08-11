@@ -195,6 +195,20 @@ export function setProject(project) {
   };
 }
 
+export function getSearch(text) {
+  return {
+    type: actions.GET_SEARCH,
+    payload: text
+  };
+}
+
+export function setSearch(projects) {
+  return {
+    type: actions.SET_SEARCH,
+    payload: projects
+  };
+}
+
 export const APP_ACTIONS = {
   appBootstrap,
   toggleBootstrapped,
@@ -217,5 +231,7 @@ export const APP_ACTIONS = {
   setProjects,
   getProject,
   setProject,
-  setGalleries
+  setGalleries,
+  getSearch,
+  setSearch
 };

@@ -29,7 +29,8 @@ export const initialState = {
   homeSliders: [],
   requesterRequest: {},
   project: {},
-  deviceId: ''
+  deviceId: '',
+  search: []
 };
 
 export const links = {

@@ -1,33 +1,43 @@
 import React, {Component} from 'react';
-import {View, StyleSheet} from 'react-native';
+import {View, StyleSheet, TouchableOpacity} from 'react-native';
 import I18n, {isRTL} from '../I18n';
 import FastImage from 'react-native-fast-image';
 import {colors, icons} from '../constants';
 import {Input} from 'react-native-elements';
+import PropTypes from 'prop-types';
 
 export default class SearchInput extends Component {
   constructor(props) {
     super(props);
+    this.state = {text: ''};
   }
 
   render() {
+    const {text} = this.state;
+    const {startSearching} = this.props;
     return (
       <View style={{alignItems: 'center'}}>
         <Input
-          onChangeText={e => this.setState({search: e})}
+          onChangeText={text => this.setState({text})}
           placeholder={I18n.t('search').toUpperCase()}
           inputContainerStyle={styles.inputContainerStyle}
           inputStyle={styles.inputTextStyle}
           rightIconContainerStyle={styles.rightIconStyle}
           keyboardType="default"
           rightIcon={
-            <FastImage source={icons.search} style={[styles.iconTabBar]} />
+            <TouchableOpacity onPress={() => startSearching(text)}>
+              <FastImage source={icons.search} style={[styles.iconTabBar]} />
+            </TouchableOpacity>
           }
         />
       </View>
     );
   }
 }
+
+SearchInput.propTypes = {
+  startSearching: PropTypes.func.isRequired
+};
 
 export const styles = StyleSheet.create({
   inputContainerStyle: {

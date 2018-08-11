@@ -7,19 +7,15 @@ import {getProject} from '../../redux/actions';
 import {connect} from 'react-redux';
 import SearchInput from './../../components/SearchInput';
 
-class ProjectIndexScreen extends Component {
+class SearchIndexScreen extends Component {
   constructor(props) {
     super(props);
   }
 
-  _startSearching = text => {
-    console.log('the searching element is ', text);
-  };
   render() {
     const {projects, actions} = this.props;
     return (
       <View>
-        <SearchInput handleClick={this._startSearching} />
         {projects.map(project => (
           <ProjectPanelWidget
             project={project}
@@ -32,7 +28,7 @@ class ProjectIndexScreen extends Component {
   }
 }
 
-ProjectIndexScreen.propTypes = {
+SearchIndexScreen.propTypes = {
   projects: PropTypes.array.isRequired
 };
 
@@ -51,6 +47,6 @@ function mapDispatchToProps(dispatch) {
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(ProjectIndexScreen);
+)(SearchIndexScreen);
 
 export const styles = StyleSheet.create({});

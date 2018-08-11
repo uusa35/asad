@@ -16,7 +16,12 @@ import {
   enableLoading,
   startLoginScenario
 } from './appSagas';
-import {postRegisterRequest, authenticate, getProjectById} from './../api';
+import {
+  postRegisterRequest,
+  authenticate,
+  getProjectById,
+  getSearchingProjects
+} from './../api';
 import {NavigationActions} from 'react-navigation';
 import I18n from './../../../I18n';
 
@@ -62,6 +67,39 @@ export function* startSubmitLogin(action) {
       ]);
     } else {
       throw new Error(user);
+    }
+  } catch (e) {
+    yield all([call(disableLoading), call(enableErrorMessage, e.message)]);
+  }
+}
+
+export function* getSearch() {
+  yield takeLatest(actions.GET_SEARCH, startGetSearchScenario);
+}
+
+export function* startGetSearchScenario(action) {
+  console.log('action', action.payload);
+  try {
+    yield call(enableLoading);
+    const state = yield select();
+    const text = action.payload;
+    const api_token = state.auth;
+    const search = yield call(getSearchingProjects, {
+      text,
+      api_token
+    });
+    console.log('the search reults', search);
+    if (validate.isEmpty(search) && validate.isArray(search)) {
+      yield all([
+        disableLoading,
+        put({type: actions.SET_SEARCH, payload: search}),
+        put(
+          NavigationActions.navigate({
+            routeName: 'SearchIndex',
+            params: {projects: search}
+          })
+        )
+      ]);
     }
   } catch (e) {
     yield all([call(disableLoading), call(enableErrorMessage, e.message)]);

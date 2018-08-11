@@ -38,6 +38,7 @@ import TaskShowScreen from './screens/Task/TaskShowScreen';
 import SubcontractorIndexScreen from './screens/Subcontractor/SubcontractorIndexScreen';
 import ConsultantIndexScreen from './screens/Consultant/ConsultantIndexScreen';
 import GalleryShowScreen from './screens/Gallery/GalleryShowScreen';
+import SearchIndexScreen from './screens/Search/SearchIndexScreen';
 
 const navMiddleware = createReactNavigationReduxMiddleware(
   'root',
@@ -98,6 +99,12 @@ const HomeStack = createStackNavigator(
       screen: ContactusScreen,
       navigationOptions: ({navigation}) => ({
         headerTitle: getHeader(I18n.t('contactus'))
+      })
+    },
+    SearchIndex: {
+      screen: SearchIndexScreen,
+      navigationOptions: ({navigation}) => ({
+        headerTitle: getHeader(navigation.state.params.name)
       })
     },
     ProjectShow: {
