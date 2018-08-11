@@ -75,6 +75,7 @@ export const icons = {
   password: require('./../assets/icons/password.png'),
   drawings: require('./../assets/icons/drawing.png'),
   subcontractors: require('./../assets/icons/subcontractor.png'),
+  consultants: require('./../assets/icons/consultant.png'),
   payments: require('./../assets/icons/payment.png'),
   documents: require('./../assets/icons/document.png'),
   files: require('./../assets/icons/file.png'),

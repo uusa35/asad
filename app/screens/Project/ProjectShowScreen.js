@@ -17,7 +17,9 @@ const modules = [
   'galleries',
   'subcontractors',
   'timeframes',
-  'reports'
+  'reports',
+  'subcontractors',
+  'consultants'
 ];
 export default class ProjectShowScreen extends Component {
   constructor(props) {
@@ -25,7 +27,7 @@ export default class ProjectShowScreen extends Component {
     this.state = {project: {}, navigation: {}};
   }
 
-  static getDerivedStateFromProps(nextProps, prevProps) {
+  static getDerivedStateFromProps(nextProps) {
     const {navigation} = nextProps;
     return {
       project: navigation.state.params.project,
@@ -57,7 +59,7 @@ export default class ProjectShowScreen extends Component {
                 element={project}
                 title={I18n.t(moduleName)}
                 iconName={moduleName}
-                routeName={upperFirst(moduleName)}
+                moduleName={moduleName}
               />
             );
           })}

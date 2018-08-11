@@ -334,6 +334,10 @@
   "on_going" : "داخلي",
   "out_going" : "خارجي",
   "view" : "مشاهدة",
-  "download" : "تحميل"
+  "download" : "تحميل",
+  "due_date" : "تاريخ الاستحقاق",
+  "date_received" : "تاريخ الاستلام",
+  "consultants" : "الاستشاريين",
+  "not_available" : "لا يوجد"
 
 }

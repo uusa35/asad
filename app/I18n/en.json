@@ -310,7 +310,11 @@
   "file_type" : "File Type",
   "on_going" : "On Going",
   "out_going" : "Out Going",
-  "view" : "view",
-  "download" : "download"
+  "view" : "View",
+  "download" : "Download",
+  "due_date" : "Due Date",
+  "date_received" : "Date Received",
+  "consultants" : "Consultants",
+  "not_available" : "Not Available"
 
 }

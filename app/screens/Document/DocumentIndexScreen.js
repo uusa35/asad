@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {View, StyleSheet, ScrollView} from 'react-native';
 import PropTypes from 'prop-types';
-import PanelBtnElement from './../../components/Project/PanelBtnElement';
+import DocumentPanelElement from '../../components/Project/DocumentPanelElement';
 
 export default class DocumentIndexScreen extends Component {
   constructor(props) {
@@ -29,7 +29,7 @@ export default class DocumentIndexScreen extends Component {
         <View style={styles.wrapper}>
           {project.documents.map(d => {
             return (
-              <PanelBtnElement
+              <DocumentPanelElement
                 key={d.id}
                 element={d}
                 navigation={navigation}

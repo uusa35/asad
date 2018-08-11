@@ -2,22 +2,26 @@ import React, {Component} from 'react';
 import {View, Text, ScrollView, StyleSheet} from 'react-native';
 import PropTypes from 'prop-types';
 import PaymentPanelElement from './../../components/Project/PaymentPanelElement';
+import SubContractorPanelElement from '../../components/Project/SubContractorPanelElement';
+import validate from 'validate.js';
+import NotAvailableElement from '../../components/NotAvailableElement';
 
-export default class PaymentIndexScreen extends Component {
+export default class SubcontractorIndexScreen extends Component {
   constructor(props) {
     super(props);
-    this.state = {project: {}, navigation: {}};
+    this.state = {project: {}, navigation: {}, moduleName: ''};
   }
 
   static getDerivedStateFromProps(nextProps) {
     const {navigation} = nextProps;
     return {
       project: navigation.state.params.project,
+      moduleName: navigation.state.params.moduleName,
       navigation
     };
   }
   render() {
-    const {navigation, project} = this.state;
+    const {navigation, project, moduleName} = this.state;
     return (
       <ScrollView
         style={{backgroundColor: 'white'}}
@@ -26,24 +30,28 @@ export default class PaymentIndexScreen extends Component {
         endFillColor="white"
         showsVerticalScrollIndicator={false}>
         <View style={styles.wrapper}>
-          {project.payments.map(d => {
-            return (
-              <PaymentPanelElement
-                key={d.id}
-                element={d}
-                navigation={navigation}
-                iconName="payments"
-                routeName="AppPDFViewer"
-              />
-            );
-          })}
+          {validate.isEmpty(project.subcontractors) ? (
+            <NotAvailableElement moduleName={moduleName} />
+          ) : (
+            <View>
+              {project.subcontractors.map(d => {
+                return (
+                  <SubContractorPanelElement
+                    key={d.id}
+                    element={d}
+                    navigation={navigation}
+                  />
+                );
+              })}
+            </View>
+          )}
         </View>
       </ScrollView>
     );
   }
 }
 
-PaymentIndexScreen.propTypes = {
+SubcontractorIndexScreen.propTypes = {
   navigation: PropTypes.object.isRequired
 };
 

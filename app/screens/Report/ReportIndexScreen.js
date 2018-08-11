@@ -35,6 +35,7 @@ export default class ReportIndexScreen extends Component {
                 element={d}
                 navigation={navigation}
                 iconName="reports"
+                routeName="AppPDFViewer"
               />
             );
           })}

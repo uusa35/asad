@@ -19,7 +19,6 @@ export default class TaskShowScreen extends Component {
 
   render() {
     const {element} = this.state;
-    console.log('the tasks', element.tasks[0]);
     return (
       <ScrollView
         style={{backgroundColor: 'white'}}

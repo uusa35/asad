@@ -3,6 +3,8 @@ import {View, Text, TouchableOpacity, StyleSheet} from 'react-native';
 import FastImage from 'react-native-fast-image';
 import {colors, height, icons, width} from '../constants';
 import PropTypes from 'prop-types';
+import _ from 'lodash';
+
 export default class MainBtnElement extends Component {
   constructor(props) {
     super(props);
@@ -10,24 +12,24 @@ export default class MainBtnElement extends Component {
       element: {},
       navigation: {},
       title: '',
-      routeName: '',
+      moduleName: '',
       iconName: ''
     };
   }
 
-  static getDerivedStateFromProps(nextProps, prevProps) {
-    const {navigation, element, title, routeName, iconName} = nextProps;
+  static getDerivedStateFromProps(nextProps) {
+    const {navigation, element, title, moduleName, iconName} = nextProps;
     return {
       navigation,
       element,
       title,
-      routeName,
+      moduleName,
       iconName
     };
   }
 
   render() {
-    const {navigation, element, title, routeName, iconName} = this.state;
+    const {navigation, element, title, iconName, moduleName} = this.state;
     return (
       <View key={element.id} style={styles.elementWrapper}>
         <View style={styles.elementSlug} key={element.id * Math.random()}>
@@ -37,10 +39,11 @@ export default class MainBtnElement extends Component {
           key={element.id * Math.random()}
           style={styles.elementTypeBtn}
           onPress={() =>
-            navigation.navigate(routeName, {
+            navigation.navigate(_.upperFirst(moduleName), {
               type: element.name,
               project: element,
-              name: element.name
+              name: element.name,
+              moduleName
             })
           }>
           <FastImage
@@ -58,8 +61,8 @@ MainBtnElement.propTypes = {
   navigation: PropTypes.object.isRequired,
   element: PropTypes.object.isRequired,
   title: PropTypes.string.isRequired,
-  routeName: PropTypes.string.isRequired,
-  iconName: PropTypes.string.isRequired
+  iconName: PropTypes.string.isRequired,
+  moduleName: PropTypes.string.isRequired
 };
 
 const styles = StyleSheet.create({

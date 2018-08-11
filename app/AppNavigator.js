@@ -35,6 +35,9 @@ import VideoIndexScreen from './screens/Video/VideoIndexScreen';
 import ReportIndexScreen from './screens/Report/ReportIndexScreen';
 import AppPDFViewerScreen from './components/AppPDFViewerScreen';
 import TaskShowScreen from './screens/Task/TaskShowScreen';
+import SubcontractorIndexScreen from './screens/Subcontractor/SubcontractorIndexScreen';
+import ConsultantIndexScreen from './screens/Consultant/ConsultantIndexScreen';
+import GalleryShowScreen from './screens/Gallery/GalleryShowScreen';
 
 const navMiddleware = createReactNavigationReduxMiddleware(
   'root',
@@ -124,23 +127,41 @@ const HomeStack = createStackNavigator(
     Payments: {
       screen: PaymentIndexScreen,
       navigationOptions: ({navigation}) => ({
-        headerTitle: getHeader(navigation.state.params.name)
+        headerTitle: getHeader(navigation.state.params.project.name)
+      })
+    },
+    Subcontractors: {
+      screen: SubcontractorIndexScreen,
+      navigationOptions: ({navigation}) => ({
+        headerTitle: getHeader(navigation.state.params.project.name)
+      })
+    },
+    Consultants: {
+      screen: ConsultantIndexScreen,
+      navigationOptions: ({navigation}) => ({
+        headerTitle: getHeader(navigation.state.params.project.name)
       })
     },
     Phases: {
       screen: PhaseIndexScreen,
       navigationOptions: ({navigation}) => ({
-        headerTitle: getHeader(navigation.state.params.name)
+        headerTitle: getHeader(navigation.state.params.project.name)
       })
     },
     TaskShow: {
       screen: TaskShowScreen,
       navigationOptions: ({navigation}) => ({
-        headerTitle: getHeader(navigation.state.params.name)
+        headerTitle: getHeader(navigation.state.params.element.name)
       })
     },
     Galleries: {
       screen: GalleryIndexScreen,
+      navigationOptions: ({navigation}) => ({
+        headerTitle: getHeader(navigation.state.params.name)
+      })
+    },
+    GalleryShow: {
+      screen: GalleryShowScreen,
       navigationOptions: ({navigation}) => ({
         headerTitle: getHeader(navigation.state.params.name)
       })

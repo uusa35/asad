@@ -6,7 +6,7 @@ import {width, height, text, colors} from './../../constants';
 import I18n from './../../I18n';
 import Communications from 'react-native-communications';
 
-export default class PanelBtnElement extends Component {
+export default class PaymentPanelElement extends Component {
   constructor(props) {
     super(props);
     this.state = {element: {}, navigation: {}, iconName: ''};
@@ -23,51 +23,32 @@ export default class PanelBtnElement extends Component {
   }
 
   render() {
-    const {element, navigation} = this.state;
+    const {element} = this.state;
     return (
       <View style={styles.panelWrapper}>
         <Divider />
         <View style={styles.panelTitleWrapper}>
-          <Text style={styles.title}>{element.name}</Text>
+          <Text style={styles.panelBtnText}>{element.name}</Text>
         </View>
         <Divider />
         <View style={styles.panelDescriptionWrapper}>
-          <Text>{element.description}</Text>
+          <Text style={styles.panelBtnText}>{element.description}</Text>
         </View>
         <Divider />
         <View style={styles.fileTypeView}>
-          <Text style={{width: 100}}>{I18n.t('file_type')} : </Text>
-          <Text>
-            {element.on_going ? I18n.t('on_going') : I18n.t('out_going')}
-          </Text>
+          <Text style={styles.fileTypeText}>{I18n.t('due_date')} : </Text>
+          <Text style={styles.fileTypeText}>{element.due_date}</Text>
         </View>
-        <View style={styles.panelBtnWrapper}>
-          <TouchableOpacity
-            onPress={() => Communications.web(element.path)}
-            style={styles.panelBtn}>
-            <Text style={styles.panelBtnText}>
-              {I18n.t('download').toUpperCase()}
-            </Text>
-          </TouchableOpacity>
-          <TouchableOpacity
-            onPress={() =>
-              navigation.navigate('AppPDFViewer', {
-                pdfLink: element.path,
-                title: element.name
-              })
-            }
-            style={styles.panelBtn}>
-            <Text style={styles.panelBtnText}>
-              {I18n.t('view').toUpperCase()}
-            </Text>
-          </TouchableOpacity>
+        <View style={styles.fileTypeView}>
+          <Text style={styles.fileTypeText}>{I18n.t('date_received')} : </Text>
+          <Text style={styles.fileTypeText}>{element.date_received}</Text>
         </View>
       </View>
     );
   }
 }
 
-PanelBtnElement.propTypes = {
+PaymentPanelElement.propTypes = {
   navigation: PropTypes.object.isRequired,
   element: PropTypes.object.isRequired,
   iconName: PropTypes.string.isRequired
@@ -90,13 +71,17 @@ const styles = StyleSheet.create({
   },
   panelTitleWrapper: {
     width: '100%',
+    textAlign: 'left',
+    fontFamily: text.font,
     padding: 5
   },
   panelDescriptionWrapper: {
     width: '100%',
+    fontFamily: text.font,
     padding: 5,
     paddingTop: 15,
-    paddingBottom: 15
+    paddingBottom: 15,
+    textAlign: 'left'
   },
   panelBtn: {
     justifyContent: 'center',
@@ -112,7 +97,8 @@ const styles = StyleSheet.create({
   panelBtnText: {
     fontFamily: text.font,
     fontSize: text.medium,
-    fontWeight: 'bold'
+    fontWeight: 'bold',
+    textAlign: 'left'
   },
   fileTypeView: {
     flexDirection: 'row',
@@ -121,5 +107,11 @@ const styles = StyleSheet.create({
   panelBtnWrapper: {
     flexDirection: 'row',
     justifyContent: 'space-around'
+  },
+  fileTypeText: {
+    width: 100,
+    fontFamily: text.font,
+    fontSize: text.small,
+    textAlign: 'left'
   }
 });
