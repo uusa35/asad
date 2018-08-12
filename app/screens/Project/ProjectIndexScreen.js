@@ -12,14 +12,10 @@ class ProjectIndexScreen extends Component {
     super(props);
   }
 
-  _startSearching = text => {
-    console.log('the searching element is ', text);
-  };
   render() {
     const {projects, actions} = this.props;
     return (
       <View>
-        <SearchInput handleClick={this._startSearching} />
         {projects.map(project => (
           <ProjectPanelWidget
             project={project}

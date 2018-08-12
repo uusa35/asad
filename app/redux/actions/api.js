@@ -115,12 +115,17 @@ export async function getGalleries(type, element_id) {
     .catch(e => e.response.data.message);
 }
 
-export async function getSearchingProjects(text, api_token) {
-  return await axiosInstance
-    .get(`search`, {
-      Authorization: 'Bearer ' + api_token,
-      params: text
-    })
+export async function getSearchingProjects(element) {
+  const { text , api_token } = element;
+    const searchInstance = axios.create({
+        baseURL: links.apiUrl,
+        headers: {
+          lang: getLangForHeader(),
+            "Authorization": "Bearer " + api_token,
+        }
+    });
+  return await searchInstance
+    .get(`search`, {params: { text }})
     .then(r => r.data)
     .catch(e => e.response.data.message);
 }

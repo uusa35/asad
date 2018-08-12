@@ -80,18 +80,18 @@ export function* getSearch() {
 export function* startGetSearchScenario(action) {
   console.log('action', action.payload);
   try {
-    yield call(enableLoading);
     const state = yield select();
     const text = action.payload;
-    const api_token = state.auth;
+    const api_token = state.token;
     const search = yield call(getSearchingProjects, {
       text,
       api_token
     });
-    console.log('the search reults', search);
-    if (validate.isEmpty(search) && validate.isArray(search)) {
+    console.log('the search', search);
+    if (!validate.isEmpty(search)) {
+      console.log('if statement');
       yield all([
-        disableLoading,
+          call(enableSuccessMessage,I18n.t('search_success')),
         put({type: actions.SET_SEARCH, payload: search}),
         put(
           NavigationActions.navigate({
@@ -100,6 +100,8 @@ export function* startGetSearchScenario(action) {
           })
         )
       ]);
+    } else {
+      throw new Error(JSON.stringify(search));
     }
   } catch (e) {
     yield all([call(disableLoading), call(enableErrorMessage, e.message)]);

@@ -37,7 +37,6 @@ export default class ProjectShowScreen extends Component {
 
   render() {
     const {project, navigation} = this.state;
-    console.log('the project', project);
     return (
       <ScrollView
         style={{backgroundColor: 'white'}}
