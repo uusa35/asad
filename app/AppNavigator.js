@@ -104,7 +104,7 @@ const HomeStack = createStackNavigator(
     SearchIndex: {
       screen: SearchIndexScreen,
       navigationOptions: ({navigation}) => ({
-        headerTitle: getHeader(navigation.state.params.name)
+        headerTitle: getHeader(I18n.t('search'))
       })
     },
     ProjectShow: {

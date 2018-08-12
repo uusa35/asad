@@ -1,11 +1,10 @@
 import React, {Component} from 'react';
-import {View, StyleSheet} from 'react-native';
+import {View, StyleSheet, ScrollView} from 'react-native';
 import PropTypes from 'prop-types';
 import ProjectPanelWidget from '../../components/Project/ProjectPanelWidget';
 import {bindActionCreators} from 'redux';
 import {getProject} from '../../redux/actions';
 import {connect} from 'react-redux';
-import SearchInput from './../../components/SearchInput';
 
 class ProjectIndexScreen extends Component {
   constructor(props) {
@@ -15,7 +14,12 @@ class ProjectIndexScreen extends Component {
   render() {
     const {projects, actions} = this.props;
     return (
-      <View>
+      <ScrollView
+        style={{backgroundColor: 'white'}}
+        showsHorizontalScrollIndicator={false}
+        contentContainerStyle={{paddingBottom: 30, backgroundColor: 'white'}}
+        endFillColor="white"
+        showsVerticalScrollIndicator={false}>
         {projects.map(project => (
           <ProjectPanelWidget
             project={project}
@@ -23,7 +27,7 @@ class ProjectIndexScreen extends Component {
             handleClick={() => actions.getProject(project.id)}
           />
         ))}
-      </View>
+      </ScrollView>
     );
   }
 }

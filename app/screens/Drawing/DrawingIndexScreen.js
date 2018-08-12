@@ -1,7 +1,5 @@
 import React, {Component} from 'react';
 import {View, StyleSheet, ScrollView} from 'react-native';
-import PropTypes from 'prop-types';
-import connect from 'react-redux/es/connect/connect';
 import PdfBtnElement from './../../components/Project/PdfBtnElement';
 
 export default class DrawingIndexScreen extends Component {

@@ -13,10 +13,10 @@ class SearchIndexScreen extends Component {
   }
 
   render() {
-    const {projects, actions} = this.props;
+    const {search, actions} = this.props;
     return (
       <View>
-        {projects.map(project => (
+        {search.map(project => (
           <ProjectPanelWidget
             project={project}
             key={project.id}

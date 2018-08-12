@@ -87,11 +87,11 @@ export function* startGetSearchScenario(action) {
       text,
       api_token
     });
-    console.log('the search', search);
-    if (!validate.isEmpty(search)) {
+    console.log('the search result', search);
+    if (!validate.isEmpty(search) && validate.isArray(search)) {
       console.log('if statement');
       yield all([
-          call(enableSuccessMessage,I18n.t('search_success')),
+        call(enableSuccessMessage, I18n.t('search_success')),
         put({type: actions.SET_SEARCH, payload: search}),
         put(
           NavigationActions.navigate({
@@ -101,7 +101,8 @@ export function* startGetSearchScenario(action) {
         )
       ]);
     } else {
-      throw new Error(JSON.stringify(search));
+      yield put({type: actions.SET_SEARCH, payload: []});
+      throw new Error(search);
     }
   } catch (e) {
     yield all([call(disableLoading), call(enableErrorMessage, e.message)]);
