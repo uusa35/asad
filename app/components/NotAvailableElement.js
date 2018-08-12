@@ -7,18 +7,18 @@ import PropTypes from 'prop-types';
 export default class NotAvailableElement extends Component {
   constructor(props) {
     super(props);
-    this.state = {moduleName: ''};
+    this.state = {routeName: ''};
   }
 
   static getDerivedStateFromProps(nextProps) {
-    const {moduleName} = nextProps;
+    const {routeName} = nextProps;
     return {
-      moduleName
+      routeName
     };
   }
 
   render() {
-    const {moduleName} = this.state;
+    const {routeName} = this.state;
     return (
       <View style={{margin: 10}}>
         <Button
@@ -35,7 +35,7 @@ export default class NotAvailableElement extends Component {
             <Icon name="ios-alert" type="ionicon" size={25} color="white" />
           }
           title={
-            I18n.t('not_available') + ' ' + I18n.t(moduleName.toLowerCase())
+            I18n.t('not_available') + ' ' + I18n.t(routeName.toLowerCase())
           }
         />
       </View>
@@ -44,5 +44,5 @@ export default class NotAvailableElement extends Component {
 }
 
 NotAvailableElement.propTypes = {
-  moduleName: PropTypes.string.isRequired
+  routeName: PropTypes.string.isRequired
 };

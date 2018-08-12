@@ -12,24 +12,24 @@ export default class MainBtnElement extends Component {
       element: {},
       navigation: {},
       title: '',
-      moduleName: '',
+      routeName: '',
       iconName: ''
     };
   }
 
   static getDerivedStateFromProps(nextProps) {
-    const {navigation, element, title, moduleName, iconName} = nextProps;
+    const {navigation, element, title, routeName, iconName} = nextProps;
     return {
       navigation,
       element,
       title,
-      moduleName,
+      routeName,
       iconName
     };
   }
 
   render() {
-    const {navigation, element, title, iconName, moduleName} = this.state;
+    const {navigation, element, title, iconName, routeName} = this.state;
     return (
       <View key={element.id} style={styles.elementWrapper}>
         <View style={styles.elementSlug} key={element.id * Math.random()}>
@@ -39,11 +39,11 @@ export default class MainBtnElement extends Component {
           key={element.id * Math.random()}
           style={styles.elementTypeBtn}
           onPress={() =>
-            navigation.navigate(_.upperFirst(moduleName), {
+            navigation.navigate(_.upperFirst(routeName), {
               type: element.name,
               project: element,
               name: element.name,
-              moduleName
+              routeName
             })
           }>
           <FastImage
@@ -62,7 +62,7 @@ MainBtnElement.propTypes = {
   element: PropTypes.object.isRequired,
   title: PropTypes.string.isRequired,
   iconName: PropTypes.string.isRequired,
-  moduleName: PropTypes.string.isRequired
+  routeName: PropTypes.string.isRequired
 };
 
 const styles = StyleSheet.create({

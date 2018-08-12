@@ -5,6 +5,7 @@ import ProjectPanelHomeWidget from '../../components/Project/ProjectPanelHomeWid
 import MainBtnElement from '../../components/MainBtnElement';
 import I18n from './../../I18n';
 import {upperFirst} from 'lodash';
+import validate from 'validate.js';
 const modules = [
   'drawings',
   'documents',
@@ -47,15 +48,20 @@ export default class ProjectShowScreen extends Component {
         />
         <View style={{flexDirection: 'row', flexWrap: 'wrap', margin: 5}}>
           {modules.map(moduleName => {
+            console.log(project[moduleName]);
             return (
-              <MainBtnElement
-                key={Math.random()}
-                navigation={navigation}
-                element={project}
-                title={I18n.t(moduleName)}
-                iconName={moduleName}
-                moduleName={moduleName}
-              />
+              <View>
+                {!validate.isEmpty(project[moduleName]) ? (
+                  <MainBtnElement
+                    key={Math.random()}
+                    navigation={navigation}
+                    element={project}
+                    title={I18n.t(moduleName)}
+                    iconName={moduleName}
+                    routeName={moduleName}
+                  />
+                ) : null}
+              </View>
             );
           })}
         </View>
