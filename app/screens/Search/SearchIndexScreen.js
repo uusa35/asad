@@ -5,7 +5,6 @@ import ProjectPanelWidget from '../../components/Project/ProjectPanelWidget';
 import {bindActionCreators} from 'redux';
 import {getProject} from '../../redux/actions';
 import {connect} from 'react-redux';
-import SearchInput from './../../components/SearchInput';
 
 class SearchIndexScreen extends Component {
   constructor(props) {

@@ -1,11 +1,7 @@
 import React, {Component} from 'react';
-import {View, Text, StyleSheet, ScrollView} from 'react-native';
+import {View, StyleSheet, ScrollView} from 'react-native';
 import PropTypes from 'prop-types';
-import {bindActionCreators} from 'redux';
-import {getProject} from '../../redux/actions';
-import connect from 'react-redux/es/connect/connect';
 import ProjectPanelHomeWidget from '../../components/Project/ProjectPanelHomeWidget';
-import ProjectPanelWidget from '../../components/Project/ProjectPanelWidget';
 import MainBtnElement from '../../components/MainBtnElement';
 import I18n from './../../I18n';
 import {upperFirst} from 'lodash';

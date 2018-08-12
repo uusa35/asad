@@ -1,9 +1,6 @@
 import React, {Component} from 'react';
-import {View} from 'react-native';
 import ImageBrowser from 'react-native-interactive-image-gallery';
 import I18n from './../../I18n';
-import NotAvailableElement from './../../components/NotAvailableElement';
-import validate from 'validate.js';
 
 export default class GalleryShowScreen extends Component {
   constructor(props) {

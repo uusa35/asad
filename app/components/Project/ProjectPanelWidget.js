@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import {View, Text, StyleSheet, TouchableHighlight} from 'react-native';
-import {images, width} from '../../constants';
+import {images} from '../../constants';
 import FastImage from 'react-native-fast-image';
 import {Divider} from 'react-native-elements';
 import I18n from './../../I18n';

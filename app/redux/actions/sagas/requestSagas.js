@@ -78,7 +78,6 @@ export function* getSearch() {
 }
 
 export function* startGetSearchScenario(action) {
-  console.log('action', action.payload);
   try {
     const state = yield select();
     const text = action.payload;
@@ -87,9 +86,7 @@ export function* startGetSearchScenario(action) {
       text,
       api_token
     });
-    console.log('the search result', search);
     if (!validate.isEmpty(search) && validate.isArray(search)) {
-      console.log('if statement');
       yield all([
         call(enableSuccessMessage, I18n.t('search_success')),
         put({type: actions.SET_SEARCH, payload: search}),

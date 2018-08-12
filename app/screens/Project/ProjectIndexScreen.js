@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {View, StyleSheet, ScrollView} from 'react-native';
+import {StyleSheet, ScrollView} from 'react-native';
 import PropTypes from 'prop-types';
 import ProjectPanelWidget from '../../components/Project/ProjectPanelWidget';
 import {bindActionCreators} from 'redux';
