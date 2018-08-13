@@ -48,9 +48,8 @@ export default class ProjectShowScreen extends Component {
         />
         <View style={{flexDirection: 'row', flexWrap: 'wrap', margin: 5}}>
           {modules.map(moduleName => {
-            console.log(project[moduleName]);
             return (
-              <View>
+              <View key={Math.random()}>
                 {!validate.isEmpty(project[moduleName]) ? (
                   <MainBtnElement
                     key={Math.random()}
