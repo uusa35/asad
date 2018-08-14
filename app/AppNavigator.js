@@ -30,7 +30,7 @@ import PaymentIndexScreen from './screens/Payment/PaymentIndexScreen';
 import DocumentIndexScreen from './screens/Document/DocumentIndexScreen';
 import GalleryIndexScreen from './screens/Gallery/GalleryIndexScreen';
 import PhaseIndexScreen from './screens/Phase/PhaseIndexScreen';
-import TimeframeIndexScreen from './screens/Timeframe/TimeframeIndexScreen';
+import TimelineIndexScreen from './screens/Timeline/TimelineIndexScreen';
 import VideoIndexScreen from './screens/Video/VideoIndexScreen';
 import ReportIndexScreen from './screens/Report/ReportIndexScreen';
 import AppPDFViewerScreen from './components/AppPDFViewerScreen';
@@ -131,6 +131,12 @@ const HomeStack = createStackNavigator(
         headerTitle: getHeader(navigation.state.params.name)
       })
     },
+      Timelines: {
+      screen: TimelineIndexScreen,
+      navigationOptions: ({navigation}) => ({
+        headerTitle: getHeader(navigation.state.params.name)
+      })
+    },
     Payments: {
       screen: PaymentIndexScreen,
       navigationOptions: ({navigation}) => ({
@@ -174,7 +180,7 @@ const HomeStack = createStackNavigator(
       })
     },
     Timeframes: {
-      screen: TimeframeIndexScreen,
+      screen: TimelineIndexScreen,
       navigationOptions: ({navigation}) => ({
         headerTitle: getHeader(navigation.state.params.name)
       })

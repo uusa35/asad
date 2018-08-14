@@ -13,7 +13,7 @@ const modules = [
   'payments',
   'galleries',
   'subcontractors',
-  'timeframes',
+  'timelines',
   'reports',
   'subcontractors',
   'consultants'

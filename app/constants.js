@@ -81,7 +81,7 @@ export const icons = {
   documents: require('./../assets/icons/document.png'),
   files: require('./../assets/icons/file.png'),
   galleries: require('./../assets/icons/gallery.png'),
-  timeframes: require('./../assets/icons/timeframe.png'),
+  timelines: require('./../assets/icons/timeline.png'),
   phases: require('./../assets/icons/phase.png'),
   reports: require('./../assets/icons/report.png')
 };
