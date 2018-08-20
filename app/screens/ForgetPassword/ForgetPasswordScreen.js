@@ -5,7 +5,7 @@ import {bindActionCreators} from 'redux';
 import PropTypes from 'prop-types';
 import {submitForgetPassword, enableErrorMessage} from '../../redux/actions';
 import FastImage from 'react-native-fast-image';
-import {Input, Button} from 'react-native-elements';
+import {Input, Button, Icon} from 'react-native-elements';
 import I18n, {isRTL} from '../../I18n';
 import {colors, height, width, images, icons} from '../../constants';
 import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scroll-view';
@@ -61,15 +61,18 @@ class ForgetPasswordScreen extends Component {
                 }
               />
               <Input
+                keyboardType="phone-pad"
                 onChangeText={e => this.setState({mobile: e})}
                 placeholder={I18n.t('mobile').toUpperCase()}
                 inputContainerStyle={styles.inputContainerStyle}
                 inputStyle={styles.inputTextStyle}
                 leftIconContainerStyle={styles.leftIconStyle}
                 leftIcon={
-                  <FastImage
-                    source={icons.password}
-                    style={[styles.iconTabBar]}
+                  <Icon
+                    name="phone"
+                    type="font-awesome"
+                    size={24}
+                    color="black"
                   />
                 }
               />

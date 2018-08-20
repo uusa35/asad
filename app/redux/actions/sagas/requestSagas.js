@@ -135,3 +135,17 @@ export function* startGetProjectScenario(action) {
     yield all([call(disableLoading), call(enableErrorMessage, e.message)]);
   }
 }
+
+export function* submitForgetPassword() {
+  yield takeLatest(actions.SUBMIT_FORGET_PASSWORD, startSubmitForgetPassword);
+}
+
+export function* startSubmitForgetPassword(action) {
+  console.log('the action', action);
+  try {
+    const user = yield call(api.startSubmitForgetPassword, action);
+
+  } catch(e) {
+      yield all([call(disableLoading), call(enableErrorMessage, e.message)]);
+  }
+}

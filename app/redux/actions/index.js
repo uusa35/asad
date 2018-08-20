@@ -158,13 +158,10 @@ export function submitLogin(payload) {
   };
 }
 
-export function submitForgetPassword(email, mobile) {
+export function submitForgetPassword(payload) {
   return {
     type: actions.SUBMIT_FORGET_PASSWORD,
-    payload: {
-      email,
-      mobile
-    }
+    payload
   };
 }
 

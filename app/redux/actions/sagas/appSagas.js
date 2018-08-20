@@ -1,6 +1,6 @@
 import * as actions from '../types';
-import {takeLatest, call, put, all, select} from 'redux-saga/effects';
-import {defaultLang, setDirection} from './langSagas';
+import {takeLatest, call, put, all} from 'redux-saga/effects';
+import {defaultLang} from './langSagas';
 import * as api from '../api';
 import * as helpers from '../../../helpers';
 import validate from 'validate.js';

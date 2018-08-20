@@ -15,7 +15,13 @@ class AppPDFViewerScreen extends Component {
     const source = {uri: pdfLink};
     return (
       <View style={styles.container}>
-        <Pdf source={source} style={styles.pdf} />
+        <Pdf
+          source={source}
+          style={styles.pdf}
+          fitWidth={true}
+          enableAntialiasing={true}
+          enableRTL={true}
+        />
       </View>
     );
   }
@@ -40,6 +46,7 @@ const styles = StyleSheet.create({
   },
   pdf: {
     flex: 1,
-    width: width
+    width: width,
+    backgroundColor: 'white'
   }
 });

@@ -131,7 +131,7 @@ const HomeStack = createStackNavigator(
         headerTitle: getHeader(navigation.state.params.name)
       })
     },
-      Timelines: {
+    Timelines: {
       screen: TimelineIndexScreen,
       navigationOptions: ({navigation}) => ({
         headerTitle: getHeader(navigation.state.params.name)

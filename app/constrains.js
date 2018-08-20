@@ -40,11 +40,11 @@ export const userRegisterRequestConstraints = {
 };
 
 export const forgetPasswordConstrains = {
-  password: {
+  mobile: {
     presence: true,
     length: {
       minimum: 6,
-      message: 'must be at least 6 characters'
+      message: 'must be at least 8 numbers'
     }
   },
   email: {
