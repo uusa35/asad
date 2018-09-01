@@ -341,6 +341,7 @@
   "not_available" : "لا يوجد",
   "close" : "غلق",
   "images" : "صور",
-  "reports" : "تقارير"
+  "reports" : "تقارير",
+  "reference_no" : "رقم المرجع"
 
 }

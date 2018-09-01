@@ -71,13 +71,4 @@ export default class ProjectShowScreen extends Component {
 
 ProjectShowScreen.propTypes = {
   navigation: PropTypes.object.isRequired
-  // project: PropTypes.object.isRequired
 };
-
-// function mapStateToProps(state) {
-//   return state;
-// }
-
-// export default connect(mapStateToProps)(ProjectShowScreen);
-
-export const styles = StyleSheet.create({});

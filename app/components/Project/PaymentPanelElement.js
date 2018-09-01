@@ -23,7 +23,7 @@ export default class PaymentPanelElement extends Component {
   }
 
   render() {
-    const {element} = this.state;
+    const {element, navigation} = this.state;
     return (
       <View style={styles.panelWrapper}>
         <Divider />
@@ -36,12 +36,38 @@ export default class PaymentPanelElement extends Component {
         </View>
         <Divider />
         <View style={styles.fileTypeView}>
+          <Text style={styles.fileTypeText}>{I18n.t('reference_no')} : </Text>
+          <Text style={styles.fileTypeText}>{element.reference_no}</Text>
+        </View>
+        <Divider />
+        <View style={styles.fileTypeView}>
           <Text style={styles.fileTypeText}>{I18n.t('due_date')} : </Text>
           <Text style={styles.fileTypeText}>{element.due_date}</Text>
         </View>
         <View style={styles.fileTypeView}>
           <Text style={styles.fileTypeText}>{I18n.t('date_received')} : </Text>
           <Text style={styles.fileTypeText}>{element.date_received}</Text>
+        </View>
+        <View style={styles.panelBtnWrapper}>
+          <TouchableOpacity
+            onPress={() => Communications.web(element.path)}
+            style={styles.panelBtn}>
+            <Text style={styles.panelBtnText}>
+              {I18n.t('download').toUpperCase()}
+            </Text>
+          </TouchableOpacity>
+          <TouchableOpacity
+            onPress={() =>
+              navigation.navigate('AppPDFViewer', {
+                pdfLink: element.path,
+                title: element.name
+              })
+            }
+            style={styles.panelBtn}>
+            <Text style={styles.panelBtnText}>
+              {I18n.t('view').toUpperCase()}
+            </Text>
+          </TouchableOpacity>
         </View>
       </View>
     );
