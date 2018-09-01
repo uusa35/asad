@@ -10,10 +10,16 @@ if (ENV === 'local') {
     appUrlAndroid: 'http://10.0.2.2:8000/',
     port: PORT
   };
+} else if (ENV === 'production') {
+  module.exports = {
+    appUrlIos: 'http://app.asadgroup.com/',
+    appUrlAndroid: 'http://app.asadgroup.com/',
+    port: PORT
+  };
 } else {
   module.exports = {
-    appUrlIos: 'http://asadgroup.com/',
-    appUrlAndroid: 'http://asadgroup.com/',
+    appUrlIos: 'http://app.asadgroup.com/',
+    appUrlAndroid: 'http://app.asadgroup.com/',
     port: PORT
   };
 }

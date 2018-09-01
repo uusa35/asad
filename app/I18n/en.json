@@ -319,6 +319,7 @@
   "close" : "Close",
   "images" : "Images",
   "reports" : "Reports",
-  "reference_no" : "reference no"
+  "reference_no" : "reference no",
+  "timelines" : "time lines"
 
 }
