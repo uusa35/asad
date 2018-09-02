@@ -137,10 +137,15 @@ export function* startAppBootStrap() {
     const sliders = yield call(api.getHomeSliders, 'is_splash');
     const settings = yield call(api.getSettings);
     const roles = yield call(api.getRoles);
-    yield all([
-      put({type: actions.GET_ROLES, payload: roles}),
-      put({type: actions.GET_SETTINGS, payload: settings})
-    ]);
+    if (!validate.isEmpty(settings) && !validate.isEmpty(roles)) {
+      yield all([
+        put({type: actions.GET_ROLES, payload: roles}),
+        put({type: actions.GET_SETTINGS, payload: settings})
+      ]);
+    } else {
+      throw new Error('settings error or roles .. system error');
+    }
+
     if (!validate.isEmpty(sliders)) {
       yield all([
         put({type: actions.SET_HOME_SLIDERS, payload: sliders}),
@@ -148,7 +153,15 @@ export function* startAppBootStrap() {
         call(disableLoading)
       ]);
     } else {
-      throw new Error(sliders.message);
+      yield all([
+        call(toggleBootStrapped, true),
+        call(disableLoading),
+        put(
+          NavigationActions.navigate({
+            routeName: 'Home'
+          })
+        )
+      ]);
     }
   } catch (e) {
     console.log('the e from appSaga', e);

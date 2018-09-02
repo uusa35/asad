@@ -16,10 +16,4 @@ if (ENV === 'local') {
     appUrlAndroid: 'http://app.asadgroup.com/',
     port: PORT
   };
-} else {
-  module.exports = {
-    appUrlIos: 'http://app.asadgroup.com/',
-    appUrlAndroid: 'http://app.asadgroup.com/',
-    port: PORT
-  };
 }
