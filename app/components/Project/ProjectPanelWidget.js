@@ -5,6 +5,7 @@ import FastImage from 'react-native-fast-image';
 import {Divider} from 'react-native-elements';
 import I18n from './../../I18n';
 import PropTypes from 'prop-types';
+import validate from 'validate.js';
 
 export default class ProjectPanelWidget extends Component {
   constructor(props) {
@@ -33,10 +34,14 @@ export default class ProjectPanelWidget extends Component {
               <Text style={styles.projectPanelTitle}>
                 {project.name.toUpperCase()}
               </Text>
-              <Divider style={{backgroundColor: 'black', height: 1}} />
-              <Text style={styles.projectPanelDescription}>
-                {project.description.substring(0, 100)}
-              </Text>
+              {!validate.isEmpty(project.description) ? (
+                <View style={styles.titleInfoWrapper}>
+                  <Divider style={{backgroundColor: 'black', height: 1}} />
+                  <Text style={styles.projectPanelDescription}>
+                    {project.description.substring(0, 100)}
+                  </Text>
+                </View>
+              ) : null}
             </View>
           </View>
         </TouchableHighlight>
@@ -58,12 +63,14 @@ export default class ProjectPanelWidget extends Component {
             <Text style={styles.titleInfo}>{I18n.t('reference_id')} : </Text>
             <Text style={styles.titleInfoElement}>{project.reference_id}</Text>
           </View>
-          <View style={styles.titleInfoWrapper}>
-            <Text style={styles.titleInfo}>{I18n.t('caption')} : </Text>
-            <Text style={styles.titleInfoElement}>
-              {project.caption.substring(0, 100)}
-            </Text>
-          </View>
+          {!validate.isEmpty(project.caption) ? (
+            <View style={styles.titleInfoWrapper}>
+              <Text style={styles.titleInfo}>{I18n.t('caption')} : </Text>
+              <Text style={styles.titleInfoElement}>
+                {project.caption.substring(0, 100)}
+              </Text>
+            </View>
+          ) : null}
         </View>
       </View>
     );
