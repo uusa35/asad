@@ -15,7 +15,6 @@ class RegisterAsScreen extends Component {
 
   render() {
     const {roles, navigation} = this.props;
-    console.log('roles', roles);
     return (
       <View style={styles.container}>
         <Text style={styles.mainTitle}>
