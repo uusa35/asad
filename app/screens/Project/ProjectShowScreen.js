@@ -15,7 +15,6 @@ const modules = [
   'subcontractors',
   'timelines',
   'reports',
-  'subcontractors',
   'consultants'
 ];
 export default class ProjectShowScreen extends Component {

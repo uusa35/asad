@@ -28,7 +28,6 @@ export default class GalleryIndexScreen extends Component {
   }
   render() {
     const {navigation, project, moduleName} = this.state;
-    console.log('project galleries', project.galleries);
     return (
       <ScrollView
         style={{backgroundColor: 'white'}}
@@ -42,7 +41,7 @@ export default class GalleryIndexScreen extends Component {
           ) : (
             <View>
               {project.galleries.map(g => {
-                console.log('g cover', g.cover);
+                console.log('the g', g);
                 return (
                   <TouchableOpacity
                     key={g.id * Math.random()}
