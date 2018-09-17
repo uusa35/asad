@@ -4,6 +4,8 @@ import FastImage from 'react-native-fast-image';
 import {colors, height, icons, width} from '../constants';
 import PropTypes from 'prop-types';
 import _ from 'lodash';
+import validate from 'validate.js';
+import I18n from './../I18n';
 
 export default class MainBtnElement extends Component {
   constructor(props) {
@@ -31,27 +33,36 @@ export default class MainBtnElement extends Component {
   render() {
     const {navigation, element, title, iconName, routeName} = this.state;
     return (
-      <View key={element.id} style={styles.elementWrapper}>
-        <View style={styles.elementSlug} key={element.id * Math.random()}>
-          <Text style={styles.elementSlugTitle}>{title}</Text>
-        </View>
-        <TouchableOpacity
-          key={element.id * Math.random()}
-          style={styles.elementTypeBtn}
-          onPress={() =>
-            navigation.navigate(_.upperFirst(routeName), {
-              type: element.name,
-              project: element,
-              name: element.name,
-              routeName
-            })
-          }>
-          <FastImage
-            style={styles.elementIcon}
-            source={icons[iconName]}
-            resizeMode={FastImage.resizeMode.contain}
-          />
-        </TouchableOpacity>
+      <View>
+        {!validate.isEmpty(element) ? (
+          <View key={element.id} style={styles.elementWrapper}>
+            <View style={styles.elementSlug} key={element.id * Math.random()}>
+              <Text style={styles.elementSlugTitle}>{title}</Text>
+            </View>
+            <TouchableOpacity
+              key={element.id * Math.random()}
+              style={styles.elementTypeBtn}
+              onPress={() =>
+                navigation.navigate(_.upperFirst(routeName), {
+                  type: element.name,
+                  project: element,
+                  name: element.name,
+                  routeName,
+                  moduleName: routeName
+                })
+              }>
+              <FastImage
+                style={styles.elementIcon}
+                source={icons[iconName]}
+                resizeMode={FastImage.resizeMode.contain}
+              />
+            </TouchableOpacity>
+          </View>
+        ) : (
+          <View>
+            <Text>{I18n.t('no_element')}</Text>
+          </View>
+        )}
       </View>
     );
   }

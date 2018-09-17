@@ -30,7 +30,7 @@ export default class ConsultantIndexScreen extends Component {
         showsVerticalScrollIndicator={false}>
         <View style={styles.wrapper}>
           {validate.isEmpty(project.consultants) ? (
-            <NotAvailableElement moduleName={moduleName} />
+            <NotAvailableElement routeName={moduleName} />
           ) : (
             <View>
               {project.consultants.map(d => {

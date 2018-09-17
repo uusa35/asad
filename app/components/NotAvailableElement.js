@@ -3,6 +3,7 @@ import {View} from 'react-native';
 import {Button, Icon} from 'react-native-elements';
 import I18n from '../I18n';
 import PropTypes from 'prop-types';
+import validate from 'validate.js';
 
 export default class NotAvailableElement extends Component {
   constructor(props) {
@@ -19,6 +20,7 @@ export default class NotAvailableElement extends Component {
 
   render() {
     const {routeName} = this.state;
+    console.log('routeName', routeName);
     return (
       <View style={{margin: 10}}>
         <Button
@@ -34,9 +36,7 @@ export default class NotAvailableElement extends Component {
           icon={
             <Icon name="ios-alert" type="ionicon" size={25} color="white" />
           }
-          title={
-            I18n.t('not_available') + ' ' + I18n.t(routeName.toLowerCase())
-          }
+          title={I18n.t('not_available')}
         />
       </View>
     );

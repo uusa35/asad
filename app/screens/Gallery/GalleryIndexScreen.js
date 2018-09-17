@@ -37,11 +37,10 @@ export default class GalleryIndexScreen extends Component {
         showsVerticalScrollIndicator={false}>
         <View style={styles.wrapper}>
           {validate.isEmpty(project.galleries) ? (
-            <NotAvailablElement moduleName={moduleName} />
+            <NotAvailablElement routeName={moduleName} />
           ) : (
             <View>
               {project.galleries.map(g => {
-                console.log('the g', g);
                 return (
                   <TouchableOpacity
                     key={g.id * Math.random()}

@@ -185,12 +185,6 @@ const HomeStack = createStackNavigator(
         headerTitle: getHeader(navigation.state.params.name)
       })
     },
-    Videos: {
-      screen: VideoIndexScreen,
-      navigationOptions: ({navigation}) => ({
-        headerTitle: getHeader(navigation.state.params.name)
-      })
-    },
     AppPDFViewer: {
       screen: AppPDFViewerScreen,
       navigationOptions: ({navigation}) => ({

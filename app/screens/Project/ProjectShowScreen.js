@@ -49,16 +49,16 @@ export default class ProjectShowScreen extends Component {
           {modules.map(moduleName => {
             return (
               <View key={Math.random()}>
-                {!validate.isEmpty(project[moduleName]) ? (
-                  <MainBtnElement
-                    key={Math.random()}
-                    navigation={navigation}
-                    element={project}
-                    title={I18n.t(moduleName)}
-                    iconName={moduleName}
-                    routeName={moduleName}
-                  />
-                ) : null}
+                {/*{!validate.isEmpty(project[moduleName]) ? (*/}
+                <MainBtnElement
+                  key={Math.random()}
+                  navigation={navigation}
+                  element={project}
+                  title={I18n.t(moduleName)}
+                  iconName={moduleName}
+                  routeName={moduleName}
+                />
+                {/*) : null}*/}
               </View>
             );
           })}
