@@ -129,3 +129,11 @@ export async function getSearchingProjects(element) {
     .then(r => r.data)
     .catch(e => e.response.data.message);
 }
+
+export async function forgetPassword(payload) {
+  const {email, mobile} = payload;
+  return await axiosInstance
+    .post('forget/password', {email, mobile})
+    .then(r => r.data)
+    .catch(e => e.response.data.message);
+}

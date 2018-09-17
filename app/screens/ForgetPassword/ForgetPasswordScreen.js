@@ -30,7 +30,6 @@ class ForgetPasswordScreen extends Component {
     }
   };
   render() {
-    const {navigation} = this.props;
     return (
       <KeyboardAwareScrollView
         style={{backgroundColor: colors.main}}

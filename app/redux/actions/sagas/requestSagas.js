@@ -20,7 +20,8 @@ import {
   postRegisterRequest,
   authenticate,
   getProjectById,
-  getSearchingProjects
+  getSearchingProjects,
+  forgetPassword
 } from './../api';
 import {NavigationActions} from 'react-navigation';
 import I18n from './../../../I18n';
@@ -143,7 +144,24 @@ export function* submitForgetPassword() {
 export function* startSubmitForgetPassword(action) {
   console.log('the action', action);
   try {
-    const user = yield call(api.startSubmitForgetPassword, action);
+    const user = yield call(forgetPassword, action.payload);
+    console.log('the user', user);
+    if (!validate.isEmpty(user) && !validate.isEmpty(user.api_token)) {
+      yield all([
+        call(
+          enableSuccessMessage,
+          I18n.t('forget_password_success_email_is_sent')
+        ),
+        delay(1000),
+        put(
+          NavigationActions.navigate({
+            routeName: 'Home'
+          })
+        )
+      ]);
+    } else {
+      throw new Error(user);
+    }
   } catch (e) {
     yield all([call(disableLoading), call(enableErrorMessage, e.message)]);
   }
