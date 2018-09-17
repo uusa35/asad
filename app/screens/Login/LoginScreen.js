@@ -29,7 +29,7 @@ class LoginScreen extends Component {
     }
   }
   render() {
-    const {navigation} = this.props;
+    const {navigation, settings} = this.props;
     return (
       <KeyboardAwareScrollView
         style={{backgroundColor: colors.main}}
@@ -45,8 +45,8 @@ class LoginScreen extends Component {
           <View style={styles.wrapper}>
             <FastImage
               style={styles.logo}
-              source={images.logo}
-              resizeMode={FastImage.resizeMode.center}
+              source={{uri: settings.logo}}
+              resizeMode={FastImage.resizeMode.stretch}
             />
             <View style={styles.formWrapper}>
               <Input

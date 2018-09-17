@@ -142,7 +142,6 @@ export function* submitForgetPassword() {
 }
 
 export function* startSubmitForgetPassword(action) {
-  console.log('the action', action);
   try {
     const user = yield call(forgetPassword, action.payload);
     console.log('the user', user);
