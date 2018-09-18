@@ -6,7 +6,7 @@ import {
   TouchableHighlight,
   TouchableOpacity
 } from 'react-native';
-import {colors, images, text} from '../../constants';
+import {width, colors, images, text} from '../../constants';
 import FastImage from 'react-native-fast-image';
 import {Divider} from 'react-native-elements';
 import I18n from './../../I18n';
@@ -103,14 +103,14 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderColor: 'darkgrey',
     margin: 5,
-    width: 350,
+    width: width - 40,
     height: 330
   },
   imgBg: {
     position: 'absolute',
     top: 0,
     left: 0,
-    width: 350,
+    width: width - 40,
     height: 330,
     opacity: 0.8
   },
