@@ -177,9 +177,7 @@ export function* startRefetchProjectScenario(action) {
       api_token: token
     });
     if (!validate.isEmpty(project)) {
-      yield all([
-        put({type: actions.SET_PROJECT, payload: project}),
-      ]);
+      yield all([put({type: actions.SET_PROJECT, payload: project})]);
     } else {
       throw new Error(project);
     }

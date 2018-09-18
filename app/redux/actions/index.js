@@ -243,7 +243,7 @@ export const APP_ACTIONS = {
   setProjects,
   refetchProjects,
   getProject,
-    refetchProject,
+  refetchProject,
   setProject,
   setGalleries,
   getSearch,

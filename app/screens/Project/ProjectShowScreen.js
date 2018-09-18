@@ -5,9 +5,9 @@ import ProjectPanelHomeWidget from '../../components/Project/ProjectPanelHomeWid
 import MainBtnElement from '../../components/MainBtnElement';
 import I18n from './../../I18n';
 import {upperFirst} from 'lodash';
-import {bindActionCreators} from "redux";
-import {refetchProject} from "../../redux/actions";
-import connect from "react-redux/es/connect/connect";
+import {bindActionCreators} from 'redux';
+import {refetchProject} from '../../redux/actions';
+import connect from 'react-redux/es/connect/connect';
 const modules = [
   'drawings',
   'documents',
@@ -36,7 +36,7 @@ class ProjectShowScreen extends Component {
   }
 
   _onRefresh = () => {
-    const { id } = this.state.project;
+    const {id} = this.state.project;
     return this.props.actions.refetchProject(id);
   };
 
@@ -81,20 +81,20 @@ ProjectShowScreen.propTypes = {
 };
 
 function mapStateToProps(state) {
-    return state;
+  return state;
 }
 
 function mapDispatchToProps(dispatch) {
-    return {
-        actions: {
-            refetchProject: bindActionCreators(refetchProject, dispatch)
-        }
-    };
+  return {
+    actions: {
+      refetchProject: bindActionCreators(refetchProject, dispatch)
+    }
+  };
 }
 
 export default connect(
-    mapStateToProps,
-    mapDispatchToProps
+  mapStateToProps,
+  mapDispatchToProps
 )(ProjectShowScreen);
 
 const styles = StyleSheet.create({
