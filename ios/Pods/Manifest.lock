@@ -36,6 +36,7 @@ PODS:
     - GoogleMaps/Base
   - JWT (3.0.0-beta.10):
     - Base64 (~> 1.1.2)
+  - OneSignal (2.8.8)
   - Picker (4.3.7):
     - Picker/Core (= 4.3.7)
   - Picker/Core (4.3.7):
@@ -53,6 +54,9 @@ PODS:
     - GoogleMaps (= 2.5.0)
     - React
   - react-native-maps (0.21.0):
+    - React
+  - react-native-onesignal (3.2.7):
+    - OneSignal (= 2.8.8)
     - React
   - react-native-pdf (5.0.1):
     - React
@@ -130,6 +134,7 @@ DEPENDENCIES:
   - react-native-fast-image (from `../node_modules/react-native-fast-image`)
   - react-native-google-maps (from `../node_modules/react-native-maps`)
   - react-native-maps (from `../node_modules/react-native-maps`)
+  - react-native-onesignal (from `../node_modules/react-native-onesignal`)
   - react-native-pdf (from `../node_modules/react-native-pdf`)
   - React/Core (from `../node_modules/react-native`)
   - React/CxxBridge (from `../node_modules/react-native`)
@@ -159,6 +164,7 @@ SPEC REPOS:
     - Google-Maps-iOS-Utils
     - GoogleMaps
     - JWT
+    - OneSignal
     - QBImagePickerController
     - RSKImageCropper
     - SDWebImage
@@ -183,6 +189,8 @@ EXTERNAL SOURCES:
     :path: "../node_modules/react-native-maps"
   react-native-maps:
     :path: "../node_modules/react-native-maps"
+  react-native-onesignal:
+    :path: "../node_modules/react-native-onesignal"
   react-native-pdf:
     :path: "../node_modules/react-native-pdf"
   rn-fetch-blob:
@@ -209,12 +217,14 @@ SPEC CHECKSUMS:
   Google-Maps-iOS-Utils: c32891ff472eaaa1fca032beedafa1a013af7875
   GoogleMaps: c087b8e5dfe87ca6ebf59adb9b4894a4146bec4f
   JWT: 9d03743102a8a7e80068f390a9d35bb26b689c67
+  OneSignal: 7d2571e9fce1d961b882e1bd9f1f242802e9c8b1
   Picker: 67a2566d9ff6b141d505d88b9177f905aaa5f1a6
   QBImagePickerController: d54cf93db6decf26baf6ed3472f336ef35cae022
   React: 1fe0eb13d90b625d94c3b117c274dcfd2e760e11
   react-native-fast-image: cba3d9bf9c2cf8ddb643d887a686c53a5dd90a2c
   react-native-google-maps: 2cfe3b01f8422c7dae51d8764139fd70f888cfce
   react-native-maps: 066c2afcc89e18726377bcc685315f989ca22449
+  react-native-onesignal: f4300ef8272ef1d8d81b00f0207335f305bcaadb
   react-native-pdf: 10fe8cc6094d10b5f2fb176e895d179a021d174a
   rn-fetch-blob: 76a8f798dae965bbcd146a2438f2e1d381c91ae3
   RNDeviceInfo: 568c5641057313b4912d08a7742ff0b2f753ed5c
@@ -226,6 +236,6 @@ SPEC CHECKSUMS:
   SSZipArchive: 51a800ebb77f95a8329b6ced1faaff394b47f509
   yoga: b1ce48b6cf950b98deae82838f5173ea7cf89e85
 
-PODFILE CHECKSUM: 52cbd6538d46b2d4f952fe63f1496683eee37fbb
+PODFILE CHECKSUM: 9fcea692a1b43e13515cc0abf771298dfe2f0926
 
 COCOAPODS: 1.5.3

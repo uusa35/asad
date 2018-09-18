@@ -52,6 +52,7 @@ export function* submitLogin() {
 
 export function* startSubmitLogin(action) {
   try {
+    console.log('new state for login', action.payload);
     const user = yield call(authenticate, action.payload);
     if (!validate.isEmpty(user) && !validate.isEmpty(user.api_token)) {
       yield all([

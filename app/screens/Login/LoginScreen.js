@@ -15,7 +15,12 @@ import {loginConstrains} from '../../constrains';
 class LoginScreen extends Component {
   constructor(props) {
     super(props);
-    this.state = {email: '', password: ''};
+    this.state = {email: '', password: '', device_id: ''};
+  }
+
+  componentDidMount() {
+    const {deviceId} = this.props;
+    this.setState({device_id: deviceId});
   }
   _doSubmitLogin() {
     const {email, password} = this.state;

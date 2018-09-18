@@ -16,7 +16,7 @@ export default class CompanyProfileHeaderWidget extends Component {
         <FastImage
           style={styles.logo}
           source={{uri: settings.logo}}
-          resizeMode={FastImage.resizeMode.contain}
+          resizeMode={FastImage.resizeMode.stretch}
         />
         <View style={styles.headerWrapper}>
           <View style={styles.headerTitleWrapper}>

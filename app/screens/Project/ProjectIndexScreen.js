@@ -17,7 +17,12 @@ class ProjectIndexScreen extends Component {
       <ScrollView
         style={{backgroundColor: 'white'}}
         showsHorizontalScrollIndicator={false}
-        contentContainerStyle={{paddingBottom: 30, backgroundColor: 'white'}}
+        contentContainerStyle={{
+          paddingBottom: 30,
+          backgroundColor: 'white',
+          alignItems: 'center',
+          justifyContent: 'center'
+        }}
         endFillColor="white"
         showsVerticalScrollIndicator={false}>
         {projects.map(project => (

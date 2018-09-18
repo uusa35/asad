@@ -34,6 +34,7 @@
     "react-native-keyboard-aware-scroll-view": "^0.6.0",
     "react-native-maps": "^0.21.0",
     "react-native-offline": "^3.11.0",
+    "react-native-onesignal": "^3.2.7",
     "react-native-parallax-view": "^2.0.6",
     "react-native-pdf": "^5.0.1",
     "react-native-picker": "^4.3.7",

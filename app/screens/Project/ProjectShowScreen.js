@@ -37,7 +37,11 @@ export default class ProjectShowScreen extends Component {
       <ScrollView
         style={{backgroundColor: 'white'}}
         showsHorizontalScrollIndicator={false}
-        contentContainerStyle={{paddingBottom: 30, backgroundColor: 'white'}}
+        contentContainerStyle={{
+          justifyContent: 'center',
+          alignItems: 'center',
+          paddingBottom: 30
+        }}
         endFillColor="white"
         showsVerticalScrollIndicator={false}>
         <ProjectPanelHomeWidget
@@ -45,7 +49,14 @@ export default class ProjectShowScreen extends Component {
           description={project.description}
           image={project.image}
         />
-        <View style={{flexDirection: 'row', flexWrap: 'wrap', margin: 5}}>
+        <View
+          style={{
+            flexDirection: 'row',
+            flexWrap: 'wrap',
+            margin: 5,
+            justifyContent: 'center',
+            alignItems: 'center'
+          }}>
           {modules.map(moduleName => {
             return (
               <View key={Math.random()}>

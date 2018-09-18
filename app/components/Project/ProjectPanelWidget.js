@@ -1,6 +1,12 @@
 import React, {Component} from 'react';
-import {View, Text, StyleSheet, TouchableHighlight} from 'react-native';
-import {images} from '../../constants';
+import {
+  View,
+  Text,
+  StyleSheet,
+  TouchableHighlight,
+  TouchableOpacity
+} from 'react-native';
+import {colors, images, text} from '../../constants';
 import FastImage from 'react-native-fast-image';
 import {Divider} from 'react-native-elements';
 import I18n from './../../I18n';
@@ -71,6 +77,13 @@ export default class ProjectPanelWidget extends Component {
               </Text>
             </View>
           ) : null}
+          <View style={styles.panelBtnWrapper}>
+            <TouchableOpacity onPress={handleClick} style={styles.panelBtn}>
+              <Text style={styles.panelBtnText}>
+                {I18n.t('view').toUpperCase()}
+              </Text>
+            </TouchableOpacity>
+          </View>
         </View>
       </View>
     );
@@ -151,5 +164,27 @@ const styles = StyleSheet.create({
     fontSize: 12,
     textAlign: 'left',
     fontFamily: 'cairo'
+  },
+  panelBtnWrapper: {
+    flexDirection: 'row',
+    justifyContent: 'space-around',
+    padding: 10
+  },
+  fileTypeText: {
+    width: 100,
+    fontFamily: text.font,
+    fontSize: text.medium,
+    textAlign: 'left'
+  },
+  panelBtn: {
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: colors.main,
+    height: 40,
+    shadowColor: 'black',
+    shadowOffset: {width: 1, height: 1},
+    shadowRadius: 2,
+    shadowOpacity: 0.2,
+    width: 150
   }
 });

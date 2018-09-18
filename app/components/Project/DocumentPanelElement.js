@@ -26,7 +26,6 @@ export default class DocumentPanelElement extends Component {
     const {element, navigation} = this.state;
     return (
       <View style={styles.panelWrapper}>
-        <Divider />
         <View style={styles.panelTitleWrapper}>
           <Text style={styles.panelBtnText}>{element.name}</Text>
         </View>
@@ -35,20 +34,21 @@ export default class DocumentPanelElement extends Component {
           <Text style={styles.panelBtnText}>{element.description}</Text>
         </View>
         <Divider />
-        <View style={styles.fileTypeView}>
-          <Text style={styles.fileTypeText}>{I18n.t('file_type')} : </Text>
-          <Text style={styles.fileTypeText}>
-            {element.on_going ? I18n.t('on_going') : I18n.t('out_going')}
-          </Text>
-        </View>
-        <View style={styles.panelBtnWrapper}>
-          <TouchableOpacity
-            onPress={() => Communications.web(element.path)}
-            style={styles.panelBtn}>
-            <Text style={styles.panelBtnText}>
-              {I18n.t('download').toUpperCase()}
+        {element.hasOwnProperty('ongoing') ? (
+          <View style={styles.fileTypeView}>
+            <Text style={styles.fileTypeText}>{I18n.t('file_type')} : </Text>
+            <Text style={styles.fileTypeText}>
+              {element.on_going ? I18n.t('on_going') : I18n.t('out_going')}
             </Text>
-          </TouchableOpacity>
+          </View>
+        ) : null}
+        {element.hasOwnProperty('category') ? (
+          <View style={styles.fileTypeView}>
+            <Text style={styles.fileTypeText}>{I18n.t('category')} : </Text>
+            <Text style={styles.fileTypeText}>{element.category.name}</Text>
+          </View>
+        ) : null}
+        <View style={styles.panelBtnWrapper}>
           <TouchableOpacity
             onPress={() =>
               navigation.navigate('AppPDFViewer', {
@@ -121,11 +121,12 @@ const styles = StyleSheet.create({
   },
   fileTypeView: {
     flexDirection: 'row',
-    padding: 10
+    padding: 15
   },
   panelBtnWrapper: {
     flexDirection: 'row',
-    justifyContent: 'space-around'
+    justifyContent: 'space-around',
+    padding: 10
   },
   fileTypeText: {
     width: 100,

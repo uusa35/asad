@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {View, ScrollView} from 'react-native';
+import {View, ScrollView, Text, StyleSheet} from 'react-native';
 import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
 import {toggleLoading, getProject, getSearch} from '../../redux/actions';
@@ -8,6 +8,8 @@ import validate from 'validate.js';
 import CompanyProfile from './../../components/CompanyProfile/CompanyProfile';
 import SearchInput from '../../components/SearchInput';
 import ProjectPanelWidget from '../../components/Project/ProjectPanelWidget';
+import {height} from './../../constants';
+import I18n from './../../I18n';
 
 class HomeScreen extends Component {
   constructor(props) {
@@ -27,8 +29,14 @@ class HomeScreen extends Component {
         contentContainerStyle={{paddingBottom: 30, backgroundColor: 'white'}}
         endFillColor="white"
         showsVerticalScrollIndicator={false}>
-        {validate.isEmpty(auth) || validate.isEmpty(auth.projects) ? (
+        {validate.isEmpty(auth) ? (
           <CompanyProfile settings={settings} />
+        ) : validate.isEmpty(auth.projects) ? (
+          <View style={styles.titleView}>
+            <Text style={styles.title}>
+              {I18n.t('there_are_no_projects_please_contact_us')}
+            </Text>
+          </View>
         ) : (
           <View>
             <SearchInput startSearching={this._startSearching} />
@@ -72,3 +80,16 @@ export default connect(
   mapStateToProps,
   mapDispatchToProps
 )(HomeScreen);
+
+const styles = StyleSheet.create({
+  titleView: {
+    padding: 20,
+    height: height - 50,
+    justifyContent: 'center',
+    alignItems: 'center'
+  },
+  title: {
+    fontFamily: 'cairo',
+    fontSize: 20
+  }
+});

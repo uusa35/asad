@@ -25,9 +25,9 @@ export async function authenticated(api_token) {
 }
 
 export async function authenticate(element) {
-  const {email, password} = element;
+  const {email, password, device_id} = element;
   return await axiosInstance
-    .post('authenticate', {email, password})
+    .post('authenticate', {email, password, device_id})
     .then(r => r.data)
     .catch(e => e.response.data.message);
 }
