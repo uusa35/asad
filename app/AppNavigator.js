@@ -31,7 +31,6 @@ import DocumentIndexScreen from './screens/Document/DocumentIndexScreen';
 import GalleryIndexScreen from './screens/Gallery/GalleryIndexScreen';
 import PhaseIndexScreen from './screens/Phase/PhaseIndexScreen';
 import TimelineIndexScreen from './screens/Timeline/TimelineIndexScreen';
-import VideoIndexScreen from './screens/Video/VideoIndexScreen';
 import ReportIndexScreen from './screens/Report/ReportIndexScreen';
 import AppPDFViewerScreen from './components/AppPDFViewerScreen';
 import TaskShowScreen from './screens/Task/TaskShowScreen';
@@ -39,6 +38,7 @@ import SubcontractorIndexScreen from './screens/Subcontractor/SubcontractorIndex
 import ConsultantIndexScreen from './screens/Consultant/ConsultantIndexScreen';
 import GalleryShowScreen from './screens/Gallery/GalleryShowScreen';
 import SearchIndexScreen from './screens/Search/SearchIndexScreen';
+import LiveCamIndexScreen from './screens/LiveCam/LiveCamIndexScreen';
 
 const navMiddleware = createReactNavigationReduxMiddleware(
   'root',
@@ -151,6 +151,12 @@ const HomeStack = createStackNavigator(
     },
     Consultants: {
       screen: ConsultantIndexScreen,
+      navigationOptions: ({navigation}) => ({
+        headerTitle: getHeader(navigation.state.params.project.name)
+      })
+    },
+    Livecam: {
+      screen: LiveCamIndexScreen,
       navigationOptions: ({navigation}) => ({
         headerTitle: getHeader(navigation.state.params.project.name)
       })
