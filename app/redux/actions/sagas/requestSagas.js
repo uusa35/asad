@@ -14,7 +14,8 @@ import {
   disableLoading,
   enableSuccessMessage,
   enableLoading,
-  startLoginScenario
+  startLoginScenario,
+  toggleGuest
 } from './appSagas';
 import {
   postRegisterRequest,
@@ -25,6 +26,8 @@ import {
 } from './../api';
 import {NavigationActions} from 'react-navigation';
 import I18n from './../../../I18n';
+import * as helpers from '../../../helpers';
+import * as api from '../api';
 
 export function* submitRegisterRequest() {
   yield takeLatest(actions.SUBMIT_REGISTER_REQUEST, startSubmitRegisterRequest);
@@ -110,6 +113,29 @@ export function* startGetSearchScenario(action) {
 
 export function* getProject() {
   yield takeLatest(actions.GET_PROJECT, startGetProjectScenario);
+}
+
+export function* startRefetchProjectsScenario() {
+  try {
+    const api_token = yield call(helpers.getAuthToken);
+    if (!validate.isEmpty(api_token)) {
+      const user = yield call(api.authenticated, api_token);
+      if (
+        !validate.isEmpty(user) &&
+        validate.isObject(user) &&
+        !validate.isEmpty(api_token)
+      ) {
+        yield all([call(startLoginScenario, user)]);
+      } else {
+        yield call(toggleGuest, true);
+      }
+    }
+  } catch (e) {
+    yield all([call(disableLoading), call(enableErrorMessage, e.message)]);
+  }
+}
+export function* refetchProjects() {
+  yield takeLatest(actions.REFETCH_PROJECTS, startRefetchProjectsScenario);
 }
 
 export function* startGetProjectScenario(action) {

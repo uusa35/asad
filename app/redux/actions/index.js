@@ -158,6 +158,12 @@ export function submitLogin(payload) {
   };
 }
 
+export function refetchProjects() {
+  return {
+    type: actions.REFETCH_PROJECTS
+  };
+}
+
 export function submitForgetPassword(payload) {
   return {
     type: actions.SUBMIT_FORGET_PASSWORD,
@@ -226,6 +232,7 @@ export const APP_ACTIONS = {
   submitRegisterRequest,
   submitLogin,
   setProjects,
+  refetchProjects,
   getProject,
   setProject,
   setGalleries,

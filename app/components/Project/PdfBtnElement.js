@@ -25,17 +25,7 @@ export default class PdfBtnElement extends Component {
     const {element, navigation, iconName, routeName} = this.state;
     return (
       <View style={styles.elementContainer} key={element.id}>
-        <View
-          style={{
-            width: '120%',
-            marginTop: 10,
-            paddingLeft: 5,
-            paddingRight: 5,
-            flexDirection: 'row',
-            justifyContent: 'space-between',
-            alignItems: 'center',
-            height: 30
-          }}>
+        <View style={styles.iconWrapper}>
           <Icon
             reverse
             name="ios-arrow-down"
@@ -85,6 +75,7 @@ const styles = StyleSheet.create({
     height: 120,
     marginTop: 10,
     marginBottom: 10,
+    margin: 10,
     alignItems: 'center',
     justifyContent: 'center',
     shadowColor: 'black',
@@ -117,5 +108,15 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     fontFamily: 'cairo',
     textAlign: 'center'
+  },
+  iconWrapper: {
+    width: '120%',
+    marginTop: 10,
+    paddingLeft: 5,
+    paddingRight: 5,
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    height: 30
   }
 });

@@ -12,6 +12,7 @@ export default function* rootSaga() {
     fork(requestSagas.submitLogin),
     fork(appSagas.logout),
     fork(requestSagas.getProject),
+    fork(requestSagas.refetchProjects),
     fork(requestSagas.getSearch),
     fork(requestSagas.submitForgetPassword),
     fork(networkEventsListenerSaga, {

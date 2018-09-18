@@ -104,14 +104,14 @@ const styles = StyleSheet.create({
     borderColor: 'darkgrey',
     margin: 5,
     width: 350,
-    height: 350
+    height: 330
   },
   imgBg: {
     position: 'absolute',
     top: 0,
     left: 0,
     width: 350,
-    height: 350,
+    height: 330,
     opacity: 0.8
   },
   projectPanelImage: {

@@ -15,7 +15,8 @@ const modules = [
   'subcontractors',
   'timelines',
   'reports',
-  'consultants'
+  'consultants',
+  'livecam'
 ];
 export default class ProjectShowScreen extends Component {
   constructor(props) {
