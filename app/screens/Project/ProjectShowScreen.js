@@ -5,9 +5,9 @@ import ProjectPanelHomeWidget from '../../components/Project/ProjectPanelHomeWid
 import MainBtnElement from '../../components/MainBtnElement';
 import I18n from './../../I18n';
 import {upperFirst} from 'lodash';
-import validate from 'validate.js';
-import {width, height} from './../../constants';
-import ProjectPanelWidget from '../../components/Project/ProjectPanelWidget';
+import {bindActionCreators} from "redux";
+import {refetchProject} from "../../redux/actions";
+import connect from "react-redux/es/connect/connect";
 const modules = [
   'drawings',
   'documents',
@@ -20,7 +20,8 @@ const modules = [
   'consultants',
   'livecam'
 ];
-export default class ProjectShowScreen extends Component {
+
+class ProjectShowScreen extends Component {
   constructor(props) {
     super(props);
     this.state = {project: {}, navigation: {}, refreshing: false};
@@ -35,8 +36,8 @@ export default class ProjectShowScreen extends Component {
   }
 
   _onRefresh = () => {
-    console.log('project_id', this.state.project.id);
-    // return this.props.actions.refetchProject(id);
+    const { id } = this.state.project;
+    return this.props.actions.refetchProject(id);
   };
 
   render() {
@@ -79,12 +80,28 @@ ProjectShowScreen.propTypes = {
   navigation: PropTypes.object.isRequired
 };
 
+function mapStateToProps(state) {
+    return state;
+}
+
+function mapDispatchToProps(dispatch) {
+    return {
+        actions: {
+            refetchProject: bindActionCreators(refetchProject, dispatch)
+        }
+    };
+}
+
+export default connect(
+    mapStateToProps,
+    mapDispatchToProps
+)(ProjectShowScreen);
+
 const styles = StyleSheet.create({
   elementContainer: {
     backgroundColor: 'white',
     justifyContent: 'flex-start',
     alignItems: 'center'
-    // height : height,
   },
   modulesWrapper: {
     flexDirection: 'row',

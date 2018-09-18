@@ -115,6 +115,10 @@ export function* getProject() {
   yield takeLatest(actions.GET_PROJECT, startGetProjectScenario);
 }
 
+export function* refetchProject() {
+  yield takeLatest(actions.GET_PROJECT, startRefetchProjectScenario);
+}
+
 export function* startRefetchProjectsScenario() {
   try {
     const api_token = yield call(helpers.getAuthToken);
@@ -155,6 +159,26 @@ export function* startGetProjectScenario(action) {
             params: {name: project.name, project: project}
           })
         )
+      ]);
+    } else {
+      throw new Error(project);
+    }
+  } catch (e) {
+    yield all([call(disableLoading), call(enableErrorMessage, e.message)]);
+  }
+}
+
+export function* startRefetchProjectScenario(action) {
+  try {
+    const state = yield select();
+    const {token} = state;
+    const project = yield call(getProjectById, {
+      id: action.payload.id,
+      api_token: token
+    });
+    if (!validate.isEmpty(project)) {
+      yield all([
+        put({type: actions.SET_PROJECT, payload: project}),
       ]);
     } else {
       throw new Error(project);

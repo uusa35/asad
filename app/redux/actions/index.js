@@ -189,6 +189,15 @@ export function getProject(id) {
   };
 }
 
+export function refetchProject(id) {
+  return {
+    type: actions.GET_PROJECT,
+    payload: {
+      id
+    }
+  };
+}
+
 export function setProject(project) {
   return {
     type: actions.GET_PROJECT,
@@ -234,6 +243,7 @@ export const APP_ACTIONS = {
   setProjects,
   refetchProjects,
   getProject,
+    refetchProject,
   setProject,
   setGalleries,
   getSearch,
