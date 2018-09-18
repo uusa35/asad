@@ -1,11 +1,13 @@
 import React, {Component} from 'react';
-import {View, StyleSheet, ScrollView} from 'react-native';
+import {View, StyleSheet, RefreshControl, FlatList} from 'react-native';
 import PropTypes from 'prop-types';
 import ProjectPanelHomeWidget from '../../components/Project/ProjectPanelHomeWidget';
 import MainBtnElement from '../../components/MainBtnElement';
 import I18n from './../../I18n';
 import {upperFirst} from 'lodash';
 import validate from 'validate.js';
+import {width, height} from './../../constants';
+import ProjectPanelWidget from '../../components/Project/ProjectPanelWidget';
 const modules = [
   'drawings',
   'documents',
@@ -21,7 +23,7 @@ const modules = [
 export default class ProjectShowScreen extends Component {
   constructor(props) {
     super(props);
-    this.state = {project: {}, navigation: {}};
+    this.state = {project: {}, navigation: {}, refreshing: false};
   }
 
   static getDerivedStateFromProps(nextProps) {
@@ -32,50 +34,43 @@ export default class ProjectShowScreen extends Component {
     };
   }
 
+  _onRefresh = () => {
+    console.log('project_id', this.state.project.id);
+    // return this.props.actions.refetchProject(id);
+  };
+
   render() {
-    const {project, navigation} = this.state;
+    const {project, navigation, refreshing} = this.state;
     return (
-      <ScrollView
-        style={{backgroundColor: 'white'}}
-        showsHorizontalScrollIndicator={false}
-        contentContainerStyle={{
-          justifyContent: 'center',
-          alignItems: 'center',
-          paddingBottom: 30
-        }}
-        endFillColor="white"
-        showsVerticalScrollIndicator={false}>
+      <View style={styles.elementContainer}>
         <ProjectPanelHomeWidget
           name={project.name}
           description={project.description}
           image={project.image}
         />
-        <View
-          style={{
-            flexDirection: 'row',
-            flexWrap: 'wrap',
-            margin: 5,
-            justifyContent: 'center',
-            alignItems: 'center'
-          }}>
-          {modules.map(moduleName => {
-            return (
-              <View key={Math.random()}>
-                {/*{!validate.isEmpty(project[moduleName]) ? (*/}
-                <MainBtnElement
-                  key={Math.random()}
-                  navigation={navigation}
-                  element={project}
-                  title={I18n.t(moduleName)}
-                  iconName={moduleName}
-                  routeName={moduleName}
-                />
-                {/*) : null}*/}
-              </View>
-            );
-          })}
+        <View style={styles.modulesWrapper}>
+          <FlatList
+            data={modules}
+            renderItem={({item}) => (
+              <MainBtnElement
+                navigation={navigation}
+                element={project}
+                title={I18n.t(item)}
+                iconName={item}
+                routeName={item}
+              />
+            )}
+            numColumns={3}
+            columnWrapperStyle={styles.modulesWrapper}
+            refreshControl={
+              <RefreshControl
+                refreshing={refreshing}
+                onRefresh={this._onRefresh}
+              />
+            }
+          />
         </View>
-      </ScrollView>
+      </View>
     );
   }
 }
@@ -83,3 +78,18 @@ export default class ProjectShowScreen extends Component {
 ProjectShowScreen.propTypes = {
   navigation: PropTypes.object.isRequired
 };
+
+const styles = StyleSheet.create({
+  elementContainer: {
+    backgroundColor: 'white',
+    justifyContent: 'flex-start',
+    alignItems: 'center'
+    // height : height,
+  },
+  modulesWrapper: {
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+    justifyContent: 'center',
+    alignItems: 'center'
+  }
+});

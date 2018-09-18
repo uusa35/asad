@@ -55,6 +55,7 @@ class HomeScreen extends Component {
                   handleClick={() => actions.getProject(item.id)}
                 />
               )}
+              ListFooterComponent={() => <View style={{marginTop: 120}} />}
               refreshControl={
                 <RefreshControl
                   refreshing={refreshing}

@@ -50,13 +50,6 @@ export default class PaymentPanelElement extends Component {
         </View>
         <View style={styles.panelBtnWrapper}>
           <TouchableOpacity
-            onPress={() => Communications.web(element.path)}
-            style={styles.panelBtn}>
-            <Text style={styles.panelBtnText}>
-              {I18n.t('download').toUpperCase()}
-            </Text>
-          </TouchableOpacity>
-          <TouchableOpacity
             onPress={() =>
               navigation.navigate('AppPDFViewer', {
                 pdfLink: element.path,
