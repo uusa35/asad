@@ -35,7 +35,7 @@ class HomeScreen extends Component {
     const {auth, projects, settings, actions, navigation} = this.props;
     const {refreshing} = this.state;
     return (
-      <View style={{paddingBottom: 30, backgroundColor: 'white'}}>
+      <View style={{backgroundColor: 'white'}}>
         {validate.isEmpty(auth) ? (
           <CompanyProfile settings={settings} />
         ) : validate.isEmpty(auth.projects) ? (
@@ -107,7 +107,7 @@ export default connect(
 const styles = StyleSheet.create({
   titleView: {
     padding: 20,
-    height: height - 50,
+    height: height,
     justifyContent: 'center',
     alignItems: 'center'
   },

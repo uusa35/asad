@@ -72,8 +72,8 @@ MainBtnElement.propTypes = {
   navigation: PropTypes.object.isRequired,
   element: PropTypes.object.isRequired,
   title: PropTypes.string.isRequired,
-  iconName: PropTypes.string.isRequired
-  // routeName: PropTypes.string.isRequired
+  iconName: PropTypes.string.isRequired,
+  routeName: PropTypes.string.isRequired
 };
 
 const styles = StyleSheet.create({

@@ -11,30 +11,42 @@ import {height} from './../../constants';
 
 import connect from 'react-redux/es/connect/connect';
 const modules = [
-  'drawings',
   'documents',
+  'galleries',
+  'drawings',
+  'reports',
   'phases',
   'payments',
-  'galleries',
   'subcontractors',
-  'timelines',
-  'reports',
   'consultants',
+  'timelines',
   'livecam'
 ];
 
 class ProjectShowScreen extends Component {
   constructor(props) {
     super(props);
-    this.state = {project: {}, navigation: {}, refreshing: false, auth: {}};
+    this.state = {
+      project: {},
+      navigation: {},
+      refreshing: false,
+      auth: {},
+      filteredModules: []
+    };
   }
 
   static getDerivedStateFromProps(nextProps) {
     const {navigation, auth} = nextProps;
+    const filteredModules = modules.filter(e => {
+      if (auth.role[e]) {
+        return e;
+      }
+    });
     return {
       project: navigation.state.params.project,
       navigation,
-      auth
+      auth,
+      filteredModules
     };
   }
 
@@ -44,7 +56,7 @@ class ProjectShowScreen extends Component {
   };
 
   render() {
-    const {project, navigation, refreshing, auth} = this.state;
+    const {project, navigation, refreshing, auth, filteredModules} = this.state;
     return (
       <View style={styles.elementContainer}>
         <ProjectPanelHomeWidget
@@ -52,31 +64,34 @@ class ProjectShowScreen extends Component {
           description={project.description}
           image={project.image}
         />
-        <View style={styles.modulesWrapper}>
-          <FlatList
-            style={{height: height}}
-            data={modules}
-            renderItem={({item}) => {
-              return auth.role[item] ? (
-                <MainBtnElement
-                  navigation={navigation}
-                  element={project}
-                  title={I18n.t(item)}
-                  iconName={item}
-                  routeName={item}
-                />
-              ) : null;
-            }}
-            numColumns={3}
-            columnWrapperStyle={styles.modulesWrapper}
-            refreshControl={
-              <RefreshControl
-                refreshing={refreshing}
-                onRefresh={this._onRefresh}
+        <FlatList
+          containtContainerStyle={{
+            backgroundColor: 'orange',
+            height: height,
+            justifyContent: 'center',
+            alignItems: 'center'
+          }}
+          data={filteredModules}
+          renderItem={({item}) => {
+            return auth.role[item] ? (
+              <MainBtnElement
+                navigation={navigation}
+                element={project}
+                title={I18n.t(item)}
+                iconName={item}
+                routeName={item}
               />
-            }
-          />
-        </View>
+            ) : null;
+          }}
+          numColumns={3}
+          columnWrapperStyle={styles.modulesWrapper}
+          refreshControl={
+            <RefreshControl
+              refreshing={refreshing}
+              onRefresh={this._onRefresh}
+            />
+          }
+        />
       </View>
     );
   }
