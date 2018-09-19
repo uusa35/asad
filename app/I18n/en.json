@@ -321,6 +321,7 @@
   "reports" : "Reports",
   "reference_no" : "reference no",
   "timelines" : "time lines",
-  "livecam" : "Live Cam"
+  "livecam" : "Live Cam",
+  "there_are_no_projects_please_contact_us" : "No Current Projects. Please contact administration."
 
 }

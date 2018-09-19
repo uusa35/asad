@@ -11,6 +11,7 @@ import MainBtnElement from './../../components/MainBtnElement';
 class RegisterAsScreen extends Component {
   constructor(props) {
     super(props);
+    this.state = {routeName: ''};
   }
 
   render() {
@@ -21,18 +22,16 @@ class RegisterAsScreen extends Component {
           {I18n.t('please_choose_user_type')}
         </Text>
         <View style={styles.wrapper}>
-          {roles.map(r => {
-            return (
-              <MainBtnElement
-                element={r}
-                navigation={navigation}
-                key={r.id}
-                title={r.slug}
-                routeName="Register"
-                iconName={r.name}
-              />
-            );
-          })}
+          {roles.map(r => (
+            <MainBtnElement
+              element={r}
+              navigation={navigation}
+              key={r.id}
+              title={r.slug}
+              routeName={r.routeName} // i added routeName statically through RoleResources
+              iconName={r.name}
+            />
+          ))}
         </View>
       </View>
     );

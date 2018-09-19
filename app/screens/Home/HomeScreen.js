@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {View, Text, StyleSheet, FlatList, RefreshControl} from 'react-native';
+import {View, StyleSheet, FlatList, RefreshControl} from 'react-native';
 import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
 import {
@@ -8,12 +8,13 @@ import {
   getSearch,
   refetchProjects
 } from '../../redux/actions';
+import {Button} from 'react-native-elements';
 import {bindActionCreators} from 'redux';
 import validate from 'validate.js';
 import CompanyProfile from './../../components/CompanyProfile/CompanyProfile';
 import SearchInput from '../../components/SearchInput';
 import ProjectPanelWidget from '../../components/Project/ProjectPanelWidget';
-import {height} from './../../constants';
+import {height, colors} from './../../constants';
 import I18n from './../../I18n';
 
 class HomeScreen extends Component {
@@ -31,7 +32,7 @@ class HomeScreen extends Component {
   };
 
   render() {
-    const {auth, projects, settings, actions} = this.props;
+    const {auth, projects, settings, actions, navigation} = this.props;
     const {refreshing} = this.state;
     return (
       <View style={{paddingBottom: 30, backgroundColor: 'white'}}>
@@ -39,9 +40,15 @@ class HomeScreen extends Component {
           <CompanyProfile settings={settings} />
         ) : validate.isEmpty(auth.projects) ? (
           <View style={styles.titleView}>
-            <Text style={styles.title}>
-              {I18n.t('there_are_no_projects_please_contact_us')}
-            </Text>
+            <Button
+              raised
+              large
+              buttonStyle={{backgroundColor: colors.main}}
+              onPress={() => navigation.navigate('Contactus')}
+              icon={{name: 'info', color: 'white'}}
+              title={I18n.t('there_are_no_projects_please_contact_us')}
+              titleStyle={styles.mainTitle}
+            />
           </View>
         ) : (
           <View>
@@ -104,8 +111,9 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center'
   },
-  title: {
+  mainTitle: {
     fontFamily: 'cairo',
-    fontSize: 20
+    fontSize: 20,
+    textAlign: 'center'
   }
 });

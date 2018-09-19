@@ -7,6 +7,8 @@ import I18n from './../../I18n';
 import {upperFirst} from 'lodash';
 import {bindActionCreators} from 'redux';
 import {refetchProject} from '../../redux/actions';
+import {height} from './../../constants';
+
 import connect from 'react-redux/es/connect/connect';
 const modules = [
   'drawings',
@@ -24,14 +26,15 @@ const modules = [
 class ProjectShowScreen extends Component {
   constructor(props) {
     super(props);
-    this.state = {project: {}, navigation: {}, refreshing: false};
+    this.state = {project: {}, navigation: {}, refreshing: false, auth: {}};
   }
 
   static getDerivedStateFromProps(nextProps) {
-    const {navigation} = nextProps;
+    const {navigation, auth} = nextProps;
     return {
       project: navigation.state.params.project,
-      navigation
+      navigation,
+      auth
     };
   }
 
@@ -41,7 +44,7 @@ class ProjectShowScreen extends Component {
   };
 
   render() {
-    const {project, navigation, refreshing} = this.state;
+    const {project, navigation, refreshing, auth} = this.state;
     return (
       <View style={styles.elementContainer}>
         <ProjectPanelHomeWidget
@@ -51,16 +54,19 @@ class ProjectShowScreen extends Component {
         />
         <View style={styles.modulesWrapper}>
           <FlatList
+            style={{height: height}}
             data={modules}
-            renderItem={({item}) => (
-              <MainBtnElement
-                navigation={navigation}
-                element={project}
-                title={I18n.t(item)}
-                iconName={item}
-                routeName={item}
-              />
-            )}
+            renderItem={({item}) => {
+              return auth.role[item] ? (
+                <MainBtnElement
+                  navigation={navigation}
+                  element={project}
+                  title={I18n.t(item)}
+                  iconName={item}
+                  routeName={item}
+                />
+              ) : null;
+            }}
             numColumns={3}
             columnWrapperStyle={styles.modulesWrapper}
             refreshControl={
@@ -101,7 +107,8 @@ const styles = StyleSheet.create({
   elementContainer: {
     backgroundColor: 'white',
     justifyContent: 'flex-start',
-    alignItems: 'center'
+    alignItems: 'center',
+    height: height
   },
   modulesWrapper: {
     flexDirection: 'row',

@@ -12,8 +12,8 @@ import {
 } from 'react-navigation-redux-helpers';
 import I18n from './I18n';
 import SideMenu from './components/SideMenu';
-import {getHeader, getTabTitle} from './helpers';
-import {colors, text} from './constants';
+import {getHeader} from './helpers';
+import {colors} from './constants';
 import HeaderLeft from './components/HeaderLeft';
 import HeaderCustom from './components/HeaderCustom';
 import HomeSliderScreen from './screens/HomeSlider/HomeSliderScreen';

@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {View, Text, ScrollView, StyleSheet} from 'react-native';
+import {View, ScrollView, StyleSheet} from 'react-native';
 import PropTypes from 'prop-types';
 import validate from 'validate.js';
 import NotAvailableElement from '../../components/NotAvailableElement';
