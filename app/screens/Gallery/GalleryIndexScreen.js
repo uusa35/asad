@@ -15,19 +15,23 @@ import {width} from '../../constants';
 export default class GalleryIndexScreen extends Component {
   constructor(props) {
     super(props);
-    this.state = {project: {}, navigation: {}, moduleName: ''};
+    this.state = {project: {}, navigation: {}, moduleName: '', galleries: []};
   }
 
   static getDerivedStateFromProps(nextProps) {
     const {navigation} = nextProps;
+    console.log('the project', navigation.state.params.project);
+    console.log('the galleires', navigation.state.params.project.galleries);
     return {
       project: navigation.state.params.project,
       moduleName: navigation.state.params.moduleName,
+      galleries: navigation.state.params.project.galleries,
       navigation
     };
   }
   render() {
-    const {navigation, project, moduleName} = this.state;
+    const {navigation, moduleName, galleries} = this.state;
+    console.log('the galleries from GalleryIndex', galleries);
     return (
       <ScrollView
         style={{backgroundColor: 'white'}}
@@ -36,11 +40,11 @@ export default class GalleryIndexScreen extends Component {
         endFillColor="white"
         showsVerticalScrollIndicator={false}>
         <View style={styles.wrapper}>
-          {validate.isEmpty(project.galleries) ? (
+          {validate.isEmpty(galleries) ? (
             <NotAvailablElement routeName={moduleName} />
           ) : (
             <View>
-              {project.galleries.map(g => {
+              {galleries.map(g => {
                 return (
                   <TouchableOpacity
                     key={g.id * Math.random()}

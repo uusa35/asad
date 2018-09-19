@@ -15,7 +15,6 @@ class ProjectIndexScreen extends Component {
     const {projects, actions} = this.props;
     return (
       <ScrollView
-        style={{backgroundColor: 'white'}}
         showsHorizontalScrollIndicator={false}
         contentContainerStyle={{
           paddingBottom: 30,

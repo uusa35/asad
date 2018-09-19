@@ -8,8 +8,9 @@ import I18n from './../I18n';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import {changeLang, logout} from '../redux/actions';
-import {colors, width, height, images} from './../constants';
+import {colors, images} from './../constants';
 import FastImage from 'react-native-fast-image';
+import validate from 'validate.js';
 
 class Menu extends Component {
   constructor(props) {
@@ -17,12 +18,12 @@ class Menu extends Component {
   }
 
   changeLang() {
-    newLang = this.props.lang === 'ar' ? 'en' : 'ar';
+    let newLang = this.props.lang === 'ar' ? 'en' : 'ar';
     this.props.actions.changeLang(newLang);
   }
 
   render() {
-    const {token, guest, navigation} = this.props;
+    const {token, guest, navigation, galleries} = this.props;
     return (
       <ScrollView
         style={styles.container}
@@ -84,6 +85,20 @@ class Menu extends Component {
                 title={I18n.t('logout')}
               />
             </View>
+          ) : null}
+          {!validate.isEmpty(galleries) ? (
+            <Button
+              buttonStyle={styles.menuBtn}
+              fontFamily="cairo"
+              color="black"
+              titleStyle={styles.titleStyle}
+              onPress={() =>
+                navigation.navigate('Galleries', {
+                  project: {galleries: galleries}
+                })
+              }
+              title={I18n.t('galleries')}
+            />
           ) : null}
           <Button
             buttonStyle={styles.menuBtn}
