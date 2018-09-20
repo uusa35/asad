@@ -65,12 +65,7 @@ class ProjectShowScreen extends Component {
           image={project.image}
         />
         <FlatList
-          containtContainerStyle={{
-            backgroundColor: 'orange',
-            height: height,
-            justifyContent: 'center',
-            alignItems: 'center'
-          }}
+          containtContainerStyle={styles.flatListContainer}
           data={filteredModules}
           renderItem={({item}) => {
             return auth.role[item] ? (
@@ -128,6 +123,11 @@ const styles = StyleSheet.create({
   modulesWrapper: {
     flexDirection: 'row',
     flexWrap: 'wrap',
+    justifyContent: 'center',
+    alignItems: 'center'
+  },
+  flatListContainer: {
+    height: height,
     justifyContent: 'center',
     alignItems: 'center'
   }
