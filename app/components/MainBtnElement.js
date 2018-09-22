@@ -31,7 +31,7 @@ export default class MainBtnElement extends Component {
   }
 
   render() {
-    const {navigation, element, title, iconName, routeName} = this.state;
+    const {navigation, element, title, iconName, routeName, name} = this.state;
     return (
       <View>
         {!validate.isEmpty(element) ? (
@@ -59,8 +59,27 @@ export default class MainBtnElement extends Component {
             </TouchableOpacity>
           </View>
         ) : (
-          <View>
-            <Text>{I18n.t('no_element')}</Text>
+          <View style={styles.elementWrapper} key={Math.random()}>
+            <View style={styles.elementSlug} key={Math.random()}>
+              <Text style={styles.elementSlugTitle}>{title}</Text>
+            </View>
+            <TouchableOpacity
+              key={Math.random()}
+              style={styles.elementTypeBtn}
+              onPress={() =>
+                navigation.navigate(_.upperFirst(routeName), {
+                  type: name,
+                  name: name,
+                  routeName,
+                  moduleName: routeName
+                })
+              }>
+              <FastImage
+                style={styles.elementIcon}
+                source={icons[iconName]}
+                resizeMode={FastImage.resizeMode.contain}
+              />
+            </TouchableOpacity>
           </View>
         )}
       </View>

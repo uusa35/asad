@@ -84,7 +84,8 @@ export const icons = {
   timelines: require('./../assets/icons/timeline.png'),
   phases: require('./../assets/icons/phase.png'),
   reports: require('./../assets/icons/report.png'),
-  livecam: require('./../assets/icons/livecam.png')
+  livecam: require('./../assets/icons/livecam.png'),
+  contactus: require('./../assets/icons/contactus.png')
 };
 
 export const colors = {

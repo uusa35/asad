@@ -60,6 +60,13 @@ class HomeScreen extends Component {
                 />
               );
             })}
+            <MainBtnElement
+              navigation={navigation}
+              name="Guest"
+              title={I18n.t('guest')}
+              routeName="Contactus" // i added routeName statically through RoleResources
+              iconName="contactus"
+            />
           </View>
         ) : validate.isEmpty(auth.projects) ? (
           <View style={styles.titleView}>
