@@ -25,7 +25,7 @@ export default class ProjectPanelWidget extends Component {
         <FastImage source={images.projectBg} style={styles.imgBg} />
         <TouchableHighlight
           onPress={handleClick}
-          kye={project.id}
+          key={project.id}
           underlayColor="transparent"
           activeOpacity={0.5}
           style={styles.panelMainBtn}>

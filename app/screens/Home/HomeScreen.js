@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {View, StyleSheet, FlatList, RefreshControl} from 'react-native';
+import {View, StyleSheet, FlatList, RefreshControl, Text} from 'react-native';
 import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
 import {
@@ -12,10 +12,12 @@ import {Button} from 'react-native-elements';
 import {bindActionCreators} from 'redux';
 import validate from 'validate.js';
 import CompanyProfile from './../../components/CompanyProfile/CompanyProfile';
+import RegisterAsScreen from './../../screens/Register/RegisterAsScreen';
 import SearchInput from '../../components/SearchInput';
 import ProjectPanelWidget from '../../components/Project/ProjectPanelWidget';
 import {height, colors} from './../../constants';
 import I18n from './../../I18n';
+import MainBtnElement from '../../components/MainBtnElement';
 
 class HomeScreen extends Component {
   constructor(props) {
@@ -32,12 +34,33 @@ class HomeScreen extends Component {
   };
 
   render() {
-    const {auth, projects, settings, actions, navigation} = this.props;
+    const {auth, projects, settings, actions, navigation, roles} = this.props;
     const {refreshing} = this.state;
     return (
       <View style={{backgroundColor: 'white'}}>
         {validate.isEmpty(auth) ? (
-          <CompanyProfile settings={settings} />
+          <View
+            style={{
+              height: height,
+              justifyContent: 'center',
+              marginTop: 150,
+              alignItems: 'center',
+              flexDirection: 'row',
+              flexWrap: 'wrap'
+            }}>
+            {roles.map(r => {
+              return (
+                <MainBtnElement
+                  element={r}
+                  navigation={navigation}
+                  key={r.id}
+                  title={r.slug}
+                  routeName={r.routeName} // i added routeName statically through RoleResources
+                  iconName={r.name}
+                />
+              );
+            })}
+          </View>
         ) : validate.isEmpty(auth.projects) ? (
           <View style={styles.titleView}>
             <Button
