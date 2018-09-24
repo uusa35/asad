@@ -52,7 +52,7 @@ public class MainApplication extends Application implements ReactApplication {
             new FastImageViewPackage(),
             new RNDeviceInfo(),
             new RNFetchBlobPackage(),
-            new CodePush(getResources().getString(R.string.reactNativeCodePush_androidDeploymentKey), getApplicationContext(), BuildConfig.DEBUG),
+            new CodePush(getResources().getString(R.string.reactNativeCodePush_androidDeploymentKey), getApplicationContext(), BuildConfig.DEBUG)
       );
     }
 

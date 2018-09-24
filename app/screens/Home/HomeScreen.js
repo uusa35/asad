@@ -65,7 +65,7 @@ class HomeScreen extends Component {
               name="Guest"
               title={I18n.t('guest')}
               routeName="Contactus" // i added routeName statically through RoleResources
-              iconName="contactus"
+              iconName="guest"
             />
           </View>
         ) : validate.isEmpty(auth.projects) ? (

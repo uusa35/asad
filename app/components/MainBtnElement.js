@@ -89,7 +89,7 @@ export default class MainBtnElement extends Component {
 
 MainBtnElement.propTypes = {
   navigation: PropTypes.object.isRequired,
-  element: PropTypes.object.isRequired,
+  element: PropTypes.object,
   title: PropTypes.string.isRequired,
   iconName: PropTypes.string.isRequired,
   routeName: PropTypes.string.isRequired
