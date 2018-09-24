@@ -346,6 +346,7 @@
   "timelines" : "جدول زمني",
   "livecam" : "بث مباشر",
   "there_are_no_projects_please_contact_us" : "لا يوجد مشاريع حالية .. لمزيد من المعلومات يرجى التواصل مع الإدارة",
-  "guest" : "زائر"
+  "guest" : "زائر",
+  "search_success" : "تمت عملية البحث بنجاح .."
 
 }
