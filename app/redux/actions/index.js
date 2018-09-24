@@ -7,6 +7,13 @@ export function appBootstrap() {
   };
 }
 
+export function linkNotification(notification) {
+  return {
+    type: actions.LINK_NOTIFICATION,
+    payload: notification
+  };
+}
+
 export function toggleBootstrapped(bootstrapped) {
   return {
     type: actions.TOGGLE_BOOTSTRAPPED,
@@ -247,5 +254,6 @@ export const APP_ACTIONS = {
   setProject,
   setGalleries,
   getSearch,
-  setSearch
+  setSearch,
+  linkNotification
 };

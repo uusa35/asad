@@ -30,7 +30,8 @@ export const initialState = {
   requesterRequest: {},
   project: {},
   deviceId: '',
-  search: []
+  search: [],
+  notification: {}
 };
 
 export const links = {

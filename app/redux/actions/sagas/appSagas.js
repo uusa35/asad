@@ -1,6 +1,6 @@
 import * as actions from '../types';
 import {takeLatest, call, put, all} from 'redux-saga/effects';
-import {defaultLang} from './langSagas';
+import {defaultLang, startChangeLang} from './langSagas';
 import * as api from '../api';
 import * as helpers from '../../../helpers';
 import validate from 'validate.js';
@@ -167,4 +167,20 @@ export function* startAppBootStrap() {
     console.log('the e from appSaga', e);
     yield all([call(disableLoading), call(enableErrorMessage, e.message)]);
   }
+}
+
+export function* startLinkNotificationScenario(action) {
+  const {type, path, title} = action.payload;
+  if (type == 'pdf') {
+    yield put(
+      NavigationActions.navigate({
+        routeName: 'AppPDFViewer',
+        params: {pdfLink: path, title}
+      })
+    );
+  }
+}
+
+export function* linkNotification() {
+  yield takeLatest(actions.LINK_NOTIFICATION, startLinkNotificationScenario);
 }

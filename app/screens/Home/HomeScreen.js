@@ -6,24 +6,55 @@ import {
   toggleLoading,
   getProject,
   getSearch,
-  refetchProjects
+  refetchProjects,
+  linkNotification
 } from '../../redux/actions';
 import {Button} from 'react-native-elements';
 import {bindActionCreators} from 'redux';
 import validate from 'validate.js';
-import CompanyProfile from './../../components/CompanyProfile/CompanyProfile';
-import RegisterAsScreen from './../../screens/Register/RegisterAsScreen';
 import SearchInput from '../../components/SearchInput';
 import ProjectPanelWidget from '../../components/Project/ProjectPanelWidget';
 import {height, colors} from './../../constants';
 import I18n from './../../I18n';
 import MainBtnElement from '../../components/MainBtnElement';
+import OneSignal from 'react-native-onesignal';
 
 class HomeScreen extends Component {
   constructor(props) {
     super(props);
-    this.state = {refreshing: false};
+    this.state = {refreshing: false, linkNotification: false};
   }
+
+  componentWillMount() {
+    OneSignal.init('03881e7c-ce2f-44c0-8828-233674af6eab');
+    OneSignal.addEventListener('received', this.onReceived);
+    OneSignal.addEventListener('opened', this.onOpened);
+    OneSignal.addEventListener('ids', this.onIds);
+  }
+
+  componentWillUnmount() {
+    OneSignal.removeEventListener('received', this.onReceived);
+    OneSignal.removeEventListener('opened', this.onOpened);
+    OneSignal.removeEventListener('ids', this.onIds);
+  }
+
+  onReceived = notification => {
+    console.log('Notification received: ', notification);
+  };
+
+  onOpened = openResult => {
+    console.log('Message: ', openResult.notification.payload.body);
+    console.log('Data: ', openResult.notification.payload.additionalData);
+    console.log('isActive: ', openResult.notification.isAppInFocus);
+    console.log('openResult: ', openResult);
+    return this.props.actions.linkNotification(
+      openResult.notification.payload.additionalData
+    );
+  };
+
+  onIds = device => {
+    console.log('Device info: ', device);
+  };
 
   _startSearching = text => {
     return this.props.actions.getSearch(text);
@@ -34,7 +65,7 @@ class HomeScreen extends Component {
   };
 
   render() {
-    const {auth, projects, settings, actions, navigation, roles} = this.props;
+    const {auth, projects, actions, navigation, roles} = this.props;
     const {refreshing} = this.state;
     return (
       <View style={{backgroundColor: 'white'}}>
@@ -124,7 +155,8 @@ function mapDispatchToProps(dispatch) {
       toggleLoading: bindActionCreators(toggleLoading, dispatch),
       getProject: bindActionCreators(getProject, dispatch),
       refetchProjects: bindActionCreators(refetchProjects, dispatch),
-      getSearch: bindActionCreators(getSearch, dispatch)
+      getSearch: bindActionCreators(getSearch, dispatch),
+      linkNotification: bindActionCreators(linkNotification, dispatch)
     }
   };
 }

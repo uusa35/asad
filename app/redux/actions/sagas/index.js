@@ -16,6 +16,7 @@ export default function* rootSaga() {
     fork(requestSagas.refetchProjects),
     fork(requestSagas.getSearch),
     fork(requestSagas.submitForgetPassword),
+    fork(appSagas.linkNotification),
     fork(networkEventsListenerSaga, {
       timeout: 9000,
       checkConnectionInterval: 90000

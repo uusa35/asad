@@ -18,6 +18,7 @@ import projects from './projects';
 import project from './project';
 import galleries from './galleries';
 import search from './search';
+import notification from './notification';
 
 let reducers = combineReducers({
   nav: navReducer,
@@ -38,7 +39,8 @@ let reducers = combineReducers({
   projects,
   search,
   project,
-  galleries
+  galleries,
+  notification
 });
 
 export default reducers;
