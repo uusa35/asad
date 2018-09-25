@@ -26,14 +26,9 @@ class App extends Component {
   render() {
     const {network, bootStrapped, isLoading, message} = this.props;
     if (!validate.isEmpty(network) && !network.isConnected)
-      return <LoadingOfflineView style={{flex: 1, alignItems: 'center'}} />;
+      return <LoadingOfflineView />;
     if (!bootStrapped || isLoading)
-      return (
-        <LoadingView
-          style={{flex: 1, alignItems: 'center'}}
-          loadingText="loading"
-        />
-      );
+      return <LoadingView loadingText="loading" />;
     return (
       <View style={{backgroundColor: 'transparent', flex: 1}}>
         <AppNavigator />

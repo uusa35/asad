@@ -6,20 +6,13 @@ import {height, width, colors} from './../constants';
 import codePush from 'react-native-code-push';
 
 export default class LoadingOfflineView extends Component {
-  constructor(props) {
-    super(props);
-  }
   _retry() {
     return codePush.restartApp();
   }
 
   render() {
     return (
-      <View
-        style={[
-          styles.activityContainer,
-          {backgroundColor: 'white', width: width, height: height}
-        ]}>
+      <View style={styles.activityContainer}>
         <ActivityIndicator style={{marginBottom: 15}} />
         <Text style={styles.loadingMessage}>{I18n.t('no_internet')}</Text>
         <Button
@@ -37,9 +30,10 @@ export default class LoadingOfflineView extends Component {
 
 const styles = StyleSheet.create({
   activityContainer: {
-    height: height,
+    flex: 1,
+    alignItems: 'center',
     justifyContent: 'center',
-    alignItems: 'center'
+    backgroundColor: 'white'
   },
   loadingMessage: {
     fontFamily: 'cairo',

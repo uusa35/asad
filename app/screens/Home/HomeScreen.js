@@ -16,8 +16,9 @@ import SearchInput from '../../components/SearchInput';
 import ProjectPanelWidget from '../../components/Project/ProjectPanelWidget';
 import {height, colors} from './../../constants';
 import I18n from './../../I18n';
-import MainBtnElement from '../../components/MainBtnElement';
 import OneSignal from 'react-native-onesignal';
+import HomeBtns from '../../components/HomeBtns';
+import {oneSignalAppID} from 'react-native-dotenv';
 
 class HomeScreen extends Component {
   constructor(props) {
@@ -26,7 +27,7 @@ class HomeScreen extends Component {
   }
 
   componentWillMount() {
-    OneSignal.init('03881e7c-ce2f-44c0-8828-233674af6eab');
+    OneSignal.init(oneSignalAppID);
     OneSignal.addEventListener('received', this.onReceived);
     OneSignal.addEventListener('opened', this.onOpened);
     OneSignal.addEventListener('ids', this.onIds);
@@ -70,35 +71,7 @@ class HomeScreen extends Component {
     return (
       <View style={{backgroundColor: 'white'}}>
         {validate.isEmpty(auth) ? (
-          <View
-            style={{
-              height: height,
-              justifyContent: 'center',
-              marginTop: 150,
-              alignItems: 'center',
-              flexDirection: 'row',
-              flexWrap: 'wrap'
-            }}>
-            {roles.map(r => {
-              return (
-                <MainBtnElement
-                  element={r}
-                  navigation={navigation}
-                  key={r.id}
-                  title={r.slug}
-                  routeName={r.routeName} // i added routeName statically through RoleResources
-                  iconName={r.name}
-                />
-              );
-            })}
-            <MainBtnElement
-              navigation={navigation}
-              name="Guest"
-              title={I18n.t('guest')}
-              routeName="Contactus" // i added routeName statically through RoleResources
-              iconName="guest"
-            />
-          </View>
+          <HomeBtns roles={roles} navigation={navigation} />
         ) : validate.isEmpty(auth.projects) ? (
           <View style={styles.titleView}>
             <Button

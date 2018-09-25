@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {View, Text, ActivityIndicator, StyleSheet} from 'react-native';
 import I18n from './../I18n';
-import {images, height, width} from './../constants';
+import {images, width} from './../constants';
 import FastImage from 'react-native-fast-image';
 
 export default class LoadingView extends Component {
@@ -11,7 +11,7 @@ export default class LoadingView extends Component {
 
   render() {
     return (
-      <View style={[styles.activityContainer, {backgroundColor: 'white'}]}>
+      <View style={styles.activityContainer}>
         <ActivityIndicator style={{marginBottom: 15}} />
         <FastImage
           source={images.logo}
@@ -25,11 +25,12 @@ export default class LoadingView extends Component {
 
 const styles = StyleSheet.create({
   activityContainer: {
-    height: height,
-    justifyContent: 'center',
+    flex: 1,
     alignItems: 'center',
+    justifyContent: 'center',
     width: width,
-    backgroundColor: 'white'
+    backgroundColor: 'white',
+    opacity: 0.8
   },
   loadingText: {
     fontFamily: 'cairo',
