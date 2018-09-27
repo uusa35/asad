@@ -77,8 +77,8 @@ project.ext.react = [
 ]
 
 apply from: "../../node_modules/react-native/react.gradle"
-apply from: "../../node_modules/react-native-code-push/android/codepush.gradle"
-
+//apply from: "../../node_modules/react-native-code-push/android/codepush.gradle"
+//apply plugin: 'com.onesignal.androidsdk.onesignal-gradle-plugin'
 /**
  * Set this to true to create two separate APKs instead of one:
  *   - An APK that only works on ARM devices
@@ -95,19 +95,20 @@ def enableSeparateBuildPerCPUArchitecture = false
 def enableProguardInReleaseBuilds = false
 
 android {
-    compileSdkVersion 27
-            buildToolsVersion "27.0.3"
+    compileSdkVersion rootProject.ext.compileSdkVersion
+    buildToolsVersion rootProject.ext.buildToolsVersion
 
-            defaultConfig {
-                applicationId "com.asad"
-                minSdkVersion 18
-                targetSdkVersion 27
-                versionCode 1
-                versionName "1.0"
-                ndk {
-                    abiFilters "armeabi-v7a", "x86"
-                }
+    defaultConfig {
+        applicationId "com.asad"
+        minSdkVersion rootProject.ext.minSdkVersion
+        targetSdkVersion rootProject.ext.targetSdkVersion
+        versionCode 1
+        vectorDrawables.useSupportLibrary  true
+        versionName "1.0"
+        ndk {
+            abiFilters "armeabi-v7a", "x86"
         }
+}
     splits {
         abi {
             reset()
@@ -141,23 +142,21 @@ dependencies {
     implementation project(':react-native-onesignal')
     implementation project(':react-native-vector-icons')
     implementation project(':react-native-restart')
-    implementation project(':react-native-picker')
     implementation project(':react-native-pdf')
-    implementation project(':react-native-maps')
-    compile project(':react-native-image-crop-picker')
     implementation project(':react-native-i18n')
     implementation project(':react-native-fast-image')
     implementation project(':react-native-device-info')
     implementation project(':react-native-code-push')
     implementation project(':rn-fetch-blob')
+    compile project(':react-native-image-crop-picker')
     implementation(project(':react-native-maps')){
                exclude group: 'com.google.android.gms', module: 'play-services-base'
                exclude group: 'com.google.android.gms', module: 'play-services-maps'
            }
         compile 'com.google.android.gms:play-services-base:+'
         compile 'com.google.android.gms:play-services-maps:+'
-    compile fileTree(dir: "libs", include: ["*.jar"])
-    compile "com.android.support:appcompat-v7:27.1.1"
+    implementation fileTree(dir: "libs", include: ["*.jar"])
+    implementation "com.android.support:appcompat-v7:${rootProject.ext.supportLibVersion}"
     implementation "com.facebook.react:react-native:+"  // From node_modules
 }
 

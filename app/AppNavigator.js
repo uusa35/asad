@@ -80,7 +80,9 @@ const HomeStack = createStackNavigator(
       screen: RegisterAsScreen,
       navigationOptions: ({navigation}) => ({
         isModal: true,
-        headerTitle: getHeader(I18n.t('register_as').toLocaleUpperCase())
+        headerTitle: getHeader(
+          I18n.t('register_as_supplier').toLocaleUpperCase()
+        )
       })
     },
     ResetPassword: {

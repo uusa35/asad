@@ -819,7 +819,7 @@
 					};
 					13B07F861A680F5B00A75B9A = {
 						DevelopmentTeam = CA8V56NH9X;
-						ProvisioningStyle = Automatic;
+						ProvisioningStyle = Manual;
 						SystemCapabilities = {
 							com.apple.BackgroundModes = {
 								enabled = 1;
@@ -1456,11 +1456,11 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = asad/asad.entitlements;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1;
 				DEAD_CODE_STRIPPING = NO;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = CA8V56NH9X;
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)/../node_modules/react-native-restart/ios/RCTRestart/**",
@@ -1475,8 +1475,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = app.asadgroup.asadApp;
 				PRODUCT_NAME = asad;
-				PROVISIONING_PROFILE = "";
-				PROVISIONING_PROFILE_SPECIFIER = "";
+				PROVISIONING_PROFILE = "fda30c07-7ea6-48c4-8756-ae94fb49f554";
+				PROVISIONING_PROFILE_SPECIFIER = "ad-hoc-development-certificate-asadGroup";
 				VERSIONING_SYSTEM = "apple-generic";
 			};
 			name = Debug;
@@ -1487,10 +1487,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = asad/asad.entitlements;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = CA8V56NH9X;
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)/../node_modules/react-native-restart/ios/RCTRestart/**",
@@ -1505,8 +1505,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = app.asadgroup.asadApp;
 				PRODUCT_NAME = asad;
-				PROVISIONING_PROFILE = "";
-				PROVISIONING_PROFILE_SPECIFIER = "";
+				PROVISIONING_PROFILE = "fda30c07-7ea6-48c4-8756-ae94fb49f554";
+				PROVISIONING_PROFILE_SPECIFIER = "ad-hoc-development-certificate-asadGroup";
 				VERSIONING_SYSTEM = "apple-generic";
 			};
 			name = Release;

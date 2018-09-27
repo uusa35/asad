@@ -49,18 +49,20 @@ export default class PaymentPanelElement extends Component {
           <Text style={styles.fileTypeText}>{element.date_received}</Text>
         </View>
         <View style={styles.panelBtnWrapper}>
-          <TouchableOpacity
-            onPress={() =>
-              navigation.navigate('AppPDFViewer', {
-                pdfLink: element.path,
-                title: element.name
-              })
-            }
-            style={styles.panelBtn}>
-            <Text style={styles.panelBtnText}>
-              {I18n.t('view').toUpperCase()}
-            </Text>
-          </TouchableOpacity>
+          {!validate.isEmpty(element.path) ? (
+            <TouchableOpacity
+              onPress={() =>
+                navigation.navigate('AppPDFViewer', {
+                  pdfLink: element.path,
+                  title: element.name
+                })
+              }
+              style={styles.panelBtn}>
+              <Text style={styles.panelBtnText}>
+                {I18n.t('view').toUpperCase()}
+              </Text>
+            </TouchableOpacity>
+          ) : null}
         </View>
       </View>
     );

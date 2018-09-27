@@ -6,7 +6,6 @@ import com.facebook.react.ReactApplication;
 import com.geektime.rnonesignalandroid.ReactNativeOneSignalPackage;
 import com.oblador.vectoricons.VectorIconsPackage;
 import com.avishayil.rnrestart.ReactNativeRestartPackage;
-import com.beefe.picker.PickerViewPackage;
 import org.wonday.pdf.RCTPdfView;
 import com.airbnb.android.react.maps.MapsPackage;
 import com.reactnative.ivpusic.imagepicker.PickerPackage;
@@ -19,7 +18,6 @@ import com.facebook.react.ReactNativeHost;
 import com.facebook.react.ReactPackage;
 import com.facebook.react.shell.MainReactPackage;
 import com.facebook.soloader.SoLoader;
-
 import java.util.Arrays;
 import java.util.List;
 
@@ -44,7 +42,6 @@ public class MainApplication extends Application implements ReactApplication {
             new ReactNativeOneSignalPackage(),
             new VectorIconsPackage(),
             new ReactNativeRestartPackage(),
-            new PickerViewPackage(),
             new RCTPdfView(),
             new MapsPackage(),
             new PickerPackage(),
