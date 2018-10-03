@@ -2,16 +2,13 @@
 buildscript {
     repositories {
         maven { url 'https://plugins.gradle.org/m2/' } // Gradle Plugin Portal
-        maven {
-                    url 'https://maven.google.com/'
-                    name 'Google'
-        }
     }
-
     dependencies {
         classpath 'gradle.plugin.com.onesignal:onesignal-gradle-plugin:[0.10.0, 0.99.99]'
     }
 }
+
+
 buildscript {
     repositories {
         jcenter()

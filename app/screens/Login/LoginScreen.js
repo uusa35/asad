@@ -1,11 +1,11 @@
 import React, {Component} from 'react';
-import {View, StyleSheet} from 'react-native';
+import {View, StyleSheet, TouchableOpacity} from 'react-native';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import PropTypes from 'prop-types';
 import {submitLogin, enableErrorMessage} from '../../redux/actions';
 import FastImage from 'react-native-fast-image';
-import {Input, Button} from 'react-native-elements';
+import {Input, Button, Text} from 'react-native-elements';
 import I18n, {isRTL} from '../../I18n';
 import {colors, height, width, images, icons} from '../../constants';
 import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scroll-view';
@@ -34,6 +34,7 @@ class LoginScreen extends Component {
     }
   }
   render() {
+    console.log('LoginScreen Render rendered');
     const {navigation, settings} = this.props;
     return (
       <KeyboardAwareScrollView
@@ -51,7 +52,7 @@ class LoginScreen extends Component {
             <FastImage
               style={styles.logo}
               source={{uri: settings.logo}}
-              resizeMode={FastImage.resizeMode.stretch}
+              resizeMode={FastImage.resizeMode.center}
             />
             <View style={styles.formWrapper}>
               <Input
@@ -85,32 +86,36 @@ class LoginScreen extends Component {
                   />
                 }
               />
-              <Button
-                buttonStyle={[
+              <TouchableOpacity
+                onPress={() => navigation.navigate('ForgetPassword')}
+                style={[
                   styles.registerSubmitBtn,
                   {backgroundColor: 'transparent', height: 40}
-                ]}
-                fontFamily="Cairo"
-                color="black"
-                titleStyle={[
-                  styles.registerSubmitBtnText,
-                  {color: 'white', fontSize: 15}
-                ]}
-                onPress={() => navigation.navigate('ForgetPassword')}
-                title={I18n.t('forget_your_password')}
-              />
-              <Button
-                buttonStyle={styles.registerSubmitBtn}
-                titleStyle={styles.registerSubmitBtnText}
+                ]}>
+                <Text
+                  style={[
+                    styles.registerSubmitBtnText,
+                    {color: 'white', fontSize: 15}
+                  ]}>
+                  {I18n.t('forget_your_password')}
+                </Text>
+              </TouchableOpacity>
+
+              <TouchableOpacity
                 onPress={() => this._doSubmitLogin()}
-                title={I18n.t('submit').toUpperCase()}
-              />
-              <Button
-                buttonStyle={styles.registerSubmitBtn}
-                titleStyle={styles.registerSubmitBtnText}
+                style={styles.registerSubmitBtn}>
+                <Text style={styles.registerSubmitBtnText}>
+                  {I18n.t('submit').toUpperCase()}
+                </Text>
+              </TouchableOpacity>
+
+              <TouchableOpacity
                 onPress={() => navigation.navigate('RegisterAs')}
-                title={I18n.t('register_as').toUpperCase()}
-              />
+                style={styles.registerSubmitBtn}>
+                <Text style={styles.registerSubmitBtnText}>
+                  {I18n.t('register_as').toUpperCase()}
+                </Text>
+              </TouchableOpacity>
             </View>
           </View>
         </View>

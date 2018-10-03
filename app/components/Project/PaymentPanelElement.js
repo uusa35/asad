@@ -5,6 +5,7 @@ import {Divider} from 'react-native-elements';
 import {width, height, text, colors} from './../../constants';
 import I18n from './../../I18n';
 import Communications from 'react-native-communications';
+import validate from 'validate.js';
 
 export default class PaymentPanelElement extends Component {
   constructor(props) {

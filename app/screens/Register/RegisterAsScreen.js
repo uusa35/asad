@@ -72,7 +72,6 @@ const styles = StyleSheet.create({
     fontFamily: 'cairo',
     fontSize: 22,
     color: 'black',
-    fontWeight: 'bold',
     padding: 15
   },
   imgBg: {
@@ -85,6 +84,7 @@ const styles = StyleSheet.create({
   },
   wrapper: {
     flexDirection: 'row',
+    width: width - 100,
     justifyContent: 'center',
     alignItems: 'center',
     flexWrap: 'wrap'

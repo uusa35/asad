@@ -5,6 +5,7 @@ import React from 'react';
 import {AsyncStorage, Alert, Platform, Text} from 'react-native';
 import _ from 'lodash';
 import I18n from './../I18n';
+import {width} from './../constants';
 import geolib, {getDistance} from 'geolib';
 import validate from 'validate.js';
 
@@ -118,7 +119,7 @@ export function getHeader(title) {
         color: 'black',
         textAlign: 'center',
         fontSize: 20,
-        width: 300
+        width: width - 100
       }}>
       {title}
     </Text>

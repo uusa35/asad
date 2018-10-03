@@ -2,7 +2,13 @@
  * Created by usamaahmed on 9/27/17.
  */
 import React, {Component} from 'react';
-import {View, StyleSheet, ScrollView, StatusBar} from 'react-native';
+import {
+  View,
+  StyleSheet,
+  ScrollView,
+  StatusBar,
+  TouchableOpacity
+} from 'react-native';
 import {Text, Button} from 'react-native-elements';
 import I18n from './../I18n';
 import {connect} from 'react-redux';
@@ -33,89 +39,61 @@ class Menu extends Component {
           source={images.logo}
           style={{width: 100, height: 120, margin: 12}}
         />
-        <Text
-          style={{
-            color: 'black',
-            fontFamily: 'cairo',
-            fontSize: 25,
-            textAlign: 'center'
-          }}>
-          {I18n.t('menu')}
-        </Text>
+        <Text style={styles.mainMenuText}>{I18n.t('menu')}</Text>
         <View style={{marginBottom: 20, width: '100%'}}>
-          <Button
-            buttonStyle={styles.menuBtn}
-            fontFamily="cairo"
-            color="black"
-            titleStyle={styles.titleStyle}
+          <TouchableOpacity
             onPress={() => navigation.navigate('Home')}
-            title={I18n.t('homepage')}
-          />
-
+            style={styles.menuBtn}>
+            <Text style={styles.titleStyle}>{I18n.t('homepage')}</Text>
+          </TouchableOpacity>
           {guest ? (
             <View>
-              <Button
-                buttonStyle={styles.menuBtn}
-                fontFamily="cairo"
-                color="black"
-                titleStyle={styles.titleStyle}
+              <TouchableOpacity
                 onPress={() => navigation.navigate('Login')}
-                title={I18n.t('login')}
-              />
-              <Button
-                buttonStyle={styles.menuBtn}
-                fontFamily="cairo"
-                color="black"
-                titleStyle={styles.titleStyle}
+                style={styles.menuBtn}>
+                <Text style={styles.titleStyle}>{I18n.t('login')}</Text>
+              </TouchableOpacity>
+              <TouchableOpacity
                 onPress={() => navigation.navigate('RegisterAs')}
-                title={I18n.t('register_as')}
-              />
+                style={styles.menuBtn}>
+                <Text style={styles.titleStyle}>
+                  {I18n.t('register_as_supplier')}
+                </Text>
+              </TouchableOpacity>
             </View>
           ) : null}
           {token ? (
             <View>
-              <Button
-                buttonStyle={styles.menuBtn}
-                fontFamily="cairo"
-                color="black"
-                titleStyle={styles.titleStyle}
+              <TouchableOpacity
                 onPress={() => {
                   this.props.actions.logout();
                 }}
-                title={I18n.t('logout')}
-              />
+                style={styles.menuBtn}>
+                <Text style={styles.titleStyle}>{I18n.t('logout')}</Text>
+              </TouchableOpacity>
             </View>
           ) : null}
           {!validate.isEmpty(galleries) ? (
-            <Button
-              buttonStyle={styles.menuBtn}
-              fontFamily="cairo"
-              color="black"
-              titleStyle={styles.titleStyle}
+            <TouchableOpacity
               onPress={() =>
                 navigation.navigate('Galleries', {
                   project: {galleries: galleries}
                 })
               }
-              title={I18n.t('galleries')}
-            />
+              style={styles.menuBtn}>
+              <Text style={styles.titleStyle}>{I18n.t('galleries')}</Text>
+            </TouchableOpacity>
           ) : null}
-          <Button
-            buttonStyle={styles.menuBtn}
-            fontFamily="cairo"
-            color="black"
-            titleStyle={styles.titleStyle}
+          <TouchableOpacity
             onPress={() => navigation.navigate('Contactus')}
-            title={I18n.t('contactus')}
-          />
-          <Button
-            buttonStyle={styles.menuBtn}
-            fontFamily="Cairo"
-            color="black"
-            titleStyle={styles.titleStyle}
+            style={styles.menuBtn}>
+            <Text style={styles.titleStyle}>{I18n.t('contactus')}</Text>
+          </TouchableOpacity>
+          <TouchableOpacity
             onPress={() => this.changeLang()}
-            title={I18n.t('lang')}
-          />
+            style={styles.menuBtn}>
+            <Text style={styles.titleStyle}>{I18n.t('lang')}</Text>
+          </TouchableOpacity>
         </View>
       </ScrollView>
     );
@@ -148,12 +126,20 @@ const styles = StyleSheet.create({
   },
   titleStyle: {
     color: 'black',
-    fontFamily: 'cairo'
+    fontFamily: 'cairo',
+    fontSize: 16
   },
   menuBtn: {
     backgroundColor: 'white',
     justifyContent: 'flex-start',
     borderBottomWidth: 1,
+    padding: 12,
     borderBottomColor: 'lightgrey'
+  },
+  mainMenuText: {
+    color: 'black',
+    fontFamily: 'cairo',
+    fontSize: 25,
+    textAlign: 'center'
   }
 });

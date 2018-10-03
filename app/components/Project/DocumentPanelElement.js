@@ -116,7 +116,6 @@ const styles = StyleSheet.create({
   panelBtnText: {
     fontFamily: text.font,
     fontSize: text.medium,
-    fontWeight: 'bold',
     textAlign: 'left'
   },
   fileTypeView: {

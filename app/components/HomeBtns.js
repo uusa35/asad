@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
-import {View, Text, StyleSheet} from 'react-native';
-import {height} from '../constants';
+import {View, StyleSheet} from 'react-native';
+import {height, width} from '../constants';
 import MainBtnElement from './MainBtnElement';
 import I18n from '../I18n';
 import PropTypes from 'prop-types';
@@ -56,6 +56,7 @@ DocumentIndexScreen.propTypes = {
 const styles = StyleSheet.create({
   container: {
     height: height,
+    margin: 1,
     justifyContent: 'center',
     marginTop: 150,
     alignItems: 'center',

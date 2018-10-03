@@ -139,7 +139,6 @@ const styles = StyleSheet.create({
   projectPanelTitle: {
     marginTop: 5,
     marginBottom: 5,
-    fontWeight: 'bold',
     fontSize: 16,
     textAlign: 'left',
     fontFamily: 'cairo'
@@ -153,14 +152,12 @@ const styles = StyleSheet.create({
   },
   titleInfoElement: {
     flex: 1,
-    fontWeight: 'bold',
     fontSize: 13,
     textAlign: 'left',
     fontFamily: 'cairo'
   },
   titleInfo: {
     width: 90,
-    fontWeight: 'bold',
     fontSize: 12,
     textAlign: 'left',
     fontFamily: 'cairo'
@@ -186,5 +183,10 @@ const styles = StyleSheet.create({
     shadowRadius: 2,
     shadowOpacity: 0.2,
     width: 150
+  },
+  panelBtnText: {
+    fontFamily: text.font,
+    fontSize: text.medium,
+    textAlign: 'left'
   }
 });
