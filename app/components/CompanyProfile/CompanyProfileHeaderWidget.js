@@ -101,7 +101,7 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     fontFamily: 'cairo',
     fontSize: 16,
-    fontWeight: 'bold',
+    padding: 5,
     color: '#3259e5'
   },
   logo: {

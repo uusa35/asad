@@ -74,7 +74,6 @@ const styles = StyleSheet.create({
     fontFamily: 'cairo',
     fontSize: 15,
     textAlign: 'left',
-    fontWeight: 'bold',
     minWidth: 70
   },
   panelContentRowWrapper: {

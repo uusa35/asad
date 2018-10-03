@@ -102,7 +102,7 @@ const styles = StyleSheet.create({
   },
   markerTitle: {
     color: 'black',
-    fontWeight: 'bold',
+    fontFamily: 'cairo',
     fontSize: 10,
     margin: 5
   }
