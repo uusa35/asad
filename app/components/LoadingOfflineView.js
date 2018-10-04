@@ -1,9 +1,15 @@
 import React, {Component} from 'react';
-import {View, Text, ActivityIndicator, StyleSheet} from 'react-native';
-import {Button} from 'react-native-elements';
+import {
+  View,
+  Text,
+  ActivityIndicator,
+  StyleSheet,
+  TouchableOpacity
+} from 'react-native';
+import {Icon} from 'react-native-elements';
 import I18n from './../I18n';
-import {height, width, colors} from './../constants';
 import codePush from 'react-native-code-push';
+import {colors} from './../constants';
 
 export default class LoadingOfflineView extends Component {
   _retry() {
@@ -15,14 +21,10 @@ export default class LoadingOfflineView extends Component {
       <View style={styles.activityContainer}>
         <ActivityIndicator style={{marginBottom: 15}} />
         <Text style={styles.loadingMessage}>{I18n.t('no_internet')}</Text>
-        <Button
-          titleStyle={styles.retryBtnTitle}
-          color="black"
-          buttonStyle={{backgroundColor: colors.main}}
-          icon={{name: 'repeat', color: 'black'}}
-          title={I18n.t('retry')}
-          onPress={() => this._retry()}
-        />
+        <TouchableOpacity onPress={() => this._retry()} style={styles.menuBtn}>
+          <Icon name="repeat" color="black" />
+          <Text style={styles.retryBtnTitle}>{I18n.t('retry')}</Text>
+        </TouchableOpacity>
       </View>
     );
   }
@@ -45,5 +47,8 @@ const styles = StyleSheet.create({
     fontFamily: 'cairo',
     color: 'black',
     fontSize: 15
+  },
+  menuBtn: {
+    backgroundColor: colors.main
   }
 });

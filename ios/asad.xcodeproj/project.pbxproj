@@ -5,6 +5,7 @@
 	};
 	objectVersion = 46;
 	objects = {
+
 /* Begin PBXBuildFile section */
 		0019900DA8D44944B9BDF090 /* cairo.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C8791EED717D4D4F94B90FEB /* cairo.ttf */; };
 		00C302E51ABCBA2D00DB3ED1 /* libRCTActionSheet.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 00C302AC1ABCB8CE00DB3ED1 /* libRCTActionSheet.a */; };
@@ -818,7 +819,7 @@
 					};
 					13B07F861A680F5B00A75B9A = {
 						DevelopmentTeam = CA8V56NH9X;
-						ProvisioningStyle = Manual;
+						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
 							com.apple.BackgroundModes = {
 								enabled = 1;
@@ -1455,11 +1456,11 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = asad/asad.entitlements;
-				CODE_SIGN_IDENTITY = "iPhone Distribution";
-				CODE_SIGN_STYLE = Manual;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEAD_CODE_STRIPPING = NO;
-				DEVELOPMENT_TEAM = CA8V56NH9X;
+				DEVELOPMENT_TEAM = "";
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)/../node_modules/react-native-restart/ios/RCTRestart/**",
@@ -1474,8 +1475,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = app.asadgroup.asadApp;
 				PRODUCT_NAME = asad;
-				PROVISIONING_PROFILE = "fda30c07-7ea6-48c4-8756-ae94fb49f554";
-				PROVISIONING_PROFILE_SPECIFIER = "ad-hoc-development-certificate-asadGroup";
+				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				VERSIONING_SYSTEM = "apple-generic";
 			};
 			name = Debug;
@@ -1486,10 +1487,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = asad/asad.entitlements;
-				CODE_SIGN_IDENTITY = "iPhone Distribution";
-				CODE_SIGN_STYLE = Manual;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = CA8V56NH9X;
+				DEVELOPMENT_TEAM = "";
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)/../node_modules/react-native-restart/ios/RCTRestart/**",
@@ -1504,8 +1505,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = app.asadgroup.asadApp;
 				PRODUCT_NAME = asad;
-				PROVISIONING_PROFILE = "fda30c07-7ea6-48c4-8756-ae94fb49f554";
-				PROVISIONING_PROFILE_SPECIFIER = "ad-hoc-development-certificate-asadGroup";
+				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				VERSIONING_SYSTEM = "apple-generic";
 			};
 			name = Release;

@@ -20,8 +20,6 @@ export default class GalleryIndexScreen extends Component {
 
   static getDerivedStateFromProps(nextProps) {
     const {navigation} = nextProps;
-    console.log('the project', navigation.state.params.project);
-    console.log('the galleires', navigation.state.params.project.galleries);
     return {
       project: navigation.state.params.project,
       moduleName: navigation.state.params.moduleName,
@@ -31,7 +29,6 @@ export default class GalleryIndexScreen extends Component {
   }
   render() {
     const {navigation, moduleName, galleries} = this.state;
-    console.log('the galleries from GalleryIndex', galleries);
     return (
       <ScrollView
         style={{backgroundColor: 'white'}}
@@ -57,9 +54,10 @@ export default class GalleryIndexScreen extends Component {
                       })
                     }>
                     <FastImage
+                      key={g.id}
                       style={styles.elementIcon}
                       source={{uri: g.cover}}
-                      resizeMode={FastImage.resizeMode.cover}
+                      resizeMode={FastImage.resizeMode.stretch}
                     />
                   </TouchableOpacity>
                 );

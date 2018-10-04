@@ -49,11 +49,7 @@ class LoginScreen extends Component {
             resizeMode={FastImage.resizeMode.cover}
           />
           <View style={styles.wrapper}>
-            <FastImage
-              style={styles.logo}
-              source={{uri: settings.logo}}
-              resizeMode={FastImage.resizeMode.center}
-            />
+            <FastImage style={styles.logo} source={{uri: settings.logo}} />
             <View style={styles.formWrapper}>
               <Input
                 onChangeText={e => this.setState({email: e})}

@@ -4852,9 +4852,15 @@ react-native-image-crop-picker@^0.21.2:
   version "0.21.2"
   resolved "https://registry.yarnpkg.com/react-native-image-crop-picker/-/react-native-image-crop-picker-0.21.2.tgz#f0e7ad4615f1f7c79ba25e2e7708042e306d258e"
 
-react-native-interactive-image-gallery@^0.1.2:
-  version "0.1.2"
-  resolved "https://registry.yarnpkg.com/react-native-interactive-image-gallery/-/react-native-interactive-image-gallery-0.1.2.tgz#35a35ddddabb9713e7180f3bd932f55287b25c81"
+react-native-image-pan-zoom@^2.1.10:
+  version "2.1.10"
+  resolved "https://registry.yarnpkg.com/react-native-image-pan-zoom/-/react-native-image-pan-zoom-2.1.10.tgz#0294d996982c693614a7227ade66a8bb249ee7fd"
+
+react-native-image-progress@^1.1.1:
+  version "1.1.1"
+  resolved "https://registry.yarnpkg.com/react-native-image-progress/-/react-native-image-progress-1.1.1.tgz#95bbe0875c7ebd54286df69cb37b598b94c54eb0"
+  dependencies:
+    prop-types "^15.5.10"
 
 react-native-iphone-x-helper@^1.0.1:
   version "1.2.0"
@@ -4904,6 +4910,12 @@ react-native-pdf@^5.0.1:
   dependencies:
     crypto-js "^3.1.9-1"
     prop-types "^15.5.10"
+
+react-native-progress@^3.5.0:
+  version "3.5.0"
+  resolved "https://registry.yarnpkg.com/react-native-progress/-/react-native-progress-3.5.0.tgz#d1ccc7f96dc17c609aedb43b2e6695d67deae0ec"
+  dependencies:
+    prop-types "^15.5.8"
 
 react-native-restart@^0.0.7:
   version "0.0.7"

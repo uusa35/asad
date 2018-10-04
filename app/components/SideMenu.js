@@ -35,10 +35,7 @@ class Menu extends Component {
         style={styles.container}
         contentContainerStyle={{alignItems: 'center'}}>
         <StatusBar barStyle="dark-content" backgroundColor={colors.main} />
-        <FastImage
-          source={images.logo}
-          style={{width: 100, height: 120, margin: 12}}
-        />
+        <FastImage source={images.logo} style={styles.logo} />
         <Text style={styles.mainMenuText}>{I18n.t('menu')}</Text>
         <View style={{marginBottom: 20, width: '100%'}}>
           <TouchableOpacity
@@ -77,7 +74,8 @@ class Menu extends Component {
             <TouchableOpacity
               onPress={() =>
                 navigation.navigate('Galleries', {
-                  project: {galleries: galleries}
+                  project: {galleries},
+                  moduleName: I18n.t('galleries')
                 })
               }
               style={styles.menuBtn}>
@@ -128,6 +126,11 @@ const styles = StyleSheet.create({
     color: 'black',
     fontFamily: 'cairo',
     fontSize: 16
+  },
+  logo: {
+    width: 100,
+    height: 120,
+    margin: 12
   },
   menuBtn: {
     backgroundColor: 'white',

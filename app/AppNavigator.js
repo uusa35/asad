@@ -37,6 +37,7 @@ import TaskShowScreen from './screens/Task/TaskShowScreen';
 import SubcontractorIndexScreen from './screens/Subcontractor/SubcontractorIndexScreen';
 import ConsultantIndexScreen from './screens/Consultant/ConsultantIndexScreen';
 import GalleryShowScreen from './screens/Gallery/GalleryShowScreen';
+import ImageShowScreen from './screens/Gallery/ImageShowScreen';
 import SearchIndexScreen from './screens/Search/SearchIndexScreen';
 import LiveCamIndexScreen from './screens/LiveCam/LiveCamIndexScreen';
 
@@ -178,11 +179,17 @@ const HomeStack = createStackNavigator(
     Galleries: {
       screen: GalleryIndexScreen,
       navigationOptions: ({navigation}) => ({
-        headerTitle: getHeader(navigation.state.params.name)
+        headerTitle: getHeader(navigation.state.params.moduleName)
       })
     },
     GalleryShow: {
       screen: GalleryShowScreen,
+      navigationOptions: ({navigation}) => ({
+        headerTitle: getHeader(navigation.state.params.name)
+      })
+    },
+    ImageShow: {
+      screen: ImageShowScreen,
       navigationOptions: ({navigation}) => ({
         headerTitle: getHeader(navigation.state.params.name)
       })

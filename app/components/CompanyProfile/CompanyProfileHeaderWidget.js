@@ -13,11 +13,7 @@ export default class CompanyProfileHeaderWidget extends Component {
     const {settings} = this.props;
     return (
       <View style={styles.headerContainer}>
-        <FastImage
-          style={styles.logo}
-          source={{uri: settings.logo}}
-          resizeMode={FastImage.resizeMode.stretch}
-        />
+        <FastImage style={styles.logo} source={{uri: settings.logo}} />
         <View style={styles.headerWrapper}>
           <View style={styles.headerTitleWrapper}>
             <Text style={styles.mainTitle}>{settings.name}</Text>

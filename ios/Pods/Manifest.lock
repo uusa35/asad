@@ -1,7 +1,7 @@
 PODS:
   - Base64 (1.1.2)
   - boost-for-react-native (1.63.0)
-  - CodePush (5.4.0):
+  - CodePush (5.4.2):
     - Base64 (~> 1.1)
     - JWT (~> 3.0.0-beta.7)
     - React
@@ -54,7 +54,7 @@ PODS:
   - react-native-onesignal (3.2.7):
     - OneSignal (= 2.8.8)
     - React
-  - react-native-pdf (5.0.1):
+  - react-native-pdf (5.0.6):
     - React
   - React/Core (0.56.0):
     - yoga (= 0.56.0.React)
@@ -107,13 +107,13 @@ PODS:
     - React
   - RNI18n (2.0.15):
     - React
-  - RNImageCropPicker (0.20.3):
+  - RNImageCropPicker (0.21.2):
     - QBImagePickerController
     - React/Core
     - RSKImageCropper
   - RNVectorIcons (4.6.0):
     - React
-  - RSKImageCropper (2.2.0)
+  - RSKImageCropper (2.2.1)
   - SDWebImage/Core (4.4.2)
   - SDWebImage/GIF (4.4.2):
     - FLAnimatedImage (~> 1.0)
@@ -217,13 +217,13 @@ SPEC CHECKSUMS:
   react-native-google-maps: 2cfe3b01f8422c7dae51d8764139fd70f888cfce
   react-native-maps: 066c2afcc89e18726377bcc685315f989ca22449
   react-native-onesignal: f4300ef8272ef1d8d81b00f0207335f305bcaadb
-  react-native-pdf: 10fe8cc6094d10b5f2fb176e895d179a021d174a
+  react-native-pdf: 0ee15b84165df18f6b7328bbd47142d2c38bcda5
   rn-fetch-blob: 76a8f798dae965bbcd146a2438f2e1d381c91ae3
   RNDeviceInfo: 568c5641057313b4912d08a7742ff0b2f753ed5c
   RNI18n: 46b8694063fbd699f2c06a4dc8e835b3176763b1
   RNImageCropPicker: 32ca4b9fef4e1b7b85ba69494242122948117e06
   RNVectorIcons: c0dbfbf6068fefa240c37b0f71bd03b45dddac44
-  RSKImageCropper: bd0bdf765b27c046c89728d65075b363a3b665c2
+  RSKImageCropper: 98296ad26b41753f796b6898d015509598f13d97
   SDWebImage: 624d6e296c69b244bcede364c72ae0430ac14681
   SSZipArchive: 41455d4b8d2b6ab93990820b50dc697c2554a322
   yoga: b1ce48b6cf950b98deae82838f5173ea7cf89e85
