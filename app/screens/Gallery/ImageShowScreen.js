@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {View, StyleSheet} from 'react-native';
+import {StyleSheet} from 'react-native';
 import PropTypes from 'prop-types';
 import {width, height} from './../../constants';
 import ImageZoom from 'react-native-image-pan-zoom';
@@ -32,7 +32,7 @@ export default class ImageShowScreen extends Component {
         <Image
           key={img.id}
           style={styles.imageElement}
-          source={{uri: img.thumbnail}}
+          source={{uri: img.large}}
           resizeMode={FastImage.resizeMode.center}
           indicator={ProgressBar}
           indicatorProps={{

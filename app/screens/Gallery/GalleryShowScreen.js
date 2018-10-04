@@ -29,41 +29,25 @@ export default class GalleryShowScreen extends Component {
         contentContainerStyle={{paddingBottom: 30, backgroundColor: 'white'}}
         endFillColor="white"
         showsVerticalScrollIndicator={false}>
-        <View
-          style={{
-            flex: 1,
-            flexDirection: 'row',
-            flexWrap: 'wrap',
-            justifyContent: 'center',
-            alignItems: 'center',
-            padding: 5
-          }}>
+        <View style={styles.wrapper}>
           {element.images.map(img => {
             return (
-              <View>
-                <TouchableOpacity
-                  key={img.id * Math.random()}
-                  onPress={() =>
-                    navigation.navigate('ImageShow', {
-                      name: !validate.isEmpty(img.name)
-                        ? img.name
-                        : I18n.t('image'),
-                      img
-                    })
-                  }
-                  style={{
-                    width: 125,
-                    height: 125,
-                    borderWidth: 1,
-                    borderColor: 'blue'
-                  }}>
-                  <FastImage
-                    key={img.id * Math.random()}
-                    style={styles.imageElement}
-                    source={{uri: img.thumbnail}}
-                  />
-                </TouchableOpacity>
-              </View>
+              <TouchableOpacity
+                key={img.id * Math.random()}
+                onPress={() =>
+                  navigation.navigate('ImageShow', {
+                    name: !validate.isEmpty(img.name)
+                      ? img.name
+                      : I18n.t('image'),
+                    img
+                  })
+                }>
+                <FastImage
+                  key={img.id}
+                  style={styles.imageElement}
+                  source={{uri: img.thumbnail}}
+                />
+              </TouchableOpacity>
             );
           })}
         </View>
@@ -77,10 +61,18 @@ GalleryIndexScreen.propTypes = {
 };
 
 const styles = StyleSheet.create({
+  wrapper: {
+    flex: 1,
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+    justifyContent: 'center',
+    alignItems: 'center',
+    margin: 10
+  },
   imageElement: {
     width: 120,
     height: 120,
-    borderWidth: 1,
+    borderWidth: 0.5,
     borderColor: 'lightgrey'
   }
 });

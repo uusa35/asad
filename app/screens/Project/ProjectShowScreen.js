@@ -64,47 +64,36 @@ class ProjectShowScreen extends Component {
   render() {
     const {project, navigation, refreshing, auth, filteredModules} = this.state;
     return (
-      <ScrollView
-        showsHorizontalScrollIndicator={false}
-        contentContainerStyle={{
-          paddingBottom: 30,
-          backgroundColor: 'white',
-          alignItems: 'center',
-          justifyContent: 'center'
-        }}
-        endFillColor="white"
-        showsVerticalScrollIndicator={false}>
-        <View style={styles.elementContainer}>
-          <ProjectPanelHomeWidget
-            name={project.name}
-            description={project.description}
-            image={project.image}
-          />
-          <FlatList
-            containtContainerStyle={styles.flatListContainer}
-            data={filteredModules}
-            renderItem={({item}) => {
-              return auth.role[item] ? (
-                <MainBtnElement
-                  navigation={navigation}
-                  element={project}
-                  title={I18n.t(item)}
-                  iconName={item}
-                  routeName={item}
-                />
-              ) : null;
-            }}
-            numColumns={3}
-            columnWrapperStyle={styles.modulesWrapper}
-            refreshControl={
-              <RefreshControl
-                refreshing={refreshing}
-                onRefresh={this._onRefresh}
+      <View style={styles.elementContainer}>
+        <ProjectPanelHomeWidget
+          name={project.name}
+          description={project.description}
+          image={project.image}
+        />
+        <FlatList
+          containtContainerStyle={styles.flatListContainer}
+          data={filteredModules}
+          renderItem={({item}) => {
+            return auth.role[item] ? (
+              <MainBtnElement
+                navigation={navigation}
+                element={project}
+                title={I18n.t(item)}
+                iconName={item}
+                routeName={item}
               />
-            }
-          />
-        </View>
-      </ScrollView>
+            ) : null;
+          }}
+          numColumns={3}
+          columnWrapperStyle={styles.modulesWrapper}
+          refreshControl={
+            <RefreshControl
+              refreshing={refreshing}
+              onRefresh={this._onRefresh}
+            />
+          }
+        />
+      </View>
     );
   }
 }
