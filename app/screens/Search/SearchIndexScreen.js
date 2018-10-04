@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {View, StyleSheet} from 'react-native';
+import {View, StyleSheet, ScrollView} from 'react-native';
 import PropTypes from 'prop-types';
 import ProjectPanelWidget from '../../components/Project/ProjectPanelWidget';
 import {bindActionCreators} from 'redux';
@@ -14,15 +14,26 @@ class SearchIndexScreen extends Component {
   render() {
     const {search, actions} = this.props;
     return (
-      <View>
-        {search.map(project => (
-          <ProjectPanelWidget
-            project={project}
-            key={project.id}
-            handleClick={() => actions.getProject(project.id)}
-          />
-        ))}
-      </View>
+      <ScrollView
+        showsHorizontalScrollIndicator={false}
+        contentContainerStyle={{
+          paddingBottom: 30,
+          backgroundColor: 'white',
+          alignItems: 'center',
+          justifyContent: 'center'
+        }}
+        endFillColor="white"
+        showsVerticalScrollIndicator={false}>
+        <View>
+          {search.map(project => (
+            <ProjectPanelWidget
+              project={project}
+              key={project.id}
+              handleClick={() => actions.getProject(project.id)}
+            />
+          ))}
+        </View>
+      </ScrollView>
     );
   }
 }

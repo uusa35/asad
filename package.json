@@ -36,7 +36,7 @@
     "react-native-onesignal": "^3.2.7",
     "react-native-parallax-view": "^2.0.6",
     "react-native-pdf": "^5.0.1",
-    "react-native-restart": "^0.0.6",
+    "react-native-restart": "^0.0.7",
     "react-native-swiper": "^1.5.13",
     "react-native-timeline-listview": "^0.2.3",
     "react-native-timeline-theme": "^0.0.9",

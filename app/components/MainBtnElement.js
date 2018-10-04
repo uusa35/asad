@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {View, Text, TouchableOpacity, StyleSheet} from 'react-native';
 import FastImage from 'react-native-fast-image';
-import {colors, height, icons, width} from '../constants';
+import {colors, height, icons, width, isIOS} from '../constants';
 import PropTypes from 'prop-types';
 import _ from 'lodash';
 import validate from 'validate.js';
@@ -127,14 +127,17 @@ const styles = StyleSheet.create({
     marginTop: 10
   },
   elementSlug: {
+    justifyContent: 'center',
+    alignItems: 'center',
     backgroundColor: 'white',
     width: 110,
     height: 30,
-    alignItems: 'center',
     shadowColor: 'black',
     shadowOffset: {width: 1, height: 1},
     shadowRadius: 2,
-    shadowOpacity: 0.2
+    shadowOpacity: 0.2,
+    borderWidth: !isIOS ? 1 : null,
+    borderColor: !isIOS ? 'lightgrey' : null
   },
   elementTypeBtn: {
     backgroundColor: colors.main,

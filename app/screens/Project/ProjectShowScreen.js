@@ -1,5 +1,11 @@
 import React, {Component} from 'react';
-import {View, StyleSheet, RefreshControl, FlatList} from 'react-native';
+import {
+  View,
+  StyleSheet,
+  RefreshControl,
+  FlatList,
+  ScrollView
+} from 'react-native';
 import PropTypes from 'prop-types';
 import ProjectPanelHomeWidget from '../../components/Project/ProjectPanelHomeWidget';
 import MainBtnElement from '../../components/MainBtnElement';
@@ -58,36 +64,47 @@ class ProjectShowScreen extends Component {
   render() {
     const {project, navigation, refreshing, auth, filteredModules} = this.state;
     return (
-      <View style={styles.elementContainer}>
-        <ProjectPanelHomeWidget
-          name={project.name}
-          description={project.description}
-          image={project.image}
-        />
-        <FlatList
-          containtContainerStyle={styles.flatListContainer}
-          data={filteredModules}
-          renderItem={({item}) => {
-            return auth.role[item] ? (
-              <MainBtnElement
-                navigation={navigation}
-                element={project}
-                title={I18n.t(item)}
-                iconName={item}
-                routeName={item}
+      <ScrollView
+        showsHorizontalScrollIndicator={false}
+        contentContainerStyle={{
+          paddingBottom: 30,
+          backgroundColor: 'white',
+          alignItems: 'center',
+          justifyContent: 'center'
+        }}
+        endFillColor="white"
+        showsVerticalScrollIndicator={false}>
+        <View style={styles.elementContainer}>
+          <ProjectPanelHomeWidget
+            name={project.name}
+            description={project.description}
+            image={project.image}
+          />
+          <FlatList
+            containtContainerStyle={styles.flatListContainer}
+            data={filteredModules}
+            renderItem={({item}) => {
+              return auth.role[item] ? (
+                <MainBtnElement
+                  navigation={navigation}
+                  element={project}
+                  title={I18n.t(item)}
+                  iconName={item}
+                  routeName={item}
+                />
+              ) : null;
+            }}
+            numColumns={3}
+            columnWrapperStyle={styles.modulesWrapper}
+            refreshControl={
+              <RefreshControl
+                refreshing={refreshing}
+                onRefresh={this._onRefresh}
               />
-            ) : null;
-          }}
-          numColumns={3}
-          columnWrapperStyle={styles.modulesWrapper}
-          refreshControl={
-            <RefreshControl
-              refreshing={refreshing}
-              onRefresh={this._onRefresh}
-            />
-          }
-        />
-      </View>
+            }
+          />
+        </View>
+      </ScrollView>
     );
   }
 }
