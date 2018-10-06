@@ -146,7 +146,9 @@ export function* startAppBootStrap() {
       throw new Error('settings error or roles .. system error');
     }
 
+    console.log('the sliders form outside', sliders);
     if (!validate.isEmpty(sliders)) {
+      console.log('the sliders', sliders);
       yield all([
         put({type: actions.SET_HOME_SLIDERS, payload: sliders}),
         call(toggleBootStrapped, true),

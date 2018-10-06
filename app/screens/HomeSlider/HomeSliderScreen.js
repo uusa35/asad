@@ -27,7 +27,7 @@ class HomeSliderScreen extends Component {
           }}
           resizeMode={FastImage.resizeMode.cover}>
           <Card
-            containerStyle={{opacity: 0.7, marginTop: 100}}
+            containerStyle={{opacity: 0.8, marginTop: 100}}
             title={s.title}
             image={{uri: s.image}}>
             <Text style={{marginBottom: 10, fontSize: 14, fontFamily: 'cairo'}}>
@@ -63,11 +63,7 @@ class HomeSliderScreen extends Component {
         }}
         title={I18n.t('done')}
         titleStyle={styles.titleStyleBtn}
-        onPress={() =>
-          isAuthenticated(auth)
-            ? navigation.navigate('Home')
-            : navigation.navigate('RegisterAs')
-        }
+        onPress={() => navigation.navigate('Home')}
       />
     );
   };
@@ -135,7 +131,8 @@ const styles = StyleSheet.create({
   },
   imgBg: {
     height: height,
-    width: width
+    width: width,
+    opacity: 0.7
   },
   buttonCircle: {
     width: 40,

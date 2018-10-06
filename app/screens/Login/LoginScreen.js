@@ -34,7 +34,6 @@ class LoginScreen extends Component {
     }
   }
   render() {
-    console.log('LoginScreen Render rendered');
     const {navigation, settings} = this.props;
     return (
       <KeyboardAwareScrollView
@@ -96,15 +95,13 @@ class LoginScreen extends Component {
                   {I18n.t('forget_your_password')}
                 </Text>
               </TouchableOpacity>
-
               <TouchableOpacity
                 onPress={() => this._doSubmitLogin()}
                 style={styles.registerSubmitBtn}>
                 <Text style={styles.registerSubmitBtnText}>
-                  {I18n.t('submit').toUpperCase()}
+                  {I18n.t('login').toUpperCase()}
                 </Text>
               </TouchableOpacity>
-
               <TouchableOpacity
                 onPress={() => navigation.navigate('RegisterAs')}
                 style={styles.registerSubmitBtn}>

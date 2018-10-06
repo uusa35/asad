@@ -86,6 +86,7 @@ class ProjectShowScreen extends Component {
           }}
           numColumns={3}
           columnWrapperStyle={styles.modulesWrapper}
+          ListFooterComponent={() => <View style={{marginTop: 120}} />}
           refreshControl={
             <RefreshControl
               refreshing={refreshing}

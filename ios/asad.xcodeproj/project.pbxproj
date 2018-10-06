@@ -24,6 +24,7 @@
 		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
 		140ED2AC1D01E1AD002B40FF /* libReact.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 146834041AC3E56700842450 /* libReact.a */; };
 		146834051AC3E58100842450 /* libReact.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 146834041AC3E56700842450 /* libReact.a */; };
+		26169C8745F1CF0D4BF61567 /* libPods-asad.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6DC7EDBF6E9C8D0760C12D65 /* libPods-asad.a */; };
 		2D02E4BC1E0B4A80006451C7 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB01A68108700A75B9A /* AppDelegate.m */; };
 		2D02E4BD1E0B4A84006451C7 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		2D02E4BF1E0B4AB3006451C7 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
@@ -38,7 +39,6 @@
 		2DCD954D1E0B4F2C00145EB5 /* asadTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* asadTests.m */; };
 		2DF0FFEE2056DD460020B375 /* libReact.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3DAD3EA31DF850E9000B6D8A /* libReact.a */; };
 		3F58BDAB9B6747A5BFF04881 /* Cairo_Semi_Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0D7D90142A7349D39264D147 /* Cairo_Semi_Bold.ttf */; };
-		43D1FC59F1959D0011380151 /* libPods-asad.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CB70D075C020CFCE5CDF9C33 /* libPods-asad.a */; };
 		53C058D6D9A246A38674F0F4 /* Cairo_Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B732DC7032D9436C86A66193 /* Cairo_Black.ttf */; };
 		5E9157361DD0AC6A00FF2AA8 /* libRCTAnimation.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5E9157331DD0AC6500FF2AA8 /* libRCTAnimation.a */; };
 		73E507F670104B72914A83DD /* EvilIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F99D71BE40D94E0FA7747093 /* EvilIcons.ttf */; };
@@ -55,7 +55,6 @@
 		DBFBA5AAF4554F4CAEF9F46D /* Zocial.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 43C7AC41A48D437F950AA52E /* Zocial.ttf */; };
 		DD990161D7DA44C3A9E65A5B /* MaterialIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F896C0E34F114B7298373039 /* MaterialIcons.ttf */; };
 		F194D279E7AF42CABF0311B4 /* Entypo.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AA3DC24DCE28486C8F3F1E07 /* Entypo.ttf */; };
-		F755C4B6E31546C7AEFB1033 /* libRNIKInteractiveImageLibrary.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F7F216CBD6D429086649E85 /* libRNIKInteractiveImageLibrary.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -304,13 +303,6 @@
 			remoteGlobalIDString = 3245CDED1BFEE35C00EABF68;
 			remoteInfo = RCTRestart;
 		};
-		5068926E211F462900445613 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = ACC74A51DDAF4DC0B9694797 /* RNIKInteractiveImageLibrary.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 134814201AA4EA6300B7C361;
-			remoteInfo = RNIKInteractiveImageLibrary;
-		};
 		5E9157321DD0AC6500FF2AA8 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 5E91572D1DD0AC6500FF2AA8 /* RCTAnimation.xcodeproj */;
@@ -359,7 +351,6 @@
 		00E356F11AD99517003FC87E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		00E356F21AD99517003FC87E /* asadTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = asadTests.m; sourceTree = "<group>"; };
 		0470906B15344B8CA15063B3 /* RCTRestart.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = RCTRestart.xcodeproj; path = "../node_modules/react-native-restart/ios/RCTRestart.xcodeproj"; sourceTree = "<group>"; };
-		0C74D3F78131D7BE3965EFD5 /* Pods-asad.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-asad.debug.xcconfig"; path = "Pods/Target Support Files/Pods-asad/Pods-asad.debug.xcconfig"; sourceTree = "<group>"; };
 		0D7D90142A7349D39264D147 /* Cairo_Semi_Bold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Cairo_Semi_Bold.ttf; path = ../assets/fonts/Cairo_Semi_Bold.ttf; sourceTree = "<group>"; };
 		139105B61AF99BAD00B5F7CC /* RCTSettings.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTSettings.xcodeproj; path = "../node_modules/react-native/Libraries/Settings/RCTSettings.xcodeproj"; sourceTree = "<group>"; };
 		139FDEE61B06529A00C62182 /* RCTWebSocket.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTWebSocket.xcodeproj; path = "../node_modules/react-native/Libraries/WebSocket/RCTWebSocket.xcodeproj"; sourceTree = "<group>"; };
@@ -380,23 +371,23 @@
 		43C7AC41A48D437F950AA52E /* Zocial.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Zocial.ttf; path = ../assets/fonts/Zocial.ttf; sourceTree = "<group>"; };
 		4802E528E10243E4A82E0BF6 /* Feather.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Feather.ttf; path = ../assets/fonts/Feather.ttf; sourceTree = "<group>"; };
 		5067F057214F9C9500147EFE /* asad.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; name = asad.entitlements; path = asad/asad.entitlements; sourceTree = "<group>"; };
+		555ABBADD27EFBE71A67D8DC /* Pods-asad.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-asad.debug.xcconfig"; path = "Pods/Target Support Files/Pods-asad/Pods-asad.debug.xcconfig"; sourceTree = "<group>"; };
 		5E91572D1DD0AC6500FF2AA8 /* RCTAnimation.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTAnimation.xcodeproj; path = "../node_modules/react-native/Libraries/NativeAnimation/RCTAnimation.xcodeproj"; sourceTree = "<group>"; };
-		6C12F334A9528F9D2136BD4D /* Pods-asad.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-asad.release.xcconfig"; path = "Pods/Target Support Files/Pods-asad/Pods-asad.release.xcconfig"; sourceTree = "<group>"; };
 		6CA871C109F54ECA98278839 /* Cairo-Light.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Cairo-Light.ttf"; path = "../assets/fonts/Cairo-Light.ttf"; sourceTree = "<group>"; };
+		6DC7EDBF6E9C8D0760C12D65 /* libPods-asad.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-asad.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		6EBEB32AC3E443F6AA30B200 /* Foundation.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Foundation.ttf; path = ../assets/fonts/Foundation.ttf; sourceTree = "<group>"; };
 		7316682A57D1439F88345054 /* Octicons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Octicons.ttf; path = ../assets/fonts/Octicons.ttf; sourceTree = "<group>"; };
 		78C398B01ACF4ADC00677621 /* RCTLinking.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTLinking.xcodeproj; path = "../node_modules/react-native/Libraries/LinkingIOS/RCTLinking.xcodeproj"; sourceTree = "<group>"; };
 		832341B01AAA6A8300B99B32 /* RCTText.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTText.xcodeproj; path = "../node_modules/react-native/Libraries/Text/RCTText.xcodeproj"; sourceTree = "<group>"; };
 		AA3DC24DCE28486C8F3F1E07 /* Entypo.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Entypo.ttf; path = ../assets/fonts/Entypo.ttf; sourceTree = "<group>"; };
-		ACC74A51DDAF4DC0B9694797 /* RNIKInteractiveImageLibrary.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = RNIKInteractiveImageLibrary.xcodeproj; path = "../node_modules/react-native-interactive-image-gallery/ios/RNIKInteractiveImageLibrary.xcodeproj"; sourceTree = "<group>"; };
 		ADBDB91F1DFEBF0600ED6528 /* RCTBlob.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTBlob.xcodeproj; path = "../node_modules/react-native/Libraries/Blob/RCTBlob.xcodeproj"; sourceTree = "<group>"; };
 		AFAB3E56CB9B4D11A1438EAD /* FontAwesome.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = FontAwesome.ttf; path = ../assets/fonts/FontAwesome.ttf; sourceTree = "<group>"; };
 		B732DC7032D9436C86A66193 /* Cairo_Black.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Cairo_Black.ttf; path = ../assets/fonts/Cairo_Black.ttf; sourceTree = "<group>"; };
 		B78BA83653DF4887B598FA03 /* libRCTRestart.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libRCTRestart.a; sourceTree = "<group>"; };
 		C8791EED717D4D4F94B90FEB /* cairo.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = cairo.ttf; path = ../assets/fonts/cairo.ttf; sourceTree = "<group>"; };
-		CB70D075C020CFCE5CDF9C33 /* libPods-asad.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-asad.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D55D855AF3E644ADB67011A3 /* Ionicons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Ionicons.ttf; path = ../assets/fonts/Ionicons.ttf; sourceTree = "<group>"; };
 		DED6E83C59564C82BF3F03F8 /* SimpleLineIcons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = SimpleLineIcons.ttf; path = ../assets/fonts/SimpleLineIcons.ttf; sourceTree = "<group>"; };
+		E8C3A1AE92F17DEF77BA8899 /* Pods-asad.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-asad.release.xcconfig"; path = "Pods/Target Support Files/Pods-asad/Pods-asad.release.xcconfig"; sourceTree = "<group>"; };
 		F896C0E34F114B7298373039 /* MaterialIcons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = MaterialIcons.ttf; path = ../assets/fonts/MaterialIcons.ttf; sourceTree = "<group>"; };
 		F99D71BE40D94E0FA7747093 /* EvilIcons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = EvilIcons.ttf; path = ../assets/fonts/EvilIcons.ttf; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -428,8 +419,7 @@
 				00C302EA1ABCBA2D00DB3ED1 /* libRCTVibration.a in Frameworks */,
 				139FDEF61B0652A700C62182 /* libRCTWebSocket.a in Frameworks */,
 				BCBD8B8358DF439B88D8822F /* libRCTRestart.a in Frameworks */,
-				43D1FC59F1959D0011380151 /* libPods-asad.a in Frameworks */,
-				F755C4B6E31546C7AEFB1033 /* libRNIKInteractiveImageLibrary.a in Frameworks */,
+				26169C8745F1CF0D4BF61567 /* libPods-asad.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -580,7 +570,7 @@
 			isa = PBXGroup;
 			children = (
 				2D16E6891FA4F8E400B85C8A /* libReact.a */,
-				CB70D075C020CFCE5CDF9C33 /* libPods-asad.a */,
+				6DC7EDBF6E9C8D0760C12D65 /* libPods-asad.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -624,14 +614,6 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		5068926B211F462900445613 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				5068926F211F462900445613 /* libRNIKInteractiveImageLibrary.a */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
 		5E91572E1DD0AC6500FF2AA8 /* Products */ = {
 			isa = PBXGroup;
 			children = (
@@ -639,15 +621,6 @@
 				5E9157351DD0AC6500FF2AA8 /* libRCTAnimation.a */,
 			);
 			name = Products;
-			sourceTree = "<group>";
-		};
-		62D9EE33110415E8763DB6EE /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				0C74D3F78131D7BE3965EFD5 /* Pods-asad.debug.xcconfig */,
-				6C12F334A9528F9D2136BD4D /* Pods-asad.release.xcconfig */,
-			);
-			name = Pods;
 			sourceTree = "<group>";
 		};
 		78C398B11ACF4ADC00677621 /* Products */ = {
@@ -675,7 +648,6 @@
 				00C302DF1ABCB9EE00DB3ED1 /* RCTVibration.xcodeproj */,
 				139FDEE61B06529A00C62182 /* RCTWebSocket.xcodeproj */,
 				0470906B15344B8CA15063B3 /* RCTRestart.xcodeproj */,
-				ACC74A51DDAF4DC0B9694797 /* RNIKInteractiveImageLibrary.xcodeproj */,
 			);
 			name = Libraries;
 			sourceTree = "<group>";
@@ -699,8 +671,8 @@
 				2D16E6871FA4F8E400B85C8A /* Frameworks */,
 				3BFA454F0114469C8BB34885 /* Resources */,
 				5068917F211AEC4500445613 /* Recovered References */,
-				62D9EE33110415E8763DB6EE /* Pods */,
 				3373243B3DC34783AF75FE27 /* AppCenter-Config.plist */,
+				F6D9BC3787E35AAA27031DAB /* Pods */,
 			);
 			indentWidth = 2;
 			sourceTree = "<group>";
@@ -725,6 +697,15 @@
 				2D16E6721FA4F8DC00B85C8A /* libRCTBlob-tvOS.a */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		F6D9BC3787E35AAA27031DAB /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				555ABBADD27EFBE71A67D8DC /* Pods-asad.debug.xcconfig */,
+				E8C3A1AE92F17DEF77BA8899 /* Pods-asad.release.xcconfig */,
+			);
+			name = Pods;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -752,12 +733,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 13B07F931A680F5B00A75B9A /* Build configuration list for PBXNativeTarget "asad" */;
 			buildPhases = (
-				C676D935091AB25A8CA69C5E /* [CP] Check Pods Manifest.lock */,
+				9F8B126D8D578D5CCC9B5F77 /* [CP] Check Pods Manifest.lock */,
 				13B07F871A680F5B00A75B9A /* Sources */,
 				13B07F8C1A680F5B00A75B9A /* Frameworks */,
 				13B07F8E1A680F5B00A75B9A /* Resources */,
 				00DD1BFF1BD5951E006B06BC /* Bundle React Native code and images */,
-				1676A198A3B194957EC26186 /* [CP] Copy Pods Resources */,
+				F15851213A8AA92E08E576B8 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -904,10 +885,6 @@
 				{
 					ProductGroup = 146834001AC3E56700842450 /* Products */;
 					ProjectRef = 146833FF1AC3E56700842450 /* React.xcodeproj */;
-				},
-				{
-					ProductGroup = 5068926B211F462900445613 /* Products */;
-					ProjectRef = ACC74A51DDAF4DC0B9694797 /* RNIKInteractiveImageLibrary.xcodeproj */;
 				},
 			);
 			projectRoot = "";
@@ -1152,13 +1129,6 @@
 			remoteRef = 506891A8211AEC4800445613 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		5068926F211F462900445613 /* libRNIKInteractiveImageLibrary.a */ = {
-			isa = PBXReferenceProxy;
-			fileType = archive.ar;
-			path = libRNIKInteractiveImageLibrary.a;
-			remoteRef = 5068926E211F462900445613 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
 		5E9157331DD0AC6500FF2AA8 /* libRCTAnimation.a */ = {
 			isa = PBXReferenceProxy;
 			fileType = archive.ar;
@@ -1260,7 +1230,39 @@
 			shellPath = /bin/sh;
 			shellScript = "export NODE_BINARY=node\n../node_modules/react-native/scripts/react-native-xcode.sh";
 		};
-		1676A198A3B194957EC26186 /* [CP] Copy Pods Resources */ = {
+		2D02E4CB1E0B4B27006451C7 /* Bundle React Native Code And Images */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Bundle React Native Code And Images";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "export NODE_BINARY=node\n../node_modules/react-native/scripts/react-native-xcode.sh";
+		};
+		9F8B126D8D578D5CCC9B5F77 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-asad-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		F15851213A8AA92E08E576B8 /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -1302,38 +1304,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-asad/Pods-asad-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		2D02E4CB1E0B4B27006451C7 /* Bundle React Native Code And Images */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Bundle React Native Code And Images";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "export NODE_BINARY=node\n../node_modules/react-native/scripts/react-native-xcode.sh";
-		};
-		C676D935091AB25A8CA69C5E /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-asad-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -1452,7 +1422,7 @@
 		};
 		13B07F941A680F5B00A75B9A /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 0C74D3F78131D7BE3965EFD5 /* Pods-asad.debug.xcconfig */;
+			baseConfigurationReference = 555ABBADD27EFBE71A67D8DC /* Pods-asad.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = asad/asad.entitlements;
@@ -1461,11 +1431,6 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEAD_CODE_STRIPPING = NO;
 				DEVELOPMENT_TEAM = "";
-				HEADER_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(SRCROOT)/../node_modules/react-native-restart/ios/RCTRestart/**",
-					"$(SRCROOT)/../node_modules/react-native-interactive-image-gallery/ios",
-				);
 				INFOPLIST_FILE = asad/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = (
@@ -1483,7 +1448,7 @@
 		};
 		13B07F951A680F5B00A75B9A /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 6C12F334A9528F9D2136BD4D /* Pods-asad.release.xcconfig */;
+			baseConfigurationReference = E8C3A1AE92F17DEF77BA8899 /* Pods-asad.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = asad/asad.entitlements;
@@ -1494,7 +1459,6 @@
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)/../node_modules/react-native-restart/ios/RCTRestart/**",
-					"$(SRCROOT)/../node_modules/react-native-interactive-image-gallery/ios",
 				);
 				INFOPLIST_FILE = asad/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -1677,6 +1641,7 @@
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = NO;
 			};
 			name = Debug;
 		};

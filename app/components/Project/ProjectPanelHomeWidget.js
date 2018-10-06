@@ -92,7 +92,9 @@ const styles = StyleSheet.create({
   description: {
     fontSize: 13,
     padding: 1,
-    paddingBottom: 10
+    paddingBottom: 10,
+    textAlign: 'left',
+    fontFamily: 'cairo'
   },
   logo: {
     width: 80,

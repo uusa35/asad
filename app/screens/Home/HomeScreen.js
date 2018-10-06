@@ -69,7 +69,7 @@ class HomeScreen extends Component {
     const {auth, projects, actions, navigation, roles} = this.props;
     const {refreshing} = this.state;
     return (
-      <View style={{backgroundColor: 'white'}}>
+      <View style={{backgroundColor: 'white', height: height}}>
         {validate.isEmpty(auth) ? (
           <HomeBtns roles={roles} navigation={navigation} />
         ) : validate.isEmpty(auth.projects) ? (

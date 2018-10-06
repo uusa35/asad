@@ -5,6 +5,7 @@ import ProjectPanelWidget from '../../components/Project/ProjectPanelWidget';
 import {bindActionCreators} from 'redux';
 import {getProject} from '../../redux/actions';
 import {connect} from 'react-redux';
+import {height} from './../../constants';
 
 class SearchIndexScreen extends Component {
   constructor(props) {
@@ -24,7 +25,7 @@ class SearchIndexScreen extends Component {
         }}
         endFillColor="white"
         showsVerticalScrollIndicator={false}>
-        <View>
+        <View style={{height: height, padding: 20}}>
           {search.map(project => (
             <ProjectPanelWidget
               project={project}

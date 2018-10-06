@@ -73,7 +73,7 @@ export default class ProjectPanelWidget extends Component {
             <View style={styles.titleInfoWrapper}>
               <Text style={styles.titleInfo}>{I18n.t('caption')} : </Text>
               <Text style={styles.titleInfoElement}>
-                {project.caption.substring(0, 100)}
+                {project.caption.substring(0, 200)}
               </Text>
             </View>
           ) : null}
@@ -104,14 +104,14 @@ const styles = StyleSheet.create({
     borderColor: 'darkgrey',
     margin: 5,
     width: width - 40,
-    height: 330
+    minHeight: 450
   },
   imgBg: {
     position: 'absolute',
     top: 0,
     left: 0,
     width: width - 40,
-    height: 330,
+    minHeight: 450,
     opacity: 0.8
   },
   projectPanelImage: {

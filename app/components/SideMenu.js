@@ -51,7 +51,9 @@ class Menu extends Component {
                 <Text style={styles.titleStyle}>{I18n.t('login')}</Text>
               </TouchableOpacity>
               <TouchableOpacity
-                onPress={() => navigation.navigate('RegisterAs')}
+                onPress={() =>
+                  navigation.navigate('Register', {type: 'supplier'})
+                }
                 style={styles.menuBtn}>
                 <Text style={styles.titleStyle}>
                   {I18n.t('register_as_supplier')}
