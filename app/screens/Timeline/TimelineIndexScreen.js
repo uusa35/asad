@@ -2,6 +2,8 @@ import React, {Component} from 'react';
 import {View, StyleSheet, ScrollView} from 'react-native';
 import PropTypes from 'prop-types';
 import DocumentPanelElement from '../../components/Project/DocumentPanelElement';
+import validate from 'validate.js';
+import NotAvailablElement from '../../components/NotAvailableElement';
 
 export default class TimelineIndexScreen extends Component {
   constructor(props) {
@@ -27,8 +29,10 @@ export default class TimelineIndexScreen extends Component {
         endFillColor="white"
         showsVerticalScrollIndicator={false}>
         <View style={styles.wrapper}>
-          {project.timelines.map(d => {
-            return (
+          {validate.isEmpty(project.timelines) ? (
+            <NotAvailablElement routeName="timelines" />
+          ) : (
+            project.timelines.map(d => (
               <DocumentPanelElement
                 key={d.id}
                 element={d}
@@ -36,8 +40,8 @@ export default class TimelineIndexScreen extends Component {
                 iconName="documents"
                 routeName="AppPDFViewer"
               />
-            );
-          })}
+            ))
+          )}
         </View>
       </ScrollView>
     );

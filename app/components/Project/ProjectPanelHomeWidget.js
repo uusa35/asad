@@ -5,6 +5,7 @@ import FastImage from 'react-native-fast-image';
 import {Icon} from 'react-native-elements';
 import PropTypes from 'prop-types';
 import MainBtnElement from '../MainBtnElement';
+import I18n from './../../I18n';
 
 export default class ProjectPanelHomeWidget extends Component {
   constructor(props) {

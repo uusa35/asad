@@ -2,6 +2,8 @@ import React, {Component} from 'react';
 import {View, Text, StyleSheet, ScrollView} from 'react-native';
 import PropTypes from 'prop-types';
 import DocumentPanelElement from './../../components/Project/DocumentPanelElement';
+import validate from 'validate.js';
+import NotAvailablElement from '../../components/NotAvailableElement';
 
 export default class DocumentIndexScreen extends Component {
   constructor(props) {
@@ -27,17 +29,21 @@ export default class DocumentIndexScreen extends Component {
         endFillColor="white"
         showsVerticalScrollIndicator={false}>
         <View style={styles.wrapper}>
-          {documents.map(d => {
-            return (
-              <DocumentPanelElement
-                key={d.id}
-                element={d}
-                navigation={navigation}
-                iconName="documents"
-                routeName="AppPDFViewer"
-              />
-            );
-          })}
+          {validate.isEmpty(documents) ? (
+            <NotAvailablElement routeName="documents" />
+          ) : (
+            documents.map(d => {
+              return (
+                <DocumentPanelElement
+                  key={d.id}
+                  element={d}
+                  navigation={navigation}
+                  iconName="documents"
+                  routeName="AppPDFViewer"
+                />
+              );
+            })
+          )}
         </View>
       </ScrollView>
     );

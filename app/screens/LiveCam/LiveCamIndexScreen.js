@@ -22,7 +22,7 @@ export default class LiveCamIndexScreen extends Component {
     };
   }
   render() {
-    const {navigation, project, moduleName} = this.state;
+    const {project, moduleName} = this.state;
     return (
       <ScrollView
         style={{backgroundColor: 'white'}}

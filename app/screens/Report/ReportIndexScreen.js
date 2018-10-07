@@ -3,6 +3,8 @@ import {View, StyleSheet, ScrollView} from 'react-native';
 import PropTypes from 'prop-types';
 import connect from 'react-redux/es/connect/connect';
 import PdfBtnElement from './../../components/Project/PdfBtnElement';
+import validate from 'validate.js';
+import NotAvailablElement from '../../components/NotAvailableElement';
 
 export default class ReportIndexScreen extends Component {
   constructor(props) {
@@ -28,8 +30,10 @@ export default class ReportIndexScreen extends Component {
         endFillColor="white"
         showsVerticalScrollIndicator={false}>
         <View style={styles.wrapper}>
-          {project.reports.map(d => {
-            return (
+          {validate.isEmpty(project.reports) ? (
+            <NotAvailablElement routeName="reports" />
+          ) : (
+            project.reports.map(d => (
               <PdfBtnElement
                 key={d.id}
                 element={d}
@@ -37,8 +41,8 @@ export default class ReportIndexScreen extends Component {
                 iconName="reports"
                 routeName="AppPDFViewer"
               />
-            );
-          })}
+            ))
+          )}
         </View>
       </ScrollView>
     );

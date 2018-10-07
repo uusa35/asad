@@ -3,6 +3,8 @@ import {View, Text, ScrollView, StyleSheet} from 'react-native';
 import PdfBtnElement from '../../components/Project/PdfBtnElement';
 import PropTypes from 'prop-types';
 import Timeline from 'react-native-timeline-listview';
+import validate from 'validate.js';
+import NotAvailablElement from '../../components/NotAvailableElement';
 
 export default class PhaseIndexScreen extends Component {
   constructor(props) {
@@ -28,8 +30,10 @@ export default class PhaseIndexScreen extends Component {
         endFillColor="white"
         showsVerticalScrollIndicator={false}>
         <View style={styles.wrapper}>
-          {project.phases.map(d => {
-            return (
+          {validate.isEmpty(project.phases) ? (
+            <NotAvailablElement routeName="phases" />
+          ) : (
+            project.phases.map(d => (
               <PdfBtnElement
                 key={d.id}
                 element={d}
@@ -37,8 +41,8 @@ export default class PhaseIndexScreen extends Component {
                 routeName="TaskShow"
                 iconName="phases"
               />
-            );
-          })}
+            ))
+          )}
         </View>
       </ScrollView>
     );

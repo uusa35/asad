@@ -1,6 +1,8 @@
 import React, {Component} from 'react';
 import {View, StyleSheet, ScrollView} from 'react-native';
 import PdfBtnElement from './../../components/Project/PdfBtnElement';
+import validate from 'validate.js';
+import NotAvailablElement from '../../components/NotAvailableElement';
 
 export default class DrawingIndexScreen extends Component {
   constructor(props) {
@@ -25,8 +27,10 @@ export default class DrawingIndexScreen extends Component {
         endFillColor="white"
         showsVerticalScrollIndicator={false}>
         <View style={styles.wrapper}>
-          {project.drawings.map(d => {
-            return (
+          {validate.isEmpty(project.drawings) ? (
+            <NotAvailablElement routeName="drawings" />
+          ) : (
+            project.drawings.map(d => (
               <PdfBtnElement
                 key={d.id}
                 element={d}
@@ -34,8 +38,8 @@ export default class DrawingIndexScreen extends Component {
                 iconName="drawings"
                 routeName="AppPDFViewer"
               />
-            );
-          })}
+            ))
+          )}
         </View>
       </ScrollView>
     );
