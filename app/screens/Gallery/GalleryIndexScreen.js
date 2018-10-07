@@ -53,6 +53,18 @@ export default class GalleryIndexScreen extends Component {
                         moduleName
                       })
                     }>
+                    <View style={styles.headerContainer}>
+                      <View style={styles.headerWrapper}>
+                        <View style={styles.headerTitleWrapper}>
+                          <Text style={styles.mainTitle}>{g.name}</Text>
+                        </View>
+                        <View style={styles.descriptionWrapper}>
+                          <Text style={styles.description}>
+                            {g.description}
+                          </Text>
+                        </View>
+                      </View>
+                    </View>
                     <FastImage
                       key={g.id}
                       style={styles.elementIcon}
@@ -105,5 +117,49 @@ const styles = StyleSheet.create({
     color: 'black',
     fontFamily: 'cairo',
     fontSize: 12
+  },
+  headerContainer: {
+    margin: 10,
+    flexDirection: 'row'
+  },
+  headerWrapper: {
+    flex: 1,
+    justifyContent: 'flex-start',
+    alignItems: 'center',
+    marginLeft: 5,
+    marginTop: 0
+  },
+  headerTitleWrapper: {
+    flexDirection: 'row',
+    alignItems: 'flex-start',
+    backgroundColor: 'white',
+    padding: 10,
+    borderTopWidth: 1,
+    borderBottomWidth: 1,
+    borderColor: 'black',
+    width: '100%'
+  },
+  descriptionWrapper: {
+    flexDirection: 'row',
+    width: '100%',
+    justifyContent: 'flex-start',
+    paddingRight: 5,
+    paddingLeft: 5,
+    paddingTop: 10,
+    backgroundColor: 'white',
+    shadowColor: 'black',
+    shadowOffset: {width: 1, height: 1},
+    shadowRadius: 2,
+    shadowOpacity: 0.2
+  },
+  mainTitle: {
+    textAlign: 'left',
+    fontFamily: 'cairo',
+    fontSize: 16
+  },
+  description: {
+    fontSize: 16,
+    textAlign: 'left',
+    fontFamily: 'cairo'
   }
 });

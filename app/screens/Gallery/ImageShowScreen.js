@@ -33,7 +33,7 @@ export default class ImageShowScreen extends Component {
           key={img.id}
           style={styles.imageElement}
           source={{uri: img.large}}
-          resizeMode={FastImage.resizeMode.center}
+          resizeMode={FastImage.resizeMode.contain}
           indicator={ProgressBar}
           indicatorProps={{
             size: 80,
