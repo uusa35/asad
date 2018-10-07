@@ -36,9 +36,10 @@ class DocumentCategoryIndexScreen extends Component {
         endFillColor="white"
         showsVerticalScrollIndicator={false}>
         <View style={styles.wrapper}>
-          {categories.map(category => {
+          {categories.map(c => {
             return (
               <TouchableOpacity
+                key={c.id}
                 style={{
                   flex: 1,
                   borderWidth: 1,
@@ -47,10 +48,10 @@ class DocumentCategoryIndexScreen extends Component {
                 }}
                 onPress={() =>
                   navigation.navigate('DocumentsList', {
-                    category
+                    category: c
                   })
                 }>
-                <Text>{category.name}</Text>
+                <Text>{c.name}</Text>
               </TouchableOpacity>
             );
           })}

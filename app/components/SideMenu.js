@@ -29,7 +29,7 @@ class Menu extends Component {
   }
 
   render() {
-    const {token, guest, navigation, galleries} = this.props;
+    const {token, guest, navigation, galleries, auth} = this.props;
     return (
       <ScrollView
         style={styles.container}
@@ -63,6 +63,15 @@ class Menu extends Component {
           ) : null}
           {token ? (
             <View>
+              <TouchableOpacity
+                onPress={() => {
+                  navigation.navigate('Notifications', {
+                    projects: auth.projects
+                  });
+                }}
+                style={styles.menuBtn}>
+                <Text style={styles.titleStyle}>{I18n.t('notifications')}</Text>
+              </TouchableOpacity>
               <TouchableOpacity
                 onPress={() => {
                   this.props.actions.logout();

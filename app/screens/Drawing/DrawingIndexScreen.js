@@ -3,6 +3,7 @@ import {View, StyleSheet, ScrollView} from 'react-native';
 import PdfBtnElement from './../../components/Project/PdfBtnElement';
 import validate from 'validate.js';
 import NotAvailablElement from '../../components/NotAvailableElement';
+import PropTypes from 'prop-types';
 
 export default class DrawingIndexScreen extends Component {
   constructor(props) {
@@ -45,6 +46,10 @@ export default class DrawingIndexScreen extends Component {
     );
   }
 }
+
+DrawingIndexScreen.propTypes = {
+  navigation: PropTypes.object.isRequired
+};
 
 const styles = StyleSheet.create({
   wrapper: {

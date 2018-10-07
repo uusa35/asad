@@ -41,6 +41,7 @@ import GalleryShowScreen from './screens/Gallery/GalleryShowScreen';
 import ImageShowScreen from './screens/Gallery/ImageShowScreen';
 import SearchIndexScreen from './screens/Search/SearchIndexScreen';
 import LiveCamIndexScreen from './screens/LiveCam/LiveCamIndexScreen';
+import NotificationIndexScreen from './screens/Notification/NotificationIndexScreen';
 
 const navMiddleware = createReactNavigationReduxMiddleware(
   'root',
@@ -205,6 +206,12 @@ const HomeStack = createStackNavigator(
       screen: TimelineIndexScreen,
       navigationOptions: ({navigation}) => ({
         headerTitle: getHeader(navigation.state.params.name)
+      })
+    },
+    Notifications: {
+      screen: NotificationIndexScreen,
+      navigationOptions: ({navigation}) => ({
+        headerTitle: getHeader(I18n.t('notifications'))
       })
     },
     AppPDFViewer: {
