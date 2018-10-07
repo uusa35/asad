@@ -68,6 +68,14 @@ export async function getProjectById(element) {
     .catch(e => e.response.data.message);
 }
 
+export async function getCategories(element) {
+  const {project_id, api_token} = element;
+  return await axiosInstance
+    .get('category', {params: {project_id, api_token}})
+    .then(r => r.data)
+    .catch(e => e.response.data.message);
+}
+
 export async function postRegisterRequest(payload) {
   const {
     name,

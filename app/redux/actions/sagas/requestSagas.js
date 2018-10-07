@@ -21,6 +21,7 @@ import {
   postRegisterRequest,
   authenticate,
   getProjectById,
+  getCategories,
   getSearchingProjects,
   forgetPassword
 } from './../api';
@@ -55,7 +56,6 @@ export function* submitLogin() {
 
 export function* startSubmitLogin(action) {
   try {
-    console.log('new state for login', action.payload);
     const user = yield call(authenticate, action.payload);
     if (!validate.isEmpty(user) && !validate.isEmpty(user.api_token)) {
       yield all([
@@ -150,7 +150,15 @@ export function* startGetProjectScenario(action) {
       id: action.payload.id,
       api_token: token
     });
+
     if (!validate.isEmpty(project)) {
+      const categories = yield call(getCategories, {
+        project_id: action.payload.id,
+        api_token: token
+      });
+      if (!validate.isEmpty(categories)) {
+        yield put({type: actions.SET_CATEGORIES, payload: categories});
+      }
       yield all([
         put({type: actions.SET_PROJECT, payload: project}),
         put(
@@ -177,6 +185,13 @@ export function* startRefetchProjectScenario(action) {
       api_token: token
     });
     if (!validate.isEmpty(project)) {
+      const categories = yield call(getCategories, {
+        project_id: action.payload.id,
+        api_token: token
+      });
+      if (!validate.isEmpty(categories)) {
+        yield put({type: actions.SET_CATEGORIES, payload: categories});
+      }
       yield all([put({type: actions.SET_PROJECT, payload: project})]);
     } else {
       throw new Error(project);

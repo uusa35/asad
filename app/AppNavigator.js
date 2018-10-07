@@ -28,6 +28,7 @@ import ProjectShowScreen from './screens/Project/ProjectShowScreen';
 import DrawingIndexScreen from './screens/Drawing/DrawingIndexScreen';
 import PaymentIndexScreen from './screens/Payment/PaymentIndexScreen';
 import DocumentIndexScreen from './screens/Document/DocumentIndexScreen';
+import DocumentCategoryIndexScreen from './screens/Document/DocumentCategoryIndexScreen';
 import GalleryIndexScreen from './screens/Gallery/GalleryIndexScreen';
 import PhaseIndexScreen from './screens/Phase/PhaseIndexScreen';
 import TimelineIndexScreen from './screens/Timeline/TimelineIndexScreen';
@@ -129,9 +130,15 @@ const HomeStack = createStackNavigator(
       })
     },
     Documents: {
-      screen: DocumentIndexScreen,
+      screen: DocumentCategoryIndexScreen,
       navigationOptions: ({navigation}) => ({
         headerTitle: getHeader(navigation.state.params.name)
+      })
+    },
+    DocumentsList: {
+      screen: DocumentIndexScreen,
+      navigationOptions: ({navigation}) => ({
+        headerTitle: getHeader(navigation.state.params.category.slug)
       })
     },
     Timelines: {

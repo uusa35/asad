@@ -5,7 +5,6 @@ import {colors, height, icons, width, isIOS} from '../constants';
 import PropTypes from 'prop-types';
 import _ from 'lodash';
 import validate from 'validate.js';
-import I18n from './../I18n';
 
 export default class MainBtnElement extends Component {
   constructor(props) {

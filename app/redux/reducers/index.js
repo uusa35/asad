@@ -15,6 +15,7 @@ import homeSliders from './homeSliders';
 import deviceId from './deviceId';
 import registerRequest from './registerRequest';
 import projects from './projects';
+import categories from './categories';
 import project from './project';
 import galleries from './galleries';
 import search from './search';
@@ -37,6 +38,7 @@ let reducers = combineReducers({
   deviceId,
   registerRequest,
   projects,
+  categories,
   search,
   project,
   galleries,

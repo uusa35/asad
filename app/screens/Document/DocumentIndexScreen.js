@@ -1,24 +1,24 @@
 import React, {Component} from 'react';
-import {View, StyleSheet, ScrollView} from 'react-native';
+import {View, Text, StyleSheet,ScrollView} from 'react-native';
 import PropTypes from 'prop-types';
-import DocumentPanelElement from '../../components/Project/DocumentPanelElement';
+import DocumentPanelElement from './../../components/Project/DocumentPanelElement';
 
 export default class DocumentIndexScreen extends Component {
   constructor(props) {
     super(props);
-    this.state = {project: {}, navigation: {}};
+    this.state = {documents: {}, navigation: {}};
   }
 
   static getDerivedStateFromProps(nextProps) {
     const {navigation} = nextProps;
     return {
-      project: navigation.state.params.project,
+      documents: navigation.state.params.category.documents,
       navigation
     };
   }
 
   render() {
-    const {navigation, project} = this.state;
+    const {navigation, documents} = this.state;
     return (
       <ScrollView
         style={{backgroundColor: 'white'}}
@@ -27,7 +27,7 @@ export default class DocumentIndexScreen extends Component {
         endFillColor="white"
         showsVerticalScrollIndicator={false}>
         <View style={styles.wrapper}>
-          {project.documents.map(d => {
+          {documents.map(d => {
             return (
               <DocumentPanelElement
                 key={d.id}
@@ -44,10 +44,6 @@ export default class DocumentIndexScreen extends Component {
   }
 }
 
-DocumentIndexScreen.propTypes = {
-  navigation: PropTypes.object.isRequired
-};
-
 const styles = StyleSheet.create({
   wrapper: {
     flexDirection: 'row',
@@ -56,3 +52,7 @@ const styles = StyleSheet.create({
     alignItems: 'center'
   }
 });
+
+DocumentIndexScreen.propTypes = {
+  navigation: PropTypes.object.isRequired
+};

@@ -5,7 +5,7 @@ import React from 'react';
 import {AsyncStorage, Alert, Platform, Text} from 'react-native';
 import _ from 'lodash';
 import I18n from './../I18n';
-import {width} from './../constants';
+import {width, isIOS} from './../constants';
 import geolib, {getDistance} from 'geolib';
 import validate from 'validate.js';
 
@@ -132,8 +132,8 @@ export function getTabTitle(title) {
       style={{
         fontFamily: 'cairo',
         color: 'black',
-        marginTop: Platform.OS === 'ios' ? 10 : 3,
-        fontSize: Platform.OS === 'ios' ? 12 : 10
+        marginTop: isIOS ? 10 : 3,
+        fontSize: isIOS ? 12 : 10
       }}>
       {title}
     </Text>

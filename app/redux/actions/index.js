@@ -196,6 +196,13 @@ export function getProject(id) {
   };
 }
 
+export function setCategories(categories) {
+  return {
+    type: actions.SET_CATEGORIES,
+    payload: categories
+  };
+}
+
 export function refetchProject(id) {
   return {
     type: actions.GET_PROJECT,
@@ -250,6 +257,7 @@ export const APP_ACTIONS = {
   setProjects,
   refetchProjects,
   getProject,
+  setCategories,
   refetchProject,
   setProject,
   setGalleries,
