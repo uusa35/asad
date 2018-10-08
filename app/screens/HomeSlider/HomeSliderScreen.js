@@ -29,8 +29,15 @@ class HomeSliderScreen extends Component {
           <Card
             containerStyle={{opacity: 0.8, marginTop: 100}}
             title={s.title}
+            titleStyle={{fontFamily: 'cairo', textAlign: 'left', margin: 10}}
             image={{uri: s.image}}>
-            <Text style={{marginBottom: 10, fontSize: 14, fontFamily: 'cairo'}}>
+            <Text
+              style={{
+                marginBottom: 10,
+                fontSize: 20,
+                fontFamily: 'cairo',
+                textAlign: 'left'
+              }}>
               {s.content}
             </Text>
           </Card>

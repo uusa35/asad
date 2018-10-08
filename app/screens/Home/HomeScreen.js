@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {View, StyleSheet, FlatList, RefreshControl, Text} from 'react-native';
+import {View, StyleSheet, FlatList, RefreshControl} from 'react-native';
 import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
 import {
