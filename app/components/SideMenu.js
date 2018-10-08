@@ -9,7 +9,7 @@ import {
   StatusBar,
   TouchableOpacity
 } from 'react-native';
-import {Text, Button} from 'react-native-elements';
+import {Text, Button, Icon} from 'react-native-elements';
 import I18n from './../I18n';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
@@ -17,6 +17,7 @@ import {changeLang, logout} from '../redux/actions';
 import {colors, images} from './../constants';
 import FastImage from 'react-native-fast-image';
 import validate from 'validate.js';
+import {isRTL} from "../I18n";
 
 class Menu extends Component {
   constructor(props) {
@@ -41,6 +42,11 @@ class Menu extends Component {
           <TouchableOpacity
             onPress={() => navigation.navigate('Home')}
             style={styles.menuBtn}>
+              <Icon
+                  name="home"
+                  type="octicon"
+                  size={20}
+              />
             <Text style={styles.titleStyle}>{I18n.t('homepage')}</Text>
           </TouchableOpacity>
           {guest ? (
@@ -48,6 +54,11 @@ class Menu extends Component {
               <TouchableOpacity
                 onPress={() => navigation.navigate('Login')}
                 style={styles.menuBtn}>
+                  <Icon
+                      name="key"
+                      type="octicon"
+                      size={20}
+                  />
                 <Text style={styles.titleStyle}>{I18n.t('login')}</Text>
               </TouchableOpacity>
               <TouchableOpacity
@@ -55,6 +66,11 @@ class Menu extends Component {
                   navigation.navigate('Register', {type: 'supplier'})
                 }
                 style={styles.menuBtn}>
+                  <Icon
+                      name="user"
+                      type="octicon"
+                      size={20}
+                  />
                 <Text style={styles.titleStyle}>
                   {I18n.t('register_as_supplier')}
                 </Text>
@@ -68,6 +84,11 @@ class Menu extends Component {
                   navigation.navigate('Notifications');
                 }}
                 style={styles.menuBtn}>
+                  <Icon
+                      name="bell"
+                      type="octicon"
+                      size={20}
+                  />
                 <Text style={styles.titleStyle}>{I18n.t('notifications')}</Text>
               </TouchableOpacity>
               <TouchableOpacity
@@ -75,6 +96,11 @@ class Menu extends Component {
                   this.props.actions.logout();
                 }}
                 style={styles.menuBtn}>
+                  <Icon
+                      name="sign-out"
+                      type="octicon"
+                      size={20}
+                  />
                 <Text style={styles.titleStyle}>{I18n.t('logout')}</Text>
               </TouchableOpacity>
             </View>
@@ -88,17 +114,32 @@ class Menu extends Component {
                 })
               }
               style={styles.menuBtn}>
+                <Icon
+                    name="device-camera"
+                    type="octicon"
+                    size={20}
+                />
               <Text style={styles.titleStyle}>{I18n.t('galleries')}</Text>
             </TouchableOpacity>
           ) : null}
           <TouchableOpacity
             onPress={() => navigation.navigate('Contactus')}
             style={styles.menuBtn}>
+              <Icon
+                  name="device-mobile"
+                  type="octicon"
+                  size={20}
+              />
             <Text style={styles.titleStyle}>{I18n.t('contactus')}</Text>
           </TouchableOpacity>
           <TouchableOpacity
             onPress={() => this.changeLang()}
             style={styles.menuBtn}>
+              <Icon
+                  name="globe"
+                  type="octicon"
+                  size={20}
+              />
             <Text style={styles.titleStyle}>{I18n.t('lang')}</Text>
           </TouchableOpacity>
         </View>
@@ -134,7 +175,9 @@ const styles = StyleSheet.create({
   titleStyle: {
     color: 'black',
     fontFamily: 'cairo',
-    fontSize: 16
+    fontSize: 16,
+      textAlign : 'left',
+      paddingLeft : 15
   },
   logo: {
     width: 100,
@@ -142,8 +185,10 @@ const styles = StyleSheet.create({
     margin: 12
   },
   menuBtn: {
+    flexDirection : 'row',
     backgroundColor: 'white',
     justifyContent: 'flex-start',
+      alignItems : 'center',
     borderBottomWidth: 1,
     padding: 12,
     borderBottomColor: 'lightgrey'

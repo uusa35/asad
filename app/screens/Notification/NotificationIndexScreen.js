@@ -10,9 +10,11 @@ import {
 import validate from 'validate.js';
 import PropTypes from 'prop-types';
 import FastImage from 'react-native-fast-image';
-import {height, icons, width} from '../../constants';
+import {height, icons} from '../../constants';
 import MainBtnElement from '../../components/MainBtnElement';
-import I18n from '../../I18n';
+import I18n, {isRTL} from '../../I18n';
+
+('../../I18n');
 import {bindActionCreators} from 'redux';
 import {refetchProjects} from '../../redux/actions';
 import connect from 'react-redux/es/connect/connect';
@@ -55,7 +57,7 @@ class NotificationIndexScreen extends Component {
               resizeMode={FastImage.resizeMode.contain}
             />
             <View style={{flex: 1}}>
-              <Text style={[styles.elementText, {fontSize: 20, padding: 5}]}>
+              <Text style={[styles.elementText, {fontSize: 20}]}>
                 {n.title}
               </Text>
               <View style={styles.elementTextWrapper}>
@@ -63,7 +65,11 @@ class NotificationIndexScreen extends Component {
                 <Text style={styles.elementText}>{n.created_at}</Text>
               </View>
             </View>
-            <Icon name="chevron-right" type="octicon" size={40} />
+            <Icon
+              name={isRTL ? 'chevron-left' : 'chevron-right'}
+              type="octicon"
+              size={40}
+            />
           </View>
         </View>
       </TouchableOpacity>
@@ -118,20 +124,26 @@ const styles = StyleSheet.create({
     backgroundColor: 'white'
   },
   elementIcon: {
-    width: 35,
-    height: 35,
-    margin: 10
+    width: 55,
+    height: 55,
+    margin: 5,
+    marginRight: 10
   },
   elementTextWrapper: {
     flexDirection: 'row',
     justifyContent: 'flex-start',
     alignItems: 'center'
   },
+  elementText: {
+    textAlign: 'left',
+    fontFamily: 'cairo',
+    paddingRight: 10,
+    paddingLeft: 10
+  },
   iconWrapper: {
     flexDirection: 'row',
-    margin: 10,
     justifyContent: 'flex-start',
-    alignContent: 'space-between',
+    alignContent: 'space-around',
     alignItems: 'center'
   },
   flatListContainer: {
