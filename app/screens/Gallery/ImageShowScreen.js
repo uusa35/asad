@@ -54,6 +54,7 @@ ImageShowScreen.propTypes = {
 const styles = StyleSheet.create({
   imageElement: {
     width: width,
-    height: height
+    height: height,
+    backgroundColor: 'black'
   }
 });

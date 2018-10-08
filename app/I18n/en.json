@@ -326,6 +326,7 @@
   "guest" : "Guest",
   "search_success" : "Results found.",
   "register_as_supplier" : "Register as Suppliers/Vendors",
-  "image" : "image"
+  "image" : "image",
+  "notifications" : "Notifications"
 
 }

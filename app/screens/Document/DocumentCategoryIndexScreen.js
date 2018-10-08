@@ -7,10 +7,8 @@ import {
   TouchableOpacity
 } from 'react-native';
 import PropTypes from 'prop-types';
-import DocumentPanelElement from '../../components/Project/DocumentPanelElement';
-import {bindActionCreators} from 'redux';
-import {getProject} from '../../redux/actions';
 import connect from 'react-redux/es/connect/connect';
+import {width, colors} from './../../constants';
 
 class DocumentCategoryIndexScreen extends Component {
   constructor(props) {
@@ -40,18 +38,13 @@ class DocumentCategoryIndexScreen extends Component {
             return (
               <TouchableOpacity
                 key={c.id}
-                style={{
-                  flex: 1,
-                  borderWidth: 1,
-                  borderColor: 'blue',
-                  height: 120
-                }}
+                style={styles.textWrapper}
                 onPress={() =>
                   navigation.navigate('DocumentsList', {
                     category: c
                   })
                 }>
-                <Text>{c.name}</Text>
+                <Text style={styles.textElement}>{c.name}</Text>
               </TouchableOpacity>
             );
           })}
@@ -63,10 +56,25 @@ class DocumentCategoryIndexScreen extends Component {
 
 const styles = StyleSheet.create({
   wrapper: {
-    flexDirection: 'row',
     flexWrap: 'wrap',
     justifyContent: 'space-around',
     alignItems: 'center'
+  },
+  textElement: {
+    fontSize: 25,
+    fontFamily: 'cairo',
+    color: 'black',
+    textAlign: 'left'
+  },
+  textWrapper: {
+    width: width - 50,
+    borderWidth: 1,
+    borderColor: 'grey',
+    height: 100,
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: colors.main,
+    margin: 5
   }
 });
 

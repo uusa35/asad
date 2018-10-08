@@ -163,7 +163,6 @@ export function* startAppBootStrap() {
       ]);
     }
   } catch (e) {
-    console.log('the e from appSaga', e);
     yield all([call(disableLoading), call(enableErrorMessage, e.message)]);
   }
 }

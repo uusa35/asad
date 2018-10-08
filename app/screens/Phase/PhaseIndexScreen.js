@@ -1,8 +1,7 @@
 import React, {Component} from 'react';
-import {View, Text, ScrollView, StyleSheet} from 'react-native';
+import {View, ScrollView, StyleSheet} from 'react-native';
 import PdfBtnElement from '../../components/Project/PdfBtnElement';
 import PropTypes from 'prop-types';
-import Timeline from 'react-native-timeline-listview';
 import validate from 'validate.js';
 import NotAvailablElement from '../../components/NotAvailableElement';
 

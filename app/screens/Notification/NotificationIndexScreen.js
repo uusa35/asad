@@ -2,69 +2,92 @@ import React, {Component} from 'react';
 import {
   View,
   Text,
-  ScrollView,
   TouchableOpacity,
-  StyleSheet
+  StyleSheet,
+  RefreshControl,
+  FlatList
 } from 'react-native';
 import validate from 'validate.js';
 import PropTypes from 'prop-types';
 import FastImage from 'react-native-fast-image';
-import {icons, width} from '../../constants';
+import {height, icons, width} from '../../constants';
+import MainBtnElement from '../../components/MainBtnElement';
+import I18n from '../../I18n';
+import {bindActionCreators} from 'redux';
+import {refetchProjects} from '../../redux/actions';
+import connect from 'react-redux/es/connect/connect';
+import {Icon} from 'react-native-elements';
 
-export default class NotificationIndexScreen extends Component {
+class NotificationIndexScreen extends Component {
   constructor(props) {
     super(props);
-    this.state = {navigation: {}, projects: []};
+    this.state = {navigation: {}, projects: [], refreshing: false};
   }
 
   static getDerivedStateFromProps(nextProps) {
-    const {navigation} = nextProps;
+    const {navigation, projects} = nextProps;
     return {
-      projects: navigation.state.params.projects,
+      projects,
       navigation
     };
   }
 
-  render() {
-    const {projects, navigation} = this.state;
+  _onRefresh = () => {
+    return this.props.actions.refetchProjects();
+  };
+
+  _renderNotification(n) {
     return (
-      <ScrollView
-        style={{backgroundColor: 'white'}}
-        showsHorizontalScrollIndicator={false}
-        contentContainerStyle={{paddingBottom: 30, backgroundColor: 'white'}}
-        endFillColor="white"
-        showsVerticalScrollIndicator={false}>
-        {projects.map(
-          p =>
-            !validate.isEmpty(p.notifications)
-              ? p.notifications.map(n => (
-                  <TouchableOpacity
-                    key={n.id}
-                    style={{borderWidth: 1, borderColor: 'grey', margin: 5}}
-                    onPress={() =>
-                      navigation.navigate('AppPDFViewer', {
-                        title: n.name,
-                        pdfLink: n.path
-                      })
-                    }>
-                    <View style={{padding: 10}}>
-                      <View style={styles.iconWrapper}>
-                        <FastImage
-                          style={styles.elementIcon}
-                          source={icons[n.type]}
-                          resizeMode={FastImage.resizeMode.contain}
-                        />
-                        <Text style={styles.elementText}>{n.title}</Text>
-                      </View>
-                      <View style={styles.elementTextWrapper}>
-                        <Text style={styles.elementText}>{n.created_at}</Text>
-                      </View>
-                    </View>
-                  </TouchableOpacity>
-                ))
-              : null
-        )}
-      </ScrollView>
+      <TouchableOpacity
+        key={n.id}
+        style={{borderWidth: 1, borderColor: 'grey', margin: 5}}
+        onPress={() =>
+          this.props.navigation.navigate('AppPDFViewer', {
+            title: n.title,
+            pdfLink: n.path
+          })
+        }>
+        <View style={{padding: 10}}>
+          <View style={styles.iconWrapper}>
+            <FastImage
+              style={styles.elementIcon}
+              source={icons[n.type]}
+              resizeMode={FastImage.resizeMode.contain}
+            />
+            <View style={{flex: 1}}>
+              <Text style={[styles.elementText, {fontSize: 20, padding: 5}]}>
+                {n.title}
+              </Text>
+              <View style={styles.elementTextWrapper}>
+                <Icon name="clock" type="octicon" size={10} />
+                <Text style={styles.elementText}>{n.created_at}</Text>
+              </View>
+            </View>
+            <Icon name="chevron-right" type="octicon" size={40} />
+          </View>
+        </View>
+      </TouchableOpacity>
+    );
+  }
+
+  render() {
+    const {projects, navigation, refreshing} = this.state;
+    return (
+      <View style={styles.wrapper}>
+        <FlatList
+          containtContainerStyle={styles.flatListContainer}
+          data={projects}
+          refreshControl={
+            <RefreshControl
+              refreshing={refreshing}
+              onRefresh={this._onRefresh}
+            />
+          }
+          renderItem={({item}) => {
+            return item.notifications.map(n => this._renderNotification(n));
+          }}
+        />
+      </View>
     );
   }
 }
@@ -73,17 +96,47 @@ NotificationIndexScreen.propTypes = {
   navigation: PropTypes.object.isRequired
 };
 
+function mapStateToProps(state) {
+  return state;
+}
+
+function mapDispatchToProps(dispatch) {
+  return {
+    actions: {
+      refetchProjects: bindActionCreators(refetchProjects, dispatch)
+    }
+  };
+}
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(NotificationIndexScreen);
+
 const styles = StyleSheet.create({
+  wrapper: {
+    backgroundColor: 'white'
+  },
   elementIcon: {
-    width: 30,
-    height: 30,
+    width: 35,
+    height: 35,
     margin: 10
   },
-  elementTextWrapper: {},
+  elementTextWrapper: {
+    flexDirection: 'row',
+    justifyContent: 'flex-start',
+    alignItems: 'center'
+  },
   iconWrapper: {
     flexDirection: 'row',
-    padding: 10,
+    margin: 10,
     justifyContent: 'flex-start',
+    alignContent: 'space-between',
+    alignItems: 'center'
+  },
+  flatListContainer: {
+    height: height,
+    justifyContent: 'center',
     alignItems: 'center'
   }
 });

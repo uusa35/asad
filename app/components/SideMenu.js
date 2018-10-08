@@ -65,9 +65,7 @@ class Menu extends Component {
             <View>
               <TouchableOpacity
                 onPress={() => {
-                  navigation.navigate('Notifications', {
-                    projects: auth.projects
-                  });
+                  navigation.navigate('Notifications');
                 }}
                 style={styles.menuBtn}>
                 <Text style={styles.titleStyle}>{I18n.t('notifications')}</Text>

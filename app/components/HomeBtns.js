@@ -48,7 +48,7 @@ export default class HomeBtns extends Component {
   }
 }
 
-DocumentIndexScreen.propTypes = {
+HomeBtns.propTypes = {
   navigation: PropTypes.object.isRequired,
   roles: PropTypes.array.isRequired
 };

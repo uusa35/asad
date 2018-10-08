@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
-import {View, Text, StyleSheet, ScrollView} from 'react-native';
+import {View, StyleSheet, ScrollView} from 'react-native';
 import TimeLine from 'react-native-timeline-theme';
-import {width, height} from './../../constants';
+import {width} from './../../constants';
 
 export default class TaskShowScreen extends Component {
   constructor(props) {
@@ -9,7 +9,7 @@ export default class TaskShowScreen extends Component {
     this.state = {element: {}, navigation: {}};
   }
 
-  static getDerivedStateFromProps(nextProps, prevProps) {
+  static getDerivedStateFromProps(nextProps) {
     const {navigation} = nextProps;
     return {
       element: navigation.state.params.element,

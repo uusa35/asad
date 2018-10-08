@@ -208,7 +208,6 @@ export function* submitForgetPassword() {
 export function* startSubmitForgetPassword(action) {
   try {
     const user = yield call(forgetPassword, action.payload);
-    console.log('the user', user);
     if (!validate.isEmpty(user) && !validate.isEmpty(user.api_token)) {
       yield all([
         call(
