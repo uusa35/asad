@@ -39,41 +39,43 @@ class NotificationIndexScreen extends Component {
   };
 
   _renderNotification(n) {
-    return (
-      <TouchableOpacity
-        key={n.id}
-        style={{borderWidth: 1, borderColor: 'grey', margin: 5}}
-        onPress={() =>
-          this.props.navigation.navigate('AppPDFViewer', {
-            title: n.title,
-            pdfLink: n.path
-          })
-        }>
-        <View style={{padding: 10}}>
-          <View style={styles.iconWrapper}>
-            <FastImage
-              style={styles.elementIcon}
-              source={icons[n.type]}
-              resizeMode={FastImage.resizeMode.contain}
-            />
-            <View style={{flex: 1}}>
-              <Text style={[styles.elementText, {fontSize: 20}]}>
-                {n.title}
-              </Text>
-              <View style={styles.elementTextWrapper}>
-                <Icon name="clock" type="octicon" size={10} />
-                <Text style={styles.elementText}>{n.created_at}</Text>
-              </View>
-            </View>
-            <Icon
-              name={isRTL ? 'chevron-left' : 'chevron-right'}
-              type="octicon"
-              size={40}
-            />
-          </View>
-        </View>
-      </TouchableOpacity>
-    );
+    if(!validate.isEmpty(n)) {
+        return (
+            <TouchableOpacity
+                key={n.id}
+                style={{borderWidth: 1, borderColor: 'grey', margin: 5}}
+                onPress={() =>
+                    this.props.navigation.navigate('AppPDFViewer', {
+                        title: n.title,
+                        pdfLink: n.path
+                    })
+                }>
+                <View style={{padding: 10}}>
+                    <View style={styles.iconWrapper}>
+                        <FastImage
+                            style={styles.elementIcon}
+                            source={icons[n.type]}
+                            resizeMode={FastImage.resizeMode.contain}
+                        />
+                        <View style={{flex: 1}}>
+                            <Text style={[styles.elementText, {fontSize: 20}]}>
+                                {n.title}
+                            </Text>
+                            <View style={styles.elementTextWrapper}>
+                                <Icon name="clock" type="octicon" size={10} />
+                                <Text style={styles.elementText}>{n.created_at}</Text>
+                            </View>
+                        </View>
+                        <Icon
+                            name={isRTL ? 'chevron-left' : 'chevron-right'}
+                            type="octicon"
+                            size={40}
+                        />
+                    </View>
+                </View>
+            </TouchableOpacity>
+        );
+    }
   }
 
   render() {
