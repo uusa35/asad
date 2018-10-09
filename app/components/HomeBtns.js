@@ -1,10 +1,9 @@
 import React, {Component} from 'react';
 import {View, StyleSheet} from 'react-native';
-import {height, width} from '../constants';
+import {height} from '../constants';
 import MainBtnElement from './MainBtnElement';
 import I18n from '../I18n';
 import PropTypes from 'prop-types';
-import DocumentIndexScreen from '../screens/Document/DocumentIndexScreen';
 
 export default class HomeBtns extends Component {
   constructor(props) {

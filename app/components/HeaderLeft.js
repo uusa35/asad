@@ -2,10 +2,9 @@
  * Created by usamaahmed on 9/28/17.
  */
 import React, {Component} from 'react';
-import {View, Image, ScrollView, StyleSheet} from 'react-native';
+import {View, ScrollView, StyleSheet} from 'react-native';
 import {Icon} from 'react-native-elements';
-import {DrawerItems, SafeAreaView} from 'react-navigation';
-import {width, colors} from './../constants';
+import {SafeAreaView} from 'react-navigation';
 
 export default class HeaderLeft extends Component {
   constructor(props) {

@@ -9,7 +9,7 @@ import {
   StatusBar,
   TouchableOpacity
 } from 'react-native';
-import {Text, Button, Icon} from 'react-native-elements';
+import {Text, Icon} from 'react-native-elements';
 import I18n from './../I18n';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
@@ -17,7 +17,6 @@ import {changeLang, logout} from '../redux/actions';
 import {colors, images} from './../constants';
 import FastImage from 'react-native-fast-image';
 import validate from 'validate.js';
-import {isRTL} from '../I18n';
 
 class Menu extends Component {
   constructor(props) {
@@ -30,7 +29,7 @@ class Menu extends Component {
   }
 
   render() {
-    const {token, guest, navigation, galleries, auth} = this.props;
+    const {token, guest, navigation, galleries} = this.props;
     return (
       <ScrollView
         style={styles.container}

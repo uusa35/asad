@@ -3,6 +3,7 @@ import {View, Text, TextInput} from 'react-native';
 import {colors, text} from './../constants';
 import I18n, {isRTL} from './../I18n';
 import validate from 'validate.js';
+
 export default class FormTextInput extends Component {
   constructor(props) {
     super(props);

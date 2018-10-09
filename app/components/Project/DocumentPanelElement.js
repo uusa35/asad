@@ -2,9 +2,8 @@ import React, {Component} from 'react';
 import {View, Text, StyleSheet, TouchableOpacity} from 'react-native';
 import PropTypes from 'prop-types';
 import {Divider} from 'react-native-elements';
-import {width, height, text, colors} from './../../constants';
+import {width, text, colors} from './../../constants';
 import I18n from './../../I18n';
-import Communications from 'react-native-communications';
 
 export default class DocumentPanelElement extends Component {
   constructor(props) {

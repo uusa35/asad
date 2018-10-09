@@ -4,7 +4,7 @@ import {Icon, Divider} from 'react-native-elements';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import {disableMessage} from './../redux/actions';
-import {width, height, text} from './../constants';
+import {width, text} from './../constants';
 
 class AlertMessage extends Component {
   constructor(props) {

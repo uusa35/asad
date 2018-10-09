@@ -1,11 +1,7 @@
 import React, {Component} from 'react';
 import {View, Text, StyleSheet} from 'react-native';
-import Communications from 'react-native-communications';
 import FastImage from 'react-native-fast-image';
-import {Icon} from 'react-native-elements';
 import PropTypes from 'prop-types';
-import MainBtnElement from '../MainBtnElement';
-import I18n from './../../I18n';
 
 export default class ProjectPanelHomeWidget extends Component {
   constructor(props) {
@@ -13,7 +9,7 @@ export default class ProjectPanelHomeWidget extends Component {
     this.state = {name: '', description: '', image: ''};
   }
 
-  static getDerivedStateFromProps(nextProps, prevProps) {
+  static getDerivedStateFromProps(nextProps) {
     const {name, description, image} = nextProps;
     return {
       name,

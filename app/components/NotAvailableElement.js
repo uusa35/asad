@@ -3,7 +3,6 @@ import {View} from 'react-native';
 import {Button, Icon} from 'react-native-elements';
 import I18n from '../I18n';
 import PropTypes from 'prop-types';
-import validate from 'validate.js';
 
 export default class NotAvailableElement extends Component {
   constructor(props) {
