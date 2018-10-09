@@ -87,7 +87,6 @@ const styles = StyleSheet.create({
     fontSize: 16,
     padding: 2,
     paddingLeft: 10,
-    fontWeight: 'bold',
     color: 'white'
   },
   description: {

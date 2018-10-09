@@ -5,6 +5,7 @@ import GalleryIndexScreen from './GalleryIndexScreen';
 import FastImage from 'react-native-fast-image';
 import I18n from './../../I18n';
 import validate from 'validate.js';
+import {width} from './../../constants';
 
 export default class GalleryShowScreen extends Component {
   constructor(props) {
@@ -26,7 +27,7 @@ export default class GalleryShowScreen extends Component {
       <ScrollView
         style={{backgroundColor: 'white'}}
         showsHorizontalScrollIndicator={false}
-        contentContainerStyle={{paddingBottom: 30, backgroundColor: 'white'}}
+        contentContainerStyle={styles.container}
         endFillColor="white"
         showsVerticalScrollIndicator={false}>
         <View style={styles.wrapper}>
@@ -61,18 +62,27 @@ GalleryIndexScreen.propTypes = {
 };
 
 const styles = StyleSheet.create({
+  container: {
+    paddingBottom: 30,
+    backgroundColor: 'white',
+    justifyContent: 'center',
+    alignItems: 'center'
+  },
   wrapper: {
     flex: 1,
     flexDirection: 'row',
     flexWrap: 'wrap',
-    justifyContent: 'center',
+    justifyContent: 'flex-start',
     alignItems: 'center',
-    margin: 10
+    alignContent: 'center',
+    width: width - 50,
+    paddingTop: 15
   },
   imageElement: {
-    width: 120,
-    height: 120,
+    width: 110,
+    height: 110,
     borderWidth: 0.5,
+    margin: 5,
     borderColor: 'lightgrey'
   }
 });

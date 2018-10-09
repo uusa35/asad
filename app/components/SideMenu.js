@@ -42,7 +42,7 @@ class Menu extends Component {
           <TouchableOpacity
             onPress={() => navigation.navigate('Home')}
             style={styles.menuBtn}>
-            <Icon name="home" type="octicon" size={20} />
+            <Icon name="home" type="font-awesome" size={20} />
             <Text style={styles.titleStyle}>{I18n.t('homepage')}</Text>
           </TouchableOpacity>
           {guest ? (
@@ -50,7 +50,7 @@ class Menu extends Component {
               <TouchableOpacity
                 onPress={() => navigation.navigate('Login')}
                 style={styles.menuBtn}>
-                <Icon name="key" type="octicon" size={20} />
+                <Icon name="sign-in" type="font-awesome" size={20} />
                 <Text style={styles.titleStyle}>{I18n.t('login')}</Text>
               </TouchableOpacity>
               <TouchableOpacity
@@ -107,7 +107,7 @@ class Menu extends Component {
           <TouchableOpacity
             onPress={() => this.changeLang()}
             style={styles.menuBtn}>
-            <Icon name="globe" type="octicon" size={20} />
+            <Icon name="globe" type="font-awesome" size={20} />
             <Text style={styles.titleStyle}>{I18n.t('lang')}</Text>
           </TouchableOpacity>
         </View>
@@ -145,7 +145,8 @@ const styles = StyleSheet.create({
     fontFamily: 'cairo',
     fontSize: 16,
     textAlign: 'left',
-    paddingLeft: 15
+    paddingLeft: 15,
+    paddingRight: 15
   },
   logo: {
     width: 100,

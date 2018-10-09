@@ -3,17 +3,16 @@ import {connect} from 'react-redux';
 import {
   createBottomTabNavigator,
   createStackNavigator,
-  createDrawerNavigator,
-  DrawerItems
+  createDrawerNavigator
 } from 'react-navigation';
 import {
   reduxifyNavigator,
   createReactNavigationReduxMiddleware
 } from 'react-navigation-redux-helpers';
-import I18n from './I18n';
+import I18n, {isRTL} from './I18n';
 import SideMenu from './components/SideMenu';
 import {getHeader} from './helpers';
-import {colors} from './constants';
+import {colors, isIOS} from './constants';
 import HeaderLeft from './components/HeaderLeft';
 import HeaderCustom from './components/HeaderCustom';
 import HomeSliderScreen from './screens/HomeSlider/HomeSliderScreen';
@@ -295,7 +294,6 @@ const mapStateToProps = state => ({
   state: state.nav
 });
 
-const mapDispatchToProps = ({navigation}) => {};
 const AppNavigator = connect(mapStateToProps)(AppWithNavigationState);
 
 export {RootNavigator, AppNavigator, navMiddleware};

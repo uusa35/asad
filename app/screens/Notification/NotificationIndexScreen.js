@@ -11,10 +11,7 @@ import validate from 'validate.js';
 import PropTypes from 'prop-types';
 import FastImage from 'react-native-fast-image';
 import {height, icons} from '../../constants';
-import MainBtnElement from '../../components/MainBtnElement';
-import I18n, {isRTL} from '../../I18n';
-
-('../../I18n');
+import {isRTL} from '../../I18n';
 import {bindActionCreators} from 'redux';
 import {refetchProjects} from '../../redux/actions';
 import connect from 'react-redux/es/connect/connect';
@@ -125,7 +122,8 @@ export default connect(
 
 const styles = StyleSheet.create({
   wrapper: {
-    backgroundColor: 'white'
+    backgroundColor: 'white',
+    height: height
   },
   elementIcon: {
     width: 55,

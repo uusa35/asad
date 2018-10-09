@@ -8,8 +8,6 @@ import FastImage from 'react-native-fast-image';
 import {Input, Button, Icon} from 'react-native-elements';
 import validate from 'validate.js';
 import I18n, {isRTL} from '../../I18n';
-
-('./../../I18n');
 import {userRegisterRequestConstraints} from '../../constrains';
 import {height, width, colors, images, icons} from '../../constants';
 import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scroll-view';
@@ -65,7 +63,7 @@ class RegisterScreen extends Component {
   }
 
   render() {
-    const {roles, navigation, registerRequest} = this.props;
+    const {registerRequest} = this.props;
     return (
       <KeyboardAwareScrollView
         style={{backgroundColor: colors.main}}
@@ -175,7 +173,13 @@ class RegisterScreen extends Component {
                     />
                   }
                   rightIcon={
-                    <Icon name="add" type="iconic" size={34} color="black" />
+                    <Icon
+                      name="add"
+                      type="iconic"
+                      size={34}
+                      color="black"
+                      onPress={() => this.fetchImage('logo')}
+                    />
                   }
                 />
                 <Button
@@ -229,8 +233,10 @@ export default connect(
 
 const styles = StyleSheet.create({
   container: {
-    justifyContent: 'center',
-    alignItems: 'center'
+    paddingTop: 100,
+    justifyContent: 'flex-start',
+    alignItems: 'center',
+    height: height
   },
   wrapper: {
     justifyContent: 'space-around',
