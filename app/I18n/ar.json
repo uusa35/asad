@@ -350,6 +350,7 @@
   "search_success" : "تمت عملية البحث بنجاح ..",
   "register_as_supplier" : "تسجيل الموردين",
   "image" : "صورة",
-  "notifications" : "الإخطارات"
+  "notifications" : "الإخطارات",
+  "do_you_want_to_exit_the_app" : "هل تريد الخروج من التطبيق  ؟"
 
 }

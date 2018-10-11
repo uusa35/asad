@@ -35,3 +35,4 @@ export const SET_GALLERIES = 'SET_GALLERIES';
 export const SET_SEARCH = 'SET_SEARCH';
 export const GET_SEARCH = 'GET_SEARCH';
 export const LINK_NOTIFICATION = 'LINK_NOTIFICATION';
+export const GO_BACK = 'GO_BACK';

@@ -76,7 +76,7 @@ class NotificationIndexScreen extends Component {
   }
 
   render() {
-    const {projects, navigation, refreshing} = this.state;
+    const {projects, refreshing} = this.state;
     return (
       <View style={styles.wrapper}>
         <FlatList
@@ -93,6 +93,7 @@ class NotificationIndexScreen extends Component {
               ? item.notifications.map(n => this._renderNotification(n))
               : null;
           }}
+          ListFooterComponent={() => <View style={{marginTop: 120}} />}
         />
       </View>
     );

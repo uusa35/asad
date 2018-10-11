@@ -1,5 +1,11 @@
 import React, {Component} from 'react';
-import {View, StyleSheet, FlatList, RefreshControl} from 'react-native';
+import {
+  View,
+  StyleSheet,
+  FlatList,
+  RefreshControl,
+  BackHandler
+} from 'react-native';
 import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
 import {
@@ -7,14 +13,15 @@ import {
   getProject,
   getSearch,
   refetchProjects,
-  linkNotification
+  linkNotification,
+  goBackBtn
 } from '../../redux/actions';
 import {Button} from 'react-native-elements';
 import {bindActionCreators} from 'redux';
 import validate from 'validate.js';
 import SearchInput from '../../components/SearchInput';
 import ProjectPanelWidget from '../../components/Project/ProjectPanelWidget';
-import {height, colors} from './../../constants';
+import {height, colors, isIOS} from './../../constants';
 import I18n from './../../I18n';
 import OneSignal from 'react-native-onesignal';
 import HomeBtns from '../../components/HomeBtns';
@@ -38,6 +45,18 @@ class HomeScreen extends Component {
     OneSignal.removeEventListener('opened', this.onOpened);
     OneSignal.removeEventListener('ids', this.onIds);
   }
+
+  componentDidMount() {
+    !isIOS
+      ? BackHandler.addEventListener('hardwareBackPress', this.handleBackPress)
+      : null;
+  }
+
+  handleBackPress = () => {
+    const {navigation, actions} = this.props;
+    actions.goBackBtn(navigation.isFocused());
+    return true;
+  };
 
   onReceived = notification => {
     console.log('Notification received: ', notification);
@@ -129,7 +148,8 @@ function mapDispatchToProps(dispatch) {
       getProject: bindActionCreators(getProject, dispatch),
       refetchProjects: bindActionCreators(refetchProjects, dispatch),
       getSearch: bindActionCreators(getSearch, dispatch),
-      linkNotification: bindActionCreators(linkNotification, dispatch)
+      linkNotification: bindActionCreators(linkNotification, dispatch),
+      goBackBtn: bindActionCreators(goBackBtn, dispatch)
     }
   };
 }

@@ -235,6 +235,13 @@ export function setSearch(projects) {
   };
 }
 
+export function goBackBtn(payload) {
+  return {
+    type: actions.GO_BACK,
+    payload
+  };
+}
+
 export const APP_ACTIONS = {
   appBootstrap,
   toggleBootstrapped,
@@ -263,5 +270,6 @@ export const APP_ACTIONS = {
   setGalleries,
   getSearch,
   setSearch,
-  linkNotification
+  linkNotification,
+  goBackBtn
 };

@@ -1,6 +1,7 @@
+import {BackHandler, Alert} from 'react-native';
 import * as actions from '../types';
 import {takeLatest, call, put, all} from 'redux-saga/effects';
-import {defaultLang, startChangeLang} from './langSagas';
+import {defaultLang} from './langSagas';
 import * as api from '../api';
 import * as helpers from '../../../helpers';
 import validate from 'validate.js';
@@ -181,4 +182,25 @@ export function* startLinkNotificationScenario(action) {
 
 export function* linkNotification() {
   yield takeLatest(actions.LINK_NOTIFICATION, startLinkNotificationScenario);
+}
+
+export function* goBackBtnScenario(action) {
+  if (!action.payload) {
+    yield put(NavigationActions.back());
+  } else {
+    Alert.alert(I18n.t('do_you_want_to_exit_the_app'), '', [
+      {
+        text: I18n.t('confirm'),
+        onPress: () => BackHandler.exitApp()
+      },
+      {
+        text: I18n.t('cancel'),
+        onPress: () => false
+      }
+    ]);
+  }
+}
+
+export function* goBackBtn() {
+  yield takeLatest(actions.GO_BACK, goBackBtnScenario);
 }
