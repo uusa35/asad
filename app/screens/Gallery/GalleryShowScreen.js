@@ -8,21 +8,9 @@ import validate from 'validate.js';
 import {width} from './../../constants';
 
 export default class GalleryShowScreen extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {element: {}, navigation: {}, imageURLs: []};
-  }
-
-  static getDerivedStateFromProps(nextProps) {
-    const {navigation} = nextProps;
-    return {
-      element: navigation.state.params.element,
-      navigation
-    };
-  }
-
   render() {
-    const {element, navigation} = this.state;
+    const {navigation} = this.props;
+    const {element} = navigation.state.params;
     return (
       <ScrollView
         style={{backgroundColor: 'white'}}

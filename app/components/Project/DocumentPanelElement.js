@@ -11,18 +11,23 @@ export default class DocumentPanelElement extends Component {
     this.state = {element: {}, navigation: {}, iconName: ''};
   }
 
-  static getDerivedStateFromProps(nextProps) {
-    const {element, navigation, iconName, routeName} = nextProps;
-    return {
-      element,
-      navigation,
-      iconName,
-      routeName
-    };
+  // static getDerivedStateFromProps(nextProps) {
+  //   const {element, navigation, iconName, routeName} = nextProps;
+  //   return {
+  //     element,
+  //     navigation,
+  //     iconName,
+  //     routeName
+  //   };
+  // }
+
+  componentWillMount() {
+    const {iconName, routeName} = this.props;
+    this.setState({iconName, routeName});
   }
 
   render() {
-    const {element, navigation} = this.state;
+    const {element, navigation} = this.props;
     return (
       <View style={styles.panelWrapper}>
         <View style={styles.panelTitleWrapper}>

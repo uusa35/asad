@@ -10,19 +10,10 @@ import Communications from 'react-native-communications';
 export default class LiveCamIndexScreen extends Component {
   constructor(props) {
     super(props);
-    this.state = {project: {}, navigation: {}, moduleName: ''};
   }
 
-  static getDerivedStateFromProps(nextProps) {
-    const {navigation} = nextProps;
-    return {
-      project: navigation.state.params.project,
-      moduleName: navigation.state.params.moduleName,
-      navigation
-    };
-  }
   render() {
-    const {project, moduleName} = this.state;
+    const {project, moduleName} = this.props.navigation.state.params;
     return (
       <ScrollView
         style={{backgroundColor: 'white'}}

@@ -20,15 +20,7 @@ import {Icon} from 'react-native-elements';
 class NotificationIndexScreen extends Component {
   constructor(props) {
     super(props);
-    this.state = {navigation: {}, projects: [], refreshing: false};
-  }
-
-  static getDerivedStateFromProps(nextProps) {
-    const {navigation, projects} = nextProps;
-    return {
-      projects,
-      navigation
-    };
+    this.state = {refreshing: false};
   }
 
   _onRefresh = () => {
@@ -76,7 +68,7 @@ class NotificationIndexScreen extends Component {
   }
 
   render() {
-    const {projects, refreshing} = this.state;
+    const {projects} = this.props;
     return (
       <View style={styles.wrapper}>
         <FlatList
@@ -84,7 +76,7 @@ class NotificationIndexScreen extends Component {
           data={projects}
           refreshControl={
             <RefreshControl
-              refreshing={refreshing}
+              refreshing={this.state.refreshing}
               onRefresh={this._onRefresh}
             />
           }

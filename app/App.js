@@ -7,7 +7,6 @@ import codePush from 'react-native-code-push';
 import LoadingView from './components/LoadingView';
 import LoadingOfflineView from './components/LoadingOfflineView';
 import AlertMessage from './components/AlertMessage';
-
 import validate from 'validate.js';
 
 class App extends Component {

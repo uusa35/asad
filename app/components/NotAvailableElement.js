@@ -10,16 +10,15 @@ export default class NotAvailableElement extends Component {
     this.state = {routeName: ''};
   }
 
-  static getDerivedStateFromProps(nextProps) {
-    const {routeName} = nextProps;
-    return {
-      routeName
-    };
-  }
+  // static getDerivedStateFromProps(nextProps) {
+  //   const {routeName} = nextProps;
+  //   return {
+  //     routeName
+  //   };
+  // }
 
   render() {
-    const {routeName} = this.state;
-    console.log('routeName', routeName);
+    // const {routeName} = this.props;
     return (
       <View style={{margin: 10}}>
         <Button
@@ -42,6 +41,6 @@ export default class NotAvailableElement extends Component {
   }
 }
 
-NotAvailableElement.propTypes = {
-  routeName: PropTypes.string.isRequired
-};
+// NotAvailableElement.propTypes = {
+//   routeName: PropTypes.string.isRequired
+// };

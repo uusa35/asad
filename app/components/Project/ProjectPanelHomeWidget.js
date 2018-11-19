@@ -9,17 +9,17 @@ export default class ProjectPanelHomeWidget extends Component {
     this.state = {name: '', description: '', image: ''};
   }
 
-  static getDerivedStateFromProps(nextProps) {
-    const {name, description, image} = nextProps;
-    return {
-      name,
-      description,
-      image
-    };
-  }
+  // static getDerivedStateFromProps(nextProps) {
+  //   const {name, description, image} = nextProps;
+  //   return {
+  //     name,
+  //     description,
+  //     image
+  //   };
+  // }
 
   render() {
-    const {name, description, image} = this.state;
+    const {name, description, image} = this.props;
     return (
       <View style={styles.headerContainer}>
         <FastImage

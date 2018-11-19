@@ -8,19 +8,11 @@ import NotAvailablElement from '../../components/NotAvailableElement';
 export default class DocumentIndexScreen extends Component {
   constructor(props) {
     super(props);
-    this.state = {documents: {}, navigation: {}};
-  }
-
-  static getDerivedStateFromProps(nextProps) {
-    const {navigation} = nextProps;
-    return {
-      documents: navigation.state.params.category.documents,
-      navigation
-    };
   }
 
   render() {
-    const {navigation, documents} = this.state;
+    const {navigation} = this.props;
+    const {documents} = navigation.state.params.category;
     return (
       <ScrollView
         style={{backgroundColor: 'white'}}

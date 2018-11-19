@@ -188,6 +188,7 @@ export function setProjects(projects) {
 }
 
 export function getProject(id) {
+  console.log('getProject wihtout saga');
   return {
     type: actions.GET_PROJECT,
     payload: {
@@ -197,6 +198,7 @@ export function getProject(id) {
 }
 
 export function setCategories(categories) {
+  console.log('set categories without saga');
   return {
     type: actions.SET_CATEGORIES,
     payload: categories
@@ -204,6 +206,7 @@ export function setCategories(categories) {
 }
 
 export function refetchProject(id) {
+  console.log('from inside refetch pojrect without saga');
   return {
     type: actions.GET_PROJECT,
     payload: {
@@ -213,8 +216,9 @@ export function refetchProject(id) {
 }
 
 export function setProject(project) {
+  console.log('set project without saga');
   return {
-    type: actions.GET_PROJECT,
+    type: actions.SET_PROJECT,
     payload: {
       project
     }
@@ -264,9 +268,9 @@ export const APP_ACTIONS = {
   setProjects,
   refetchProjects,
   getProject,
+  setProject,
   setCategories,
   refetchProject,
-  setProject,
   setGalleries,
   getSearch,
   setSearch,

@@ -4,7 +4,9 @@ import {
   StyleSheet,
   FlatList,
   RefreshControl,
-  BackHandler
+  BackHandler,
+  ScrollView,
+  Text
 } from 'react-native';
 import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
@@ -30,8 +32,9 @@ import {oneSignalAppID} from 'react-native-dotenv';
 class HomeScreen extends Component {
   constructor(props) {
     super(props);
-    this.state = {refreshing: false, linkNotification: false};
   }
+
+  state = {refreshing: false, linkNotification: false};
 
   componentWillMount() {
     OneSignal.init(oneSignalAppID);
@@ -81,14 +84,26 @@ class HomeScreen extends Component {
   };
 
   _onRefresh = () => {
+    console.log('refres');
     return this.props.actions.refetchProjects();
   };
 
   render() {
+    console.log('render method from HomeScreen');
     const {auth, projects, actions, navigation, roles} = this.props;
     const {refreshing} = this.state;
     return (
-      <View style={{backgroundColor: 'white', height: height}}>
+      <View
+        showsHorizontalScrollIndicator={false}
+        style={{
+          paddingBottom: 30,
+          height: height,
+          backgroundColor: 'white',
+          alignItems: 'center',
+          justifyContent: 'center'
+        }}
+        endFillColor="white"
+        showsVerticalScrollIndicator={false}>
         {validate.isEmpty(auth) ? (
           <HomeBtns roles={roles} navigation={navigation} />
         ) : validate.isEmpty(auth.projects) ? (

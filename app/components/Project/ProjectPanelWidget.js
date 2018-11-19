@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, {PureComponent} from 'react';
 import {
   View,
   Text,
@@ -13,7 +13,7 @@ import I18n from './../../I18n';
 import PropTypes from 'prop-types';
 import validate from 'validate.js';
 
-export default class ProjectPanelWidget extends Component {
+export default class ProjectPanelWidget extends PureComponent {
   constructor(props) {
     super(props);
   }

@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, {PureComponent} from 'react';
 import {View, Text, TouchableOpacity, StyleSheet} from 'react-native';
 import FastImage from 'react-native-fast-image';
 import {colors, height, icons, width, isIOS} from '../constants';
@@ -6,31 +6,31 @@ import PropTypes from 'prop-types';
 import _ from 'lodash';
 import validate from 'validate.js';
 
-export default class MainBtnElement extends Component {
+export default class MainBtnElement extends PureComponent {
   constructor(props) {
     super(props);
-    this.state = {
-      element: {},
-      navigation: {},
-      title: '',
-      routeName: '',
-      iconName: ''
-    };
+    //   this.state = {
+    //     element: {},
+    //     navigation: {},
+    //     title: '',
+    //     routeName: '',
+    //     iconName: ''
+    //   };
   }
 
-  static getDerivedStateFromProps(nextProps) {
-    const {navigation, element, title, routeName, iconName} = nextProps;
-    return {
-      navigation,
-      element,
-      title,
-      routeName,
-      iconName
-    };
-  }
+  // static getDerivedStateFromProps(nextProps) {
+  //   const {navigation, element, title, routeName, iconName} = nextProps;
+  //   return {
+  //     navigation,
+  //     element,
+  //     title,
+  //     routeName,
+  //     iconName
+  //   };
+  // }
 
   render() {
-    const {navigation, element, title, iconName, routeName, name} = this.state;
+    const {navigation, element, title, iconName, routeName, name} = this.props;
     return (
       <View>
         {!validate.isEmpty(element) ? (

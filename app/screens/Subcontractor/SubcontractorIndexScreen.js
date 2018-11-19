@@ -9,19 +9,10 @@ import NotAvailableElement from '../../components/NotAvailableElement';
 export default class SubcontractorIndexScreen extends Component {
   constructor(props) {
     super(props);
-    this.state = {project: {}, navigation: {}, moduleName: ''};
-  }
-
-  static getDerivedStateFromProps(nextProps) {
-    const {navigation} = nextProps;
-    return {
-      project: navigation.state.params.project,
-      moduleName: navigation.state.params.moduleName,
-      navigation
-    };
   }
   render() {
-    const {navigation, project, moduleName} = this.state;
+    const {navigation} = this.props;
+    const {project, moduleName} = navigation.state.params;
     return (
       <ScrollView
         style={{backgroundColor: 'white'}}

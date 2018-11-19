@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, {PureComponent} from 'react';
 import {
   View,
   StyleSheet,
@@ -29,55 +29,48 @@ const modules = [
   'livecam'
 ];
 
-class ProjectShowScreen extends Component {
+class ProjectShowScreen extends PureComponent {
   constructor(props) {
     super(props);
     this.state = {
-      project: {},
-      navigation: {},
       refreshing: false,
-      auth: {},
       filteredModules: []
     };
   }
 
-  static getDerivedStateFromProps(nextProps) {
-    const {navigation, auth} = nextProps;
+  _onRefresh = () => {
+    const {id} = this.props.project;
+    return this.props.actions.refetchProject(id);
+  };
+
+  filteredModules = () => {
+    const {auth} = this.props;
     const filteredModules = modules.filter(e => {
       if (auth.role[e]) {
         return e;
       }
     });
-    return {
-      project: navigation.state.params.project,
-      navigation,
-      auth,
-      filteredModules
-    };
-  }
-
-  _onRefresh = () => {
-    const {id} = this.state.project;
-    return this.props.actions.refetchProject(id);
+    return filteredModules;
   };
 
   render() {
-    const {project, navigation, refreshing, auth, filteredModules} = this.state;
+    console.log('render method from ProjectshowScreen');
+    const {navigation, refreshing, auth} = this.props;
     return (
       <View style={styles.elementContainer}>
         <ProjectPanelHomeWidget
-          name={project.name}
-          description={project.description}
-          image={project.image}
+          name={navigation.state.params.project.name}
+          description={navigation.state.params.project.description}
+          image={navigation.state.params.project.image}
         />
         <FlatList
           containtContainerStyle={styles.flatListContainer}
-          data={filteredModules}
+          data={this.filteredModules()}
           renderItem={({item}) => {
             return auth.role[item] ? (
               <MainBtnElement
                 navigation={navigation}
-                element={project}
+                element={navigation.state.params.project}
                 title={I18n.t(item)}
                 iconName={item}
                 routeName={item}
@@ -89,7 +82,7 @@ class ProjectShowScreen extends Component {
           ListFooterComponent={() => <View style={{marginTop: 120}} />}
           refreshControl={
             <RefreshControl
-              refreshing={refreshing}
+              refreshing={this.state.refreshing}
               onRefresh={this._onRefresh}
             />
           }

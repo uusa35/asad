@@ -15,20 +15,12 @@ import {width} from '../../constants';
 export default class GalleryIndexScreen extends Component {
   constructor(props) {
     super(props);
-    this.state = {project: {}, navigation: {}, moduleName: '', galleries: []};
   }
 
-  static getDerivedStateFromProps(nextProps) {
-    const {navigation} = nextProps;
-    return {
-      project: navigation.state.params.project,
-      moduleName: navigation.state.params.moduleName,
-      galleries: navigation.state.params.project.galleries,
-      navigation
-    };
-  }
   render() {
-    const {navigation, moduleName, galleries} = this.state;
+    const {navigation} = this.props;
+    const {moduleName} = navigation.state.params;
+    const {galleries} = navigation.state.params.project;
     return (
       <ScrollView
         style={{backgroundColor: 'white'}}

@@ -9,19 +9,11 @@ import NotAvailablElement from '../../components/NotAvailableElement';
 export default class ReportIndexScreen extends Component {
   constructor(props) {
     super(props);
-    this.state = {project: {}, navigation: {}};
-  }
-
-  static getDerivedStateFromProps(nextProps, prevProps) {
-    const {navigation} = nextProps;
-    return {
-      project: navigation.state.params.project,
-      navigation
-    };
   }
 
   render() {
-    const {navigation, project} = this.state;
+    const {navigation} = this.props;
+    const {project} = navigation.state.params;
     return (
       <ScrollView
         style={{backgroundColor: 'white'}}

@@ -11,16 +11,16 @@ export default class HomeBtns extends Component {
     this.state = {roles: [], navigation: {}};
   }
 
-  static getDerivedStateFromProps(nextProps) {
-    const {navigation, roles} = nextProps;
-    return {
-      roles,
-      navigation
-    };
-  }
+  // static getDerivedStateFromProps(nextProps) {
+  //   const {navigation, roles} = nextProps;
+  //   return {
+  //     roles,
+  //     navigation
+  //   };
+  // }
 
   render() {
-    const {roles, navigation} = this.state;
+    const {roles, navigation} = this.props;
     return (
       <View style={styles.container}>
         {roles.map(r => {
@@ -54,10 +54,8 @@ HomeBtns.propTypes = {
 
 const styles = StyleSheet.create({
   container: {
-    height: height,
     margin: 1,
     justifyContent: 'center',
-    marginTop: 150,
     alignItems: 'center',
     flexDirection: 'row',
     flexWrap: 'wrap'
