@@ -32,7 +32,7 @@ class NotificationIndexScreen extends Component {
       return (
         <TouchableOpacity
           key={n.id}
-          style={{borderWidth: 1, borderColor: 'grey', margin: 5}}
+          style={{ margin: 5}}
           onPress={() =>
             this.props.navigation.navigate('AppPDFViewer', {
               title: n.title,
@@ -47,18 +47,18 @@ class NotificationIndexScreen extends Component {
                 resizeMode={FastImage.resizeMode.contain}
               />
               <View style={{flex: 1}}>
-                <Text style={[styles.elementText, {fontSize: 20}]}>
-                  {n.title}
+                <Text style={[styles.elementText, {fontSize: 19}]}>
+                  {n.title.substring(0,25)}
                 </Text>
                 <View style={styles.elementTextWrapper}>
                   <Icon name="clock" type="octicon" size={10} />
-                  <Text style={styles.elementText}>{n.created_at}</Text>
+                  <Text style={styles.textCreatedAt}>{n.created_at}</Text>
                 </View>
               </View>
               <Icon
                 name={isRTL ? 'chevron-left' : 'chevron-right'}
-                type="octicon"
-                size={40}
+                type="entypo"
+                size={30}
               />
             </View>
           </View>
@@ -119,15 +119,15 @@ const styles = StyleSheet.create({
     height: height
   },
   elementIcon: {
-    width: 55,
-    height: 55,
+    width: 40,
+    height: 40,
     margin: 5,
-    marginRight: 10
+    marginRight: 15
   },
   elementTextWrapper: {
     flexDirection: 'row',
     justifyContent: 'flex-start',
-    alignItems: 'center'
+    alignItems: 'center',
   },
   elementText: {
     textAlign: 'left',
@@ -135,6 +135,9 @@ const styles = StyleSheet.create({
     paddingRight: 10,
     paddingLeft: 10
   },
+    textCreatedAt : {
+        fontSize : 12 , paddingBottom : 3 , paddingLeft : 5 , fontFamily : 'cairo'
+    },
   iconWrapper: {
     flexDirection: 'row',
     justifyContent: 'flex-start',
