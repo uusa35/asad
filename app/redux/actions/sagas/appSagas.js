@@ -84,39 +84,39 @@ export function* toggleGuest(guest) {
 
 export function* startLoginScenario(user) {
   yield all([
-    put({type: actions.LOGIN, payload: user}),
-    put({type: actions.SET_TOKEN, payload: user.api_token}),
-    call(helpers.setAuthToken, user.api_token),
-    put({type: actions.TOGGLE_GUEST, payload: false})
+    put({type: actions.LOGIN, payload: user}), // store the auth into state
+    put({type: actions.SET_TOKEN, payload: user.api_token}), // store the token into state
+    call(helpers.setAuthToken, user.api_token), // store the token into storage
+    put({type: actions.TOGGLE_GUEST, payload: false}) // set the guest to false
   ]);
   if (!validate.isEmpty(user.projects)) {
-    yield put({type: actions.SET_PROJECTS, payload: user.projects});
+    yield put({type: actions.SET_PROJECTS, payload: user.projects}); // store list of projects into state
   }
 }
 
 export function* startAppBootStrap() {
   try {
-    let device_id = DeviceInfo.getUniqueID();
+    let device_id = DeviceInfo.getUniqueID(); // get the deviceID
     yield all([
       call(enableLoading),
-      call(defaultLang),
-      put({type: actions.GET_DEVICE_ID, payload: device_id})
+      call(defaultLang), // set app default lang
+      put({type: actions.GET_DEVICE_ID, payload: device_id}) // store deviceId into state
     ]);
-    const api_token = yield call(helpers.getAuthToken);
+    const api_token = yield call(helpers.getAuthToken); // get the token from storage
     const registerRequest = yield call(api.getRegisterRequest, device_id);
     const galleries = yield call(api.getGalleries, {
       type: 'user',
       element_id: 1
-    });
+    }); // get app galleries (all galleries created by admin)
     if (!validate.isEmpty(galleries)) {
-      yield put({type: actions.SET_GALLERIES, payload: galleries});
+      yield put({type: actions.SET_GALLERIES, payload: galleries}); // store galleries into state
     }
     if (!validate.isEmpty(registerRequest)) {
       // add the registerRequest to the state according to the device id;
-      yield put({type: actions.GET_REGISTER_REQUEST, payload: registerRequest});
+      yield put({type: actions.GET_REGISTER_REQUEST, payload: registerRequest}); // store registerRequest into state (to not allow user to request again)
     }
     if (!validate.isEmpty(api_token)) {
-      const user = yield call(api.authenticated, api_token);
+      const user = yield call(api.authenticated, api_token); // get the auth user according to auth stored in storage
       if (
         !validate.isEmpty(user) &&
         validate.isObject(user) &&
@@ -130,7 +130,7 @@ export function* startAppBootStrap() {
               routeName: 'Home'
             })
           )
-        ]);
+        ]); // if user authenticated navigate to Home with list of projects.
       } else {
         yield call(toggleGuest, true);
       }

@@ -84,23 +84,21 @@ class HomeScreen extends Component {
   };
 
   _onRefresh = () => {
-    console.log('refres');
     return this.props.actions.refetchProjects();
   };
 
   render() {
-    console.log('render method from HomeScreen');
     const {auth, projects, actions, navigation, roles} = this.props;
     const {refreshing} = this.state;
     return (
       <View
         showsHorizontalScrollIndicator={false}
         style={{
-          paddingBottom: 30,
-          height: height,
+            flex: 1,
           backgroundColor: 'white',
           alignItems: 'center',
-          justifyContent: 'center'
+          justifyContent: 'center',
+            padding: '10%',
         }}
         endFillColor="white"
         showsVerticalScrollIndicator={false}>

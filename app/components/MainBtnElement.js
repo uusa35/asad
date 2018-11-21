@@ -9,25 +9,7 @@ import validate from 'validate.js';
 export default class MainBtnElement extends PureComponent {
   constructor(props) {
     super(props);
-    //   this.state = {
-    //     element: {},
-    //     navigation: {},
-    //     title: '',
-    //     routeName: '',
-    //     iconName: ''
-    //   };
   }
-
-  // static getDerivedStateFromProps(nextProps) {
-  //   const {navigation, element, title, routeName, iconName} = nextProps;
-  //   return {
-  //     navigation,
-  //     element,
-  //     title,
-  //     routeName,
-  //     iconName
-  //   };
-  // }
 
   render() {
     const {navigation, element, title, iconName, routeName, name} = this.props;
@@ -119,17 +101,19 @@ const styles = StyleSheet.create({
     justifyContent: 'flex-start',
     padding: 0,
     alignItems: 'center',
-    width: 110,
+    // width: 110,
+    width: 310,
     flexWrap: 'wrap',
     margin: 5,
     marginBottom: 10,
-    marginTop: 10
+    marginTop: 10,
   },
   elementSlug: {
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: 'white',
-    width: 110,
+    backgroundColor: 'darkgrey',
+    // width: 110,
+    width: 310,
     height: 30,
     shadowColor: 'black',
     shadowOffset: {width: 1, height: 1},
@@ -140,13 +124,15 @@ const styles = StyleSheet.create({
   },
   elementTypeBtn: {
     backgroundColor: colors.main,
-    width: 90,
-    height: 90,
+    width: 310,
+    // width: 90,
+    // height: 90,
+      minHeight: 70,
     alignItems: 'center',
     justifyContent: 'center'
   },
   elementSlugTitle: {
-    color: 'black',
+    color: 'white',
     fontFamily: 'cairo',
     fontSize: 12
   }

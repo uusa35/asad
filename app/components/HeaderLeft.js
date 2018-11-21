@@ -13,35 +13,26 @@ export default class HeaderLeft extends Component {
 
   render() {
     return (
-      <ScrollView>
+
         <SafeAreaView
           style={styles.container}
-          forceInset={{top: 'always', horizontal: 'never'}}>
-          <View
-            style={{
-              position: 'relative',
-              top: -12,
-              paddingRight: 10,
-              paddingLeft: 10
-            }}>
+          >
             <Icon
               name="ios-menu"
               type="ionicon"
-              size={35}
+              size={32}
               onPress={() => this.props.navigation.openDrawer()}
               underlayColor="transparent"
               hitSlop={{top: 20, bottom: 20, left: 20, right: 20}}
               color="white"
             />
-          </View>
         </SafeAreaView>
-      </ScrollView>
     );
   }
 }
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1
+      padding: 10
   }
 });

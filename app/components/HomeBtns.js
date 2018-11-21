@@ -8,16 +8,7 @@ import PropTypes from 'prop-types';
 export default class HomeBtns extends Component {
   constructor(props) {
     super(props);
-    this.state = {roles: [], navigation: {}};
   }
-
-  // static getDerivedStateFromProps(nextProps) {
-  //   const {navigation, roles} = nextProps;
-  //   return {
-  //     roles,
-  //     navigation
-  //   };
-  // }
 
   render() {
     const {roles, navigation} = this.props;
@@ -57,7 +48,7 @@ const styles = StyleSheet.create({
     margin: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    flexDirection: 'row',
-    flexWrap: 'wrap'
+    flexDirection: 'column',
+    flexWrap: 'wrap',
   }
 });
