@@ -45,8 +45,8 @@ HomeBtns.propTypes = {
 
 const styles = StyleSheet.create({
   container: {
-    margin: 1,
-    justifyContent: 'center',
+    flex: 1,
+    justifyContent: 'space-between',
     alignItems: 'center',
     flexDirection: 'column',
     flexWrap: 'wrap'

@@ -35,6 +35,23 @@ export default class ContactDetailsWidget extends Component {
             />
           </View>
           <View style={[styles.panelContentRowWrapper, {alignItems: 'center'}]}>
+            <Text style={styles.panelContentTitle}>{I18n.t('email')} : </Text>
+            <Button
+              title={settings.email}
+              buttonStyle={{backgroundColor: 'transparent'}}
+              titleStyle={{color: 'black', fontFamily: 'cairo'}}
+              onPress={() =>
+                Communications.email(
+                  [settings.email],
+                  null,
+                  null,
+                  I18n.t('email'),
+                  ''
+                )
+              }
+            />
+          </View>
+          <View style={[styles.panelContentRowWrapper, {alignItems: 'center'}]}>
             <Text style={styles.panelContentTitle}>
               {I18n.t('whatsapp')} :{' '}
             </Text>

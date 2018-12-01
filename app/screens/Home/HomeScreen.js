@@ -172,7 +172,7 @@ const styles = StyleSheet.create({
     backgroundColor: 'white',
     alignItems: 'center',
     justifyContent: 'flex-start',
-    padding: '5%'
+    padding: '2%'
   },
   titleView: {
     padding: 20,
