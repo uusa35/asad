@@ -99,22 +99,16 @@ const styles = StyleSheet.create({
   },
   elementWrapper: {
     justifyContent: 'flex-start',
-    padding: 0,
     alignItems: 'center',
-    // width: 110,
     width: 310,
     flexWrap: 'wrap',
-    margin: 5,
-    marginBottom: 10,
-    marginTop: 10,
+    margin: 5
   },
   elementSlug: {
     justifyContent: 'center',
     alignItems: 'center',
     backgroundColor: 'darkgrey',
-    // width: 110,
     width: 310,
-    height: 30,
     shadowColor: 'black',
     shadowOffset: {width: 1, height: 1},
     shadowRadius: 2,
@@ -125,11 +119,9 @@ const styles = StyleSheet.create({
   elementTypeBtn: {
     backgroundColor: colors.main,
     width: 310,
-    // width: 90,
-    // height: 90,
-      minHeight: 70,
+    padding: '4%',
     alignItems: 'center',
-    justifyContent: 'center'
+    justifyContent: 'flex-start'
   },
   elementSlugTitle: {
     color: 'white',

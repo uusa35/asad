@@ -49,6 +49,6 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     flexDirection: 'column',
-    flexWrap: 'wrap',
+    flexWrap: 'wrap'
   }
 });

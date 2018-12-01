@@ -14,7 +14,7 @@ export default class CompanyProfile extends Component {
   }
 
   render() {
-    const {settings} = this.props;
+    const {settings, navigation} = this.props;
     return (
       <ScrollView
         style={{backgroundColor: 'white'}}
@@ -24,7 +24,10 @@ export default class CompanyProfile extends Component {
         showsVerticalScrollIndicator={false}>
         <View style={styles.scrollViewContainer}>
           <View>
-            <CompanyProfileHeaderWidget settings={settings} />
+            <CompanyProfileHeaderWidget
+              settings={settings}
+              navigation={navigation}
+            />
             <PanelWidget
               title={I18n.t('about') + ' ' + settings.name}
               content={settings.description}
@@ -39,6 +42,7 @@ export default class CompanyProfile extends Component {
 }
 
 CompanyProfile.propTypes = {
+  navigation: PropTypes.object.isRequired,
   settings: PropTypes.object.isRequired
 };
 

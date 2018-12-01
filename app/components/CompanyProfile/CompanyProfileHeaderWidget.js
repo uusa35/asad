@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {View, Text, StyleSheet} from 'react-native';
+import {View, Text, StyleSheet, TouchableOpacity} from 'react-native';
 import Communications from 'react-native-communications';
 import FastImage from 'react-native-fast-image';
 import {Icon} from 'react-native-elements';
@@ -10,12 +10,17 @@ export default class CompanyProfileHeaderWidget extends Component {
   }
 
   render() {
-    const {settings} = this.props;
+    const {settings, navigation} = this.props;
+    console.log('settings path', settings.path);
     return (
       <View style={styles.headerContainer}>
         <FastImage style={styles.logo} source={{uri: settings.logo}} />
         <View style={styles.headerWrapper}>
-          <View style={styles.headerTitleWrapper}>
+          <TouchableOpacity
+            style={styles.headerTitleWrapper}
+            onPress={() =>
+              navigation.navigate('AppPDFViewer', {pdfLink: settings.path})
+            }>
             <Text style={styles.mainTitle}>{settings.name}</Text>
             <Icon
               type="font-awesome"
@@ -24,7 +29,7 @@ export default class CompanyProfileHeaderWidget extends Component {
               color="#3259e5"
               iconStyle={{paddingLeft: 10}}
             />
-          </View>
+          </TouchableOpacity>
           <View style={styles.socialIconsWrapper}>
             <Icon
               reverse
@@ -52,11 +57,11 @@ export default class CompanyProfileHeaderWidget extends Component {
             />
             <Icon
               reverse
-              name="linkedin"
+              name="instagram"
               type="font-awesome"
               color="#007bb5"
               size={16}
-              onPress={() => Communications.web(settings.linkin_url)}
+              onPress={() => Communications.web(settings.instagram_url)}
             />
           </View>
         </View>

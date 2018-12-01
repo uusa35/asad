@@ -9,8 +9,8 @@ class ContactusScreen extends Component {
   }
 
   render() {
-    const {settings} = this.props;
-    return <CompanyProfile settings={settings} />;
+    const {settings, navigation} = this.props;
+    return <CompanyProfile settings={settings} navigation={navigation} />;
   }
 }
 

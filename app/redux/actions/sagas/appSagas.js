@@ -97,6 +97,7 @@ export function* startLoginScenario(user) {
 export function* startAppBootStrap() {
   try {
     let device_id = DeviceInfo.getUniqueID(); // get the deviceID
+    console.log('device_id', device_id);
     yield all([
       call(enableLoading),
       call(defaultLang), // set app default lang

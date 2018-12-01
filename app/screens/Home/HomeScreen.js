@@ -93,13 +93,7 @@ class HomeScreen extends Component {
     return (
       <View
         showsHorizontalScrollIndicator={false}
-        style={{
-            flex: 1,
-          backgroundColor: 'white',
-          alignItems: 'center',
-          justifyContent: 'center',
-            padding: '10%',
-        }}
+        style={styles.mainContainer}
         endFillColor="white"
         showsVerticalScrollIndicator={false}>
         {validate.isEmpty(auth) ? (
@@ -173,6 +167,13 @@ export default connect(
 )(HomeScreen);
 
 const styles = StyleSheet.create({
+  mainContainer: {
+    flex: 1,
+    backgroundColor: 'white',
+    alignItems: 'center',
+    justifyContent: 'flex-start',
+    padding: '5%'
+  },
   titleView: {
     padding: 20,
     height: height,

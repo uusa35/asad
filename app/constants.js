@@ -52,7 +52,8 @@ export const links = {
   facebook: 'http://facebook.com/',
   twitter: 'http://twitter.com/',
   instagram: 'http//instagram.com/',
-  snapchat: 'http://snapchat.com/'
+  snapchat: 'http://snapchat.com/',
+  whatsapp: 'https://api.whatsapp.com/send?text=Asad Group&phone='
 };
 
 export const images = {

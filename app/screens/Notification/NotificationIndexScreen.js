@@ -32,7 +32,7 @@ class NotificationIndexScreen extends Component {
       return (
         <TouchableOpacity
           key={n.id}
-          style={{ margin: 5}}
+          style={{margin: 5}}
           onPress={() =>
             this.props.navigation.navigate('AppPDFViewer', {
               title: n.title,
@@ -48,7 +48,7 @@ class NotificationIndexScreen extends Component {
               />
               <View style={{flex: 1}}>
                 <Text style={[styles.elementText, {fontSize: 19}]}>
-                  {n.title.substring(0,25)}
+                  {n.title.substring(0, 25)}
                 </Text>
                 <View style={styles.elementTextWrapper}>
                   <Icon name="clock" type="octicon" size={10} />
@@ -127,7 +127,7 @@ const styles = StyleSheet.create({
   elementTextWrapper: {
     flexDirection: 'row',
     justifyContent: 'flex-start',
-    alignItems: 'center',
+    alignItems: 'center'
   },
   elementText: {
     textAlign: 'left',
@@ -135,9 +135,12 @@ const styles = StyleSheet.create({
     paddingRight: 10,
     paddingLeft: 10
   },
-    textCreatedAt : {
-        fontSize : 12 , paddingBottom : 3 , paddingLeft : 5 , fontFamily : 'cairo'
-    },
+  textCreatedAt: {
+    fontSize: 12,
+    paddingBottom: 3,
+    paddingLeft: 5,
+    fontFamily: 'cairo'
+  },
   iconWrapper: {
     flexDirection: 'row',
     justifyContent: 'flex-start',

@@ -22,13 +22,35 @@ export default class ContactDetailsWidget extends Component {
             <Text style={styles.panelContent}>{settings.address}</Text>
           </View>
           <View style={styles.panelContentRowWrapper}>
+            <Text style={styles.panelContentTitle}>{I18n.t('fax')} : </Text>
+            <Text style={styles.panelContent}>{settings.fax}</Text>
+          </View>
+          <View style={[styles.panelContentRowWrapper, {alignItems: 'center'}]}>
             <Text style={styles.panelContentTitle}>{I18n.t('phone')} : </Text>
-            <Text style={styles.panelContent}>{settings.phone}</Text>
+            <Button
+              title={settings.phone}
+              buttonStyle={{backgroundColor: 'transparent'}}
+              titleStyle={{color: 'black', fontFamily: 'cairo'}}
+              onPress={() => Communications.phonecall(settings.phone, true)}
+            />
+          </View>
+          <View style={[styles.panelContentRowWrapper, {alignItems: 'center'}]}>
+            <Text style={styles.panelContentTitle}>
+              {I18n.t('whatsapp')} :{' '}
+            </Text>
+            <Button
+              title={settings.phone}
+              buttonStyle={{backgroundColor: 'transparent'}}
+              titleStyle={{color: 'black', fontFamily: 'cairo'}}
+              onPress={() =>
+                Communications.web(`${links.whatsapp}${settings.whatsapp}`)
+              }
+            />
           </View>
           <View style={[styles.panelContentRowWrapper, {alignItems: 'center'}]}>
             <Text style={styles.panelContentTitle}>{I18n.t('website')} : </Text>
             <Button
-              title={I18n.t('press_here')}
+              title={settings.site_url}
               buttonStyle={{backgroundColor: 'transparent'}}
               titleStyle={{color: 'black', fontFamily: 'cairo'}}
               onPress={() => Communications.web(settings.site_url)}
