@@ -102,16 +102,17 @@ const styles = StyleSheet.create({
     alignSelf: 'center',
     borderWidth: 1,
     borderColor: 'darkgrey',
-    margin: 5,
+    marginBottom: 15,
     width: width - 40,
-    minHeight: 450
+    flex: 1
+    // minHeight: 450
   },
   imgBg: {
     position: 'absolute',
     top: 0,
     left: 0,
-    width: width - 40,
-    minHeight: 450,
+    width: width - 42,
+    height: '100%',
     opacity: 0.8
   },
   projectPanelImage: {

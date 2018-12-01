@@ -114,6 +114,7 @@ class HomeScreen extends Component {
           <View>
             <SearchInput startSearching={this._startSearching} />
             <FlatList
+              showsVerticalScrollIndicator={false}
               data={projects}
               renderItem={({item}) => (
                 <ProjectPanelWidget
