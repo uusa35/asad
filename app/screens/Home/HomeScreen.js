@@ -97,7 +97,9 @@ class HomeScreen extends Component {
         endFillColor="white"
         showsVerticalScrollIndicator={false}>
         {validate.isEmpty(auth) ? (
-          <HomeBtns roles={roles} navigation={navigation} />
+          <View style={{padding: '10%'}}>
+            <HomeBtns roles={roles} navigation={navigation} />
+          </View>
         ) : validate.isEmpty(auth.projects) ? (
           <View style={styles.titleView}>
             <Button
@@ -173,7 +175,7 @@ const styles = StyleSheet.create({
     backgroundColor: 'white',
     alignItems: 'center',
     justifyContent: 'center',
-    padding: '10%'
+    paddingTop: '5%'
   },
   titleView: {
     padding: 20,

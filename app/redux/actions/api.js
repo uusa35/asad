@@ -1,5 +1,5 @@
 import axios from 'axios';
-import {links} from './../../constants';
+import {isIOS, links} from './../../constants';
 import codePush from 'react-native-code-push';
 import {
   checkImage,
@@ -27,7 +27,12 @@ export async function authenticated(api_token) {
 export async function authenticate(element) {
   const {email, password, device_id} = element;
   return await axiosInstance
-    .post('authenticate', {email, password, device_id})
+    .post('authenticate', {
+      email,
+      password,
+      device_id,
+      device_type: isIOS ? 0 : 1
+    })
     .then(r => r.data)
     .catch(e => e.response.data.message);
 }
