@@ -29,7 +29,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     width: width,
-    backgroundColor: 'white',
+    backgroundColor: 'transparent',
     opacity: 0.8
   },
   loadingText: {
