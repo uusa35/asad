@@ -97,7 +97,8 @@ class HomeScreen extends Component {
         endFillColor="white"
         showsVerticalScrollIndicator={false}>
         {validate.isEmpty(auth) ? (
-          <View style={{padding: '10%'}}>
+          <View
+            style={{flex: 0.9, justifyContent: 'center', alignItems: 'center'}}>
             <HomeBtns roles={roles} navigation={navigation} />
           </View>
         ) : validate.isEmpty(auth.projects) ? (

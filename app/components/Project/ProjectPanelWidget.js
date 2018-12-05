@@ -8,7 +8,7 @@ import {
 } from 'react-native';
 import {width, colors, images, text} from '../../constants';
 import FastImage from 'react-native-fast-image';
-import {Divider} from 'react-native-elements';
+import {Divider, Button} from 'react-native-elements';
 import I18n from './../../I18n';
 import PropTypes from 'prop-types';
 import validate from 'validate.js';
@@ -77,6 +77,39 @@ export default class ProjectPanelWidget extends PureComponent {
               </Text>
             </View>
           ) : null}
+          {project.is_expired ? (
+            <View style={styles.titleInfoWrapper}>
+              <Text style={styles.titleInfo}>{I18n.t('status')} : </Text>
+              <Button
+                disabled
+                small
+                disabledStyle={{
+                  backgroundColor: 'red',
+                  width: 100,
+                  opacity: 0.8
+                }}
+                titleStyle={{fontSize: 12, fontFamily: 'cairo'}}
+                buttonStyle={{backgroundColor: 'red'}}
+                title={I18n.t('closed')}
+              />
+            </View>
+          ) : (
+            <View style={styles.titleInfoWrapper}>
+              <Text style={styles.titleInfo}>{I18n.t('status')} : </Text>
+              <Button
+                small
+                disabled
+                disabledStyle={{
+                  backgroundColor: 'green',
+                  width: 100,
+                  opacity: 0.8
+                }}
+                titleStyle={{fontSize: 12, fontFamily: 'cairo'}}
+                buttonStyle={{backgroundColor: 'green'}}
+                title={I18n.t('running_project')}
+              />
+            </View>
+          )}
           <View style={styles.panelBtnWrapper}>
             <TouchableOpacity onPress={handleClick} style={styles.panelBtn}>
               <Text style={styles.panelBtnText}>

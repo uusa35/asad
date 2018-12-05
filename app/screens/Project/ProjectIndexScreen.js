@@ -12,7 +12,6 @@ class ProjectIndexScreen extends Component {
   }
 
   render() {
-    console.log('render method from ProjectIndexScreen');
     const {projects, actions} = this.props;
     return (
       <ScrollView
