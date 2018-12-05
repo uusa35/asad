@@ -1,7 +1,7 @@
 import {ENV, PORT} from 'react-native-dotenv';
 
 if (ENV === 'local') {
-  console.log('the env > ', ENV);
+  console.log('the env >> ', ENV);
   module.exports = {
     // appUrlIos: `http://192.168.43.102:8000/`,
     // appUrlIos: `http://192.168.1.107:8000/`,
