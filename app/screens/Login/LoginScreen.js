@@ -71,7 +71,7 @@ class LoginScreen extends Component {
                 inputContainerStyle={styles.inputContainerStyle}
                 inputStyle={styles.inputTextStyle}
                 leftIconContainerStyle={styles.leftIconStyle}
-                keyboardType="name-phone-pad"
+                keyboardType="email-address"
                 secureTextEntry={true}
                 leftIcon={
                   <FastImage
@@ -103,10 +103,12 @@ class LoginScreen extends Component {
                 </Text>
               </TouchableOpacity>
               <TouchableOpacity
-                onPress={() => navigation.navigate('RegisterAs')}
+                onPress={() =>
+                  navigation.navigate('Register', {type: 'supplier'})
+                }
                 style={styles.registerSubmitBtn}>
                 <Text style={styles.registerSubmitBtnText}>
-                  {I18n.t('register_as').toUpperCase()}
+                  {I18n.t('register_as_supplier').toUpperCase()}
                 </Text>
               </TouchableOpacity>
             </View>

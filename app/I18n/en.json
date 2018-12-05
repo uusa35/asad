@@ -328,6 +328,7 @@
   "register_as_supplier" : "Register as Suppliers/Vendors",
   "image" : "image",
   "notifications" : "Notifications",
-  "do_you_want_to_exit_the_app" : "Do you want to exit the app?"
+  "do_you_want_to_exit_the_app" : "Do you want to exit the app?",
+  "register_as_supplier" : "Register as supplier"
 
 }

@@ -3,6 +3,7 @@ import {View, Text, StyleSheet} from 'react-native';
 import {Button} from 'react-native-elements';
 import I18n from './../../I18n';
 import Communications from 'react-native-communications';
+import {links} from './../../constants';
 
 export default class ContactDetailsWidget extends Component {
   constructor(props) {
@@ -56,7 +57,7 @@ export default class ContactDetailsWidget extends Component {
               {I18n.t('whatsapp')} :{' '}
             </Text>
             <Button
-              title={settings.phone}
+              title={settings.whatsapp}
               buttonStyle={{backgroundColor: 'transparent'}}
               titleStyle={{color: 'black', fontFamily: 'cairo'}}
               onPress={() =>

@@ -172,8 +172,8 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: 'white',
     alignItems: 'center',
-    justifyContent: 'flex-start',
-    padding: '2%'
+    justifyContent: 'center',
+    padding: '10%'
   },
   titleView: {
     padding: 20,

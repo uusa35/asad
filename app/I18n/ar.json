@@ -351,6 +351,7 @@
   "register_as_supplier" : "تسجيل الموردين",
   "image" : "صورة",
   "notifications" : "الإخطارات",
-  "do_you_want_to_exit_the_app" : "هل تريد الخروج من التطبيق  ؟"
+  "do_you_want_to_exit_the_app" : "هل تريد الخروج من التطبيق  ؟",
+  "register_as_supplier" : "التسجيل كمورد"
 
 }

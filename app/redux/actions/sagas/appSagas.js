@@ -126,6 +126,7 @@ export function* startAppBootStrap() {
         yield all([
           call(startLoginScenario, user),
           call(toggleGuest, false),
+          put({type: actions.GET_DEVICE_ID, payload: user.device_id}), // store deviceId into state
           put(
             NavigationActions.navigate({
               routeName: 'Home'
