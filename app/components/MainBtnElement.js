@@ -12,7 +12,7 @@ export default class MainBtnElement extends PureComponent {
   }
 
   render() {
-    const {navigation, element, title, iconName, routeName, name} = this.props;
+    const {element, title, iconName, routeName, name, handleNav} = this.props;
     return (
       <View>
         {!validate.isEmpty(element) ? (
@@ -24,7 +24,7 @@ export default class MainBtnElement extends PureComponent {
               key={element.id * Math.random()}
               style={styles.elementTypeBtn}
               onPress={() =>
-                navigation.navigate(_.upperFirst(routeName), {
+                handleNav(_.upperFirst(routeName), {
                   type: element.name,
                   project: element,
                   name: element.name,
@@ -48,7 +48,7 @@ export default class MainBtnElement extends PureComponent {
               key={Math.random()}
               style={styles.elementTypeBtn}
               onPress={() =>
-                navigation.navigate(_.upperFirst(routeName), {
+                handleNav(_.upperFirst(routeName), {
                   type: name,
                   name: name,
                   routeName,
@@ -69,7 +69,6 @@ export default class MainBtnElement extends PureComponent {
 }
 
 MainBtnElement.propTypes = {
-  navigation: PropTypes.object.isRequired,
   element: PropTypes.object,
   title: PropTypes.string.isRequired,
   iconName: PropTypes.string.isRequired,

@@ -53,11 +53,14 @@ class ProjectShowScreen extends PureComponent {
     return filteredModules;
   };
 
+  handleNav = (routeName, element) =>
+    this.props.navigation.navigate(routeName, element);
+
   _renderItem = ({item}) => {
     const {auth, navigation} = this.props;
     return auth.role[item] ? (
       <MainBtnElement
-        navigation={navigation}
+        handleNav={this.handleNav}
         element={navigation.state.params.project}
         title={I18n.t(item)}
         iconName={item}
