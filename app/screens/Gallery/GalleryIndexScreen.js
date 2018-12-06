@@ -15,12 +15,51 @@ import {width} from '../../constants';
 export default class GalleryIndexScreen extends Component {
   constructor(props) {
     super(props);
+    this.state = {moduleName: ''};
   }
 
+  componentWillMount() {
+    this.setState({moduleName: this.props.navigation.state.params});
+  }
+
+  handleNav = (routeName, element) =>
+    this.props.navigation.navigate(routeName, element);
+
+  _renderItem = g => {
+    const {moduleName} = this.state;
+    return (
+      <TouchableOpacity
+        key={g.id * Math.random()}
+        style={styles.elementTypeBtn}
+        onPress={() =>
+          this.handleNav('GalleryShow', {
+            element: g,
+            name: g.name,
+            moduleName
+          })
+        }>
+        <View style={styles.headerContainer}>
+          <View style={styles.headerWrapper}>
+            <View style={styles.headerTitleWrapper}>
+              <Text style={styles.mainTitle}>{g.name}</Text>
+            </View>
+            <View style={styles.descriptionWrapper}>
+              <Text style={styles.description}>{g.description}</Text>
+            </View>
+          </View>
+        </View>
+        <FastImage
+          key={g.id}
+          style={styles.elementIcon}
+          source={{uri: g.cover}}
+          resizeMode={FastImage.resizeMode.stretch}
+        />
+      </TouchableOpacity>
+    );
+  };
   render() {
-    const {navigation} = this.props;
-    const {moduleName} = navigation.state.params;
-    const {galleries} = navigation.state.params.project;
+    const {moduleName} = this.props.navigation.state.params;
+    const {galleries} = this.props.navigation.state.params.project;
     return (
       <ScrollView
         style={{backgroundColor: 'white'}}
@@ -32,41 +71,7 @@ export default class GalleryIndexScreen extends Component {
           {validate.isEmpty(galleries) ? (
             <NotAvailablElement routeName={moduleName} />
           ) : (
-            <View>
-              {galleries.map(g => {
-                return (
-                  <TouchableOpacity
-                    key={g.id * Math.random()}
-                    style={styles.elementTypeBtn}
-                    onPress={() =>
-                      navigation.navigate('GalleryShow', {
-                        element: g,
-                        name: g.name,
-                        moduleName
-                      })
-                    }>
-                    <View style={styles.headerContainer}>
-                      <View style={styles.headerWrapper}>
-                        <View style={styles.headerTitleWrapper}>
-                          <Text style={styles.mainTitle}>{g.name}</Text>
-                        </View>
-                        <View style={styles.descriptionWrapper}>
-                          <Text style={styles.description}>
-                            {g.description}
-                          </Text>
-                        </View>
-                      </View>
-                    </View>
-                    <FastImage
-                      key={g.id}
-                      style={styles.elementIcon}
-                      source={{uri: g.cover}}
-                      resizeMode={FastImage.resizeMode.stretch}
-                    />
-                  </TouchableOpacity>
-                );
-              })}
-            </View>
+            <View>{galleries.map(this._renderItem)}</View>
           )}
         </View>
       </ScrollView>

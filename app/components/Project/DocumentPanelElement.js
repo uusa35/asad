@@ -21,13 +21,13 @@ export default class DocumentPanelElement extends Component {
   //   };
   // }
 
-  componentWillMount() {
-    const {iconName, routeName} = this.props;
-    this.setState({iconName, routeName});
-  }
+  // componentWillMount() {
+  //   const {iconName, routeName, handleNav } = this.props;
+  //   this.setState({iconName, routeName});
+  // }
 
   render() {
-    const {element, navigation} = this.props;
+    const {element, handleNav} = this.props;
     return (
       <View style={styles.panelWrapper}>
         <View style={styles.panelTitleWrapper}>
@@ -55,7 +55,7 @@ export default class DocumentPanelElement extends Component {
         <View style={styles.panelBtnWrapper}>
           <TouchableOpacity
             onPress={() =>
-              navigation.navigate('AppPDFViewer', {
+              handleNav('AppPDFViewer', {
                 pdfLink: element.path,
                 title: element.name
               })
@@ -72,7 +72,6 @@ export default class DocumentPanelElement extends Component {
 }
 
 DocumentPanelElement.propTypes = {
-  navigation: PropTypes.object.isRequired,
   element: PropTypes.object.isRequired,
   iconName: PropTypes.string.isRequired
 };

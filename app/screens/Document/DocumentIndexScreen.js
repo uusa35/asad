@@ -10,9 +10,22 @@ export default class DocumentIndexScreen extends Component {
     super(props);
   }
 
+  handleNav = (routeName, element) =>
+    this.props.navigation.navigate(routeName, element);
+
+  _renderItem = item => {
+    return (
+      <DocumentPanelElement
+        key={item.id}
+        element={item}
+        handleNav={this.handleNav}
+        iconName="documents"
+        routeName="AppPDFViewer"
+      />
+    );
+  };
   render() {
-    const {navigation} = this.props;
-    const {documents} = navigation.state.params.category;
+    const {documents} = this.props.navigation.state.params.category;
     return (
       <ScrollView
         style={{backgroundColor: 'white'}}
@@ -24,17 +37,7 @@ export default class DocumentIndexScreen extends Component {
           {validate.isEmpty(documents) ? (
             <NotAvailablElement routeName="documents" />
           ) : (
-            documents.map(d => {
-              return (
-                <DocumentPanelElement
-                  key={d.id}
-                  element={d}
-                  navigation={navigation}
-                  iconName="documents"
-                  routeName="AppPDFViewer"
-                />
-              );
-            })
+            documents.map(this._renderItem)
           )}
         </View>
       </ScrollView>

@@ -10,9 +10,23 @@ export default class DrawingIndexScreen extends Component {
     super(props);
   }
 
+  handleNav = (routeName, element) =>
+    this.props.navigation.navigate(routeName, element);
+
+  _renderItem = item => {
+    return (
+      <PdfBtnElement
+        key={item.id}
+        element={item}
+        handleNav={this.handleNav}
+        iconName="drawings"
+        routeName="AppPDFViewer"
+      />
+    );
+  };
+
   render() {
-    const {navigation} = this.props;
-    const {project} = navigation.state.params;
+    const {project} = this.props.navigation.state.params;
     return (
       <ScrollView
         style={{backgroundColor: 'white'}}
@@ -24,15 +38,7 @@ export default class DrawingIndexScreen extends Component {
           {validate.isEmpty(project.drawings) ? (
             <NotAvailablElement routeName="drawings" />
           ) : (
-            project.drawings.map(d => (
-              <PdfBtnElement
-                key={d.id}
-                element={d}
-                navigation={navigation}
-                iconName="drawings"
-                routeName="AppPDFViewer"
-              />
-            ))
+            project.drawings.map(this._renderItem)
           )}
         </View>
       </ScrollView>

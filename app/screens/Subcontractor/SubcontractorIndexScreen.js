@@ -10,9 +10,21 @@ export default class SubcontractorIndexScreen extends Component {
   constructor(props) {
     super(props);
   }
+
+  handleNav = (routeName, element) =>
+    this.props.navigation.navigate(routeName, element);
+
+  _renderItem = d => {
+    return (
+      <SubContractorPanelElement
+        key={d.id}
+        element={d}
+        handleNav={this.handleNav}
+      />
+    );
+  };
   render() {
-    const {navigation} = this.props;
-    const {project, moduleName} = navigation.state.params;
+    const {project, moduleName} = this.props.navigation.state.params;
     return (
       <ScrollView
         style={{backgroundColor: 'white'}}
@@ -24,17 +36,7 @@ export default class SubcontractorIndexScreen extends Component {
           {validate.isEmpty(project.subcontractors) ? (
             <NotAvailableElement moduleName={moduleName} />
           ) : (
-            <View>
-              {project.subcontractors.map(d => {
-                return (
-                  <SubContractorPanelElement
-                    key={d.id}
-                    element={d}
-                    navigation={navigation}
-                  />
-                );
-              })}
-            </View>
+            <View>{project.subcontractors.map(this._renderItem)}</View>
           )}
         </View>
       </ScrollView>

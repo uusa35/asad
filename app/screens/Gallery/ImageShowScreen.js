@@ -10,19 +10,10 @@ const Image = createImageProgress(FastImage);
 export default class ImageShowScreen extends Component {
   constructor(props) {
     super(props);
-    this.state = {navigation: {}, img: []};
-  }
-
-  static getDerivedStateFromProps(nextProps) {
-    const {navigation} = nextProps;
-    return {
-      img: navigation.state.params.img,
-      navigation
-    };
   }
 
   render() {
-    const {img} = this.state;
+    const {img} = this.props.navigation.state.params;
     return (
       <ImageZoom
         cropWidth={width}
@@ -33,7 +24,7 @@ export default class ImageShowScreen extends Component {
           key={img.id}
           style={styles.imageElement}
           source={{uri: img.large}}
-          resizeMode={FastImage.resizeMode.contain}
+          resizeMode={FastImage.resizeMode.cover}
           indicator={ProgressBar}
           indicatorProps={{
             size: 80,

@@ -1,14 +1,11 @@
 import axios from 'axios';
 import {isIOS, links} from './../../constants';
-import codePush from 'react-native-code-push';
 import {
   checkImage,
   getImagePath,
   getImageName,
-  getImageExtension,
-  getAuthToken
+  getImageExtension
 } from './../../helpers';
-import validate from 'validate.js';
 import {getLangForHeader} from '../../I18n';
 
 console.log('the api link', links.apiUrl);
@@ -107,7 +104,7 @@ export async function postRegisterRequest(payload) {
   formData.append('description', description);
   formData.append('address', address);
   formData.append('device_id', device_id);
-  console.log('formData', formData);
+  __DEV__ ? console.log('formData', formData) : null;
   return await axiosInstance
     .post(`request`, formData)
     .then(r => r.data)

@@ -11,9 +11,23 @@ export default class ReportIndexScreen extends Component {
     super(props);
   }
 
+  handleNav = (routeName, element) =>
+    this.props.navigation.navigate(routeName, element);
+
+  _renderItem = d => {
+    return (
+      <PdfBtnElement
+        key={d.id}
+        element={d}
+        handleNav={this.handleNav}
+        iconName="reports"
+        routeName="AppPDFViewer"
+      />
+    );
+  };
+
   render() {
-    const {navigation} = this.props;
-    const {project} = navigation.state.params;
+    const {project} = this.props.navigation.state.params;
     return (
       <ScrollView
         style={{backgroundColor: 'white'}}
@@ -25,15 +39,7 @@ export default class ReportIndexScreen extends Component {
           {validate.isEmpty(project.reports) ? (
             <NotAvailablElement routeName="reports" />
           ) : (
-            project.reports.map(d => (
-              <PdfBtnElement
-                key={d.id}
-                element={d}
-                navigation={navigation}
-                iconName="reports"
-                routeName="AppPDFViewer"
-              />
-            ))
+            project.reports.map(this._renderItem)
           )}
         </View>
       </ScrollView>

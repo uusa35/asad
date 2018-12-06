@@ -8,6 +8,24 @@ import validate from 'validate.js';
 import {width} from './../../constants';
 
 export default class GalleryShowScreen extends Component {
+  _renderItem = img => {
+    return (
+      <TouchableOpacity
+        key={img.id * Math.random()}
+        onPress={() =>
+          this.props.navigation.navigate('ImageShow', {
+            name: !validate.isEmpty(img.name) ? img.name : I18n.t('image'),
+            img
+          })
+        }>
+        <FastImage
+          key={img.id}
+          style={styles.imageElement}
+          source={{uri: img.thumbnail}}
+        />
+      </TouchableOpacity>
+    );
+  };
   render() {
     const {navigation} = this.props;
     const {element} = navigation.state.params;
@@ -19,26 +37,7 @@ export default class GalleryShowScreen extends Component {
         endFillColor="white"
         showsVerticalScrollIndicator={false}>
         <View style={styles.wrapper}>
-          {element.images.map(img => {
-            return (
-              <TouchableOpacity
-                key={img.id * Math.random()}
-                onPress={() =>
-                  navigation.navigate('ImageShow', {
-                    name: !validate.isEmpty(img.name)
-                      ? img.name
-                      : I18n.t('image'),
-                    img
-                  })
-                }>
-                <FastImage
-                  key={img.id}
-                  style={styles.imageElement}
-                  source={{uri: img.thumbnail}}
-                />
-              </TouchableOpacity>
-            );
-          })}
+          {element.images.map(this._renderItem)}
         </View>
       </ScrollView>
     );
@@ -51,26 +50,23 @@ GalleryIndexScreen.propTypes = {
 
 const styles = StyleSheet.create({
   container: {
-    paddingBottom: 30,
+    flex: 1,
     backgroundColor: 'white',
-    justifyContent: 'center',
-    alignItems: 'center'
+    justifyContent: 'flex-start',
+    alignItems: 'center',
+    margin: '3%'
   },
   wrapper: {
-    flex: 1,
     flexDirection: 'row',
     flexWrap: 'wrap',
     justifyContent: 'flex-start',
-    alignItems: 'center',
-    alignContent: 'center',
-    width: width - 50,
-    paddingTop: 15
+    alignItems: 'center'
   },
   imageElement: {
-    width: 110,
-    height: 110,
+    margin: 3,
+    width: width / 3.5,
+    height: width / 3.5,
     borderWidth: 0.5,
-    margin: 5,
     borderColor: 'lightgrey'
   }
 });

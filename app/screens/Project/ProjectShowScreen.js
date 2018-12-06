@@ -53,9 +53,21 @@ class ProjectShowScreen extends PureComponent {
     return filteredModules;
   };
 
+  _renderItem = ({item}) => {
+    const {auth, navigation} = this.props;
+    return auth.role[item] ? (
+      <MainBtnElement
+        navigation={navigation}
+        element={navigation.state.params.project}
+        title={I18n.t(item)}
+        iconName={item}
+        routeName={item}
+      />
+    ) : null;
+  };
+
   render() {
-    console.log('render method from ProjectshowScreen');
-    const {navigation, refreshing, auth} = this.props;
+    const {navigation} = this.props;
     return (
       <View style={styles.elementContainer}>
         <ProjectPanelHomeWidget
@@ -66,17 +78,7 @@ class ProjectShowScreen extends PureComponent {
         <FlatList
           containtContainerStyle={styles.flatListContainer}
           data={this.filteredModules()}
-          renderItem={({item}) => {
-            return auth.role[item] ? (
-              <MainBtnElement
-                navigation={navigation}
-                element={navigation.state.params.project}
-                title={I18n.t(item)}
-                iconName={item}
-                routeName={item}
-              />
-            ) : null;
-          }}
+          renderItem={this._renderItem}
           numColumns={3}
           columnWrapperStyle={styles.modulesWrapper}
           ListFooterComponent={() => <View style={{marginTop: 120}} />}

@@ -9,10 +9,23 @@ export default class TimelineIndexScreen extends Component {
   constructor(props) {
     super(props);
   }
+  handleNav = (routeName, element) =>
+    this.props.navigation.navigate(routeName, element);
+
+  _renderItem = d => {
+    return (
+      <DocumentPanelElement
+        key={d.id}
+        element={d}
+        handleNav={this.handleNav}
+        iconName="documents"
+        routeName="AppPDFViewer"
+      />
+    );
+  };
 
   render() {
-    const {navigation} = this.props;
-    const {project} = navigation.state.params;
+    const {project} = this.props.navigation.state.params;
     return (
       <ScrollView
         style={{backgroundColor: 'white'}}
@@ -24,15 +37,7 @@ export default class TimelineIndexScreen extends Component {
           {validate.isEmpty(project.timelines) ? (
             <NotAvailablElement routeName="timelines" />
           ) : (
-            project.timelines.map(d => (
-              <DocumentPanelElement
-                key={d.id}
-                element={d}
-                navigation={navigation}
-                iconName="documents"
-                routeName="AppPDFViewer"
-              />
-            ))
+            project.timelines.map(this._renderItem)
           )}
         </View>
       </ScrollView>

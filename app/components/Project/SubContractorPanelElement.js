@@ -8,19 +8,10 @@ import I18n from './../../I18n';
 export default class SubContractorPanelElement extends Component {
   constructor(props) {
     super(props);
-    this.state = {element: {}, navigation: {}};
-  }
-
-  static getDerivedStateFromProps(nextProps) {
-    const {element, navigation} = nextProps;
-    return {
-      element,
-      navigation
-    };
   }
 
   render() {
-    const {element} = this.state;
+    const {element} = this.props;
     return (
       <View style={styles.panelWrapper}>
         <Divider />
@@ -46,7 +37,6 @@ export default class SubContractorPanelElement extends Component {
 }
 
 SubContractorPanelElement.propTypes = {
-  navigation: PropTypes.object.isRequired,
   element: PropTypes.object.isRequired
 };
 

@@ -9,9 +9,23 @@ export default class PaymentIndexScreen extends Component {
   constructor(props) {
     super(props);
   }
+
+  handleNav = (routeName, element) =>
+    this.props.navigation.navigate(routeName, element);
+
+  _renderItem = d => {
+    return (
+      <PaymentPanelElement
+        key={d.id}
+        element={d}
+        handleNav={this.handleNav}
+        iconName="payments"
+        routeName="AppPDFViewer"
+      />
+    );
+  };
   render() {
-    const {navigation} = this.props;
-    const {project} = navigation.state.params;
+    const {project} = this.props.navigation.state.params;
     return (
       <ScrollView
         style={{backgroundColor: 'white'}}
@@ -23,15 +37,7 @@ export default class PaymentIndexScreen extends Component {
           {validate.isEmpty(project.payments) ? (
             <NotAvailablElement routeName="payments" />
           ) : (
-            project.payments.map(d => (
-              <PaymentPanelElement
-                key={d.id}
-                element={d}
-                navigation={navigation}
-                iconName="payments"
-                routeName="AppPDFViewer"
-              />
-            ))
+            project.payments.map(this._renderItem)
           )}
         </View>
       </ScrollView>

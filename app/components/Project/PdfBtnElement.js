@@ -9,20 +9,10 @@ import Communications from 'react-native-communications';
 export default class PdfBtnElement extends Component {
   constructor(props) {
     super(props);
-    this.state = {element: {}, navigation: {}, iconName: '', routeName: ''};
-  }
-  static getDerivedStateFromProps(nextProps) {
-    const {element, navigation, iconName, routeName} = nextProps;
-    return {
-      element,
-      navigation,
-      iconName,
-      routeName
-    };
   }
 
   render() {
-    const {element, navigation, iconName, routeName} = this.state;
+    const {element, iconName, routeName, handleNav} = this.props;
     return (
       <View style={styles.elementContainer} key={element.id}>
         <View style={styles.iconWrapper}>
@@ -39,7 +29,7 @@ export default class PdfBtnElement extends Component {
           key={element.id}
           style={styles.elementWrapper}
           onPress={() =>
-            navigation.navigate(routeName, {
+            handleNav(routeName, {
               pdfLink: element.path,
               title: element.name,
               element
@@ -62,7 +52,6 @@ export default class PdfBtnElement extends Component {
 }
 
 PdfBtnElement.propTypes = {
-  navigation: PropTypes.object.isRequired,
   element: PropTypes.object.isRequired,
   iconName: PropTypes.string.isRequired,
   routeName: PropTypes.string.isRequired

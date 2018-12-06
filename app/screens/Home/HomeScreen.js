@@ -87,8 +87,19 @@ class HomeScreen extends Component {
     return this.props.actions.refetchProjects();
   };
 
+  _renderItem = ({item}) => {
+    const {actions} = this.props;
+    return (
+      <ProjectPanelWidget
+        project={item}
+        key={item.id}
+        handleClick={() => actions.getProject(item.id)}
+      />
+    );
+  };
+
   render() {
-    const {auth, projects, actions, navigation, roles} = this.props;
+    const {auth, projects, navigation, roles} = this.props;
     const {refreshing} = this.state;
     return (
       <View
@@ -119,13 +130,7 @@ class HomeScreen extends Component {
             <FlatList
               showsVerticalScrollIndicator={false}
               data={projects}
-              renderItem={({item}) => (
-                <ProjectPanelWidget
-                  project={item}
-                  key={item.id}
-                  handleClick={() => actions.getProject(item.id)}
-                />
-              )}
+              renderItem={this._renderItem}
               ListFooterComponent={() => <View style={{marginTop: 120}} />}
               refreshControl={
                 <RefreshControl

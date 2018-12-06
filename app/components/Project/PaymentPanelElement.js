@@ -9,21 +9,10 @@ import validate from 'validate.js';
 export default class PaymentPanelElement extends Component {
   constructor(props) {
     super(props);
-    this.state = {element: {}, navigation: {}, iconName: ''};
-  }
-
-  static getDerivedStateFromProps(nextProps) {
-    const {element, navigation, iconName, routeName} = nextProps;
-    return {
-      element,
-      navigation,
-      iconName,
-      routeName
-    };
   }
 
   render() {
-    const {element, navigation} = this.state;
+    const {element, handleNav, iconName} = this.props;
     return (
       <View style={styles.panelWrapper}>
         <Divider />
@@ -52,7 +41,7 @@ export default class PaymentPanelElement extends Component {
           {!validate.isEmpty(element.path) ? (
             <TouchableOpacity
               onPress={() =>
-                navigation.navigate('AppPDFViewer', {
+                handleNav('AppPDFViewer', {
                   pdfLink: element.path,
                   title: element.name
                 })
@@ -70,7 +59,6 @@ export default class PaymentPanelElement extends Component {
 }
 
 PaymentPanelElement.propTypes = {
-  navigation: PropTypes.object.isRequired,
   element: PropTypes.object.isRequired,
   iconName: PropTypes.string.isRequired
 };

@@ -10,9 +10,22 @@ export default class ConsultantIndexScreen extends Component {
     super(props);
   }
 
+  handleNav = (routeName, element) =>
+    this.props.navigation.navigate(routeName, element);
+
+  _renderItem = d => {
+    return (
+      <SubContractorPanelElement
+        key={d.id}
+        element={d}
+        handleNav={this.handleNav}
+        routeName="ConsultantShow"
+      />
+    );
+  };
+
   render() {
-    const {navigation} = this.props;
-    const {project, moduleName} = navigation.state.params;
+    const {project, moduleName} = this.props.navigation.state.params;
     return (
       <ScrollView
         style={{backgroundColor: 'white'}}
@@ -24,18 +37,7 @@ export default class ConsultantIndexScreen extends Component {
           {validate.isEmpty(project.consultants) ? (
             <NotAvailableElement routeName={moduleName} />
           ) : (
-            <View>
-              {project.consultants.map(d => {
-                return (
-                  <SubContractorPanelElement
-                    key={d.id}
-                    element={d}
-                    navigation={navigation}
-                    routeName="ConsultantShow"
-                  />
-                );
-              })}
-            </View>
+            <View>{project.consultants.map(this._renderItem)}</View>
           )}
         </View>
       </ScrollView>
