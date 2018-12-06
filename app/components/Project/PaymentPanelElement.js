@@ -28,6 +28,10 @@ export default class PaymentPanelElement extends Component {
           <Text style={styles.fileTypeText}>{I18n.t('reference_no')} : </Text>
           <Text style={styles.fileTypeText}>{element.reference_no}</Text>
         </View>
+        <View style={styles.fileTypeView}>
+          <Text style={styles.fileTypeText}>{I18n.t('payment_amount')} : </Text>
+          <Text style={styles.fileTypeText}>{element.amount}</Text>
+        </View>
         <Divider />
         <View style={styles.fileTypeView}>
           <Text style={styles.fileTypeText}>{I18n.t('due_date')} : </Text>

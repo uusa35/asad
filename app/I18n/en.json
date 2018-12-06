@@ -332,6 +332,7 @@
   "register_as_supplier" : "Register as supplier",
   "status" : "Status",
   "closed" : "Closed",
-  "running_project" : "Running Project"
+  "running_project" : "Running Project",
+  "payment_amount" : "Payment Amount"
 
 }

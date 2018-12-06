@@ -355,6 +355,7 @@
   "register_as_supplier" : "التسجيل كمورد",
   "status" : "الحالة",
   "closed" : "تم الانتهاء",
-  "running_project" : "قيد التشغيل"
+  "running_project" : "قيد التشغيل",
+  "payment_amount" : "قيمة الدفعة"
 
 }
