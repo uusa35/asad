@@ -21,11 +21,11 @@ export default class ImageShowScreen extends Component {
         {images.map((img, i) => {
           return (
             <View style={styles.slide1} key={img.id}>
-              <ImageZoom
-                cropWidth={width}
-                cropHeight={height}
-                imageWidth={width}
-                imageHeight={height}>
+              {/*<ImageZoom*/}
+                {/*cropWidth={width}*/}
+                {/*cropHeight={height}*/}
+                {/*imageWidth={width}*/}
+                {/*imageHeight={height}>*/}
                 <Image
                   key={img.id}
                   source={{
@@ -34,7 +34,7 @@ export default class ImageShowScreen extends Component {
                   style={{width: width, height: height}}
                   resizeMode={FastImage.resizeMode.cover}
                 />
-              </ImageZoom>
+              {/*</ImageZoom>*/}
             </View>
           );
         })}
