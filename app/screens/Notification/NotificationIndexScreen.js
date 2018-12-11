@@ -82,7 +82,9 @@ class NotificationIndexScreen extends Component {
           }
           renderItem={({item}) => {
             return !validate.isEmpty(item.notifications)
-              ? item.notifications.map(n => this._renderNotification(n))
+              ? item.notifications
+                  .reverse()
+                  .map(n => this._renderNotification(n))
               : null;
           }}
           ListFooterComponent={() => <View style={{marginTop: 120}} />}

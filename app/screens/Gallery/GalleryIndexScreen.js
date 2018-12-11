@@ -11,6 +11,7 @@ import validate from 'validate.js';
 import NotAvailablElement from '../../components/NotAvailableElement';
 import FastImage from 'react-native-fast-image';
 import {width} from '../../constants';
+import I18n from '../../I18n';
 
 export default class GalleryIndexScreen extends Component {
   constructor(props) {
@@ -32,10 +33,9 @@ export default class GalleryIndexScreen extends Component {
         key={g.id * Math.random()}
         style={styles.elementTypeBtn}
         onPress={() =>
-          this.handleNav('GalleryShow', {
-            element: g,
-            name: g.name,
-            moduleName
+          this.handleNav('ImageShow', {
+            name: !validate.isEmpty(g.name) ? g.name : I18n.t('gallery'),
+            images: g.images
           })
         }>
         <View style={styles.headerContainer}>
@@ -52,7 +52,7 @@ export default class GalleryIndexScreen extends Component {
           key={g.id}
           style={styles.elementIcon}
           source={{uri: g.cover}}
-          resizeMode={FastImage.resizeMode.stretch}
+          resizeMode={FastImage.resizeMode.cover}
         />
       </TouchableOpacity>
     );

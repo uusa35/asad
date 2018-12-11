@@ -9,19 +9,23 @@ import {width} from './../../constants';
 
 export default class GalleryShowScreen extends Component {
   _renderItem = img => {
+    const {element} = this.props.navigation.state.params;
     return (
       <TouchableOpacity
         key={img.id * Math.random()}
         onPress={() =>
           this.props.navigation.navigate('ImageShow', {
             name: !validate.isEmpty(img.name) ? img.name : I18n.t('image'),
-            img
+            img,
+            index: img.id,
+            images: element.images
           })
         }>
         <FastImage
           key={img.id}
           style={styles.imageElement}
           source={{uri: img.thumbnail}}
+          resizeMode="cover"
         />
       </TouchableOpacity>
     );
@@ -50,17 +54,18 @@ GalleryIndexScreen.propTypes = {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
     backgroundColor: 'white',
     justifyContent: 'flex-start',
     alignItems: 'center',
     margin: '3%'
   },
   wrapper: {
+    flex: 1,
     flexDirection: 'row',
     flexWrap: 'wrap',
     justifyContent: 'flex-start',
-    alignItems: 'center'
+    alignItems: 'center',
+    marginBottom: 10
   },
   imageElement: {
     margin: 3,

@@ -10,8 +10,8 @@ export default class HomeBtns extends Component {
     super(props);
   }
 
-    handleNav = (routeName, element) =>
-        this.props.navigation.navigate(routeName, element);
+  handleNav = (routeName, element) =>
+    this.props.navigation.navigate(routeName, element);
 
   render() {
     const {roles} = this.props;

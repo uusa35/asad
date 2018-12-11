@@ -1,11 +1,13 @@
 import React, {Component} from 'react';
-import {StyleSheet} from 'react-native';
+import {StyleSheet, View} from 'react-native';
 import PropTypes from 'prop-types';
 import {width, height} from './../../constants';
 import ImageZoom from 'react-native-image-pan-zoom';
 import {createImageProgress} from 'react-native-image-progress';
 import FastImage from 'react-native-fast-image';
 import ProgressBar from 'react-native-progress/Bar';
+import Swiper from 'react-native-swiper';
+
 const Image = createImageProgress(FastImage);
 export default class ImageShowScreen extends Component {
   constructor(props) {
@@ -13,27 +15,30 @@ export default class ImageShowScreen extends Component {
   }
 
   render() {
-    const {img} = this.props.navigation.state.params;
+    const {images} = this.props.navigation.state.params;
     return (
-      <ImageZoom
-        cropWidth={width}
-        cropHeight={height}
-        imageWidth={width}
-        imageHeight={height}>
-        <Image
-          key={img.id}
-          style={styles.imageElement}
-          source={{uri: img.large}}
-          resizeMode={FastImage.resizeMode.cover}
-          indicator={ProgressBar}
-          indicatorProps={{
-            size: 80,
-            borderWidth: 0,
-            color: 'rgba(150, 150, 150, 1)',
-            unfilledColor: 'rgba(200, 200, 200, 0.2)'
-          }}
-        />
-      </ImageZoom>
+      <Swiper showsButtons={false}>
+        {images.map((img, i) => {
+          return (
+            <View style={styles.slide1} key={img.id}>
+              <ImageZoom
+                cropWidth={width}
+                cropHeight={height}
+                imageWidth={width}
+                imageHeight={height}>
+                <Image
+                  key={img.id}
+                  source={{
+                    uri: `${img.large}`
+                  }}
+                  style={{width: width, height: height}}
+                  resizeMode={FastImage.resizeMode.cover}
+                />
+              </ImageZoom>
+            </View>
+          );
+        })}
+      </Swiper>
     );
   }
 }
@@ -44,6 +49,17 @@ ImageShowScreen.propTypes = {
 
 const styles = StyleSheet.create({
   imageElement: {
+    width: width,
+    height: height,
+    backgroundColor: 'black'
+  },
+  wrapper: {
+    flex: 1
+  },
+  slide1: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
     width: width,
     height: height,
     backgroundColor: 'black'

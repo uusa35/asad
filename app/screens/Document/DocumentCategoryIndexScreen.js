@@ -44,7 +44,7 @@ class DocumentCategoryIndexScreen extends Component {
                     category: c
                   })
                 }>
-                <Text style={styles.textElement}>{c.name}</Text>
+                <Text style={styles.textElement}>{c.slug}</Text>
               </TouchableOpacity>
             );
           })}
