@@ -25,15 +25,15 @@ export default class ImageShowScreen extends Component {
               <ImageZoom
                 cropWidth={width}
                 cropHeight={height}
-                imageWidth={width}
-                imageHeight={height}>
+                imageWidth={width / 1.5}
+                imageHeight={height / 1.5}>
                 <Image
                   key={img.id}
                   source={{
                     uri: `${img.large}`
                   }}
-                  style={{width: width, height: height}}
-                  resizeMode={FastImage.resizeMode.cover}
+                  style={{width: '100%', height: '100%'}}
+                  resizeMode={FastImage.resizeMode.contain}
                 />
               </ImageZoom>
             </View>
