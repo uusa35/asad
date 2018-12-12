@@ -5,7 +5,7 @@ import {width, height} from './../../constants';
 import ImageZoom from 'react-native-image-pan-zoom';
 import {createImageProgress} from 'react-native-image-progress';
 import FastImage from 'react-native-fast-image';
-import ProgressBar from 'react-native-progress/Bar';
+//import ProgressBar from 'react-native-progress/Bar';
 import Swiper from 'react-native-swiper';
 
 const Image = createImageProgress(FastImage);
@@ -15,17 +15,18 @@ export default class ImageShowScreen extends Component {
   }
 
   render() {
-    const {images} = this.props.navigation.state.params;
+    const {images, index } = this.props.navigation.state.params;
+    console.log('index',index);
     return (
-      <Swiper showsButtons={false}>
+      <Swiper showsButtons={false} index={index}>
         {images.map((img, i) => {
           return (
             <View style={styles.slide1} key={img.id}>
-              {/*<ImageZoom*/}
-                {/*cropWidth={width}*/}
-                {/*cropHeight={height}*/}
-                {/*imageWidth={width}*/}
-                {/*imageHeight={height}>*/}
+              <ImageZoom
+                cropWidth={width}
+                cropHeight={height}
+                imageWidth={width}
+                imageHeight={height}>
                 <Image
                   key={img.id}
                   source={{
@@ -34,7 +35,7 @@ export default class ImageShowScreen extends Component {
                   style={{width: width, height: height}}
                   resizeMode={FastImage.resizeMode.cover}
                 />
-              {/*</ImageZoom>*/}
+              </ImageZoom>
             </View>
           );
         })}
