@@ -8,14 +8,14 @@ import validate from 'validate.js';
 import {width} from './../../constants';
 
 export default class GalleryShowScreen extends Component {
-  _renderItem(img,i) {
+  _renderItem(img, i) {
     const {element} = this.props.navigation.state.params;
     return (
       <TouchableOpacity
         key={img.id * Math.random()}
         onPress={() =>
           this.props.navigation.navigate('ImageShow', {
-            name: !validate.isEmpty(img.name) ? img.name : I18n.t('image'),
+            name: !validate.isEmpty(img.caption) ? img.caption : element.name,
             img,
             index: i,
             images: element.images
@@ -29,7 +29,7 @@ export default class GalleryShowScreen extends Component {
         />
       </TouchableOpacity>
     );
-  };
+  }
   render() {
     const {navigation} = this.props;
     const {element} = navigation.state.params;
@@ -41,7 +41,7 @@ export default class GalleryShowScreen extends Component {
         endFillColor="white"
         showsVerticalScrollIndicator={false}>
         <View style={styles.wrapper}>
-            { element.images.map((img,i) => this._renderItem(img,i))}
+          {element.images.map((img, i) => this._renderItem(img, i))}
         </View>
       </ScrollView>
     );

@@ -15,8 +15,7 @@ export default class ImageShowScreen extends Component {
   }
 
   render() {
-    const {images, index } = this.props.navigation.state.params;
-    console.log('index',index);
+    const {images, index} = this.props.navigation.state.params;
     return (
       <Swiper showsButtons={false} index={index}>
         {images.map((img, i) => {
@@ -25,8 +24,8 @@ export default class ImageShowScreen extends Component {
               <ImageZoom
                 cropWidth={width}
                 cropHeight={height}
-                imageWidth={width / 1.5}
-                imageHeight={height / 1.5}>
+                imageWidth={width / 1.2}
+                imageHeight={height / 1.2}>
                 <Image
                   key={img.id}
                   source={{

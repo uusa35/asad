@@ -33,14 +33,11 @@ export default class GalleryIndexScreen extends Component {
         key={g.id * Math.random()}
         style={styles.elementTypeBtn}
         onPress={() =>
-            this.handleNav('GalleryShow', {
-              element : g,
-                moduleName,
-            })
-          // this.handleNav('ImageShow', {
-          //   name: !validate.isEmpty(g.name) ? g.name : I18n.t('gallery'),
-          //   images: g.images
-          // })
+          this.handleNav('GalleryShow', {
+            element: g,
+            moduleName,
+            name: g.name
+          })
         }>
         <View style={styles.headerContainer}>
           <View style={styles.headerWrapper}>
