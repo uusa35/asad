@@ -357,6 +357,7 @@
   "closed" : "تم الانتهاء",
   "running_project" : "قيد التشغيل",
   "payment_amount" : "قيمة الدفعة",
-  "read_more" : "المزيد"
+  "read_more" : "المزيد",
+  "company_profile" : "الملف التعريفي للشركه"
 
 }

@@ -9,7 +9,7 @@ export default class PanelWidget extends Component {
   }
 
   _toggleLines = () => {
-    const lines = this.state.lines > 1 ? 1 : 10;
+    const lines = this.state.lines > 1 ? 1 : 20;
     this.setState({lines});
   };
 

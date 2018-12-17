@@ -334,6 +334,7 @@
   "closed" : "Closed",
   "running_project" : "Running Project",
   "payment_amount" : "Payment Amount",
-  "read_more" : "Read More"
+  "read_more" : "Read More",
+  "company_profile" : "Company Profile"
 
 }

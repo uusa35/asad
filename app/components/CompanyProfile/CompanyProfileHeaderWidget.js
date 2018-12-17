@@ -4,6 +4,7 @@ import Communications from 'react-native-communications';
 import FastImage from 'react-native-fast-image';
 import {Icon} from 'react-native-elements';
 import validate from 'validate.js';
+import I18n from './../../I18n';
 
 export default class CompanyProfileHeaderWidget extends Component {
   constructor(props) {
@@ -22,7 +23,7 @@ export default class CompanyProfileHeaderWidget extends Component {
             onPress={() =>
               navigation.navigate('AppPDFViewer', {pdfLink: settings.path})
             }>
-            <Text style={styles.mainTitle}>{settings.name}</Text>
+            <Text style={styles.mainTitle}>{I18n.t('company_profile')}</Text>
             <Icon
               type="font-awesome"
               name="paperclip"
