@@ -13,8 +13,8 @@ export default class PaymentIndexScreen extends Component {
   handleNav = (routeName, element) =>
     this.props.navigation.navigate(routeName, element);
 
-  _renderItem = d => {
-    return (
+  _renderItem = d =>
+    d.visible ? (
       <PaymentPanelElement
         key={d.id}
         element={d}
@@ -22,8 +22,8 @@ export default class PaymentIndexScreen extends Component {
         iconName="payments"
         routeName="AppPDFViewer"
       />
-    );
-  };
+    ) : null;
+
   render() {
     const {project} = this.props.navigation.state.params;
     return (

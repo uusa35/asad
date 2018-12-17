@@ -1,10 +1,17 @@
 import React, {Component} from 'react';
-import {View, Text, StyleSheet} from 'react-native';
+import {View, Text, StyleSheet, TouchableOpacity} from 'react-native';
+import I18n from './../I18n';
 
 export default class PanelWidget extends Component {
   constructor(props) {
     super(props);
+    this.state = {lines: 1};
   }
+
+  _toggleLines = () => {
+    const lines = this.state.lines > 1 ? 1 : 10;
+    this.setState({lines});
+  };
 
   render() {
     const {title, content} = this.props;
@@ -14,7 +21,14 @@ export default class PanelWidget extends Component {
           <Text style={styles.panelTitle}>{title}</Text>
         </View>
         <View style={styles.panelContentWrapper}>
-          <Text style={styles.panelContent}>{content}</Text>
+          <Text numberOfLines={this.state.lines} style={styles.panelContent}>
+            {content}
+          </Text>
+          <TouchableOpacity onPress={() => this._toggleLines()}>
+            <Text style={[styles.panelContent, {textAlign: 'right'}]}>
+              {I18n.t('read_more')}
+            </Text>
+          </TouchableOpacity>
         </View>
       </View>
     );

@@ -22,18 +22,20 @@ export default class ContactDetailsWidget extends Component {
             <Text style={styles.panelContentTitle}>{I18n.t('address')} : </Text>
             <Text style={styles.panelContent}>{settings.address}</Text>
           </View>
-          <View style={styles.panelContentRowWrapper}>
-            <Text style={styles.panelContentTitle}>{I18n.t('fax')} : </Text>
-            <Text style={styles.panelContent}>{settings.fax}</Text>
-          </View>
           <View style={[styles.panelContentRowWrapper, {alignItems: 'center'}]}>
-            <Text style={styles.panelContentTitle}>{I18n.t('phone')} : </Text>
+            <Text style={styles.panelContentTitle}>
+              {I18n.t('telephone')} :{' '}
+            </Text>
             <Button
               title={settings.phone}
               buttonStyle={{backgroundColor: 'transparent'}}
               titleStyle={{color: 'black', fontFamily: 'cairo'}}
               onPress={() => Communications.phonecall(settings.phone, true)}
             />
+          </View>
+          <View style={styles.panelContentRowWrapper}>
+            <Text style={styles.panelContentTitle}>{I18n.t('fax')} : </Text>
+            <Text style={styles.panelContent}>{settings.fax}</Text>
           </View>
           <View style={[styles.panelContentRowWrapper, {alignItems: 'center'}]}>
             <Text style={styles.panelContentTitle}>{I18n.t('email')} : </Text>

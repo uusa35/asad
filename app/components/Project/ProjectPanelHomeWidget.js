@@ -25,7 +25,7 @@ export default class ProjectPanelHomeWidget extends Component {
         <FastImage
           style={styles.logo}
           source={{uri: image}}
-          resizeMode={FastImage.resizeMode.cover}
+          resizeMode={FastImage.resizeMode.contain}
         />
         <View style={styles.headerWrapper}>
           <View style={styles.headerTitleWrapper}>
@@ -93,8 +93,8 @@ const styles = StyleSheet.create({
     fontFamily: 'cairo'
   },
   logo: {
-    width: 80,
-    height: 100,
+    width: 90,
+    height: 90,
     borderWidth: 1,
     borderColor: 'lightgrey'
   }

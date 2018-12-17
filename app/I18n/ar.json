@@ -356,6 +356,7 @@
   "status" : "الحالة",
   "closed" : "تم الانتهاء",
   "running_project" : "قيد التشغيل",
-  "payment_amount" : "قيمة الدفعة"
+  "payment_amount" : "قيمة الدفعة",
+  "read_more" : "المزيد"
 
 }

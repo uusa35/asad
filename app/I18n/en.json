@@ -333,6 +333,7 @@
   "status" : "Status",
   "closed" : "Closed",
   "running_project" : "Running Project",
-  "payment_amount" : "Payment Amount"
+  "payment_amount" : "Payment Amount",
+  "read_more" : "Read More"
 
 }

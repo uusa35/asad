@@ -3,6 +3,7 @@ import {View, Text, StyleSheet, TouchableOpacity} from 'react-native';
 import Communications from 'react-native-communications';
 import FastImage from 'react-native-fast-image';
 import {Icon} from 'react-native-elements';
+import validate from 'validate.js';
 
 export default class CompanyProfileHeaderWidget extends Component {
   constructor(props) {
@@ -11,6 +12,7 @@ export default class CompanyProfileHeaderWidget extends Component {
 
   render() {
     const {settings, navigation} = this.props;
+    console.log('settings', settings);
     return (
       <View style={styles.headerContainer}>
         <FastImage style={styles.logo} source={{uri: settings.logo}} />
@@ -30,38 +32,66 @@ export default class CompanyProfileHeaderWidget extends Component {
             />
           </TouchableOpacity>
           <View style={styles.socialIconsWrapper}>
-            <Icon
-              reverse
-              name="facebook"
-              type="font-awesome"
-              color="#3b5998"
-              size={16}
-              onPress={() => Communications.web(settings.facebook_url)}
-            />
-            <Icon
-              reverse
-              name="twitter"
-              type="font-awesome"
-              color="#1da1f2"
-              size={16}
-              onPress={() => Communications.web(settings.twitter_url)}
-            />
-            <Icon
-              reverse
-              name="google-plus"
-              type="font-awesome"
-              color="#db4437"
-              size={16}
-              onPress={() => Communications.web(settings.google_url)}
-            />
-            <Icon
-              reverse
-              name="instagram"
-              type="font-awesome"
-              color="#007bb5"
-              size={16}
-              onPress={() => Communications.web(settings.instagram_url)}
-            />
+            {!validate.isEmpty(settings.facebook_url) ? (
+              <Icon
+                reverse
+                name="facebook"
+                type="font-awesome"
+                color="#3b5998"
+                size={16}
+                onPress={() => Communications.web(settings.facebook_url)}
+              />
+            ) : null}
+            {!validate.isEmpty(settings.twitter_url) ? (
+              <Icon
+                reverse
+                name="twitter"
+                type="font-awesome"
+                color="#1da1f2"
+                size={16}
+                onPress={() => Communications.web(settings.twitter_url)}
+              />
+            ) : null}
+            {!validate.isEmpty(settings.google_url) ? (
+              <Icon
+                reverse
+                name="google-plus"
+                type="font-awesome"
+                color="#db4437"
+                size={16}
+                onPress={() => Communications.web(settings.google_url)}
+              />
+            ) : null}
+            {!validate.isEmpty(settings.instagram_url) ? (
+              <Icon
+                reverse
+                name="instagram"
+                type="font-awesome"
+                color="#007bb5"
+                size={16}
+                onPress={() => Communications.web(settings.instagram_url)}
+              />
+            ) : null}
+            {!validate.isEmpty(settings.linkin_url) ? (
+              <Icon
+                reverse
+                name="linkedin"
+                type="font-awesome"
+                color="#007bb5"
+                size={16}
+                onPress={() => Communications.web(settings.linkin_url)}
+              />
+            ) : null}
+            {!validate.isEmpty(settings.youtube_url) ? (
+              <Icon
+                reverse
+                name="youtube"
+                type="font-awesome"
+                color="#007bb5"
+                size={16}
+                onPress={() => Communications.web(settings.youtube_url)}
+              />
+            ) : null}
           </View>
         </View>
       </View>
@@ -91,7 +121,8 @@ const styles = StyleSheet.create({
   socialIconsWrapper: {
     flexDirection: 'row',
     width: '100%',
-    justifyContent: 'center',
+    flexWrap: 'wrap',
+    justifyContent: 'flex-start',
     alignItems: 'center',
     paddingRight: 10,
     paddingLeft: 10,
