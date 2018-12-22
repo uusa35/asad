@@ -30,6 +30,7 @@ export const initialState = {
   requesterRequest: {},
   project: {},
   deviceId: '',
+  playerId: '',
   search: [],
   notification: {}
 };

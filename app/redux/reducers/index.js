@@ -13,6 +13,7 @@ import auth from './auth';
 import message from './message';
 import homeSliders from './homeSliders';
 import deviceId from './deviceId';
+import playerId from './playerId';
 import registerRequest from './registerRequest';
 import projects from './projects';
 import categories from './categories';
@@ -36,6 +37,7 @@ let reducers = combineReducers({
   role,
   homeSliders,
   deviceId,
+  playerId,
   registerRequest,
   projects,
   categories,

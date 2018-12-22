@@ -97,7 +97,7 @@ export function* startLoginScenario(user) {
 export function* startAppBootStrap() {
   try {
     let device_id = DeviceInfo.getUniqueID(); // get the deviceID
-    console.log('device_id', device_id);
+    __DEV__ ? console.log('device_id', device_id) : null;
     yield all([
       call(enableLoading),
       call(defaultLang), // set app default lang
@@ -205,4 +205,11 @@ export function* goBackBtnScenario(action) {
 
 export function* goBackBtn() {
   yield takeLatest(actions.GO_BACK, goBackBtnScenario);
+}
+
+export function* startGetPlayerId(action) {
+  put({type: actions.SET_PLAYER_ID, payload: action.payload});
+}
+export function* getPlayerId() {
+  yield takeLatest(actions.GET_PLAYER_ID, startGetPlayerId);
 }

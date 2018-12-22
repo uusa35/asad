@@ -203,6 +203,19 @@ export function setCategories(categories) {
   };
 }
 
+export function getPlayerId(playerId) {
+  return {
+    type: actions.GET_PLAYER_ID,
+    payload: playerId
+  };
+}
+
+export function setPlayerId(playerId) {
+  return {
+    type: actions.SET_PLAYER_ID,
+    payload: playerId
+  };
+}
 export function refetchProject(id) {
   return {
     type: actions.GET_PROJECT,
@@ -271,5 +284,7 @@ export const APP_ACTIONS = {
   getSearch,
   setSearch,
   linkNotification,
-  goBackBtn
+  goBackBtn,
+  getPlayerId,
+  setPlayerId
 };

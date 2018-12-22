@@ -4,9 +4,7 @@ import {
   StyleSheet,
   FlatList,
   RefreshControl,
-  BackHandler,
-  ScrollView,
-  Text
+  BackHandler
 } from 'react-native';
 import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
@@ -16,7 +14,8 @@ import {
   getSearch,
   refetchProjects,
   linkNotification,
-  goBackBtn
+  goBackBtn,
+  setPlayerId
 } from '../../redux/actions';
 import {Button} from 'react-native-elements';
 import {bindActionCreators} from 'redux';
@@ -27,7 +26,7 @@ import {height, colors, isIOS} from './../../constants';
 import I18n from './../../I18n';
 import OneSignal from 'react-native-onesignal';
 import HomeBtns from '../../components/HomeBtns';
-import {oneSignalAndroidAppID, oneSignalIOSAppID } from 'react-native-dotenv';
+import {ONE_SIGNAL_APP_ID} from 'react-native-dotenv';
 
 class HomeScreen extends Component {
   constructor(props) {
@@ -37,7 +36,7 @@ class HomeScreen extends Component {
   state = {refreshing: false, linkNotification: false};
 
   componentWillMount() {
-    OneSignal.init(isIOS ? oneSignalIOSAppID : oneSignalAndroidAppID);
+    OneSignal.init(ONE_SIGNAL_APP_ID);
     OneSignal.addEventListener('received', this.onReceived);
     OneSignal.addEventListener('opened', this.onOpened);
     OneSignal.addEventListener('ids', this.onIds);
@@ -50,6 +49,7 @@ class HomeScreen extends Component {
   }
 
   componentDidMount() {
+    OneSignal.configure(); // this will fire even to fetch the player_id of the device;
     !isIOS
       ? BackHandler.addEventListener('hardwareBackPress', this.handleBackPress)
       : null;
@@ -76,7 +76,8 @@ class HomeScreen extends Component {
   };
 
   onIds = device => {
-    console.log('Device info: ', device);
+    __DEV__ ? console.log('Device info: ', device.userId) : null;
+    this.props.actions.setPlayerId(device.userId);
   };
 
   _startSearching = text => {
@@ -163,6 +164,7 @@ function mapDispatchToProps(dispatch) {
       toggleLoading: bindActionCreators(toggleLoading, dispatch),
       getProject: bindActionCreators(getProject, dispatch),
       refetchProjects: bindActionCreators(refetchProjects, dispatch),
+      setPlayerId: bindActionCreators(setPlayerId, dispatch),
       getSearch: bindActionCreators(getSearch, dispatch),
       linkNotification: bindActionCreators(linkNotification, dispatch),
       goBackBtn: bindActionCreators(goBackBtn, dispatch)

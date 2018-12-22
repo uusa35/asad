@@ -22,12 +22,13 @@ export async function authenticated(api_token) {
 }
 
 export async function authenticate(element) {
-  const {email, password, device_id} = element;
+  const {email, password, device_id, player_id} = element;
   return await axiosInstance
     .post('authenticate', {
       email,
       password,
       device_id,
+      player_id,
       device_type: isIOS ? 0 : 1
     })
     .then(r => r.data)
