@@ -27,7 +27,7 @@ import {height, colors, isIOS} from './../../constants';
 import I18n from './../../I18n';
 import OneSignal from 'react-native-onesignal';
 import HomeBtns from '../../components/HomeBtns';
-import {oneSignalAppID} from 'react-native-dotenv';
+import {oneSignalAndroidAppID, oneSignalIOSAppID } from 'react-native-dotenv';
 
 class HomeScreen extends Component {
   constructor(props) {
@@ -37,7 +37,7 @@ class HomeScreen extends Component {
   state = {refreshing: false, linkNotification: false};
 
   componentWillMount() {
-    OneSignal.init(oneSignalAppID);
+    OneSignal.init(isIOS ? oneSignalIOSAppID : oneSignalAndroidAppID);
     OneSignal.addEventListener('received', this.onReceived);
     OneSignal.addEventListener('opened', this.onOpened);
     OneSignal.addEventListener('ids', this.onIds);
