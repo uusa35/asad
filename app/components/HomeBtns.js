@@ -10,18 +10,15 @@ export default class HomeBtns extends Component {
     super(props);
   }
 
-  handleNav = (routeName, element) =>
-    this.props.navigation.navigate(routeName, element);
-
   render() {
-    const {roles} = this.props;
+    const {roles, handleNav} = this.props;
     return (
       <View style={styles.container}>
         {roles.map(r => {
           return (
             <MainBtnElement
               element={r}
-              handleNav={this.handleNav}
+              handleNav={handleNav}
               key={r.id}
               title={r.slug}
               routeName={r.routeName} // i added routeName statically through RoleResources
@@ -30,7 +27,7 @@ export default class HomeBtns extends Component {
           );
         })}
         <MainBtnElement
-          handleNav={this.handleNav}
+          handleNav={handleNav}
           name="Guest"
           title={I18n.t('guest')}
           routeName="Contactus" // i added routeName statically through RoleResources
@@ -42,7 +39,6 @@ export default class HomeBtns extends Component {
 }
 
 HomeBtns.propTypes = {
-  navigation: PropTypes.object.isRequired,
   roles: PropTypes.array.isRequired
 };
 

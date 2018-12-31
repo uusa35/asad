@@ -35,6 +35,13 @@ export async function authenticate(element) {
     .catch(e => e.response.data.message);
 }
 
+export async function getProjects(api_token) {
+  return await axiosInstance
+    .get(`all/projects?api_token=` + api_token)
+    .then(r => r.data)
+    .catch(e => e.response.data.message);
+}
+
 export async function getHomeSliders(type) {
   return await axiosInstance
     .get(`slider`, {params: {type: type}})

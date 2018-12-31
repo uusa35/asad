@@ -61,7 +61,7 @@ const styles = StyleSheet.create({
     alignItems: 'center'
   },
   textElement: {
-    fontSize: 25,
+    fontSize: 20,
     fontFamily: 'cairo',
     color: 'black',
     textAlign: 'left'
@@ -70,7 +70,7 @@ const styles = StyleSheet.create({
     width: width - 50,
     borderWidth: 1,
     borderColor: 'grey',
-    height: 100,
+    height: 80,
     justifyContent: 'center',
     alignItems: 'center',
     backgroundColor: colors.main,

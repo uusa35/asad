@@ -55,6 +55,9 @@ class HomeScreen extends Component {
       : null;
   }
 
+  handleNav = (routeName, element) =>
+    this.props.navigation.navigate(routeName, element);
+
   handleBackPress = () => {
     const {navigation, actions} = this.props;
     actions.goBackBtn(navigation.isFocused());
@@ -111,9 +114,9 @@ class HomeScreen extends Component {
         {validate.isEmpty(auth) ? (
           <View
             style={{flex: 0.9, justifyContent: 'center', alignItems: 'center'}}>
-            <HomeBtns roles={roles} navigation={navigation} />
+            <HomeBtns roles={roles} handleNav={this.handleNav} />
           </View>
-        ) : validate.isEmpty(auth.projects) ? (
+        ) : validate.isEmpty(auth) || validate.isEmpty(projects) ? (
           <View style={styles.titleView}>
             <Button
               raised

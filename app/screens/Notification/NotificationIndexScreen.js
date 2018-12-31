@@ -10,12 +10,13 @@ import {
 import validate from 'validate.js';
 import PropTypes from 'prop-types';
 import FastImage from 'react-native-fast-image';
-import {height, icons} from '../../constants';
+import {colors, height, icons} from '../../constants';
 import {isRTL} from '../../I18n';
 import {bindActionCreators} from 'redux';
 import {refetchProjects} from '../../redux/actions';
 import connect from 'react-redux/es/connect/connect';
-import {Icon} from 'react-native-elements';
+import {Button, Icon} from 'react-native-elements';
+import I18n from '../../I18n';
 
 class NotificationIndexScreen extends Component {
   constructor(props) {
@@ -68,27 +69,41 @@ class NotificationIndexScreen extends Component {
   }
 
   render() {
-    const {projects} = this.props;
+    const {projects, navigation} = this.props;
     return (
       <View style={styles.wrapper}>
-        <FlatList
-          containtContainerStyle={styles.flatListContainer}
-          data={projects}
-          refreshControl={
-            <RefreshControl
-              refreshing={this.state.refreshing}
-              onRefresh={this._onRefresh}
+        {validate.isEmpty(projects) ? (
+          <View style={styles.titleView}>
+            <Button
+              raised
+              large
+              buttonStyle={{backgroundColor: colors.main}}
+              onPress={() => navigation.navigate('Contactus')}
+              icon={{name: 'info', color: 'white'}}
+              title={I18n.t('there_are_no_projects_please_contact_us')}
+              titleStyle={styles.mainTitle}
             />
-          }
-          renderItem={({item}) => {
-            return !validate.isEmpty(item.notifications)
-              ? item.notifications
-                  .reverse()
-                  .map(n => this._renderNotification(n))
-              : null;
-          }}
-          ListFooterComponent={() => <View style={{marginTop: 120}} />}
-        />
+          </View>
+        ) : (
+          <FlatList
+            containtContainerStyle={styles.flatListContainer}
+            data={projects}
+            refreshControl={
+              <RefreshControl
+                refreshing={this.state.refreshing}
+                onRefresh={this._onRefresh}
+              />
+            }
+            renderItem={({item}) => {
+              return !validate.isEmpty(item.notifications)
+                ? item.notifications
+                    .reverse()
+                    .map(n => this._renderNotification(n))
+                : null;
+            }}
+            ListFooterComponent={() => <View style={{marginTop: 120}} />}
+          />
+        )}
       </View>
     );
   }
@@ -153,5 +168,16 @@ const styles = StyleSheet.create({
     height: height,
     justifyContent: 'center',
     alignItems: 'center'
+  },
+  titleView: {
+    padding: 20,
+    height: height,
+    justifyContent: 'center',
+    alignItems: 'center'
+  },
+  mainTitle: {
+    fontFamily: 'cairo',
+    fontSize: 20,
+    textAlign: 'center'
   }
 });

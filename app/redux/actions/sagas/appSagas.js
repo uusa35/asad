@@ -89,8 +89,11 @@ export function* startLoginScenario(user) {
     call(helpers.setAuthToken, user.api_token), // store the token into storage
     put({type: actions.TOGGLE_GUEST, payload: false}) // set the guest to false
   ]);
-  if (!validate.isEmpty(user.projects)) {
-    yield put({type: actions.SET_PROJECTS, payload: user.projects}); // store list of projects into state
+  if (!validate.isEmpty(user)) {
+    const projects = yield call(api.getProjects, user.api_token);
+    if (!validate.isEmpty(projects)) {
+      yield put({type: actions.SET_PROJECTS, payload: projects}); // store list of projects into state
+    }
   }
 }
 
