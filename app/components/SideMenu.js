@@ -29,7 +29,7 @@ class Menu extends Component {
   }
 
   render() {
-    const {token, guest, navigation, galleries} = this.props;
+    const {token, guest, navigation, galleries, auth} = this.props;
     return (
       <ScrollView
         style={styles.container}
@@ -37,6 +37,24 @@ class Menu extends Component {
         <StatusBar barStyle="dark-content" backgroundColor={colors.main} />
         <FastImage source={images.logo} style={styles.logo} />
         <Text style={styles.mainMenuText}>{I18n.t('menu')}</Text>
+        {!validate.isEmpty(auth.role) ? (
+          <View>
+            <TouchableOpacity>
+              <Text style={[styles.titleStyle, {fontSize: 12, padding: 10}]}>
+                {auth.name}
+              </Text>
+            </TouchableOpacity>
+            <TouchableOpacity>
+              <Text
+                style={[
+                  styles.titleStyle,
+                  {fontSize: 12, textAlign: 'center'}
+                ]}>
+                {auth.role.slug}
+              </Text>
+            </TouchableOpacity>
+          </View>
+        ) : null}
         <View style={{marginBottom: 20, width: '100%'}}>
           <TouchableOpacity
             onPress={() => navigation.navigate('Home')}
@@ -164,7 +182,7 @@ const styles = StyleSheet.create({
   mainMenuText: {
     color: 'black',
     fontFamily: 'cairo',
-    fontSize: 25,
+    fontSize: 20,
     textAlign: 'center'
   }
 });

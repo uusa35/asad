@@ -22,7 +22,11 @@ export default class ProjectPanelWidget extends PureComponent {
     const {project, handleClick} = this.props;
     return (
       <View key={project.id} style={styles.projectPanelWrapper}>
-        <FastImage source={images.projectBg} style={styles.imgBg} />
+        <FastImage
+          source={images.projectBg}
+          style={styles.imgBg}
+          resizeMode="cover"
+        />
         <TouchableHighlight
           onPress={handleClick}
           key={project.id}
@@ -33,7 +37,7 @@ export default class ProjectPanelWidget extends PureComponent {
             <FastImage
               source={{uri: project.image}}
               style={styles.projectPanelImage}
-              resizeMode={FastImage.resizeMode.contain}
+              resizeMode={FastImage.resizeMode.cover}
             />
             <View style={styles.panelInternalWrapper}>
               <Divider style={{backgroundColor: 'black', height: 1}} />

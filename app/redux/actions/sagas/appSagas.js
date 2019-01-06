@@ -91,7 +91,7 @@ export function* startLoginScenario(user) {
   ]);
   if (!validate.isEmpty(user)) {
     const projects = yield call(api.getProjects, user.api_token);
-    if (!validate.isEmpty(projects)) {
+    if (!validate.isEmpty(projects) && validate.isArray(projects)) {
       yield put({type: actions.SET_PROJECTS, payload: projects}); // store list of projects into state
     }
   }

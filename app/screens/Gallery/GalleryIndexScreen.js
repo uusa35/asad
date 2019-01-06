@@ -11,7 +11,6 @@ import validate from 'validate.js';
 import NotAvailablElement from '../../components/NotAvailableElement';
 import FastImage from 'react-native-fast-image';
 import {width} from '../../constants';
-import I18n from '../../I18n';
 
 export default class GalleryIndexScreen extends Component {
   constructor(props) {

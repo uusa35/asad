@@ -1,11 +1,5 @@
 import React, {PureComponent} from 'react';
-import {
-  View,
-  StyleSheet,
-  RefreshControl,
-  FlatList,
-  ScrollView
-} from 'react-native';
+import {View, StyleSheet, RefreshControl, FlatList} from 'react-native';
 import PropTypes from 'prop-types';
 import ProjectPanelHomeWidget from '../../components/Project/ProjectPanelHomeWidget';
 import MainBtnElement from '../../components/MainBtnElement';

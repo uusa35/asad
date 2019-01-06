@@ -13,7 +13,6 @@ export default class CompanyProfileHeaderWidget extends Component {
 
   render() {
     const {settings, navigation} = this.props;
-    console.log('settings', settings);
     return (
       <View style={styles.headerContainer}>
         <FastImage style={styles.logo} source={{uri: settings.logo}} />

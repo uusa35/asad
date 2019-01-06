@@ -25,14 +25,16 @@ export default class ProjectPanelHomeWidget extends Component {
         <FastImage
           style={styles.logo}
           source={{uri: image}}
-          resizeMode={FastImage.resizeMode.contain}
+          resizeMode={FastImage.resizeMode.cover}
         />
         <View style={styles.headerWrapper}>
           <View style={styles.headerTitleWrapper}>
             <Text style={styles.mainTitle}>{name}</Text>
           </View>
           <View style={styles.descriptionWrapper}>
-            <Text style={styles.description}>{description}</Text>
+            <Text style={styles.description}>
+              {description ? description : null}
+            </Text>
           </View>
         </View>
       </View>
@@ -42,7 +44,7 @@ export default class ProjectPanelHomeWidget extends Component {
 
 ProjectPanelHomeWidget.propTypes = {
   name: PropTypes.string.isRequired,
-  description: PropTypes.string.isRequired,
+  description: PropTypes.string,
   image: PropTypes.string.isRequired
 };
 
