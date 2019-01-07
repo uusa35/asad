@@ -154,7 +154,7 @@ const styles = StyleSheet.create({
   },
   projectPanelImage: {
     width: 90,
-    height: 90,
+    height: 130,
     margin: 0,
     flexWrap: 'wrap'
   },

@@ -96,7 +96,7 @@ const styles = StyleSheet.create({
   },
   logo: {
     width: 90,
-    height: 90,
+    height: 130,
     borderWidth: 1,
     borderColor: 'lightgrey'
   }
